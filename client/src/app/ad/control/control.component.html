@@ -1,0 +1,176 @@
+<section class="control router-outlet-content">
+  <div class="row admin">
+    <div class="col-md-12 col-12">
+      <div class="page-name">{{pageName}}</div>
+      <hr>
+    </div>
+
+          <div class="col-md-6 col-12">
+            <div [ngClass]="'control control-search'">
+              <label>
+                <span [textContent]="'SearchText' | translate"></span>
+              </label>
+              <input kendoTextBox [(ngModel)]="searchOption.SearctText" (keypress)="onSearchKeyPress($event)"
+                (change)="onSearchTextChange($event)" />
+              <button kendoButton (click)="onRemoveSearchText();" [primary]="true" [look]="'outline'"
+                [icon]="'close-outline'" [ngClass]="'btn-remove'" *ngIf="searchOption.SearctText !== ''">
+              </button>
+              <button kendoButton (click)="onSearch()" [primary]="true" [look]="'outline'" [icon]="'search'"
+                [ngClass]="'btn-search'" >
+              </button>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+          <div class="btn-addNew custom-btn-addNew">
+            <!-- -->
+            <button kendoButton (click)="onAddNewCommon()" *ngIf="controlDefault || control.AddNew" 
+              [title]="'AddNew' | translate">
+              <span>{{ 'AddNew' | translate }}</span>
+            </button>
+          </div>
+        </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <label>
+        <span [textContent]="'' | translate"></span>
+      </label>
+
+      <kendo-grid *ngIf="dataControls.length > 0" [data]="dataControlGridDataResult" [selectable]="dataControlSelectableSettings"
+        (pageChange)="onControlPageChange($event)"
+        [pageSize]="dataControlPageSize" [skip]="dataControlSkip" [pageable]="true" [kendoGridSelectBy]="'ID'"
+        [selectedKeys]="dataControlSelection" [loading]="loading" [sortable]="dataControlSort"
+        [sort]="dataControlSortByField" (sortChange)="onControlSortChange($event)"
+        [filter]="dataControlState.filter" (dataStateChange)="onControlDataStateChange($event)">
+        <kendo-grid-column [title]="'Function' | translate" [width]="120"
+        [headerClass]="{'headerCommon': true}">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div class="btn-toolbar" role="toolbar">
+
+              <div class="g-btn button mr-2 g-btn-edit button" role="group">
+                <button kendoGridRemoveCommand  [iconClass]="'fa fa-pencil'" *ngIf="controlDefault || control.Edit" [title]="'Edit' | translate"
+                      (click)="onEditControl(dataItem.ID)" >
+                </button>
+              </div>
+
+              <div class="g-btn button mr-2 g-btn-delete button" role="group">
+                <button kendoGridRemoveCommand [iconClass]="'fa fa-trash-o'" *ngIf="controlDefault || control.Delete" [title]="'Delete' | translate"
+                      (click)="onDeleteControl(dataItem.ID)">
+                </button>
+              </div>
+
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-checkbox-column [width]="40" [resizable]="false" [showSelectAll]="true" *ngIf="allowMulti">
+        </kendo-grid-checkbox-column>
+        <kendo-grid-column [field]="'Name'" [width]="150" [title]="'Control_Name' | translate"></kendo-grid-column>
+
+        <kendo-grid-column [field]="'PageID'" [width]="200" [title]="'Page_ID' | translate">
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'ControlID'" [width]="150" [title]="'Control_ID' | translate">
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'AbsoluteUrl'" [width]="300" [title]="'AbsoluteUrl' | translate">
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'MethodRequest'" [title]="'MethodRequest' | translate">
+        </kendo-grid-column>
+        
+        <kendo-grid-excel fileName="Controls.xlsx"></kendo-grid-excel>
+        <kendo-grid-messages [noRecords]="'NoRecords' | translate"
+        [pagerOf] = "'pagerOf' | translate"  [pagerItems] = "'pagerItems' | translate"  >
+        </kendo-grid-messages>
+      </kendo-grid>
+      <span class="emptydata-message" *ngIf="dataControls.length === 0">{{'NoRecords' | translate}}</span>
+    </div>
+    <!-- <div class="btn-addNew">
+      <button kendoButton (click)="onAddNewCommon()" *ngIf="controlDefault || control.AddNew"
+        [title]="'AddNew' | translate">
+        <span>{{ 'Tạo mới' | translate }}</span>
+      </button>
+    </div> -->
+  </div>
+</section>
+
+<kendo-dialog *ngIf="addCommon" [draggable]="true" class="control add-dialog x-dialog" [ngClass]="'window-center dialog-chat'">
+  <div class="employe-detail">
+    <div class="x-close-div">
+      <div class="title-info-req">
+        <strong>{{'Control_Page'|translate}}</strong>
+      </div>
+      <button kendoButton class="xbutton-dialog" [icon]="'close'" [title]="'Close_Box' | translate"
+        (click)="onCloseUnitDialog()">
+      </button>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-12">
+        <div class="row">
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Control_ID' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input  (keypress)="onEnterControlID($event)"  [ngClass]="dataErr[0][ 'ControlID'] ? 'err' : ''" kendoTextBox [(ngModel)]="dataControlItemtemp.ControlID" />
+              <span class="err-text " *ngIf="dataErr[0][ 'ControlID'] ">{{dataErr[0]['Name']}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Control_Name' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input [ngClass]="dataErr[0][ 'Name'] ? 'err' : ''" kendoTextBox [(ngModel)]="dataControlItemtemp.Name"/>
+              <span class="err-text " *ngIf="dataErr[0][ 'Name'] ">{{dataErr[0]['Name']}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'AbsoluteUrl' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input [ngClass]="dataErr[0][ 'AbsoluteUrl'] ? 'err' : ''" kendoTextBox [(ngModel)]="dataControlItemtemp.AbsoluteUrl"/>
+              <span class="err-text " *ngIf="dataErr[0][ 'AbsoluteUrl'] ">{{dataErr[0]['Name']}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'MethodRequest' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <!-- <input [ngClass]="dataErr[0][ 'MethodRequest'] ? 'err' : ''" kendoTextBox [(ngModel)]="dataControlItemtemp.MethodRequest"/> -->
+              <kendo-dropdownlist [ngClass]="dataErr[0][ 'MethodRequest'] ? 'err' : ''" [data]="methods" [(ngModel)]="dataControlItemtemp.MethodRequest"> </kendo-dropdownlist>
+              <span class="err-text " *ngIf="dataErr[0][ 'MethodRequest'] ">{{dataErr[0]['Name']}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Page_ID' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <!-- <input [ngClass]="dataErr[0][ 'PageID'] ? 'err' : ''" kendoTextBox [(ngModel)]="dataControlItemtemp.PageID"/> -->
+              <kendo-combobox [ngClass]="dataErr[0][ 'PageID'] ? 'err' : ''" [data]="pageUrlsFilter" [textField]="'ID'" [valueField]="'Name'" [filterable]="true" (filterChange)="pageUrlsHandleFilter($event)" [(ngModel)]="dataControlItemtemp.PageID" [valuePrimitive]="true" [allowCustom]="true" 
+                               >
+                                <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+                            </kendo-combobox>
+              <span class="err-text " *ngIf="dataErr[0][ 'PageID'] ">{{dataErr[0]['Name']}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div class="btn-dialog-wrapper">
+              <!--  -->
+              <button class="btn-dialog btn-save" (click)="onSaveControl()" *ngIf="controlDefault || control.Save">
+                {{ 'COMMON_SAVE' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</kendo-dialog>

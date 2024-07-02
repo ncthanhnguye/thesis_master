@@ -1,0 +1,177 @@
+<section class="user router-outlet-content">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="page-name">{{pageName}}</div>
+      <hr>
+    </div>
+    <div class="col-md-12 col-12">
+      <div [ngClass]="'control control-search'">
+        <label>
+          <span [textContent]="'SearchText' | translate"></span>
+        </label>
+        <input kendoTextBox [(ngModel)]="searchOption.SearctText" (keypress)="onSearchKeyPress($event)"
+          (change)="onSearchTextChange($event)" />
+        <button kendoButton (click)="onRemoveSearchText();" [primary]="true" [look]="'outline'"
+          [icon]="'close-outline'" [ngClass]="'btn-remove'" *ngIf="searchOption.SearctText !== ''">
+        </button>
+        <button kendoButton (click)="onSearch()" [primary]="true" [look]="'outline'" [icon]="'search'"
+          [ngClass]="'btn-search'" >
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 col-12">
+      <div class="btn-addNew custom-btn-addNew">
+        <button kendoButton (click)="onAddNewUser()" *ngIf="controlDefault || control.AddNew" [title]="'AddNew' | translate"    >
+            <span>{{ 'AddNew' | translate }}</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-12 col-12">
+      <label>
+        <span [textContent]="'' | translate"></span>
+      </label>
+      <!-- groupable]="{ showFooter: false }" [group]="dataUserState.group" [filter]="dataUserState.filter" -->
+      <kendo-grid *ngIf="dataUsers.length > 0" [data]="dataUserGridDataResult" [selectable]="dataUserSelectableSettings"
+        (pageChange)="onUserPageChange($event)" (selectedKeysChange)="onUserSelectedKeysChange()"
+        [pageSize]="dataUserPageSize" [skip]="dataUserSkip" [pageable]="true" [kendoGridSelectBy]="'UserName'"
+        [selectedKeys]="dataUserSelection" [loading]="loading" [sortable]="dataUserSort" [sort]="dataUserSortByField"
+        (sortChange)="onUserSortChange($event)" [filter]="dataUserState.filter" [filterable]="true" (dataStateChange)="onUserDataStateChange($event)">
+
+        <kendo-grid-column [title]="'Function' | translate" [width]="120"   [headerClass]="{'headerCommon': true}">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div class="btn-toolbar" role="toolbar"  >
+              <div class="btn-group mr-2 g-btn g-btn-edit" role="group" >
+                <button kendoGridRemoveCommand (click)="onEditUser(dataItem.UserName)"  *ngIf="controlDefault || control.Edit"
+                [iconClass]="'fa fa-pencil'" [title]="'Edit' | translate">
+                </button>
+              </div>
+              <div class="btn-group mr-2 g-btn g-btn-delete" role="group" >
+                <button kendoGridRemoveCommand [iconClass]="'fa fa-trash-o'"  *ngIf="controlDefault || control.Delete"
+                [title]="'Delete' | translate" (click)="onDeleteUser(dataItem.UserName)"   >
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'UserName'" [width]="95" [title]="'User_UserName' | translate" [filterable]="false"></kendo-grid-column>
+        <kendo-grid-column [field]="'AccountName'" [width]="120" [title]="'User_AccountName' | translate" [filterable]="false">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <span class="accountName-text" (click)="onEditAccountInfor(dataItem.AccountID, dataItem.UnitID)">{{dataItem.AccountName}}</span>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [filterable]="true" [field]="'RoleName'" [width]="90" [title]="'_User_Role' | translate">
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'LockFlg'" [width]="60" [title]="'User_LockFlg' | translate"
+          [filterable]="false" class="g-col-checked">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.LockFlg" [disabled]="true">
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-messages [noRecords]="'NoRecords' | translate"
+        [pagerOf] = "'pagerOf' | translate"  [pagerItems] = "'pagerItems' | translate"  >
+        </kendo-grid-messages>
+      </kendo-grid>
+      <span class="emptydata-message" *ngIf="dataUsers.length === 0">{{'NoRecords' | translate}}</span>
+    </div>
+  </div>
+</section>
+
+
+<kendo-dialog *ngIf="userDialogOpened" class="user x-dialog"
+[draggable]="true" [ngClass]="'window-center dialog-info'">
+  <div class="employe-detail">
+    <div class="x-close-div">
+        <div class="title-info-req">
+          <strong>{{'User_Info' | translate}}</strong>
+        </div>
+        <button kendoButton class="xbutton-dialog" [icon]="'close'" [title]="'Close_Box' | translate" (click)="onCloseUserDialog('cancel')">
+        </button>
+    </div>
+      <div class="row">
+    <div class="col-md-12 col-12">
+        <div class="row">
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span  [textContent]="'_User_Role' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <kendo-multiselect [ngClass]="dataErr[0]['RoleID'] ? 'err' : ''"  [data]="rolesFilter" [textField]="'Name'" [valueField]="'ID'"
+              [(ngModel)]="dataUserItemtemp.RoleID"  [valuePrimitive]="true" [filterable]="true"
+               (filterChange)="rolesHandleFilter($event)" [disabled]="!enabled">
+              </kendo-multiselect>
+              <span class="err-text " *ngIf="dataErr[0]['RoleID'] ">{{dataErr[0]['RoleID']}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'User_AccountName' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <div  [ngClass] = " (controlDefault || control.AddCommon) ? 'cbo-ddr-btn-add' : 'hidden-add-common' ">
+                <kendo-combobox [ngClass]="dataErr[0]['AccountID'] ? 'err' : ''"  [data]="accountsFilter" [textField]="'Name'" [valueField]="'ID'"
+                  [(ngModel)]="dataUserItemtemp.AccountID" [valuePrimitive]="true" [filterable]="true"
+                  (filterChange)="accountsHandleFilter($event)" [disabled]="!enabled" (keypress)="filterInput($event)">
+                <ng-template kendoDropDownListNoDataTemplate>Không tìm thấy dữ liệu</ng-template>
+                </kendo-combobox>
+                <button kendoButton (click)="onAddNewAccount()" [primary]="true" [look]="'outline'" [icon]="'add'" *ngIf="(controlDefault || control.AddCommon) " >
+                </button>
+                <span class="err-text " *ngIf="dataErr[0]['AccountID'] ">{{dataErr[0]['AccountID']}}</span>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'User_UserName' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input  [ngClass]="dataErr[0]['UserName'] ? 'err' : ''" kendoTextBox [(ngModel)]="dataUserItemtemp.UserName" [disabled]="!enabledID" />
+              <span class="err-text " *ngIf="dataErr[0]['UserName'] ">{{dataErr[0]['UserName']}}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span  [textContent]="'User_Password' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input kendoTextBox [ngClass]="dataErr[0]['Password'] ? 'err' : ''" type="password" [(ngModel)]="dataUserItemtemp.Password" [disabled]="!enabled" />
+              <span class="err-text " *ngIf="dataErr[0]['Password'] ">{{dataErr[0]['Password']}}</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <input class="input-size" type="checkbox" [(ngModel)]="dataUserItemtemp.LockFlg"
+                  [disabled]="!enabled" />
+                {{'User_LockFlg' | translate}}
+              </label>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+              <div class="btn-dialog-wrapper">
+                  <button class="btn-dialog btn-save" (click)="onSaveUser()" *ngIf="controlDefault || control.Save">
+                    {{ 'COMMON_SAVE' | translate }}
+                  </button>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+</kendo-dialog>
+
+
+<kendo-dialog  *ngIf="ManagePersonalOpened"   [draggable]="false" [ngClass]="(!isSummaryInfoCofig || (isSummaryInfoCofig && request_AccountID != GUID_EMPTY) ) ? 'window-center dialog-info' :'window-center dialog-info-summary-infor'">
+  <div class="x-close-div">
+    <div class="title-info-req">
+      <strong>{{'PersonalInformation'|translate}}</strong>
+    </div>
+    <button kendoButton class="xbutton-dialog" [icon]="'close'" [title]="'Close_Box' | translate" (click)="onCloseMember('cancel')" >
+    </button>
+  </div>
+  <app-account-detail [request_AccountID]="request_AccountID" (newAccount)="setNewAccount($event)" ></app-account-detail>
+</kendo-dialog>

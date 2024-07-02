@@ -1,0 +1,426 @@
+.organization .org-chart-containerx {
+  width: 100% !important;
+  overflow-x: auto;
+}
+
+.organization .pointer {
+  cursor: pointer;
+}
+
+.organization .init-unit {
+  font-size: 17px;
+  margin-right: 5px;
+}
+
+
+.organization .mui-oc-name {
+  min-height: 35px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  white-space: break-spaces;
+}
+
+.organization .mui-oc-border {
+  background-color: #a2a2a2;
+}
+
+.organization .mui-oc-box {
+  color: white;
+  width: 308px;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  min-height: 40px;
+}
+
+.organization .mainchart {
+  border: 1px black;
+  background-color: cornsilk;
+}
+
+.organization .mui-oc-connector-horizontal {
+  height: 1px;
+  background-color: #a2a2a2;
+  width: 20px;
+}
+
+.organization .mui-oc-box {
+  display: block !important;
+}
+
+.organization .mui-oc-org-container {
+  display: flex;
+}
+
+.organization .mui-oc-connector-container {
+  display: flex;
+}
+
+.organization .mui-oc-connector-container-horizontal {
+  width: 1px;
+  flex-direction: column;
+}
+
+.organization .mui-oc-connector {
+  flex: 1;
+}
+
+.organization .mui-oc-connector-container-vertical {
+  width: 3px;
+  height: 3px;
+  background-color: white;
+}
+
+.organization .org-chart-containerx div[style] {
+  background-color: white !important;
+}
+
+.organization .topCss {
+  background-color: #FFD966 !important;
+  width: 200px !important;
+  height: 100px !important;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+.organization .firstSub {
+  /* background-image: linear-gradient(#FFCD28, #FFA500) !important; */
+  background-image: radial-gradient(#D86E6E, #701919) !important;
+  color: white !important;
+  width: 200px !important;
+}
+
+.organization .secondSub {
+  background-image: radial-gradient(#D5BD46, #A59541) !important;
+  width: 200px !important;
+}
+
+.organization .addSub {
+  border: dotted 1px #ded7d7;
+  background: #f6f6f661 !important;
+  color: #b1adad;
+  width: 60px !important;
+}
+
+.organization .org-chart-containerx mui-org-chart {
+  display: flex;
+  width: 380px;
+}
+
+
+.organization .btn-dialog-wrapper {
+  margin-top: 3px;
+}
+
+.organization .add-unti-dialog .k-window {
+  background-color: #f6f6f6;
+  width: 50%;
+  height: 425px;
+}
+
+.organization .manage-personal .router-outlet-content {
+  margin-top: 15px;
+  left: 5px;
+}
+
+.organization .router-outlet-content {
+  width: 100%;
+}
+
+.organization .btn-add-dangbo {
+  font-size: 15px !important;
+}
+
+.organization .input-name-unit {
+  width: 100% !important;
+}
+
+/* .organization .hr-style-unit{
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
+} */
+
+.organization .org-chart-containerx mui-employee {
+  display: flex;
+  align-items: center;
+}
+
+
+@media (max-width: 600px) {
+  .organization .add-unti-dialog .k-window {
+    width: 90%;
+    height: 90%;
+  }
+
+}
+
+.organization .title-info-req {
+  text-align: center;
+  font-size: 24px;
+  color: black;
+}
+
+.organization .icon-edit-unit {
+  font-size: 14px;
+}
+
+.organization .options {
+  position: relative;
+  top: -3px;
+  background-color: inherit;
+}
+
+.organization .err-text,
+.organization .required {
+  color: #ff6358;
+  padding-left: 3px;
+  font-style: italic;
+}
+
+.organization .err {
+  border: 1px solid #ea4335;
+  animation: myerr 1s infinite;
+}
+
+@keyframes myerr {
+  0% {
+    border-color: #ea4335;
+  }
+
+  25% {
+    border-color: yellow;
+  }
+
+  50% {
+    border-color: blue;
+  }
+
+  100% {
+    border-color: #34a853;
+  }
+
+}
+
+
+
+:host ::ng-deep .organization.x-dialog {
+  max-width: 768px;
+  max-height: 565px;
+}
+
+
+.organization.x-dialog {
+  width: 50% !important;
+  height: 85% !important;
+}
+
+
+.organization .addNew {
+  text-align: center;
+  background-color: #DF7242;
+  color: white;
+  cursor: pointer;
+}
+
+.organization .selected-lang {
+  border-bottom: 3px red solid;
+}
+
+.organization .content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.organization .btn-treelist,
+.btn-muiOrgChart {
+
+  border: 0.1px solid rgba(0, 0, 0, .1);
+  width: 38px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  padding: 0;
+  background: white;
+
+}
+
+.organization .btn-muiOrgChart img {
+  width: 12px
+}
+
+.organization .k-filtercell .k-filtercell-wrapper>.k-textbox {
+  border: none;
+  background-color: #eff0f0;
+}
+
+@media (max-width: 600px) {
+
+  :host ::ng-deep .k-window {
+    width: 90%;
+    height: 90%;
+  }
+
+  :host ::ng-deep .organization.x-dialog {
+    max-width: 768px;
+    max-height: none;
+  }
+
+}
+
+.organization .export-span {
+  margin-left: 20px;
+  white-space: nowrap;
+  color: #985d1a;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 12;
+}
+
+.organization .control label .export-span {
+  margin-right: 20px;
+  white-space: nowrap;
+  /* float: right; */
+  color: #985d1a;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 12;
+}
+
+.organization .export-span:hover {
+  cursor: pointer;
+  color: #c6000191;
+}
+
+.organization .import-span:hover {
+  cursor: pointer;
+  color: #c6000191;
+}
+
+.organization .import-span {
+  white-space: nowrap;
+}
+
+.organization .click-change-color {
+  background: #416fb7;
+  color: white;
+  border: 0.1px solid #416fb7 !important;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.organization .success-exist-phone {
+  color: #187EFC;
+  text-align: center;
+}
+
+.organization .success-exist-phone img {
+  width: 80px;
+}
+
+.organization .btn-save-excel {
+  color: white;
+  background-color: #187efc;
+  border: hidden;
+  padding: 5px 30px;
+  font-size: 14px !important;
+  margin-bottom: 10px;
+  margin-right: 16px;
+}
+
+.organization .btn-back {
+  border: hidden;
+  font-size: 14px !important;
+  font-weight: bold;
+  padding: 0px 15px;
+}
+
+.organization .unit-image {
+  height: 135px;
+  width: 135px;
+  object-fit: cover;
+}
+
+.organization .init-unit-clickable {
+  font-size: 17px;
+  margin-right: 5px;
+  color: blue;
+  cursor: pointer;
+  float: right;
+}
+
+.organization .init-unit-unclickable {
+  font-size: 17px;
+  margin-right: 5px;
+  color: blue;
+  float: right;
+}
+
+.organization.detail-dialog {
+  width: 80% !important;
+  height: 90% !important;
+}
+
+.organization .remove-image-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.organization .camera-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.organization .camera-container .k-upload {
+  display: none;
+}
+
+.organization .change-img-btn {
+  width: 100px;
+  height: 30px;
+  background-color: #187EFC;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  font-size: 14px;
+  padding-top: 4px;
+  margin: 10px;
+}
+
+.organization .btn-group {
+  float: right;
+  width: 15px;
+}
+
+.organization .btn-custom button {
+  background: #cd330d;
+  color: white;
+  width: 100%;
+}
+
+.organization .btn-custom {
+
+  width: 100%;
+}
+
+.organization .remove-image-button {
+  position: absolute;
+  right: -17px;
+  top: -15px;
+  border-radius: 50%;
+  color: red;
+}

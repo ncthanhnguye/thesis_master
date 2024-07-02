@@ -1,0 +1,14 @@
+<div class="loading" *ngIf="excLoading">
+	<img src="../assets/images/loading.gif" *ngIf="loading">
+</div>
+<div id="body-block" [ngClass]="openMenuFlg ? '' : 'menu-hidden'">
+
+	<app-menu *ngIf="!menuHidden" #appMenu ></app-menu>
+
+	<div [ngClass]="!menuHidden ? 'layout-container' : ''">
+		<app-home ></app-home>
+		<router-outlet>
+		</router-outlet>
+
+	</div>
+</div>

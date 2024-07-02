@@ -1,0 +1,43 @@
+.user .k-grid input[type="password"] {
+    background: inherit;
+    border: none;
+}
+
+:host ::ng-deep .user.x-dialog {
+    max-width: 768px;
+    max-height: 585px;
+}
+
+.user .accountName-text{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.user .k-multiselect .k-multiselect-wrap{
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    :host ::ng-deep .user .k-window {
+        width: 90%;
+        height: 90%;
+    }
+    :host ::ng-deep .user.x-dialog {
+        max-width: 768px;
+        max-height: none;
+    }
+}
+
+.user .custom-btn-addNew {
+    margin-top: 10px !important;
+}
+
+.user .btn-addNew {
+    text-align: right;
+    display: inherit; 
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.user .popup-width {
+    width: 100%;
+}

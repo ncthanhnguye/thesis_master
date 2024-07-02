@@ -1,0 +1,353 @@
+<section class="router-outlet-content m-common">
+  <div class="row admin">
+    <div class="col-md-12 col-12">
+      <div class="page-name">{{ pageName }}</div>
+      <hr />
+    </div>
+
+    <!-- <div class="col-md-12 col-12">
+      <div [ngClass]="'control control-search'">
+        <label>
+          <span [textContent]="'SearchText' | translate"></span>
+        </label>
+        <input kendoTextBox [(ngModel)]="searchOption.SearchText" (keypress)="onSearchKeyPress($event)"
+          (change)="onSearchTextChange($event)" />
+        <button kendoButton (click)="onRemoveSearchText();" [primary]="true" [look]="'outline'" [icon]="'close-outline'"
+          [ngClass]="'btn-remove'" *ngIf="searchOption.SearchText !== ''">
+        </button>
+        <button kendoButton (click)="onSearch()" [primary]="true" [look]="'outline'" [icon]="'search'"
+          [ngClass]="'btn-search'">
+        </button>
+      </div>
+    </div> -->
+    <div class="col-md-12 col-12">
+      <div class="group">
+        <div class="group-search">
+          <div class="row">
+            <div class="col-md-7 col-12">
+              <div [ngClass]="'control control-search'">
+                <label>
+                  <span [textContent]="'Common_SearchText' | translate"></span>
+                </label>
+                <input
+                  kendoTextBox
+                  [(ngModel)]="this.searchOption.SearchText"
+                />
+                <button
+                  kendoButton
+                  (click)="onRemoveSearchText()"
+                  [primary]="true"
+                  [look]="'outline'"
+                  [icon]="'close-outline'"
+                  [ngClass]="'btn-remove'"
+                  *ngIf="searchOption.SearchText !== ''"
+                ></button>
+              </div>
+            </div>
+            <div class="col-md-3 col-12">
+              <div [ngClass]="'control control-search'">
+                <label>
+                  <span [textContent]="'Common_TypeSearch' | translate"></span>
+                </label>
+                <kendo-combobox
+                  [data]="cmTypeFilter"
+                  [textField]="'Name'"
+                  [valueField]="'ID'"
+                  [(ngModel)]="this.searchOption.Type"
+                  [valuePrimitive]="true"
+                  [filterable]="true"
+                  (filterChange)="cmHandleFilter($event)"
+                  (valueChange)="onChangeYUnit($event)"
+                  [popupSettings]="{
+                    popupClass: popupClass,
+                    animate: true,
+                    appendTo: 'component'
+                  }"
+                >
+                  <ng-template kendoDropDownListNoDataTemplate>{{
+                    "NoRecords" | translate
+                  }}</ng-template>
+                </kendo-combobox>
+              </div>
+            </div>
+            <!-- <div class="col-md-2 col-12">
+              <div [ngClass]="'control'">
+              </div>
+            </div> -->
+            <div class="col-md-2 col-12">
+              <button
+                class="btn-dialog-cus btn-dialog btn-search"
+                (click)="onSearch()"
+              >
+                <span>{{ "Search" | translate }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-12">
+      <div class="btn-addNew custom-btn-addNew">
+        <button
+          kendoButton
+          (click)="onAddNewGrid()"
+          *ngIf="controlDefault || control.AddNew"
+          [title]="'AddNew' | translate"
+        >
+          <span>{{ "AddNew" | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="panelbar-wrapper">
+        <kendo-grid
+          class="web-view"
+          [data]="dataGridGridDataResult"
+          [selectable]="dataGridSelectableSettings"
+          (pageChange)="onGridPageChange($event)"
+          (selectedKeysChange)="ondataItemselectedKeysChange()"
+          [pageSize]="dataGridPageSize"
+          [skip]="dataGridSkip"
+          [pageable]="true"
+          [kendoGridSelectBy]="'ID'"
+          [selectedKeys]="dataGridSelection"
+          [loading]="loading"
+          [sortable]="dataGridSort"
+          [sort]="dataGridSortByField"
+          (sortChange)="ondataItemsortChange($event)"
+          [filterable]="false"
+          [groupable]="false"
+          [group]="dataGridState.group"
+          [filter]="dataGridState.filter"
+          (dataStateChange)="onGridDataStateChange($event)"
+        >
+          <kendo-grid-column
+            [field]="'Name'"
+            [width]="40"
+            [title]="'COMMON_FUNC' | translate"
+            [filterable]="false"
+          >
+            <ng-template kendoGridCellTemplate let-dataItem>
+              <div class="btn-toolbar k-grid-ignore-click" role="toolbar">
+                <div class="btn-group btn-custom mr-2" role="group">
+                  <kendo-dropdownbutton
+                    [popupSettings]="{
+                      popupClass: customPopupClass,
+                      animate: true,
+                      appendTo: 'component'
+                    }"
+                    class="btn-custom"
+                    [data]="btnMbFunctionData"
+                    (itemClick)="onChangeFunction($event, dataItem)"
+                    (click)="onFunctionIconClick(dataItem)"
+                  >
+                    <span>{{ "Handle" | translate }}</span>
+                    <span class="k-icon k-i-arrow-60-down"></span>
+                  </kendo-dropdownbutton>
+                </div>
+              </div>
+            </ng-template>
+          </kendo-grid-column>
+          <kendo-grid-column
+            [field]="'Name'"
+            [width]="170"
+            [title]="'Common_Name' | translate"
+          >
+          </kendo-grid-column>
+          <kendo-grid-column
+            [field]="'Type'"
+            [width]="170"
+            [title]="'Common_Type' | translate"
+          >
+            <ng-template kendoGridCellTemplate let-dataItem>
+              <div>{{ getTypeName(dataItem.Type) }}</div>
+            </ng-template>
+          </kendo-grid-column>
+          <kendo-grid-excel
+            fileName="ItemGroup.xlsx"
+            [fetchData]="allData"
+          ></kendo-grid-excel>
+          <kendo-grid-messages
+            [noRecords]="'NoRecords' | translate"
+            [pagerOf]="'pagerOf' | translate"
+            [pagerItems]="'pagerItems' | translate"
+          >
+          </kendo-grid-messages>
+        </kendo-grid>
+
+        <kendo-grid
+          class="mobile-view"
+          [data]="dataGridGridDataResult"
+          [selectable]="dataGridSelectableSettings"
+          (pageChange)="onGridPageChange($event)"
+          (selectedKeysChange)="ondataItemselectedKeysChange()"
+          [pageSize]="dataGridPageSize"
+          [skip]="dataGridSkip"
+          [pageable]="true"
+          [kendoGridSelectBy]="'ID'"
+          [selectedKeys]="dataGridSelection"
+          [loading]="loading"
+          [sortable]="dataGridSort"
+          [sort]="dataGridSortByField"
+          (sortChange)="ondataItemsortChange($event)"
+          [filterable]="false"
+          [groupable]="false"
+          [group]="dataGridState.group"
+          [filter]="dataGridState.filter"
+          (dataStateChange)="onGridDataStateChange($event)"
+        >
+          <kendo-grid-column [width]="50" [filterable]="false">
+            <ng-template kendoGridCellTemplate let-dataItem>
+              <div class="row">
+                <div class="col-md-12 col-12">
+                  <div class="post-title">
+                    <div class="title">
+                      <span>{{ dataItem.Name }}</span>
+                    </div>
+                    <div class="btn-group g-btn g-btn-approve" role="group">
+                      <kendo-dropdownbutton
+                        (click)="onFunctionIconClick(dataItem)"
+                        [popupSettings]="{
+                          popupClass: customPopupClass,
+                          animate: true,
+                          appendTo: 'component'
+                        }"
+                        class="btn-custom"
+                        [data]="btnFunctionData"
+                        (itemClick)="onChangeFunction($event, dataItem)"
+                      >
+                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                      </kendo-dropdownbutton>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-12">
+                  {{ "Common_Type" | translate }}:
+                  <span class="content">{{ getTypeName(dataItem.Type) }}</span>
+                </div>
+                <hr />
+              </div>
+            </ng-template>
+          </kendo-grid-column>
+          <kendo-grid-messages
+            [noRecords]="'NoRecords' | translate"
+            [pagerOf]="'pagerOf' | translate"
+            [pagerItems]="'pagerItems' | translate"
+          >
+          </kendo-grid-messages>
+        </kendo-grid>
+      </div>
+    </div>
+  </div>
+</section>
+
+<kendo-dialog
+  *ngIf="infoOpened"
+  class="m-common x-dialog x-dialog-m-common"
+  [draggable]="true"
+  [ngClass]="'window-center dialog-chat'"
+>
+  <div class="employe-detail">
+    <div class="x-close-div">
+      <div class="title-info-req">
+        <strong>{{ pageName }}</strong>
+      </div>
+      <button
+        kendoButton
+        class="xbutton-dialog"
+        [icon]="'close'"
+        [title]="'Close_Box' | translate"
+        (click)="onCloseInfo()"
+      ></button>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-12">
+        <div class="row">
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Common_Name' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input
+                [ngClass]="dataErr[0]['Name'] ? 'err' : ''"
+                kendoTextBox
+                [(ngModel)]="dataGridItem.Name"
+                [disabled]="disabled"
+              />
+              <span class="err-text" *ngIf="dataErr[0]['Name']">{{
+                dataErr[0]["Name"]
+              }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-12" *ngIf="!isAddNewOutCommon">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Common_Type' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <kendo-combobox
+                [ngClass]="dataErr[0]['Type'] ? 'err' : ''"
+                [data]="cmTypeFilter"
+                [textField]="'Name'"
+                [valueField]="'ID'"
+                [(ngModel)]="dataGridItem.Type"
+                [valuePrimitive]="true"
+                [filterable]="true"
+                (filterChange)="cmHandleFilter($event)"
+              >
+                <ng-template kendoDropDownListNoDataTemplate>{{
+                  "NoRecords" | translate
+                }}</ng-template>
+              </kendo-combobox>
+              <span class="err-text" *ngIf="dataErr[0]['Type']">{{
+                dataErr[0]["Type"]
+              }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Common_OrderIndx' | translate"></span>
+              </label>
+              <kendo-numerictextbox
+                [ngClass]="dataErr[0]['OrderIndex'] ? 'err' : ''"
+                [min]="0"
+                [format]="'n0'"
+                [(ngModel)]="dataGridItem.OrderIndex"
+                [disabled]="selectedLangID != appConsts.defaultLangID"
+              >
+              </kendo-numerictextbox>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-12">
+            <div class="btn-dialog-wrapper">
+              <button
+                class="btn-dialog btn-save"
+                (click)="onSaveGrid()"
+                *ngIf="controlDefault || control.Save"
+              >
+                {{ "COMMON_SAVE" | translate }}
+              </button>
+              <button
+                class="btn-dialog btn-delete"
+                (click)="onDeleteGrid(dataGridItem)"
+                *ngIf="
+                  (controlDefault || control.Delete) &&
+                  selectedLangID != appConsts.defaultLangID
+                "
+              >
+                {{ "COMMON_REMOVE" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</kendo-dialog>

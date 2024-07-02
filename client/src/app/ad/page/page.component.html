@@ -1,0 +1,284 @@
+<section class="router-outlet-content page">
+    <div class="row admin">
+        <div class="col-md-12 col-12">
+            <div class="page-name">{{pageName}}</div>
+            <hr>
+        </div>
+        <div class="col-md-12 col-12">
+            <div [ngClass]="'control control-search'">
+                <label>
+              <span [textContent]="'SearchText' | translate"></span>
+           </label>
+                <input kendoTextBox [placeholder]="'PAGE_Menu_Search'|translate" [(ngModel)]="searchOption.SearchText" (keypress)="onSearchKeyPress($event)" (change)="onSearchTextChange($event)" />
+                <button kendoButton (click)="onRemoveSearchText();" [primary]="true" [look]="'outline'" [icon]="'close-outline'" [ngClass]="'btn-remove'" *ngIf="searchOption.SearchText !== ''">
+           </button>
+                <button kendoButton (click)="onSearch()" [primary]="true" [look]="'outline'" [icon]="'search'" [ngClass]="'btn-search'">
+           </button>
+            </div>
+        </div>
+        <div class="col-md-12 col-12">
+            <div class="btn-addNew custom-btn-addNew ">
+                <button kendoButton (click)="onAddNewGrid()" *ngIf="controlDefault || control.AddNew" [title]="'AddNew' | translate">
+              <span>{{ 'AddNew' | translate }}</span>
+           </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-12 ">
+            <div class="panelbar-wrapper wb-data-menu">
+                <kendo-grid [data]="dataGridGridDataResult" [selectable]="dataGridSelectableSettings" (pageChange)="onGridPageChange($event)" (selectedKeysChange)="ondataItemselectedKeysChange()" [pageSize]="dataGridPageSize" [skip]="dataGridSkip" [pageable]="true" [kendoGridSelectBy]="'ID'"
+                    [selectedKeys]="dataGridSelection" [loading]="loading" [sortable]="dataGridSort" [sort]="dataGridSortByField" (sortChange)="ondataItemsortChange($event)" [filterable]="false" [groupable]="false" [group]="dataGridState.group" [filter]="dataGridState.filter"
+                    (dataStateChange)="onGridDataStateChange($event)">
+                    <kendo-grid-column [field]="'ParentName'" [width]="120" [title]="'PAGE_MENU_Parent' | translate" [hidden]="true">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <span *ngIf="dataItem.ParentName == dataItem.Name || dataItem.ParentName == null">{{'Root' |
+                       translate}}</span>
+                            <span *ngIf="dataItem.ParentName != dataItem.Name">{{dataItem.ParentName}}</span>
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column [width]="80" [title]="'COMMON_FUNC' | translate" [filterable]="false">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <div class="btn-toolbar k-grid-ignore-click" role="toolbar">
+                                <div class="btn-group  btn-custom mr-2" role="group" *ngIf="(controlDefault ||control.Handle)">
+                                    <kendo-dropdownbutton [popupSettings]="{popupClass: customPopupClass, animate: true, appendTo: 'component'}" class="btn-custom" [data]="btnMbFunctionData" (itemClick)="onChangeFunction($event, dataItem)" (click)="onFunctionIconClick(dataItem)">
+                                        <span>{{ 'Handle' | translate }}</span> <span class="k-icon k-i-arrow-60-down"></span>
+                                    </kendo-dropdownbutton>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </kendo-grid-column>
+
+                    <kendo-grid-column [field]="'ID'" [width]="120" [title]="'Page_ID' | translate"></kendo-grid-column>
+                    <kendo-grid-column [field]="'Name'" [width]="120" [title]="'Page_Name' | translate"></kendo-grid-column>
+                    <kendo-grid-column [field]="'OrdinalNumber'" [width]="50" [title]="'Page_OrdinalNumber' | translate">
+                    </kendo-grid-column>
+                    <kendo-grid-column [field]="'MenuFlg'" [width]="30" [title]="'Page_MenuFlg' | translate" [filterable]="false" class="g-col-checked">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <input type="checkbox" [checked]="dataItem.MenuFlg" [disabled]="true">
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column [field]="'ButtonFlg'" [width]="30" [title]="'Page_ButtonFlg' | translate" [filterable]="false" class="g-col-checked">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <input type="checkbox" [checked]="dataItem.ButtonFlg" [disabled]="true">
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column [field]="'Icon'" [width]="30" [title]="'Icon' | translate">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <span [class]="dataItem.Icon"></span>
+                        </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column [width]="60" [field]="'FileUrls'" [title]="'FileUrls' | translate" class="g-col-checked">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <a *ngIf="dataItem.FileUrls && dataItem.FileUrls != '[]'">
+                                <!-- <i class="fa fa-file-o" aria-hidden="true"></i>&nbsp; -->
+
+                                <i class="fa fa-file-o" aria-hidden="true" (click)="downloadItem(dataItem.FileUrls)">
+                           <!-- <span class="is-cursor" (click)="downloadItem(dataItem.Path)">{{dataItem.Name}}</span> -->
+                           </i>
+                            </a>
+                        </ng-template>
+
+                    </kendo-grid-column>
+
+                    <kendo-grid-messages [noRecords]="'NoRecordsAvailable' | translate" [pagerOf]="'pagerOf' | translate" [pagerItems]="'pagerItems' | translate">
+                    </kendo-grid-messages>
+                </kendo-grid>
+            </div>
+        </div>
+
+    </div>
+</section>
+<kendo-dialog *ngIf="infoOpened" class="page x-dialog window-center data-menu-info dialog-chat" [draggable]="false" [ngClass]=" checkErr()">
+    <div class="employe-detail">
+        <div class="x-close-div">
+            <div class="title-info-req">
+                <strong>{{pageName}}</strong>
+            </div>
+            <button kendoButton class="xbutton-dialog" [icon]="'close'" [title]="'Close_Box' | translate" (click)="onCloseInfo()">
+        </button>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <div *ngFor="let item of dataLangs">
+                            <div *ngIf="item.ID == appConsts.defaultLangID || dataGridItem.MenuID" (click)="onChangeLang(item.ID)" [ngClass]="item.ID == selectedLangID ? 'default-lang selected-lang' : 'default-lang'">
+                                {{item.Name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12">
+                        <div [ngClass]="'control'">
+                            <label>
+                       <span [textContent]="'PAGE_MENU_Name' | translate"></span>
+                       <span class="required">(*)</span>
+                    </label>
+                            <input [ngClass]="dataErr[0][ 'Name'] ? 'err' : ''" kendoTextBox [(ngModel)]="dataGridItem.Name">
+                            <span class="err-text " *ngIf="dataErr[0][ 'Name'] ">{{dataErr[0]['Name']}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12">
+                        <div [ngClass]="'control'">
+                            <label>
+                       <span [textContent]="'PAGE_MENU_Parent' | translate"></span>
+                    </label>
+                            <kendo-combobox [data]="parentPagesFilter" [textField]="'Name'" [valueField]="'ID'" [(ngModel)]="dataGridItem.ParentID" [valuePrimitive]="true" [filterable]="true" (filterChange)="parentPagesHandleFilter($event)" [disabled]="selectedLangID != appConsts.defaultLangID">
+                                <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+                            </kendo-combobox>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12">
+                        <div [ngClass]="'control'">
+                            <label>
+                       <span [textContent]="'Page_ID' | translate"></span>
+                       <span class="required">(*)</span>
+                    </label>
+                            <kendo-combobox [ngClass]="dataErr[0][ 'ID'] ? 'err' : ''" [data]="pageUrlsFilter" [textField]="'ID'" [valueField]="'Name'" [filterable]="true" (filterChange)="pageUrlsHandleFilter($event)" [(ngModel)]="dataGridItem.ID" [valuePrimitive]="true" [allowCustom]="true" 
+                                [disabled]="!dataGridItem.IsAdd">
+                                <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+                            </kendo-combobox>
+                            <span class="err-text " *ngIf="dataErr[0][ 'ID'] ">{{dataErr[0]['ID']}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12">
+                        <div [ngClass]="'control'">
+                            <label>
+                       <span [textContent]="'Icon' | translate"></span>
+                    </label>
+                            <input kendoTextBox [disabled]="selectedLangID != appConsts.defaultLangID" [ngClass]="dataErr[0][ 'Icon'] ? 'err' : ''" [(ngModel)]="dataGridItem.Icon" [focus]="dataPageFocus.Icon" />
+                        </div>
+                        <span class="err-text " *ngIf="dataErr[0][ 'Icon'] ">{{dataErr[0]['Icon']}}</span>
+                    </div>
+                    <!-- <div class="col-md-12 col-12">
+                 <div [ngClass]="'control'">
+                    <label>
+                       <span [textContent]="'DATA_MENU_Url_Path' | translate"></span>
+                       <span class="required">(*)</span>
+                    </label>
+                    <input kendoTextBox [ngClass]="dataErr[0][ 'FileUrls'] ? 'err' : ''"
+                       [(ngModel)]="dataGridItem.FileUrls" [focus]="dataMenuFocus.Name"
+                       [disabled]="selectedLangID != appConsts.defaultLangID" />
+                 </div>
+                 <span class="err-text " *ngIf="dataErr[0][ 'FileUrls'] ">{{dataErr[0]['FileUrls']}}</span>
+              </div> -->
+                    <div class="col-md-12 col-12">
+                        <div [ngClass]="'control'">
+                            <label [textContent]="'DATA_MENU_OrderIdx' | translate"></label>
+                            <kendo-numerictextbox [(ngModel)]="dataGridItem.OrdinalNumber" [min]="0" [max]="1000" [format]="'n0'" [autoCorrect]="true" [disabled]="selectedLangID != appConsts.defaultLangID">
+                            </kendo-numerictextbox>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-12 upload-file">
+                        <div [ngClass]="'control'">
+                            <label>
+                       <span [textContent]="'FileUploadFileUrls' | translate"></span>
+                    </label>
+                            <kendo-upload [hidden]="selectedLangID != appConsts.defaultLangID" [restrictions]="myRestrictions" [accept]="['.png','.jpg','.jpeg']" [(ngModel)]="filesUpload" (select)="onSelectFileToUpload($event)" (remove)="onRemoveFileDocToUpload()" [multiple]="false"
+                                [showFileList]="false" [saveUrl]="fileSaveUrl" (success)="onSuccessFileToUpload($event)">
+                                <kendo-upload-messages [headerStatusUploaded]="'FileUploaded' | translate" [dropFilesHere]="'dropFilesHere' | translate" [select]="'UploadFile' | translate">
+                                </kendo-upload-messages>
+                            </kendo-upload>
+                        </div>
+                        <div class="row ">
+                            <!-- Add new & Edit -->
+                            <div class="col-md-12 col-12" *ngIf="dataGridItem.FileUrls">
+                                <div class="cbo-ddr-btn-add row-file">
+                                    <a [href]="getUrlDownload(dataGridItem.FileUrls)" [target]="_blank">
+                                        <span>{{ getFileName(dataGridItem.FileUrls) }}</span>
+                                    </a>
+                                    <button [hidden]="selectedLangID != appConsts.defaultLangID" kendoButton class="xbutton btn-del" [icon]="'close'" [title]="'FileDelFlg' | translate" (click)="onRemoveFile(dataGridItem.FileUrls)">
+                          </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 col-12">
+                        <div [ngClass]="'control'">
+                            <label>
+                       <input [disabled]="selectedLangID != appConsts.defaultLangID" type="checkbox"
+                          [(ngModel)]="dataGridItem.MenuFlg" />
+                       {{'Page_MenuFlg' | translate}}
+                    </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-12">
+                        <div [ngClass]="'control'">
+                            <label>
+                       <input [disabled]="selectedLangID != appConsts.defaultLangID" type="checkbox"
+                          [(ngModel)]="dataGridItem.ButtonFlg" />
+                       {{'Page_ButtonFlg' | translate}}
+                    </label>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12 col-12" *ngIf="'portal/post-list;chucnangnhiemvu'.indexOf(dataGridItem.PageID) >= 0">
+                       <div [ngClass]="'control'">
+                           <label [textContent]="'DATA_MENU_OrderIdx_Post' | translate"></label>
+                           <kendo-numerictextbox [(ngModel)]="dataGridItem.OrderIdxInPost" [min]="0" [max]="1000" [format]="'n0'" [autoCorrect]="true" [disabled]="selectedLangID != appConsts.defaultLangID">
+                           </kendo-numerictextbox>
+                       </div>
+                   </div> -->
+                    <!-- <div class="col-md-12 col-12" *ngIf="dataGridItem.HomeFlg">
+                       <div [ngClass]="'control'">
+                           <label>
+             <span [textContent]="'DATA_MENU_HomeDisplayType' | translate"></span>
+             </label>
+                           <kendo-dropdownlist [data]="TypesFilter" [textField]="'Name'" [valueField]="'ID'" [(ngModel)]="dataGridItem.HomeDisplayType" [valuePrimitive]="true" [disabled]="selectedLangID != appConsts.defaultLangID">
+                           </kendo-dropdownlist>
+                       </div>
+                   </div>
+                   <div class="col-md-12 col-12" *ngIf="dataGridItem.HomeFlg">
+                       <div [ngClass]="'control'">
+                           <label [textContent]="'DATA_MENU_HomeOrderIdx' | translate"></label>
+                           <kendo-numerictextbox [(ngModel)]="dataGridItem.HomeOrderIdx" [min]="0" [max]="1000" [format]="'n0'" [autoCorrect]="true" [disabled]="selectedLangID != appConsts.defaultLangID">
+                           </kendo-numerictextbox>
+                       </div>
+                   </div> -->
+                    <!-- <div class="col-md-6 col-12" *ngIf="dataGridItem.HomeDisplayType == 2 || dataGridItem.HomeDisplayType == 3 || dataGridItem.HomeDisplayType == 4">
+                       <div [ngClass]="'control'">
+                           <label [textContent]="'WidthBanner' | translate"></label>
+                           <kendo-numerictextbox [(ngModel)]="dataGridItem.WidthBanner" [min]="0" [format]="'n'" [disabled]="selectedLangID != appConsts.defaultLangID">
+                           </kendo-numerictextbox>
+                       </div>
+                   </div>
+                   <div class="col-md-6 col-12" *ngIf="dataGridItem.HomeDisplayType == 2 || dataGridItem.HomeDisplayType == 3 || dataGridItem.HomeDisplayType == 4">
+                       <div [ngClass]="'control'">
+                           <label [textContent]="'HeightBanner' | translate"></label>
+                           <kendo-numerictextbox [(ngModel)]="dataGridItem.HeightBanner" [min]="0" [format]="'n'" [disabled]="selectedLangID != appConsts.defaultLangID">
+                           </kendo-numerictextbox>
+                       </div>
+                   </div> -->
+                    <!-- <div class="col-md-12 col-12">
+                       <div [ngClass]="'control'">
+                           <label>
+             <input [disabled]="selectedLangID != appConsts.defaultLangID" type="checkbox" [(ngModel)]="dataGridItem.MenuFlg" />
+             {{'DATA_MENU_MenuFlg' | translate}}
+             </label>
+                       </div>
+                   </div>
+                   <div class="col-md-12 col-12">
+                       <div [ngClass]="'control'">
+                           <label>
+             <input [disabled]="selectedLangID != appConsts.defaultLangID" type="checkbox" [(ngModel)]="dataGridItem.HomeFlg" />
+             {{'DATA_MENU_HomeFlg' | translate}}
+             </label>
+                       </div>
+                   </div> -->
+                    <div class="col-md-12 col-12">
+                        <div class="btn-dialog-wrapper">
+                            <button class="btn-dialog btn-save" (click)="onSaveGrid()" *ngIf="controlDefault || control.Save">
+                       {{ 'COMMON_SAVE' | translate }}
+                    </button>
+                            <button class="btn-dialog btn-delete" (click)="onDeleteGridChangeLang(dataGridItem)" *ngIf="(controlDefault || control.Delete) && selectedLangID != appConsts.defaultLangID">
+                       {{ 'COMMON_REMOVE' | translate }}
+                    </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</kendo-dialog>

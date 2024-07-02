@@ -1,0 +1,110 @@
+<section class="config router-outlet-content">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="page-name">{{pageName}}</div>
+      <hr>
+    </div>
+    <div class="col-md-12 col-12">
+        <button kendoButton (click)="onAddNewConfig()"   >
+            <span>{{ 'AddNew' | translate }}</span>
+        </button>
+      
+    </div>
+
+    <div class="col-md-12 col-12">
+      <kendo-grid *ngIf="configs.length > 0" [data]="configGridDataResult" [selectable]="configSelectableSettings"
+      (pageChange)="onConfigPageChange($event)"  [pageSize]="configPageSize" [skip]="configSkip"
+      [pageable]="true" [kendoGridSelectBy]="'ID'" [selectedKeys]="configSelection" [loading]="loading"
+      [sortable]="configSort" [sort]="configSortByField" (sortChange)="onConfigSortChange($event)" (dataStateChange)="onConfigDataStateChange($event)">
+        <kendo-grid-column [title]="'Function' | translate" [width]="120"   [headerClass]="{'headerCommon': true}">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div class="btn-toolbar" role="toolbar"  >
+              <div class="btn-group mr-2 g-btn g-btn-edit" role="group" >
+                <button kendoGridRemoveCommand (click)="onEditConfig(dataItem.ID)"  *ngIf="controlDefault || control.Edit"
+                [iconClass]="'fa fa-pencil'" [title]="'Edit' | translate">
+                </button>
+              </div>
+              <div class="btn-group mr-2 g-btn g-btn-delete" role="group" >
+                <button kendoGridRemoveCommand [iconClass]="'fa fa-trash-o'"  *ngIf="controlDefault || control.Delete"
+                [title]="'Delete' | translate" (click)="onDeleteConfig(dataItem.ID)"   >
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'ID'" [width]="300" [title]="'ID' | translate"></kendo-grid-column>
+        <kendo-grid-column [field]="'Value'" [width]="300" [title]="'Value' | translate">
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'Description'" [title]="'Description' | translate">
+        </kendo-grid-column>
+        <kendo-grid-excel fileName="Configs.xlsx"></kendo-grid-excel>
+        <kendo-grid-messages [noRecords]="'NoRecords' | translate"></kendo-grid-messages>
+      </kendo-grid>
+      <span class="emptydata-message" *ngIf="configs.length === 0">{{'NoRecords' | translate}}</span>
+    </div>
+  </div>
+
+</section>
+
+<kendo-dialog *ngIf="configOpened" class="config x-dialog"
+[draggable]="true" [ngClass]="'window-center dialog-info'">
+  <div class="employe-detail">
+    <div class="x-close-div">
+        <div class="title-info-req">
+          <strong>{{'Config_Infor'|translate}}</strong>
+        </div>
+        <button kendoButton class="xbutton-dialog" [icon]="'close'" [title]="'Close_Box' | translate" (click)="onCloseConfig()">
+        </button>
+    </div>
+  <div class="row">
+    <div class="col-md-12 col-12">
+        <div class="row">
+            <div class="col-md-12 col-12">
+              <div [ngClass]="'control'">
+                <label>
+                  <span [textContent]="'ID' | translate"></span>
+                  <span class="required">(*)</span>
+                </label>
+                <kendo-combobox [data]="configNamesFilter" [textField]="'Name'" [valueField]="'ID'"
+                  [(ngModel)]="configItem.ID" [valuePrimitive]="true" [filterable]="true"
+                  (filterChange)="handleFilter($event)" [disabled]="!editDiaolog"></kendo-combobox>
+              </div>
+            </div>
+            <div class="col-md-12 col-12">
+              <div [ngClass]="'control'">
+                <label>
+                  <span [textContent]="'Label_Config_Value' | translate"></span>
+                  <span class="required">(*)</span>
+                </label>
+                <input kendoTextBox [(ngModel)]="configItem.Value" [focus]="configFocus.Value" />
+              </div>
+            </div>
+            <div class="col-md-12 col-12">
+              <div [ngClass]="'control'">
+                  <label>
+                    <span [textContent]="'Sercurity_Config' | translate"></span>
+                  </label>
+                  <input type="password"  autocomplete="new-password" kendoTextBox [(ngModel)]="configItem.SercurityValue" />
+              </div>
+            </div>
+            <div class="col-md-12 col-12">
+              <div [ngClass]="'control'">
+                <label>
+                  <span [textContent]="'Label_Description' | translate"></span>
+                  <span class="required">(*)</span>
+                </label>
+                <textarea kendoTextArea [(ngModel)]="configItem.Description" [rows]="10"></textarea>
+              </div>
+            </div>
+            <div class="col-md-12 col-12">
+              <div class="btn-dialog-wrapper">
+                  <button class="btn-dialog btn-save" (click)="onSaveConfig()" *ngIf="controlDefault || control.Save">
+                    {{ 'COMMON_SAVE' | translate }}
+                  </button>
+                </div>
+          </div>
+          </div>
+    </div>
+  </div>
+  </div>
+</kendo-dialog>

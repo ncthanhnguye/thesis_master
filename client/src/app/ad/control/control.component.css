@@ -1,0 +1,57 @@
+:host ::ng-deep .control.x-dialog {
+    max-width: 768px;
+    max-height: 300px;
+}
+
+@media (max-width: 600px) {
+    :host ::ng-deep .control .k-window {
+        width: 90%;
+        height: 90%;
+    }
+    :host ::ng-deep .control.x-dialog {
+        max-width: 768px;
+        max-height: none;
+    }
+}
+
+.control .custom-btn-addNew {
+    margin-top: 10px !important;
+}
+
+.control .btn-addNew {
+    text-align: right;
+    display: inherit; 
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+.control.add-dialog{
+    max-height: 520px !important;
+    max-width: 550px !important;
+}
+
+.control .err-text,
+.control .required {
+    color: #ff6358;
+    padding-left: 3px;
+    font-style: italic;
+}
+
+.control .err {
+    border: 1px solid #ea4335;
+    animation: myerr 1s infinite;
+}
+
+@keyframes myerr {
+    0% {
+        border-color: #ea4335;
+    }
+    25% {
+        border-color: yellow;
+    }
+    50% {
+        border-color: blue;
+    }
+    100% {
+        border-color: #34a853;
+    }
+}

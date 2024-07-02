@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* Library download */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~sweetalert2/dist/sweetalert2.min.css";
+
+/* Source code */
+
+@import "../src/app/app.component.css";
+@import "../src/app/login/login.component.css";
+@import "../src/app/home/home.component.css";
+@import "../src/app/ad/user/user.component.css";
+@import "../src/app/ad/role/role.component.css";
+@import "../src/app/ad/user-role/user-role.component.css";
+@import "../src/app/ad/page/page.component.css";
+@import "../src/app/ad/control/control.component.css";
+@import "../src/app/ad/config/config.component.css";
+@import "../src/app/m/common/common.component.css";
+@import "../src/app/permision/permision.component.css";
+@import "../src/app/data/accounts/accounts.component.css";
+@import "../src/app/data/account-detail/account-detail.component.css";
+@import "../src/app/law/0_TimKiem/search.component.css";
+@import "../src/app/importExcel/data-crawl/data-crawl.component.css";
+
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    /* background-color: #eff0f0; */
+}
+
+html {
+    background-color: white !important;
+}

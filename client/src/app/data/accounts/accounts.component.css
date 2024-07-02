@@ -1,0 +1,270 @@
+.manage-personal .k-grid-header,
+.manage-personal .k-grid-header .k-header {
+    font-weight: bold;
+}
+.manage-personal .list-member-title{
+    font-size: 16px !important;
+    color: #ea4335;
+    margin-top: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.manage-personal .search-place{
+    width: 100% !important;
+    /* padding-right: 26px; */
+}
+.manage-personal .row .control .col-md-12 {
+   display: flex !important;
+
+}
+.manage-personal .row .control .control-search {
+    width: 100%
+
+ }
+.manage-personal .row .control .control-unit .k-dropdown{
+    height:34px
+
+ }
+.manage-personal .btn-dialog-wrapper{
+    flex: 1;
+}
+
+
+.manage-personal .btn-search{
+    color: white;
+    background-color:#985D1A;
+    border: hidden;
+    padding: 5px 20px;
+    font-size: 14px !important;
+}
+
+.manage-personal .btn-dialog-cus{
+    float: left;
+    margin-top: 15px;
+    margin-right: 25px;
+    white-space: nowrap;
+   
+}
+
+.manage-personal .total-member{
+    color: black;
+}
+
+.manage-personal .btn-adv {
+    color: #985d1a;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 12;
+    display:flex
+}
+
+.manage-personal .import-excel {
+    margin-top: -5px;
+}
+
+.manage-personal .import-excel-cancel{
+    margin-top: 21px;
+}
+
+.manage-personal .import-excel-cancel .btn-search{
+    padding: 5px 0px;
+}
+
+.manage-personal .success-exist-phone {
+    color: #187EFC;
+    text-align: center;
+}
+
+.manage-personal .success-exist-phone img,
+.manage-personal .err-exist-phone img {
+    width: 80px;
+}
+
+.manage-personal .btn-save-excel{
+    color: white;
+    background-color: #187efc;
+    border: hidden;
+    padding: 5px 30px;
+    font-size: 14px !important;
+    margin-bottom: 10px;
+    margin-right: 16px;
+}
+.manage-personal  .text-name{
+    font-size: 14px;
+    color: red;
+    font-style: italic;
+}
+.manage-personal  .text-span{
+    font-size: 15px;
+    color: #656565;
+
+}
+.manage-personal .title-text {
+    border:none;
+    box-shadow:none;
+    background-color:white;
+    color:#ea4335;
+    padding: 0px 0px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+
+}
+
+.manage-personal .title-text :hover {
+    cursor: pointer;
+}
+.manage-personal .title:focus{
+    border: none;
+}
+.manage-personal .btn-addNew {
+    text-align: right;
+    display: inherit;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.manage-personal .btn-listOfChange {
+    text-align: left;
+    display: inherit;
+    margin-right: 0px;
+    margin-bottom: 15px;
+}
+
+.manage-personal .btn-addNew .k-button{
+    font-size: 14px !important;
+}
+.manage-personal .btn-listOfChange .k-button{
+    font-size: 16px !important;
+}
+.manage-personal .btn-btn-listOfChange .k-button{
+    font-size: 14px !important;
+}
+
+.manage-personal .btn-custom {
+    width: 100%;
+}
+.manage-personal .btn-custom button {
+    background: #cd330d;
+    color: white;
+    width: 100%;
+}
+
+.manage-personal .item {
+    border: 1px solid #c4c4c4;
+    margin: 10px;
+}
+.manage-personal .index{
+    float: left;
+    width: calc(100% - 28px);
+}
+
+.manage-personal .k-window-content{
+    padding-top: 16px;
+    padding: unset;
+}
+
+.manage-personal .export-span{
+    margin-right: 20px;
+    white-space: nowrap;
+    color: #985d1a;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0;
+}
+.manage-personal .options .k-button{
+    padding: 0 !important;
+}
+.manage-personal .control label .export-span{
+  margin-right: 20px;
+  white-space: nowrap;
+  float: right;
+  color: #985d1a;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 12;
+}
+
+.manage-personal .export-span:hover {
+    cursor: pointer;
+    color: #c6000191;
+}
+
+.manage-personal .import-span:hover {
+    cursor: pointer;
+    color: #c6000191;
+}
+
+.manage-personal .import-span{
+    white-space: nowrap;
+}
+
+.manage-personal .pointer{
+    cursor: pointer;
+}
+
+.manage-personal .pointer:hover {
+    cursor: pointer;
+    color: #c6000191;
+}
+
+.manage-personal .btn-dialog-cus-org{
+    float: left;
+    margin-top: 19px;
+    margin-right: 25px;
+}
+.manage-personal .group-search-org{
+    margin-left: 15px;
+}
+
+.manage-personal .post-title .title{
+    width: calc(100% - 30px);
+    float: left;
+}
+
+@media (max-width: 768px) {
+
+    .manage-personal .k-dropdown-button button{
+        background: none !important;
+        color: black !important;
+        border: none !important;
+        padding-right: 0px;
+        width: 28px;
+        float: right;
+    }
+    .manage-personal .k-dropdown-button.options{
+        background: none !important;
+        color: black !important;
+        border: none !important;
+        padding-right: 0px;
+        width: 50px !important;
+        float: left;
+        margin-right: 40px;
+    }
+    .manage-personal .btn-addNew {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+    .manage-personal .btn-listOfChange {
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .manage-personal .btn-group{
+        float: right;
+        width: 15px;
+    }
+
+    .manage-personal .k-dropdown-button.k-widget {
+        background-color: transparent;
+    }
+
+    .manage-personal kendo-popup {
+        min-width: 200px !important;
+    }
+
+
+}

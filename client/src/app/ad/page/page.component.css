@@ -1,0 +1,124 @@
+.page .err-text,
+.page .required {
+    color: #ff6358;
+    padding-left: 3px;
+    font-style: italic;
+}
+
+.page .err {
+    border: 1px solid #ea4335;
+    animation: myerr 1s infinite;
+}
+
+@keyframes myerr {
+    0% {
+        border-color: #ea4335;
+    }
+    25% {
+        border-color: yellow;
+    }
+    50% {
+        border-color: blue;
+    }
+    100% {
+        border-color: #34a853;
+    }
+}
+
+.page.x-dialog {
+    max-width: 768px !important;
+    max-height: 90% !important;
+}
+
+.page .custom-btn-addNew {
+    margin-top: 10px !important;
+}
+
+.page .btn-addNew {
+    text-align: right;
+    display: inherit;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.page .btn-custom {
+    width: 100%;
+}
+
+.page .btn-custom button {
+    background: #cd330d;
+    color: white;
+    width: 100%;
+}
+
+.page .default-lang {
+    border-bottom: none;
+    float: left;
+    margin-right: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.page .selected-lang {
+    border-bottom: 3px red solid;
+    cursor: pointer;
+}
+
+.page .upload-file {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+    .k-window {
+        width: 90%;
+        height: 90%;
+    }
+    .page.x-dialog {
+        max-width: 768px;
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .page .wb-page {
+        display: none;
+    }
+    .page .mb-page {
+        display: contents !important;
+    }
+    .page .mb-page .item-menu {
+        margin: 10px 15px 10px 15px !important;
+        margin: 7px 0;
+        padding: 5px;
+        border: 1px solid #c4c4c4;
+        border-radius: 5px;
+        width: 100%;
+    }
+    .page .mb-page .mb-drbtn-func {
+        padding-right: 5px;
+    }
+    .page .mb-page .btn-custom button {
+        background: none;
+        color: gray;
+        width: 100%;
+        border: none;
+    }
+    .page.k-dropdown-button button {
+        background: none !important;
+        color: black !important;
+        border: none !important;
+    }
+    .page.x-dialog.page-info {
+        width: 100% !important;
+    }
+}
+
+.page .mb-page {
+    display: none;
+}
+
+.page .mb-page .k-list {
+    width: 150px;
+}

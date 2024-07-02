@@ -1,0 +1,97 @@
+<section class="user-role router-outlet-content">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="page-name">{{pageName}}</div>
+      <hr>
+    </div>
+  </div>
+  <div class="row" kendoTooltip position="top">
+    <div class="col-md-4 col-12">
+      <div [ngClass]="'control'">
+        <label [textContent]="'UserRole_Role' | translate"></label>
+        <kendo-combobox [data]="roleSearchs" [textField]="'Name'" [valueField]="'ID'" [(ngModel)]="searchOption.RoleID"
+          [valuePrimitive]="true" [filterable]="true" (filterChange)="onRoleSearchHandleFilter($event)"
+          (valueChange)="onRoleSearchValueChange($event)">
+          <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+        </kendo-combobox>
+      </div>
+    </div>   
+  </div>
+  <div class="row content">
+    <div class="col-md-6 col-12">
+        <div class="xoutborder">         
+          <div [ngClass]="'control-search'">           
+            <label class="xmleft"  class="bold-title" [textContent]="'NotGrantedRole' | translate"></label> 
+            <br class="br-mb">
+            <input kendoTextBox [placeholder]="'PAGE_Menu_Search'|translate" [(ngModel)]="searchOption.SearchText1" (keypress)="onSearchKeyPress1($event)"
+              (change)="onSearchTextChange1($event)" />            
+            <button kendoButton (click)="onSearchTextChange1($event)" [primary]="true" [look]="'outline'" [icon]="'search'"
+              [ngClass]="'btn-search'">
+            </button>
+          </div>
+          <div class="xborderrole xmleft">
+            <kendo-treelist [kendoTreeListFlatBinding]="unGranteduserRole"  kendoTreeListExpandable idField="ID"
+                parentIdField="ParentID" >               
+                <kendo-treelist-column field="Name" [title]="'OrderIdx' | translate" [width]="50">
+                  <ng-template  kendoTreeListCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <span>{{rowIndex + 1}}</span>
+                  </ng-template>
+                </kendo-treelist-column>
+                <kendo-treelist-column [expandable]="true" field="Name" [title]="'Role_Title' | translate" >
+                  <ng-template kendoTreeListCellTemplate let-dataItem>                       
+                    <span >{{dataItem.Name}}</span>                                          
+                  </ng-template>
+                </kendo-treelist-column>
+                <kendo-treelist-column field="ActiveFlg" [title]="'Role_Choose' | translate" [width]="100">
+                  <ng-template kendoTreeListCellTemplate let-dataItem>
+                    <div class="btn-dialog-wrapper" role="group">                    
+                      <button *ngIf="dataItem.ActiveFlg == false || (dataItem.ActiveFlg == true && dataItem.HasControl != true) " class="btn-choose" (click)="onSaveUserRole(dataItem.ID, dataItem.ParentID, true)" >
+                        {{'Role_Choose'| translate}}
+                      </button>
+                    </div>
+                  </ng-template>
+                </kendo-treelist-column>
+            </kendo-treelist>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-12">
+      <div class="xoutborder">
+        
+        <div [ngClass]="'control-search'">           
+          <label class="bold-title" [textContent]="'GrantedRole' | translate"></label>
+          <br class="br-mb">
+          <input kendoTextBox [placeholder]="'PAGE_Menu_Search'|translate" [(ngModel)]="searchOption.SearchText2" (keypress)="onSearchKeyPress2($event)"
+            (change)="onSearchTextChange2($event)" />            
+          <button kendoButton (click)="onSearchTextChange2($event)" [primary]="true" [look]="'outline'" [icon]="'search'"
+            [ngClass]="'btn-search'">
+          </button>
+        </div>
+        <div class=" xborderrole">
+          <kendo-treelist  [kendoTreeListFlatBinding]="GranteduserRole"  kendoTreeListExpandable idField="ID"
+            parentIdField="ParentID" >
+            <kendo-treelist-column field="Name" [title]="'OrderIdx' | translate" [width]="50">
+              <ng-template  kendoTreeListCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <span>{{rowIndex + 1}}</span>
+              </ng-template>
+            </kendo-treelist-column>
+            <kendo-treelist-column [expandable]="true" field="Name" [title]="'Role_Title' | translate" >
+              <ng-template kendoTreeListCellTemplate let-dataItem>                       
+                <span >{{dataItem.Name}}</span>                                          
+              </ng-template>
+            </kendo-treelist-column>
+            <kendo-treelist-column field="ActiveFlg" [title]="'Role_Remove_Permission' | translate" [width]="100">
+              <ng-template kendoTreeListCellTemplate let-dataItem>
+                <div class="btn-dialog-wrapper" role="group">                    
+                  <button *ngIf="dataItem.ActiveFlg != null" class="btn-unchoose" (click)="onSaveUserRole(dataItem.ID, dataItem.ParentID, false)" >
+                    {{'Role_UnChoose'| translate}}
+                  </button>
+                </div>
+              </ng-template>
+            </kendo-treelist-column>
+          </kendo-treelist>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

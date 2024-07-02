@@ -1,0 +1,18 @@
+<div class="home container-fuild">
+  <div class="row">
+    <div class="col-md-12 ">
+          <div class="user-container" >
+            <div class="full-name " >
+              <kendo-dropdownbutton [data]="option" [ngClass]="'options n-b'" [look]="'outline'" >
+                <div class="fullname-style">{{user.FullName}}</div> &nbsp;
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+              </kendo-dropdownbutton>
+              <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+                <span class="k-icon k-i-{{ dataItem.icon }}"></span>
+                <span>{{ dataItem.text }}</span>
+              </ng-template>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,153 @@
+.content-detail{
+    width: 100%;
+    margin-left: 0px !important;
+}
+.personal .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.personal .avatar .top {
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+.personal .avatar .top .user-image-large {
+
+    vertical-align: top;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  
+}
+.personal .avatar .top .user-image-large img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+  
+}
+
+.personal .vnpt-upload-img .k-upload {
+    display: none;
+}
+
+.personal .vnpt-upload-img img {
+    width: 160px;
+}
+
+.personal .err-text,
+.personal .required {
+    color: #ff6358;
+    padding-left: 3px;
+    font-style: italic;
+}
+.personal .err {
+    border: 1px solid #ea4335;
+    animation: myerr 1s infinite;
+}
+
+@keyframes myerr {
+    0% {
+        border-color: #ea4335;
+    }
+    25% {
+        border-color: yellow;
+    }
+    50% {
+        border-color: blue;
+    }
+    100% {
+        border-color: #34a853;
+    }
+}
+
+:host ::ng-deep .personal.x-dialog {
+    max-width: 768px;
+    max-height: 565px;
+}
+
+.personal .custom-btn-addNew {
+    margin-top: 10px !important;
+}
+
+.personal .btn-addNew {
+    text-align: right;
+    display: inherit; 
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+:host ::ng-deep .personal .btn-custom {
+    width: 100%;
+}
+:host ::ng-deep .personal .btn-custom button {
+    background: #cd330d;
+    color: white;
+    width: 100%;
+}
+
+
+.personal .default-lang {
+    border-bottom: none;
+    float: left;
+    margin-right: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+.personal .selected-lang {
+    border-bottom: 3px red solid;
+}
+
+
+@media (max-width: 600px) {
+    :host ::ng-deep .k-window {
+        width: 90%;
+        height: 90%;
+    }
+    :host ::ng-deep .personal.x-dialog {
+        max-width: 768px;
+        max-height: none;
+    }
+
+    .personal .vnpt-upload-img img {
+        width: 99px;
+    }
+}
+
+
+.personal .row-file {
+    margin-bottom: 5px;
+}
+
+.personal .float-right {
+    float: right ; 
+}
+
+.personal .border-infor{
+    background: #FFFFFF;
+    border: 0.6px solid #D0D0D0;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 11px;
+}
+.personal .k-textbox{
+    border-color: transparent;
+    color: #000000;
+    background-color: #fff;
+    font-weight: normal;
+    box-shadow: unset;
+}
+
+.personal .label-infor{
+    color: #407BFF;
+    padding-left: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+
+.personal .padding-col{
+    padding: 7px 15px 0;
+}

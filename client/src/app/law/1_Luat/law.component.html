@@ -1,0 +1,113 @@
+<section class="router-outlet-content">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="page-name">Law</div>
+      <hr>
+    </div>
+    <div class="col-md-12 col-12">
+      <button class="btn-addnew" (click)="openAddDialog()">
+        <span>{{ 'AddNew' }}</span>
+      </button>
+    </div>
+    <div class="col-md-12 col-12 container-datagrid">
+      <kendo-grid [data]="dataGridGridDataResult" [selectable]="dataGridSelectableSettings"
+        (pageChange)="onUserPageChange($event)" [pageSize]="dataGridPageSize" [skip]="dataGridSkip" [pageable]="true"
+        [kendoGridSelectBy]="'ID'" [loading]="loading" [sortable]="dataGridSort" [sort]="dataGridSortByField"
+        (sortChange)="onUserSortChange($event)" [filter]="dataGridState.filter" [filterable]="true"
+        (dataStateChange)="onGridDataStateChange($event)">
+
+        <kendo-grid-column [title]="'Function' " [width]="120" [headerClass]="{'headerCommon': true}">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div class="btn-toolbar" role="toolbar">
+              <div class="btn-group mr-2 g-btn g-btn-edit" role="group">
+                <button kendoGridRemoveCommand (click)="openUpdateDialog(dataItem.ID)"
+                  [iconClass]="'fa fa-window-restore'">
+                </button>
+              </div>
+              <div class="btn-group mr-2 g-btn g-btn-delete" role="group">
+                <button kendoGridRemoveCommand [iconClass]="'fa fa-ban'" (click)="onDeleteItem(dataItem.ID)">
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'ID'" [width]="50" [title]="ID"></kendo-grid-column>
+        <kendo-grid-column [field]="'Name'" [width]="150" [title]="Name"></kendo-grid-column>
+        <kendo-grid-column [field]="'LawDate'" [width]="90" [title]="LawDate">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            {{dataItem.LawDate | date: 'dd/MM/yyyy '}}
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [field]="'LawNumber'" [width]="90" [title]="LawDate"> </kendo-grid-column>
+        <kendo-grid-column [field]="'TotalChapters'" [width]="90" [title]="LawDate"> </kendo-grid-column>
+        <kendo-grid-column [field]="'TotalArtical'" [width]="90" [title]="LawDate"> </kendo-grid-column>
+        <kendo-grid-column [field]="'Status'" [width]="90" [title]="LawDate"> </kendo-grid-column>
+      </kendo-grid>
+    </div>
+  </div>
+</section>
+
+
+<kendo-dialog *ngIf="DialogDetail" title="Chi tiết" (close)="onCloseDialog()">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div [ngClass]="'control'">
+        <label>
+          <span [textContent]="'Name'"></span>
+        </label>
+        <textarea kendoTextArea [(ngModel)]="dataDetailItemtemp.Name" [rows]="3"></textarea>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-12">
+      <div [ngClass]="'control'">
+        <label>
+          <span [textContent]="'LawNumber'"></span>
+        </label>
+        <input kendoTextBox [(ngModel)]="dataDetailItemtemp.LawNumber" />
+      </div>
+    </div>
+
+    <div class="col-md-12 col-12">
+      <div [ngClass]="'control'">
+        <label>
+          <span [textContent]="'LawDate'"></span>
+        </label>
+        <kendo-datepicker [(ngModel)]="dataDetailItemtemp.LawDate">
+        </kendo-datepicker>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-12">
+      <div [ngClass]="'control'">
+        <label>
+          <span [textContent]="'TotalChapters'"></span>
+        </label>
+        <kendo-numerictextbox [(ngModel)]="dataDetailItemtemp.TotalChapters" [min]="0" [format]="'n0'">
+        </kendo-numerictextbox>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-12">
+      <div [ngClass]="'control'">
+        <label>
+          <span [textContent]="'TotalArtical'"></span>
+        </label>
+        <kendo-numerictextbox [(ngModel)]="dataDetailItemtemp.TotalArtical" [min]="0" [format]="'n0'">
+        </kendo-numerictextbox>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-12">
+      <div class="btn-dialog-wrapper">
+        <button *ngIf="dataDetailItem.ID == null" class="btn-dialog btn-save" (click)="onAddItem()">
+          {{'Tạo mới'}}
+        </button>
+        <button *ngIf="dataDetailItem.ID != null" class="btn-dialog btn-save"
+          (click)="onUpdateItem()">{{'Lưu'}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+</kendo-dialog>

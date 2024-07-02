@@ -1,0 +1,620 @@
+<section class="organization router-outlet-content">
+  <div class="row">
+    <div class="col-md-12 col-12">
+      <div class="content">
+        <div class="page-name">{{ pageName }}</div>
+
+        <!-- <div (click) = "openImportExcelDialog()" >Thêm Đơn vị bằng Excel</div> -->
+
+        <div class="page-name btn-change-list">
+          <button
+            [ngClass]="dialogType == 3 ? 'click-change-color' : ''"
+            class="btn-muiOrgChart"
+            (click)="openImportExcelDialog()"
+          >
+            <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+          </button>
+          <button
+            [ngClass]="dialogType == 2 ? 'click-change-color' : ''"
+            class="btn-muiOrgChart"
+            (click)="openMuiOrgChart()"
+          >
+            <i class="fa fa-sitemap" aria-hidden="true"> </i>
+          </button>
+          <button
+            [ngClass]="dialogType == 1 ? 'click-change-color' : ''"
+            class="btn-treelist"
+            (click)="openMuiOrgTree()"
+          >
+            <i class="fa fa-list" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <hr />
+    </div>
+
+    <div class="col-md-12 col-12" *ngIf="dialogType == 3">
+      <div
+        class="row"
+        *ngIf="(controlDefault || control.ImportExcel) && dataUnitItem.IsAdd"
+      >
+        <div class="col-md-12 col-12" *ngIf="!importExcelSuccess">
+          <div [ngClass]="'control'">
+            <label>
+              <span [textContent]="'FileUploadChildUnit' | translate"></span>
+              <span
+                class="export-span"
+                [textContent]="'ExportExcel_Block' | translate"
+                (click)="onExportExcelTemp(excelexport)"
+              ></span>
+            </label>
+            <kendo-upload
+              (select)="onSelectEventHandler($event)"
+              [multiple]="false"
+              [showFileList]="false"
+              [saveUrl]="fileSaveUrl"
+              [accept]="['.xls', '.xlsx']"
+            >
+              <kendo-upload-messages
+                [headerStatusUploaded]="'FileUploadPersonalDone' | translate"
+                [dropFilesHere]="'dropFilesHere' | translate"
+                [select]="'UploadFile' | translate"
+              >
+              </kendo-upload-messages>
+            </kendo-upload>
+          </div>
+        </div>
+
+        <!-- For import success excel -->
+        <div
+          *ngIf="importExcelSuccess"
+          class="btn-back pointer"
+          (click)="openImportExcelDialog()"
+        >
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          &nbsp;<span [textContent]="'Import_Block_Cancel' | translate"></span>
+        </div>
+        <div
+          class="col-md-12 col-12 success-exist-phone"
+          *ngIf="importExcelSuccess"
+        >
+          <div>
+            <img src="../../../assets/images/img-success.png" />
+          </div>
+          <div>
+            <b>{{ "ImportExcelSuccessTitle" | translate }}</b>
+          </div>
+          <p>{{ "ImportExcelSuccessDescription" | translate }}</p>
+        </div>
+        <div class="col-md-12 col-12" *ngIf="importExcelSuccess">
+          <button class="btn-dialog btn-save-excel" (click)="onSavePersonals()">
+            <span>{{ "Save" | translate }}</span>
+          </button>
+        </div>
+
+        <div class="col-md-12 col-12" *ngIf="DataGrids.length > 0">
+          <kendo-grid
+            [data]="DataGridGridDataResult"
+            [selectable]="DataGridSelectableSettings"
+            (pageChange)="onDataGridPageChange($event)"
+            [pageSize]="dataDataGridPageSize"
+            [skip]="dataDataGridSkip"
+            (selectedKeysChange)="onDataGridSelectedKeysChange()"
+            [pageable]="true"
+            [kendoGridSelectBy]="'ID'"
+            [selectedKeys]="DataGridSelection"
+            [loading]="loading"
+            [sortable]="false"
+            (dataStateChange)="onDataGridDataStateChange($event)"
+          >
+            <kendo-grid-column
+              [width]="100"
+              [field]="'ID'"
+              [title]="'ID Đơn vị' | translate"
+              [headerClass]="{ headerCommon: true }"
+            >
+            </kendo-grid-column>
+
+            <kendo-grid-column
+              [width]="300"
+              [field]="'Name'"
+              [title]="'Tên Đơn vị' | translate"
+              [headerClass]="{ headerCommon: true }"
+            >
+            </kendo-grid-column>
+
+            <kendo-grid-column
+              [width]="200"
+              [field]="'ParentID'"
+              [title]="'Đơn vị cha' | translate"
+              [headerClass]="{ headerCommon: true }"
+            >
+              <ng-template kendoGridCellTemplate let-dataItem>
+                {{
+                  appUtils.getNameByList(units, dataItem.ParentID) == ""
+                    ? dataItem.ParentID
+                    : appUtils.getNameByList(units, dataItem.ParentID)
+                }}
+              </ng-template>
+            </kendo-grid-column>
+
+            <!-- <kendo-grid-column  [width]="200" [field]="'Type'"
+              [title]="'Phân loại' | translate" [headerClass]="{'headerCommon': true}">
+            </kendo-grid-column> -->
+
+            <kendo-grid-messages
+              [noRecords]="'NoRecords' | translate"
+              [pagerOf]="'pagerOf' | translate"
+              [pagerItems]="'pagerItems' | translate"
+            >
+            </kendo-grid-messages>
+          </kendo-grid>
+        </div>
+        <!-- End for import success excel -->
+      </div>
+      <kendo-excelexport
+        [data]="tempData"
+        fileName="Mẫu excel thêm đơn vị con.xlsx"
+        #excelexport
+      >
+        <kendo-excelexport-column
+          field="ID"
+          [title]="'Mã đơn vị' | translate"
+          [width]="250"
+        >
+          <ng-template kendoGridCellTemplate let-dataItem>
+            {{ "Guid_Excel" | translate }}
+          </ng-template>
+        </kendo-excelexport-column>
+        <kendo-excelexport-column
+          [field]="'Name'"
+          [title]="'Tên đơn vị' | translate"
+          [width]="200"
+        >
+        </kendo-excelexport-column>
+        <kendo-excelexport-column
+          [field]="'ParentID'"
+          [title]="'Đơn vị cha (Mã đơn vị)' | translate"
+          [width]="150"
+        >
+        </kendo-excelexport-column>
+        <!-- <kendo-excelexport-column [field]="'Type'" [title]="'Phân loại (Khối thi đua hoặc Cụm thi đua)' | translate" [width]="250">
+        </kendo-excelexport-column> -->
+      </kendo-excelexport>
+    </div>
+
+    <div class="col-md-12 col-12" *ngIf="dialogType !== 3">
+      <div>
+        <div>
+          <button
+            *ngIf="dataUnits.length <= 0 && (controlDefault || control.AddNew)"
+            kendoButton
+            class="btn-add-dangbo"
+            (click)="onAddNewUnit()"
+          >
+            <span class="init-unit pointer"> + </span>
+          </button>
+        </div>
+        <div>
+          <div
+            *ngIf="dialogType == 2"
+            class="text-center org-chart-containerx"
+            #element
+            (mousedown)="startDragging($event, element)"
+            (mouseup)="stopDragging()"
+            (mouseleave)="stopDragging()"
+            (mousemove)="moveEvent($event, element)"
+          >
+          </div>
+
+          <div *ngIf="dialogType == 1" class="text-center treelist-container">
+            <kendo-treelist
+              [kendoTreeListFlatBinding]="units"
+              kendoTreeListExpandable
+              idField="ID"
+              parentIdField="ParentID"
+              [filterable]="true"
+            >
+              <kendo-treelist-column
+                [title]="'Function' | translate"
+                field="Handle"
+                [width]="100"
+                [headerClass]="{ headerCommon: true }"
+                *ngIf="controlDefault || control.Handle"
+              >
+                <ng-template kendoTreeListCellTemplate let-dataItem>
+                  <div class="btn-toolbar k-grid-ignore-click btn-custom" role="toolbar">
+                    <div
+                      class="btn-group btn-custom"
+                      role="group"
+                      *ngIf="controlDefault || control.Handle"
+                    >
+                      <kendo-dropdownbutton
+                        [popupSettings]="{
+                          popupClass: customPopupClass,
+                          animate: true,
+                          appendTo: 'component'
+                        }"
+                        class="btn-custom"
+                        [data]="btnMbFunctionData"
+                        (itemClick)="onChangeFunction($event, dataItem)"
+                        (click)="onFunctionIconClick()"
+                      >
+                        <span>{{ "Handle" | translate }}</span>
+                        <span class="k-icon k-i-arrow-60-down"></span>
+                      </kendo-dropdownbutton>
+                    </div>
+                  </div>
+                </ng-template>
+              </kendo-treelist-column>
+
+              <kendo-treelist-column
+                [expandable]="true"
+                field="Name"
+                [title]="'Unit_Organization_Name' | translate"
+                [width]="750"
+              >
+                <ng-template kendoTreeListCellTemplate let-dataItem>
+                  <span class="init-unit">{{ dataItem.Name }}</span>
+                  <!-- <i aria-hidden="true" class="fa fa-pencil-square-o image-edit pointer" (click)='onSelectUnitTreeListEdit(dataItem)'></i> -->
+                </ng-template>
+              </kendo-treelist-column>
+              <kendo-treelist-column
+                field="AccountCnt"
+                [title]="'Unit_Emp_Amount' | translate"
+                [width]="150"
+              >
+                <ng-template kendoTreeListCellTemplate let-dataItem>
+                  <span
+                    class="init-unit-clickable"
+                    (click)="onOpenEmpDetailDialog(dataItem.ID)"
+                    *ngIf="dataItem.AccountCnt != 0"
+                    >{{ dataItem.AccountCnt }}</span
+                  >
+                  <span
+                    class="init-unit-unclickable"
+                    *ngIf="dataItem.AccountCnt == 0"
+                    >{{ dataItem.AccountCnt }}</span
+                  >
+                </ng-template>
+              </kendo-treelist-column>
+              <kendo-treelist-column
+                field="Email"
+                [title]="'Unit_Email' | translate"
+                [width]="180"
+              >
+                <ng-template kendoTreeListCellTemplate let-dataItem>
+                  <span class="init-unit">{{ dataItem.Email }}</span>
+                </ng-template>
+              </kendo-treelist-column>
+              <kendo-treelist-column
+                field="Phone"
+                [title]="'Unit_Phone' | translate"
+                [width]="120"
+              >
+                <ng-template kendoTreeListCellTemplate let-dataItem>
+                  <span class="init-unit">{{ dataItem.Phone }}</span>
+                </ng-template>
+              </kendo-treelist-column>
+              <!-- <kendo-treelist-column [title]="'Add'| translate" [width]="80">
+                <ng-template kendoTreeListCellTemplate let-dataItem>
+                  <div class="addNew" (click)='onSelectUnitTreeList(dataItem)'>
+                    <i (click)='onSelectUnitTreeList(dataItem)' class="fa fa-plus" aria-hidden="true"></i>
+                  </div>
+                </ng-template>
+              </kendo-treelist-column> -->
+            </kendo-treelist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<kendo-dialog
+  *ngIf="addUnitDialog"
+  class="organization x-dialog"
+  [draggable]="false"
+  [ngClass]="'window-center dialog-chat'"
+>
+  <div class="employe-detail">
+    <div class="x-close-div">
+      <div class="title-info-req">
+        <strong>{{ "Unit_Info_Tittle" | translate }}</strong>
+      </div>
+      <button
+        kendoButton
+        class="xbutton-dialog"
+        [icon]="'close'"
+        [title]="'Close_Box' | translate"
+        (click)="onCloseUnitDialog()"
+      ></button>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-12">
+        <div class="row">
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <!-- <label>
+                <span [textContent]="'Unit_Image' | translate"></span>
+              </label> -->
+              <div
+                *ngIf="this.dataUnitItemtemp.ImageUrl !== ''"
+                class="remove-image-btn"
+              >
+                <label class="camera-container">
+                  <img
+                    class="unit-image"
+                    *ngIf="
+                      (this.dataUnitItemtemp.ImageUrl !== this.defaultImg &&
+                        getFileType(dataUnitItemtemp.ImageUrl) == 'jpg') ||
+                      getFileType(dataUnitItemtemp.ImageUrl) == 'jpeg' ||
+                      getFileType(dataUnitItemtemp.ImageUrl) == 'png' ||
+                      getFileType(dataUnitItemtemp.ImageUrl) == 'JPG' ||
+                      getFileType(dataUnitItemtemp.ImageUrl) == 'JPEG' ||
+                      getFileType(dataUnitItemtemp.ImageUrl) == 'PNG'
+                    "
+                    [src]="dataUnitItemtemp.ImageUrl"
+                  />
+                  <kendo-upload
+                    [restrictions]="myRestrictionsImage"
+                    [accept]="['.png', '.jpg', '.jpeg']"
+                    [(ngModel)]="filesUploadAvatar"
+                    (select)="onSelectAvatarUpload($event)"
+                    (remove)="onRemoveAvatarUpload()"
+                    [multiple]="false"
+                    [showFileList]="false"
+                    [saveUrl]="fileSaveUrl"
+                    (success)="onSuccessAvatarUpload($event)"
+                  >
+                  </kendo-upload>
+                  <button
+                    *ngIf="control.SaveOrganization"
+                    class="remove-image-button"
+                    kendoButton
+                    [icon]="'close'"
+                    [title]="'Close_Box' | translate"
+                    (click)="onRemoveAvatarUpload()"
+                  ></button>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_ID' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input
+                kendoTextBox
+                [(ngModel)]="dataUnitItemtemp.ID"
+                [disabled]="
+                  selectedLangID != appConsts.defaultLangID ||
+                  !dataUnitItemtemp.IsAdd ||
+                  !isIDFlag ||
+                  !control.SaveOrganization
+                "
+                [ngClass]="dataErr[0]['ID'] ? 'err' : ''"
+              />
+              <span class="err-text" *ngIf="dataErr[0]['ID']">{{
+                dataErr[0]["ID"]
+              }}</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_Name' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input
+                [ngClass]="dataErr[0]['Name'] ? 'err' : ''"
+                kendoTextBox
+                [(ngModel)]="dataUnitItemtemp.Name"
+                (keypress)="filterInput($event)"
+                [disabled]="!control.SaveOrganization"
+              />
+              <span class="err-text" *ngIf="dataErr[0]['Name']">{{
+                dataErr[0]["Name"]
+              }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_ParentName' | translate"></span>
+              </label>
+              <kendo-combobox
+                [data]="unitsFilter"
+                [textField]="'Name'"
+                [valueField]="'ID'"
+                [(ngModel)]="dataUnitItemtemp.ParentID"
+                [valuePrimitive]="true"
+                [filterable]="true"
+                (filterChange)="unitsHandleFilter($event)"
+                [disabled]="!isParentFlag || appConsts.defaultLangID || !control.SaveOrganization"
+              >
+                <ng-template kendoDropDownListNoDataTemplate>{{
+                  "NoRecords" | translate
+                }}</ng-template>
+              </kendo-combobox>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_TypeUnit' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <kendo-combobox [data]="typeUnitFilter" [textField]="'Name'" [valueField]="'ID'"
+                [(ngModel)]="dataUnitItemtemp.Type" [valuePrimitive]="true" [filterable]="true"
+                (filterChange)="typeUnitHandleFilter($event)" [ngClass]="dataErr[0][ 'Type'] ? 'err' : ''">
+                <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+              </kendo-combobox>
+              <span class="err-text" *ngIf="dataErr[0]['Type'] ">{{dataErr[0]['Type']}}</span>
+            </div>
+          </div> -->
+
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_Email' | translate"></span>
+                <!-- <span class="required">(*)</span> -->
+              </label>
+              <input
+                [ngClass]="dataErr[0]['Email'] ? 'err' : ''"
+                kendoTextBox
+                [(ngModel)]="dataUnitItemtemp.Email"
+                [disabled]="!control.SaveOrganization"
+              />
+              <span class="err-text" *ngIf="dataErr[0]['Email']">{{
+                dataErr[0]["Email"]
+              }}</span>
+            </div>
+          </div>
+
+          <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_Phone' | translate"></span>
+                <!-- <span class="required">(*)</span> -->
+              </label>
+              <input
+                [ngClass]="dataErr[0]['Phone'] ? 'err' : ''"
+                kendoTextBox
+                [(ngModel)]="dataUnitItemtemp.Phone"
+                (keypress)="numberOnly($event)"
+                minlength="10"
+                maxlength="12"
+                [disabled]="!control.SaveOrganization"
+              />
+              <span class="err-text" *ngIf="dataErr[0]['Phone']">{{
+                dataErr[0]["Phone"]
+              }}</span>
+              <span class="err-text" *ngIf="this.phoneEre">{{
+                this.phoneEre
+              }}</span>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_Address' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <kendo-combobox [data]="addressFilter" [textField]="'Name'" [valueField]="'ID'"
+                [(ngModel)]="dataUnitItemtemp.AddressID" [valuePrimitive]="true" [filterable]="true"
+                (filterChange)="addressHandleFilter($event)">
+                <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+              </kendo-combobox>
+              <span class="err-text" *ngIf="dataErr[0][ 'AddressID'] ">{{dataErr[0]['AddressID']}}</span>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-12 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_Address_Text' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input [ngClass]="dataErr[0]['Address'] ? 'err' : ''" kendoTextBox
+                [(ngModel)]="dataUnitItemtemp.Address" />
+              <span class="err-text" *ngIf="dataErr[0]['Address'] ">{{dataErr[0]['Address']}}</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_Longitude' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input [ngClass]="dataErr[0][ 'Longitude'] ? 'err' : ''" kendoTextBox
+                [(ngModel)]="dataUnitItemtemp.Longitude" (keypress)="checkInput($event, this.dataUnitItemtemp.Longitude)" placeholder="10.xx"/>
+              <span class="err-text" *ngIf="dataErr[0]['Longitude'] ">{{dataErr[0]['Longitude']}}</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div [ngClass]="'control'">
+              <label>
+                <span [textContent]="'Unit_Latitude' | translate"></span>
+                <span class="required">(*)</span>
+              </label>
+              <input [ngClass]="dataErr[0][ 'Latitude'] ? 'err' : ''" kendoTextBox
+                [(ngModel)]="dataUnitItemtemp.Latitude" (keypress)="checkInput($event, this.dataUnitItemtemp.Latitude)" placeholder="106.xx"/>
+              <span class="err-text" *ngIf="dataErr[0]['Latitude'] ">{{dataErr[0]['Latitude']}}</span>
+            </div>
+          </div> -->
+
+          <div class="col-md-12 col-12">
+            <div class="btn-dialog-wrapper">
+              <button
+                class="btn-dialog btn-save"
+                (click)="onSaveUnit()"
+                *ngIf="controlDefault || control.SaveOrganization"
+              >
+                {{ "COMMON_SAVE" | translate }}
+              </button>
+              <button
+                class="btn-dialog btn-delete"
+                (click)="onDeleteUnit(dataUnitItem)"
+                *ngIf="
+                  (controlDefault || control.DeleteOrganization) &&
+                  selectedLangID != appConsts.defaultLangID
+                "
+              >
+                {{ "COMMON_REMOVE" | translate }}
+              </button>
+              <button
+                class="btn-dialog btn-delete"
+                (click)="onDeleteUnit(dataUnitItem)"
+                *ngIf="
+                  (controlDefault || control.DeleteOrganization) &&
+                  selectedLangID == appConsts.defaultLangID &&
+                  !dataUnitItem.IsAdd
+                "
+              >
+                {{ "COMMON_REMOVE" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</kendo-dialog>
+
+<kendo-dialog
+  *ngIf="isOpenDetailDialog"
+  class="organization detail-dialog"
+  [draggable]="false"
+  [ngClass]="'window-center dialog-chat'"
+>
+  <div class="employe-detail">
+    <div class="x-close-div">
+      <div class="title-info-req">
+        <strong>{{ "Unit_Emp_List" | translate }}</strong>
+      </div>
+      <button
+        kendoButton
+        class="xbutton-dialog"
+        [icon]="'close'"
+        [title]="'Close_Box' | translate"
+        (click)="onCloseDetailDialog()"
+      ></button>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-12">
+        <app-accounts
+          [isOriginComponent]="false"
+          [organizationID]="this.organizationID"
+        ></app-accounts>
+      </div>
+    </div>
+  </div>
+</kendo-dialog>

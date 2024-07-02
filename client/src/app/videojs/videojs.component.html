@@ -1,0 +1,24 @@
+<section class="video-view">
+    <div (click)="openDialog($event)" *ngIf="urlData && !zoom" #video_box>
+      <video (error)="videoError()" #video class="video-js vjs-default-skin video-cover vjs-big-play-centered video" data-setup='{}'>
+        <source [src]="urlData"/>
+      </video>
+    </div>
+    <div  *ngIf="urlData && zoom" #video_box>
+      <div class="mask-video" (click)="openDialog($event)"></div>
+      <!-- <video #video_default class="video" (onerror)="videoError()">
+        <source [src]="urlData"/>
+      </video> -->
+      <video (error)="videoError()" #video class="video-js vjs-default-skin video-cover vjs-big-play-centered video" data-setup='{}'>
+        <source [src]="urlData"/>
+      </video>
+      <span class="play-button"><i class="gg-play-button-o"></i></span>
+    </div>
+    <img #video_error>
+    <ng-template #modal let-data class="video-conponent-template">
+      <video id="video-player-zoom"(onerror)="videoError()"  autoplay class="video-js vjs-default-skin video-cover vjs-big-play-centered video-conponent-videotemplate" controls data-setup='{}'>
+        <source [src]="data">
+      </video>
+      <button class="video-conponent-template-close" matDialogClose>X</button>
+    </ng-template>
+</section>

@@ -1,0 +1,252 @@
+<div class="router-outlet-content personal row content-detail">
+  <div class="col-md-12 col-12">
+    <div class="row">
+      <div class="col-md-12 col-12 avatar">
+        <label class="vnpt-upload-img" [title]="'Upload' | translate">
+          <div class="user-image-large">
+            <img [ngClass]="IsVietnameseTab ? 'pointer' : '' " [src]="dataPersonalItemtemp.AvatarUrl">
+          </div>
+          <kendo-upload [restrictions]="myRestrictionsImage" [disabled]="!IsVietnameseTab"
+            [accept]="['.png','.jpg','.jpeg']" [(ngModel)]=" filesUploadAvatar" (select)="onSelectAvatarUpload($event)"
+            (remove)="onRemoveAvatarUpload()" [multiple]="false" [showFileList]="false" [saveUrl]="fileSaveUrl"
+            (success)="onSuccessAvatarUpload($event)">
+            <kendo-upload-messages [headerStatusUploaded]="'FileUploaded' | translate"
+              [dropFilesHere]="'dropFilesHere' | translate" [select]="'UploadFile' | translate">
+            </kendo-upload-messages>
+          </kendo-upload>
+        </label>
+      </div>
+
+      <div class="col-md-12 col-12">
+        <div [ngClass]="'control'" class="border-infor">
+          <label>
+            <span class="label-infor " [textContent]="'Personal_Name' | translate"></span>
+            <span class="required">(*)</span>
+          </label>
+          <input kendoTextBox [(ngModel)]="dataPersonalItemtemp.Name" [ngClass]="dataErr[0]['Name'] ? 'err' : ''" (keypress)="filterInput($event)" />
+          <span class="err-text " *ngIf="dataErr[0]['Name'] ">{{dataErr[0]['Name']}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+        <div [ngClass]="'control'" class="border-infor">
+          <label>
+            <span class="label-infor " [textContent]="'Personal_Phone' | translate"></span>
+            <span class="required">(*)</span>
+          </label>
+          <input [ngClass]="dataErr[0]['Phone'] ? 'err' : ''" kendoTextBox [disabled]="!IsVietnameseTab"
+            [(ngModel)]="dataPersonalItemtemp.Phone" (keypress)="numberOnly($event)" minlength="10" maxlength="12" />
+          <span class="err-text" *ngIf="dataErr[0]['Phone'] ">{{dataErr[0]['Phone']}}</span>
+          <span class="err-text" *ngIf="this.phoneEre">{{this.phoneEre}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-12" >
+        <div [ngClass]="'control'" class="border-infor">
+          <label>
+            <span class="label-infor " [textContent]="'Personal_BirthDate' | translate"></span>
+          </label>
+          <kendo-datepicker [ngClass]="dataErr[0]['BirthDate'] ? 'err' : ''" [disabled]="!IsVietnameseTab"
+            [placeholder]="''" [format]="'FormatDate' | translate" [(ngModel)]="dataPersonalItemtemp.BirthDate"
+            [formatPlaceholder]="{ year: 'year' | translate, month: 'month'| translate , day: 'day' | translate }">
+            <kendo-datepicker-messages [today]="'today' | translate"></kendo-datepicker-messages>
+          </kendo-datepicker>
+          <span class="err-text " *ngIf="dataErr[0]['BirthDate'] ">{{dataErr[0]['BirthDate']}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+        <div [ngClass]="'control'" class="border-infor">
+          <label>
+            <span class="label-infor " [textContent]="'Personal_Gender' | translate"></span>
+            <span class="required">(*)</span>
+          </label>
+          <kendo-dropdownlist [ngClass]="dataErr[0]['Gender'] ? 'err' : ''" [disabled]="!IsVietnameseTab"
+            [data]="genderFilter" [textField]="'Name'" [valueField]="'ID'" [(ngModel)]="dataPersonalItemtemp.Gender"
+            [valuePrimitive]="true" [filterable]="false" (filterChange)="genderHandleFilter($event)">
+            <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+          </kendo-dropdownlist>
+          <span class="err-text " *ngIf="dataErr[0]['Gender'] ">{{dataErr[0]['Gender']}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+        <div [ngClass]="'control'" class="border-infor">
+          <label>
+            <span class="label-infor " [textContent]="'Personal_Email' | translate"></span>
+            <span class="required">(*)</span>
+          </label>
+          <input kendoTextBox [(ngModel)]="dataPersonalItemtemp.Email" [email]="true" type="email" [disabled]="!IsVietnameseTab"
+          [ngClass]="dataErr[0]['Email'] ? 'err' : ''" />
+          <span class="err-text " *ngIf="dataErr[0]['Email'] ">{{dataErr[0]['Email']}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+        <div [ngClass]="'control'" class="border-infor">
+          <label>
+            <span class="label-infor " [textContent]="'Personal_UnitName' | translate"></span>
+            <span class="required">(*)</span>
+          </label>
+          <kendo-dropdownlist [ngClass]="dataErr[0]['UnitID'] ? 'err' : ''"
+            [data]="unitFilter" [textField]="'Name'" [valueField]="'ID'" [(ngModel)]="dataPersonalItemtemp.UnitID"
+            [valuePrimitive]="true" [filterable]="true" (filterChange)="unitHandleFilter($event)">
+            <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+          </kendo-dropdownlist>
+          <span class="err-text " *ngIf="dataErr[0]['UnitID'] ">{{dataErr[0]['UnitID']}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+        <div [ngClass]="'control'" class="border-infor">
+          <label>
+            <span class="label-infor " [textContent]="'Personal_PositionName' | translate"></span>
+            <span class="required">(*)</span>
+          </label>
+          <kendo-dropdownlist [ngClass]="dataErr[0]['PositionID'] ? 'err' : ''"
+            [data]="positionsFilter" [textField]="'Name'" [valueField]="'ID'"
+            [(ngModel)]="dataPersonalItemtemp.PositionID" [valuePrimitive]="true" [filterable]="true"
+            (filterChange)="positionsHandleFilter($event)">
+            <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
+          </kendo-dropdownlist>
+          <span class="err-text " *ngIf="dataErr[0]['PositionID'] ">{{dataErr[0]['PositionID']}}</span>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-12 col-12">
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor " [textContent]="'HomeTown' | translate"></span>
+            </label>
+
+              <input  kendoTextBox  [(ngModel)]="dataPersonalItemtemp.HomeTown" [ngClass]="dataErr[0]['HomeTown']  ? 'err ' : ''"
+              />
+              <span class="err-text " *ngIf="dataErr[0]['HomeTown'] ">{{dataErr[0]['HomeTown']}}</span>
+
+          </div>
+
+      </div>
+
+      <div class="col-md-12 col-12">
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'Ethnic' | translate"></span>
+            </label>
+            <kendo-dropdownlist [ngClass]="dataErr[0]['Ethnic'] ? 'err' : ''"  class="font-size"
+              [data]="ethnicFilter" [textField]="'Name'" [valueField]="'ID'"
+              [(ngModel)]="dataPersonalItemtemp.Ethnic" [valuePrimitive]="true" [filterable]="true"
+              (filterChange)="ethnicHandleFilter($event)">
+              <ng-template kendoDropDownListNoDataTemplate>{{'NoRecordsAvailable' | translate}}</ng-template>
+            </kendo-dropdownlist>
+          </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'Qualification' | translate"></span>
+            </label>
+            <kendo-dropdownlist [ngClass]="dataErr[0]['Qualification'] ? 'err' : ''"  class="font-size"
+              [data]="qualificationFilter" [textField]="'Name'" [valueField]="'ID'"
+              [(ngModel)]="dataPersonalItemtemp.Qualification" [valuePrimitive]="true" [filterable]="true"
+              (filterChange)="qualificationHandleFilter($event)">
+              <ng-template kendoDropDownListNoDataTemplate>{{'NoRecordsAvailable' | translate}}</ng-template>
+            </kendo-dropdownlist>
+          </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'Specialized' | translate"></span>
+            </label>
+
+              <input  kendoTextBox [(ngModel)]="dataPersonalItemtemp.Specialized" [ngClass]="dataErr[0]['Specialized'] ? 'err ' : ''"
+                 />
+              <span class="err-text " *ngIf="dataErr[0]['Specialized'] ">{{dataErr[0]['Specialized']}}</span>
+
+
+          </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'PoliticalTheory' | translate"></span>
+            </label>
+            <kendo-dropdownlist [ngClass]="dataErr[0]['PoliticalTheory'] ? 'err' : ''"  class="font-size"
+                [data]="politicalTheoryFilter" [textField]="'Name'" [valueField]="'ID'"
+                [(ngModel)]="dataPersonalItemtemp.PoliticalTheory" [valuePrimitive]="true" [filterable]="true"
+                (filterChange)="politicalTheoryHandleFilter($event)">
+                <ng-template kendoDropDownListNoDataTemplate>{{'NoRecordsAvailable' | translate}}</ng-template>
+            </kendo-dropdownlist>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-6" >
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'YouthGroupDate' | translate"></span>
+            </label>
+            <kendo-datepicker [ngClass]="dataErr[0]['YouthGroupDate'] ? 'err' : ''"  class="font-size"
+              [placeholder]="'FormatDate' | translate" [format]="'FormatDate' | translate" [(ngModel)]="dataPersonalItemtemp.YouthGroupDate"
+              [formatPlaceholder]="{ year: 'year' | translate, month: 'month'| translate , day: 'day' | translate }">
+              <kendo-datepicker-messages [today]="'today' | translate"></kendo-datepicker-messages>
+            </kendo-datepicker>
+            <span class="err-text " *ngIf="dataErr[0]['YouthGroupDate'] ">{{dataErr[0]['YouthGroupDate']}}</span>
+          </div>
+      </div>
+
+      <div class="col-md-6 col-6" >
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'CommunistPartyDate' | translate"></span>
+            </label>
+            <kendo-datepicker [ngClass]="dataErr[0]['CommunistPartyDate'] ? 'err' : ''"  class="font-size"
+              [placeholder]="'FormatDate' | translate" [format]="'FormatDate' | translate" [(ngModel)]="dataPersonalItemtemp.CommunistPartyDate"
+              [formatPlaceholder]="{ year: 'year' | translate, month: 'month'| translate , day: 'day' | translate }">
+              <kendo-datepicker-messages [today]="'today' | translate"></kendo-datepicker-messages>
+            </kendo-datepicker>
+            <span class="err-text " *ngIf="dataErr[0]['CommunistPartyDate'] ">{{dataErr[0]['CommunistPartyDate']}}</span>
+          </div>
+      </div>
+
+
+      <div class="col-md-12 col-12">
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'CommunistPartyPosition' | translate"></span>
+            </label>
+            <kendo-dropdownlist [ngClass]="dataErr[0]['CommunistPartyPosition'] ? 'err' : ''"  class="font-size"
+              [data]="communistPartyPositionFilter" [textField]="'Name'" [valueField]="'ID'"
+              [(ngModel)]="dataPersonalItemtemp.CommunistPartyPosition" [valuePrimitive]="true" [filterable]="true"
+              (filterChange)="communistPartyPositionHandleFilter($event)">
+              <ng-template kendoDropDownListNoDataTemplate>{{'NoRecordsAvailable' | translate}}</ng-template>
+            </kendo-dropdownlist>
+          </div>
+      </div>
+
+      <div class="col-md-12 col-12">
+          <div [ngClass]="'control'"  class="border-infor">
+            <label >
+              <span class="label-infor  " [textContent]="'Note' | translate"></span>
+            </label>
+              <input  kendoTextBox [(ngModel)]="dataPersonalItemtemp.Note" [ngClass]="dataErr[0]['Note'] ? 'err ' : ''"
+                 />
+              <span class="err-text " *ngIf="dataErr[0]['Note'] ">{{dataErr[0]['Note']}}</span>
+
+          </div>
+      </div> -->
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-12">
+
+        <button *ngIf=" controlDefault || control.Save " class="btn-dialog btn-save" (click)="onSavePersonal()">
+          <span>{{'Save' | translate}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

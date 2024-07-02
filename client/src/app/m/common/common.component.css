@@ -1,0 +1,143 @@
+.m-common .err-text,
+ .m-common .required {
+    color: #ff6358;
+    padding-left: 3px;
+    font-style: italic;
+}
+.m-common .btn-dialog-cus {
+    float: left;
+    margin-top: 25px;
+}
+
+.m-common .btn-remove {
+  background-color: transparent !important;
+  right: 40px;
+  color: black !important;
+  width: 30px;
+  height: 32px;
+  float: right;
+  border-radius: 0;
+  margin-top: -33px;
+  border: 0;
+  margin-right: -29px !important;
+}
+.m-common .btn-search{
+    color: white;
+    background-color:#985D1A;
+    border: hidden;
+    padding: 5px 20px;
+    font-size: 14px !important
+}
+.m-common .err {
+    border: 1px solid #ea4335;
+    animation: myerr 1s infinite;
+}
+
+@keyframes myerr {
+    0% {
+        border-color: #ea4335;
+    }
+    25% {
+        border-color: yellow;
+    }
+    50% {
+        border-color: blue;
+    }
+    100% {
+        border-color: #34a853;
+    }
+}
+
+ .m-common.x-dialog {
+    max-width: 768px;
+    max-height: 470px;
+}
+
+.m-common .custom-btn-addNew {
+    margin-top: 10px !important;
+}
+
+.m-common .btn-addNew {
+    text-align: right;
+    display: inherit;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+
+ .m-common .btn-custom {
+    width: 100%;
+
+}
+ .m-common .btn-custom button {
+    background: #cd330d;
+    color: white;
+    width: 100%;
+}
+
+
+.m-common .default-lang {
+    border-bottom: none;
+    float: left;
+    margin-right: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+.m-common .selected-lang {
+    border-bottom: 3px red solid;
+}
+
+.m-common .mobile-view{
+    display: none;
+}
+
+
+@media (max-width: 600px) {
+     .k-window {
+        width: 90%;
+        height: 90%;
+    }
+     .m-common.x-dialog {
+        max-width: 768px;
+        max-height: none;
+    }
+    .m-common .web-view{
+        display: none;
+    }
+    .m-common .mobile-view{
+        display: inline-block;
+    }
+
+    .m-common .post-title{
+        font-weight: 600;
+        font-size: 17px;
+    }
+
+    .m-common .post-title .title{
+        width: calc(100% - 30px);
+        float: left;
+    }
+
+    .m-common .k-dropdown-button button{
+        background: none !important;
+        color: black !important;
+        border: none !important;
+        padding-right: 0px;
+        width: 28px;
+        float: right;
+    }
+
+    .m-common .btn-group{
+        float: right;
+        width: 15px;
+    }
+
+    .m-common .k-dropdown-button.k-widget {
+        background-color: transparent;
+    }
+
+    .m-common kendo-popup {
+        min-width: 200px !important;
+    }
+}
