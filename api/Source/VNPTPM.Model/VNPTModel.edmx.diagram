@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1a8d03a7bc824d2a8c3b6917e4c556ee" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="VNPTPMModel.M_PART" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_POSITION" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_AUTONUMBER" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_CONFIG" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_CONTROL" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_LOG" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_PAGE" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_ROLE" Width="1.5" PointX="4.75" PointY="5.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_ROLE_PAGE" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_USER" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AuditSearch" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.Concept" Width="1.5" PointX="6.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.ConceptMapping" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_1_Luat" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_2_Chuong" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_3_Muc" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_4_Dieu" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_5_Khoan" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_6_Diem" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_ACCOUNT" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_CRAWL" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_MENU" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_REWARD" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.KeyPhrase_Title_Mapping" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.KeyRelate" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_COMMON" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_UNIT" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.query" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.QuestionContain" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.QuestionType" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.Settings" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.USER_TOKEN" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.Concept_KeyPhrase" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.KeyPhrase" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.KeyPhraseMapping" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.user" Width="1.5" PointX="16.75" PointY="4.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

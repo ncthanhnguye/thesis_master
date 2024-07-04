@@ -1,0 +1,1585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VNPTPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AD_AUTONUMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Format" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Step" Type="smallint" Nullable="false" />
+          <Property Name="Current" Type="bigint" />
+        </EntityType>
+        <EntityType Name="AD_CONFIG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SercurityValue" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AD_CONTROL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControlID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PageID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="AbsoluteUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="MethodRequest" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="AD_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="150" />
+          <Property Name="ActionRec" Type="int" />
+          <Property Name="Data" Type="ntext" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="AD_PAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ParentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrdinalNumber" Type="float" />
+          <Property Name="MenuFlg" Type="bit" />
+          <Property Name="ButtonFlg" Type="bit" />
+          <Property Name="Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileUrls" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AD_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="DefaultFlg" Type="bit" />
+          <Property Name="PageID" Type="nvarchar" MaxLength="150" />
+          <Property Name="ParentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelFlg" Type="bit" />
+          <Property Name="UpdateAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AD_ROLE_PAGE">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="PageID" />
+          </Key>
+          <Property Name="RoleID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PageID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="ntext" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="ActiveFlg" Type="bit" />
+        </EntityType>
+        <EntityType Name="AD_USER">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="AccountID" Type="uniqueidentifier" />
+          <Property Name="LockFlg" Type="bit" />
+          <Property Name="DelFlg" Type="bit" />
+          <Property Name="RoleID" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="SecureCode" Type="varchar" MaxLength="10" />
+          <Property Name="LoginFailedCount" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'THESIS_MASTER.dbo.ArticalVector' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ArticalVector">
+          <Property Name="ArticalID" Type="int" />
+          <Property Name="vector" Type="varchar(max)" />
+          <Property Name="LawID" Type="int" />
+        </EntityType>-->
+        <EntityType Name="AuditSearch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Concept">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'THESIS_MASTER.dbo.Concept_KeyPhrase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Concept_KeyPhrase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConceptID" Type="int" />
+          <Property Name="KeyPhraseID" Type="int" />
+          <Property Name="LawID" Type="int" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="ConceptMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConceptID" Type="int" />
+          <Property Name="ArticalID" Type="int" />
+          <Property Name="ChapterID" Type="int" />
+          <Property Name="ChapterItemID" Type="int" />
+          <Property Name="ClaustID" Type="int" />
+          <Property Name="PointID" Type="int" />
+          <Property Name="LawID" Type="int" />
+          <Property Name="KeyPhraseID" Type="int" />
+        </EntityType>
+        <EntityType Name="DATA_1_Luat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DATA_2_Chuong">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index" Type="int" />
+          <Property Name="LuatID" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DATA_3_Muc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index" Type="int" />
+          <Property Name="LuatID" Type="int" />
+          <Property Name="ChuongID" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DATA_4_Dieu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index" Type="int" />
+          <Property Name="LuatID" Type="int" />
+          <Property Name="ChuongID" Type="int" />
+          <Property Name="MucID" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DATA_5_Khoan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index" Type="int" />
+          <Property Name="LuatID" Type="int" />
+          <Property Name="ChuongID" Type="int" />
+          <Property Name="MucID" Type="int" />
+          <Property Name="DieuID" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DATA_6_Diem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Index" Type="int" />
+          <Property Name="LuatID" Type="int" />
+          <Property Name="ChuongID" Type="int" />
+          <Property Name="MucID" Type="int" />
+          <Property Name="DieuID" Type="int" />
+          <Property Name="KhoanID" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DATA_ACCOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameModify" Type="nvarchar" MaxLength="100" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="PositionID" Type="int" />
+          <Property Name="UnitID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="AvatarUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="TokenDevice" Type="nvarchar" MaxLength="500" />
+          <Property Name="LockFlg" Type="bit" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteAt" Type="datetime" />
+          <Property Name="DeleteBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelFlg" Type="bit" />
+          <Property Name="HomeTown" Type="nvarchar" MaxLength="150" />
+          <Property Name="Ethnic" Type="int" />
+          <Property Name="Specialized" Type="nvarchar" MaxLength="150" />
+          <Property Name="PoliticalTheory" Type="int" />
+          <Property Name="YouthGroupDate" Type="date" />
+          <Property Name="CommunistPartyDate" Type="date" />
+          <Property Name="CommunistPartyPosition" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="Qualification" Type="int" />
+        </EntityType>
+        <EntityType Name="DATA_CRAWL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TenCauHoi" Type="nvarchar(max)" />
+          <Property Name="LinhVuc" Type="nvarchar(max)" />
+          <Property Name="NoiDungCauHoi" Type="nvarchar(max)" />
+          <Property Name="CauTraLoi" Type="nvarchar(max)" />
+          <Property Name="Luat" Type="nvarchar(max)" />
+          <Property Name="KeyWords" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DATA_MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="ParentID" Type="uniqueidentifier" />
+          <Property Name="PageID" Type="nvarchar" MaxLength="150" />
+          <Property Name="UrlPath" Type="nvarchar" MaxLength="150" />
+          <Property Name="OrderIdx" Type="float" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteAt" Type="datetime" />
+          <Property Name="DeleteBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelFlg" Type="bit" />
+          <Property Name="Roles" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DATA_REWARD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="PeriodID" Type="uniqueidentifier" />
+          <Property Name="UnitID" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnitParentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="200" />
+          <Property Name="Birthday" Type="bigint" />
+          <Property Name="TikiCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Money" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="smallint" />
+          <Property Name="OCRAt" Type="datetime" />
+          <Property Name="OCRBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="RejectNote" Type="nvarchar" MaxLength="250" />
+          <Property Name="RejectFlg" Type="bit" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="SendAt" Type="datetime" />
+          <Property Name="SendBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApproveAt" Type="datetime" />
+          <Property Name="ApproveBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeleteAt" Type="datetime" />
+          <Property Name="DeleteBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelFlg" Type="bit" />
+          <Property Name="Relationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Index" Type="int" />
+          <Property Name="OwnerFlg" Type="bit" />
+          <Property Name="StatusSign" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'THESIS_MASTER.dbo.KeyPhrase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="KeyPhrase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyPhrase" Type="nvarchar" MaxLength="500" />
+          <Property Name="source" Type="int" />
+          <Property Name="ConceptID" Type="int" />
+          <Property Name="NumberArtical" Type="int" />
+          <Property Name="KeyNorm" Type="nvarchar" MaxLength="500" />
+          <Property Name="LawID" Type="int" />
+        </EntityType>
+        <EntityType Name="KeyPhrase_Title_Mapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyPhraseID" Type="int" />
+          <Property Name="ChapterID" Type="int" />
+          <Property Name="ChapterItemID" Type="int" />
+          <Property Name="ArticalID" Type="int" />
+          <Property Name="LawID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'THESIS_MASTER.dbo.KeyPhraseMapping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="KeyPhraseMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyPhraseID" Type="int" />
+          <Property Name="ChapterID" Type="int" />
+          <Property Name="ArticalID" Type="int" />
+          <Property Name="ClaustID" Type="int" />
+          <Property Name="ChapterItemID" Type="int" />
+          <Property Name="Weight" Type="float" />
+          <Property Name="LawID" Type="int" />
+          <Property Name="NumCount" Type="int" />
+        </EntityType>
+        <EntityType Name="KeyRelate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyPhraseID1" Type="int" Nullable="false" />
+          <Property Name="KeyPhraseID2" Type="int" Nullable="false" />
+          <Property Name="NumArtical" Type="int" />
+          <Property Name="NumCount" Type="int" />
+          <Property Name="LawID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'THESIS_MASTER.dbo.KeySynonym' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="KeySynonym">
+          <Property Name="Key1" Type="int" />
+          <Property Name="Key2" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'THESIS_MASTER.dbo.LawHTML' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="LawHTML">
+          <Property Name="LawID" Type="int" />
+          <Property Name="ContentHTML" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="M_COMMON">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Type" Type="tinyint" />
+          <Property Name="OrderIndex" Type="int" />
+          <Property Name="DelFlg" Type="bit" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="M_UNIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="Type" Type="int" />
+          <Property Name="CreateAt" Type="date" />
+          <Property Name="UpdateAt" Type="date" />
+          <Property Name="DelFlg" Type="bit" />
+        </EntityType>
+        <EntityType Name="query">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="value" Type="nvarchar(max)" />
+          <Property Name="result" Type="nvarchar(max)" />
+          <Property Name="Datetime" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="QuestionContain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contain" Type="nvarchar" MaxLength="250" />
+          <Property Name="QuestionTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="QuestionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionType" Type="nvarchar" MaxLength="350" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="250" />
+          <Property Name="AfterFix" Type="nvarchar" MaxLength="250" />
+          <Property Name="Contain" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'THESIS_MASTER.dbo.temp' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="temp">
+          <Property Name="content" Type="nvarchar(max)" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="250" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="USER_TOKEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="700" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="AccountID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityContainer Name="VNPTPMModelStoreContainer">
+          <EntitySet Name="AD_AUTONUMBER" EntityType="Self.AD_AUTONUMBER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_CONFIG" EntityType="Self.AD_CONFIG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_CONTROL" EntityType="Self.AD_CONTROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_LOG" EntityType="Self.AD_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_PAGE" EntityType="Self.AD_PAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_ROLE" EntityType="Self.AD_ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_ROLE_PAGE" EntityType="Self.AD_ROLE_PAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_USER" EntityType="Self.AD_USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditSearch" EntityType="Self.AuditSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Concept" EntityType="Self.Concept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConceptMapping" EntityType="Self.ConceptMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_1_Luat" EntityType="Self.DATA_1_Luat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_2_Chuong" EntityType="Self.DATA_2_Chuong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_3_Muc" EntityType="Self.DATA_3_Muc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_4_Dieu" EntityType="Self.DATA_4_Dieu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_5_Khoan" EntityType="Self.DATA_5_Khoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_6_Diem" EntityType="Self.DATA_6_Diem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_ACCOUNT" EntityType="Self.DATA_ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_CRAWL" EntityType="Self.DATA_CRAWL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_MENU" EntityType="Self.DATA_MENU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATA_REWARD" EntityType="Self.DATA_REWARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KeyPhrase_Title_Mapping" EntityType="Self.KeyPhrase_Title_Mapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KeyRelate" EntityType="Self.KeyRelate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_COMMON" EntityType="Self.M_COMMON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_UNIT" EntityType="Self.M_UNIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="query" EntityType="Self.query" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionContain" EntityType="Self.QuestionContain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_TOKEN" EntityType="Self.USER_TOKEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Concept_KeyPhrase" EntityType="Self.Concept_KeyPhrase" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Concept_KeyPhrase].[ID] AS [ID], 
+    [Concept_KeyPhrase].[ConceptID] AS [ConceptID], 
+    [Concept_KeyPhrase].[KeyPhraseID] AS [KeyPhraseID], 
+    [Concept_KeyPhrase].[LawID] AS [LawID], 
+    [Concept_KeyPhrase].[Count] AS [Count]
+    FROM [dbo].[Concept_KeyPhrase] AS [Concept_KeyPhrase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="KeyPhrase" EntityType="Self.KeyPhrase" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [KeyPhrase].[ID] AS [ID], 
+    [KeyPhrase].[KeyPhrase] AS [KeyPhrase], 
+    [KeyPhrase].[source] AS [source], 
+    [KeyPhrase].[ConceptID] AS [ConceptID], 
+    [KeyPhrase].[NumberArtical] AS [NumberArtical], 
+    [KeyPhrase].[KeyNorm] AS [KeyNorm], 
+    [KeyPhrase].[LawID] AS [LawID]
+    FROM [dbo].[KeyPhrase] AS [KeyPhrase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="KeyPhraseMapping" EntityType="Self.KeyPhraseMapping" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [KeyPhraseMapping].[ID] AS [ID], 
+    [KeyPhraseMapping].[KeyPhraseID] AS [KeyPhraseID], 
+    [KeyPhraseMapping].[ChapterID] AS [ChapterID], 
+    [KeyPhraseMapping].[ArticalID] AS [ArticalID], 
+    [KeyPhraseMapping].[ClaustID] AS [ClaustID], 
+    [KeyPhraseMapping].[ChapterItemID] AS [ChapterItemID], 
+    [KeyPhraseMapping].[Weight] AS [Weight], 
+    [KeyPhraseMapping].[LawID] AS [LawID], 
+    [KeyPhraseMapping].[NumCount] AS [NumCount]
+    FROM [dbo].[KeyPhraseMapping] AS [KeyPhraseMapping]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="user" EntityType="Self.user" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [user].[ID] AS [ID], 
+    [user].[username] AS [username], 
+    [user].[password] AS [password], 
+    [user].[Type] AS [Type], 
+    [user].[Name] AS [Name], 
+    [user].[Email] AS [Email], 
+    [user].[Description] AS [Description]
+    FROM [dbo].[user] AS [user]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VNPTPMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VNPTPMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AD_AUTONUMBER" EntityType="VNPTPMModel.AD_AUTONUMBER" />
+          <EntitySet Name="AD_CONFIG" EntityType="VNPTPMModel.AD_CONFIG" />
+          <EntitySet Name="AD_CONTROL" EntityType="VNPTPMModel.AD_CONTROL" />
+          <EntitySet Name="AD_LOG" EntityType="VNPTPMModel.AD_LOG" />
+          <EntitySet Name="AD_PAGE" EntityType="VNPTPMModel.AD_PAGE" />
+          <EntitySet Name="AD_ROLE" EntityType="VNPTPMModel.AD_ROLE" />
+          <EntitySet Name="AD_ROLE_PAGE" EntityType="VNPTPMModel.AD_ROLE_PAGE" />
+          <EntitySet Name="AD_USER" EntityType="VNPTPMModel.AD_USER" />
+          <EntitySet Name="AuditSearch" EntityType="VNPTPMModel.AuditSearch" />
+          <EntitySet Name="Concept" EntityType="VNPTPMModel.Concept" />
+          <EntitySet Name="ConceptMapping" EntityType="VNPTPMModel.ConceptMapping" />
+          <EntitySet Name="DATA_1_Luat" EntityType="VNPTPMModel.DATA_1_Luat" />
+          <EntitySet Name="DATA_2_Chuong" EntityType="VNPTPMModel.DATA_2_Chuong" />
+          <EntitySet Name="DATA_3_Muc" EntityType="VNPTPMModel.DATA_3_Muc" />
+          <EntitySet Name="DATA_4_Dieu" EntityType="VNPTPMModel.DATA_4_Dieu" />
+          <EntitySet Name="DATA_5_Khoan" EntityType="VNPTPMModel.DATA_5_Khoan" />
+          <EntitySet Name="DATA_6_Diem" EntityType="VNPTPMModel.DATA_6_Diem" />
+          <EntitySet Name="DATA_ACCOUNT" EntityType="VNPTPMModel.DATA_ACCOUNT" />
+          <EntitySet Name="DATA_CRAWL" EntityType="VNPTPMModel.DATA_CRAWL" />
+          <EntitySet Name="DATA_MENU" EntityType="VNPTPMModel.DATA_MENU" />
+          <EntitySet Name="DATA_REWARD" EntityType="VNPTPMModel.DATA_REWARD" />
+          <EntitySet Name="KeyPhrase_Title_Mapping" EntityType="VNPTPMModel.KeyPhrase_Title_Mapping" />
+          <EntitySet Name="KeyRelate" EntityType="VNPTPMModel.KeyRelate" />
+          <EntitySet Name="M_COMMON" EntityType="VNPTPMModel.M_COMMON" />
+          <EntitySet Name="M_UNIT" EntityType="VNPTPMModel.M_UNIT" />
+          <EntitySet Name="query" EntityType="VNPTPMModel.query" />
+          <EntitySet Name="QuestionContain" EntityType="VNPTPMModel.QuestionContain" />
+          <EntitySet Name="QuestionType" EntityType="VNPTPMModel.QuestionType" />
+          <EntitySet Name="Settings" EntityType="VNPTPMModel.Settings" />
+          <EntitySet Name="USER_TOKEN" EntityType="VNPTPMModel.USER_TOKEN" />
+          <EntitySet Name="Concept_KeyPhrase" EntityType="VNPTPMModel.Concept_KeyPhrase" />
+          <EntitySet Name="KeyPhrase" EntityType="VNPTPMModel.KeyPhrase" />
+          <EntitySet Name="KeyPhraseMapping" EntityType="VNPTPMModel.KeyPhraseMapping" />
+          <EntitySet Name="user" EntityType="VNPTPMModel.user" />
+        </EntityContainer>
+        <EntityType Name="AD_AUTONUMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Step" Type="Int16" Nullable="false" />
+          <Property Name="Current" Type="Int64" />
+        </EntityType>
+        <EntityType Name="AD_CONFIG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SercurityValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AD_CONTROL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControlID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AbsoluteUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MethodRequest" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AD_LOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ActionRec" Type="Int32" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AD_PAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrdinalNumber" Type="Double" />
+          <Property Name="MenuFlg" Type="Boolean" />
+          <Property Name="ButtonFlg" Type="Boolean" />
+          <Property Name="Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileUrls" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AD_ROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultFlg" Type="Boolean" />
+          <Property Name="PageID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlg" Type="Boolean" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AD_ROLE_PAGE">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="PageID" />
+          </Key>
+          <Property Name="RoleID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="ActiveFlg" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AD_USER">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Guid" />
+          <Property Name="LockFlg" Type="Boolean" />
+          <Property Name="DelFlg" Type="Boolean" />
+          <Property Name="RoleID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="SecureCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LoginFailedCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AuditSearch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Concept">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ConceptMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConceptID" Type="Int32" />
+          <Property Name="ArticalID" Type="Int32" />
+          <Property Name="ChapterID" Type="Int32" />
+          <Property Name="ChapterItemID" Type="Int32" />
+          <Property Name="ClaustID" Type="Int32" />
+          <Property Name="PointID" Type="Int32" />
+          <Property Name="LawID" Type="Int32" />
+          <Property Name="KeyPhraseID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DATA_1_Luat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_2_Chuong">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="LuatID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_3_Muc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="LuatID" Type="Int32" />
+          <Property Name="ChuongID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_4_Dieu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="LuatID" Type="Int32" />
+          <Property Name="ChuongID" Type="Int32" />
+          <Property Name="MucID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_5_Khoan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="LuatID" Type="Int32" />
+          <Property Name="ChuongID" Type="Int32" />
+          <Property Name="MucID" Type="Int32" />
+          <Property Name="DieuID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_6_Diem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="LuatID" Type="Int32" />
+          <Property Name="ChuongID" Type="Int32" />
+          <Property Name="MucID" Type="Int32" />
+          <Property Name="DieuID" Type="Int32" />
+          <Property Name="KhoanID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_ACCOUNT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameModify" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PositionID" Type="Int32" />
+          <Property Name="UnitID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AvatarUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TokenDevice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LockFlg" Type="Boolean" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteAt" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlg" Type="Boolean" />
+          <Property Name="HomeTown" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Ethnic" Type="Int32" />
+          <Property Name="Specialized" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PoliticalTheory" Type="Int32" />
+          <Property Name="YouthGroupDate" Type="DateTime" Precision="0" />
+          <Property Name="CommunistPartyDate" Type="DateTime" Precision="0" />
+          <Property Name="CommunistPartyPosition" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DATA_CRAWL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TenCauHoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinhVuc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungCauHoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CauTraLoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Luat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KeyWords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Guid" />
+          <Property Name="PageID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UrlPath" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="OrderIdx" Type="Double" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteAt" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlg" Type="Boolean" />
+          <Property Name="Roles" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DATA_REWARD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PeriodID" Type="Guid" />
+          <Property Name="UnitID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="Int64" />
+          <Property Name="TikiCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Money" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="Int16" />
+          <Property Name="OCRAt" Type="DateTime" Precision="3" />
+          <Property Name="OCRBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RejectNote" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RejectFlg" Type="Boolean" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SendAt" Type="DateTime" Precision="3" />
+          <Property Name="SendBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApproveAt" Type="DateTime" Precision="3" />
+          <Property Name="ApproveBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeleteAt" Type="DateTime" Precision="3" />
+          <Property Name="DeleteBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlg" Type="Boolean" />
+          <Property Name="Relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Index" Type="Int32" />
+          <Property Name="OwnerFlg" Type="Boolean" />
+          <Property Name="StatusSign" Type="Int16" />
+        </EntityType>
+        <EntityType Name="KeyPhrase_Title_Mapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyPhraseID" Type="Int32" />
+          <Property Name="ChapterID" Type="Int32" />
+          <Property Name="ChapterItemID" Type="Int32" />
+          <Property Name="ArticalID" Type="Int32" />
+          <Property Name="LawID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KeyRelate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyPhraseID1" Type="Int32" Nullable="false" />
+          <Property Name="KeyPhraseID2" Type="Int32" Nullable="false" />
+          <Property Name="NumArtical" Type="Int32" />
+          <Property Name="NumCount" Type="Int32" />
+          <Property Name="LawID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="M_COMMON">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Byte" />
+          <Property Name="OrderIndex" Type="Int32" />
+          <Property Name="DelFlg" Type="Boolean" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="Unit" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M_UNIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="CreateAt" Type="DateTime" Precision="0" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="0" />
+          <Property Name="DelFlg" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="query">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datetime" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuestionContain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contain" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuestionType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionType1" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Prefix" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AfterFix" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Contain" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USER_TOKEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Concept_KeyPhrase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConceptID" Type="Int32" />
+          <Property Name="KeyPhraseID" Type="Int32" />
+          <Property Name="LawID" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KeyPhrase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyPhrase1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="source" Type="Int32" />
+          <Property Name="ConceptID" Type="Int32" />
+          <Property Name="NumberArtical" Type="Int32" />
+          <Property Name="KeyNorm" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LawID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KeyPhraseMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyPhraseID" Type="Int32" />
+          <Property Name="ChapterID" Type="Int32" />
+          <Property Name="ArticalID" Type="Int32" />
+          <Property Name="ClaustID" Type="Int32" />
+          <Property Name="ChapterItemID" Type="Int32" />
+          <Property Name="Weight" Type="Double" />
+          <Property Name="LawID" Type="Int32" />
+          <Property Name="NumCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VNPTPMModelStoreContainer" CdmEntityContainer="VNPTPMEntities">
+          <EntitySetMapping Name="AD_AUTONUMBER">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_AUTONUMBER">
+              <MappingFragment StoreEntitySet="AD_AUTONUMBER">
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="Step" ColumnName="Step" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_CONFIG">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_CONFIG">
+              <MappingFragment StoreEntitySet="AD_CONFIG">
+                <ScalarProperty Name="SercurityValue" ColumnName="SercurityValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_CONTROL">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_CONTROL">
+              <MappingFragment StoreEntitySet="AD_CONTROL">
+                <ScalarProperty Name="MethodRequest" ColumnName="MethodRequest" />
+                <ScalarProperty Name="AbsoluteUrl" ColumnName="AbsoluteUrl" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="ControlID" ColumnName="ControlID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_LOG">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_LOG">
+              <MappingFragment StoreEntitySet="AD_LOG">
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ActionRec" ColumnName="ActionRec" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_PAGE">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_PAGE">
+              <MappingFragment StoreEntitySet="AD_PAGE">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="FileUrls" ColumnName="FileUrls" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="ButtonFlg" ColumnName="ButtonFlg" />
+                <ScalarProperty Name="MenuFlg" ColumnName="MenuFlg" />
+                <ScalarProperty Name="OrdinalNumber" ColumnName="OrdinalNumber" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_ROLE">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_ROLE">
+              <MappingFragment StoreEntitySet="AD_ROLE">
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="DelFlg" ColumnName="DelFlg" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="DefaultFlg" ColumnName="DefaultFlg" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_ROLE_PAGE">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_ROLE_PAGE">
+              <MappingFragment StoreEntitySet="AD_ROLE_PAGE">
+                <ScalarProperty Name="ActiveFlg" ColumnName="ActiveFlg" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_USER">
+            <EntityTypeMapping TypeName="VNPTPMModel.AD_USER">
+              <MappingFragment StoreEntitySet="AD_USER">
+                <ScalarProperty Name="LoginFailedCount" ColumnName="LoginFailedCount" />
+                <ScalarProperty Name="SecureCode" ColumnName="SecureCode" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="DelFlg" ColumnName="DelFlg" />
+                <ScalarProperty Name="LockFlg" ColumnName="LockFlg" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditSearch">
+            <EntityTypeMapping TypeName="VNPTPMModel.AuditSearch">
+              <MappingFragment StoreEntitySet="AuditSearch">
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Concept">
+            <EntityTypeMapping TypeName="VNPTPMModel.Concept">
+              <MappingFragment StoreEntitySet="Concept">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConceptMapping">
+            <EntityTypeMapping TypeName="VNPTPMModel.ConceptMapping">
+              <MappingFragment StoreEntitySet="ConceptMapping">
+                <ScalarProperty Name="KeyPhraseID" ColumnName="KeyPhraseID" />
+                <ScalarProperty Name="LawID" ColumnName="LawID" />
+                <ScalarProperty Name="PointID" ColumnName="PointID" />
+                <ScalarProperty Name="ClaustID" ColumnName="ClaustID" />
+                <ScalarProperty Name="ChapterItemID" ColumnName="ChapterItemID" />
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="ArticalID" ColumnName="ArticalID" />
+                <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_1_Luat">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_1_Luat">
+              <MappingFragment StoreEntitySet="DATA_1_Luat">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_2_Chuong">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_2_Chuong">
+              <MappingFragment StoreEntitySet="DATA_2_Chuong">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LuatID" ColumnName="LuatID" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_3_Muc">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_3_Muc">
+              <MappingFragment StoreEntitySet="DATA_3_Muc">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ChuongID" ColumnName="ChuongID" />
+                <ScalarProperty Name="LuatID" ColumnName="LuatID" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_4_Dieu">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_4_Dieu">
+              <MappingFragment StoreEntitySet="DATA_4_Dieu">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MucID" ColumnName="MucID" />
+                <ScalarProperty Name="ChuongID" ColumnName="ChuongID" />
+                <ScalarProperty Name="LuatID" ColumnName="LuatID" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_5_Khoan">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_5_Khoan">
+              <MappingFragment StoreEntitySet="DATA_5_Khoan">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DieuID" ColumnName="DieuID" />
+                <ScalarProperty Name="MucID" ColumnName="MucID" />
+                <ScalarProperty Name="ChuongID" ColumnName="ChuongID" />
+                <ScalarProperty Name="LuatID" ColumnName="LuatID" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_6_Diem">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_6_Diem">
+              <MappingFragment StoreEntitySet="DATA_6_Diem">
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="KhoanID" ColumnName="KhoanID" />
+                <ScalarProperty Name="DieuID" ColumnName="DieuID" />
+                <ScalarProperty Name="MucID" ColumnName="MucID" />
+                <ScalarProperty Name="ChuongID" ColumnName="ChuongID" />
+                <ScalarProperty Name="LuatID" ColumnName="LuatID" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_ACCOUNT">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_ACCOUNT">
+              <MappingFragment StoreEntitySet="DATA_ACCOUNT">
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CommunistPartyPosition" ColumnName="CommunistPartyPosition" />
+                <ScalarProperty Name="CommunistPartyDate" ColumnName="CommunistPartyDate" />
+                <ScalarProperty Name="YouthGroupDate" ColumnName="YouthGroupDate" />
+                <ScalarProperty Name="PoliticalTheory" ColumnName="PoliticalTheory" />
+                <ScalarProperty Name="Specialized" ColumnName="Specialized" />
+                <ScalarProperty Name="Ethnic" ColumnName="Ethnic" />
+                <ScalarProperty Name="HomeTown" ColumnName="HomeTown" />
+                <ScalarProperty Name="DelFlg" ColumnName="DelFlg" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DeleteAt" ColumnName="DeleteAt" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="LockFlg" ColumnName="LockFlg" />
+                <ScalarProperty Name="TokenDevice" ColumnName="TokenDevice" />
+                <ScalarProperty Name="AvatarUrl" ColumnName="AvatarUrl" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="NameModify" ColumnName="NameModify" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_CRAWL">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_CRAWL">
+              <MappingFragment StoreEntitySet="DATA_CRAWL">
+                <ScalarProperty Name="KeyWords" ColumnName="KeyWords" />
+                <ScalarProperty Name="Luat" ColumnName="Luat" />
+                <ScalarProperty Name="CauTraLoi" ColumnName="CauTraLoi" />
+                <ScalarProperty Name="NoiDungCauHoi" ColumnName="NoiDungCauHoi" />
+                <ScalarProperty Name="LinhVuc" ColumnName="LinhVuc" />
+                <ScalarProperty Name="TenCauHoi" ColumnName="TenCauHoi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_MENU">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_MENU">
+              <MappingFragment StoreEntitySet="DATA_MENU">
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="DelFlg" ColumnName="DelFlg" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DeleteAt" ColumnName="DeleteAt" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="OrderIdx" ColumnName="OrderIdx" />
+                <ScalarProperty Name="UrlPath" ColumnName="UrlPath" />
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATA_REWARD">
+            <EntityTypeMapping TypeName="VNPTPMModel.DATA_REWARD">
+              <MappingFragment StoreEntitySet="DATA_REWARD">
+                <ScalarProperty Name="StatusSign" ColumnName="StatusSign" />
+                <ScalarProperty Name="OwnerFlg" ColumnName="OwnerFlg" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+                <ScalarProperty Name="DelFlg" ColumnName="DelFlg" />
+                <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+                <ScalarProperty Name="DeleteAt" ColumnName="DeleteAt" />
+                <ScalarProperty Name="ApproveBy" ColumnName="ApproveBy" />
+                <ScalarProperty Name="ApproveAt" ColumnName="ApproveAt" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="SendBy" ColumnName="SendBy" />
+                <ScalarProperty Name="SendAt" ColumnName="SendAt" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="RejectFlg" ColumnName="RejectFlg" />
+                <ScalarProperty Name="RejectNote" ColumnName="RejectNote" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OCRBy" ColumnName="OCRBy" />
+                <ScalarProperty Name="OCRAt" ColumnName="OCRAt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="TikiCode" ColumnName="TikiCode" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="UnitParentID" ColumnName="UnitParentID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyPhrase_Title_Mapping">
+            <EntityTypeMapping TypeName="VNPTPMModel.KeyPhrase_Title_Mapping">
+              <MappingFragment StoreEntitySet="KeyPhrase_Title_Mapping">
+                <ScalarProperty Name="LawID" ColumnName="LawID" />
+                <ScalarProperty Name="ArticalID" ColumnName="ArticalID" />
+                <ScalarProperty Name="ChapterItemID" ColumnName="ChapterItemID" />
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="KeyPhraseID" ColumnName="KeyPhraseID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyRelate">
+            <EntityTypeMapping TypeName="VNPTPMModel.KeyRelate">
+              <MappingFragment StoreEntitySet="KeyRelate">
+                <ScalarProperty Name="LawID" ColumnName="LawID" />
+                <ScalarProperty Name="NumCount" ColumnName="NumCount" />
+                <ScalarProperty Name="NumArtical" ColumnName="NumArtical" />
+                <ScalarProperty Name="KeyPhraseID2" ColumnName="KeyPhraseID2" />
+                <ScalarProperty Name="KeyPhraseID1" ColumnName="KeyPhraseID1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_COMMON">
+            <EntityTypeMapping TypeName="VNPTPMModel.M_COMMON">
+              <MappingFragment StoreEntitySet="M_COMMON">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="DelFlg" ColumnName="DelFlg" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_UNIT">
+            <EntityTypeMapping TypeName="VNPTPMModel.M_UNIT">
+              <MappingFragment StoreEntitySet="M_UNIT">
+                <ScalarProperty Name="DelFlg" ColumnName="DelFlg" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="query">
+            <EntityTypeMapping TypeName="VNPTPMModel.query">
+              <MappingFragment StoreEntitySet="query">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionContain">
+            <EntityTypeMapping TypeName="VNPTPMModel.QuestionContain">
+              <MappingFragment StoreEntitySet="QuestionContain">
+                <ScalarProperty Name="QuestionTypeID" ColumnName="QuestionTypeID" />
+                <ScalarProperty Name="Contain" ColumnName="Contain" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionType">
+            <EntityTypeMapping TypeName="VNPTPMModel.QuestionType">
+              <MappingFragment StoreEntitySet="QuestionType">
+                <ScalarProperty Name="Contain" ColumnName="Contain" />
+                <ScalarProperty Name="AfterFix" ColumnName="AfterFix" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="QuestionType1" ColumnName="QuestionType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="VNPTPMModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_TOKEN">
+            <EntityTypeMapping TypeName="VNPTPMModel.USER_TOKEN">
+              <MappingFragment StoreEntitySet="USER_TOKEN">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Concept_KeyPhrase">
+            <EntityTypeMapping TypeName="VNPTPMModel.Concept_KeyPhrase">
+              <MappingFragment StoreEntitySet="Concept_KeyPhrase">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="LawID" ColumnName="LawID" />
+                <ScalarProperty Name="KeyPhraseID" ColumnName="KeyPhraseID" />
+                <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyPhrase">
+            <EntityTypeMapping TypeName="VNPTPMModel.KeyPhrase">
+              <MappingFragment StoreEntitySet="KeyPhrase">
+                <ScalarProperty Name="LawID" ColumnName="LawID" />
+                <ScalarProperty Name="KeyNorm" ColumnName="KeyNorm" />
+                <ScalarProperty Name="NumberArtical" ColumnName="NumberArtical" />
+                <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="KeyPhrase1" ColumnName="KeyPhrase" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyPhraseMapping">
+            <EntityTypeMapping TypeName="VNPTPMModel.KeyPhraseMapping">
+              <MappingFragment StoreEntitySet="KeyPhraseMapping">
+                <ScalarProperty Name="NumCount" ColumnName="NumCount" />
+                <ScalarProperty Name="LawID" ColumnName="LawID" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ChapterItemID" ColumnName="ChapterItemID" />
+                <ScalarProperty Name="ClaustID" ColumnName="ClaustID" />
+                <ScalarProperty Name="ArticalID" ColumnName="ArticalID" />
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="KeyPhraseID" ColumnName="KeyPhraseID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="VNPTPMModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="c81accf800a54fcebaee3e42c0617563" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_DOCUMENT" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_ELECTED" Width="1.5" PointX="4.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_EVENT_DETAIL" Width="1.5" PointX="6.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_IDEA" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_IDEA_DETAIL" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_MEETING" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_MEMBER" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_PROCESS" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_REMINDER" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_RESULT" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_TAG" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.OF_MEMBER" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.OF_OFFICE" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.OF_PROCESS" Width="1.5" PointX="10.75" PointY="14.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PCES_MEMBER" Width="1.5" PointX="6.75" PointY="15.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PCES_OFFICE" Width="1.5" PointX="12.75" PointY="15.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PCES_PROCESS" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_ABROAD" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_ASSET" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_FAMILY" Width="1.5" PointX="16.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_FILE" Width="1.5" PointX="16.75" PointY="13.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_FILELOG" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_REVIEW" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_REWARD_DISCIPLINE" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_STUDY" Width="1.5" PointX="18.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_WORKING" Width="1.5" PointX="18.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.RP_REPORT" Width="1.5" PointX="8.75" PointY="18.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.RP_RESULT" Width="1.5" PointX="18.75" PointY="12.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.RP_RESULT_DETAIL" Width="1.5" PointX="18.75" PointY="17.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_AUTONUMBER" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_CONFIG" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_CONTROL" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_LOG" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_PAGE" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_ROLE" Width="1.5" PointX="4.75" PointY="5.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_ROLE_PAGE" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.AD_USER" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_ACC_LOG" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_NOTIFY" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_NOTIFY_SEEN" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.DATA_QUESTION" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_ADDRESS" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_COMMON" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_PART" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_POSITION" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.M_UNIT" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="VNPTPMModel.PRO5_PERSONAL" Width="1.5" PointX="0.75" PointY="11.75" />
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
