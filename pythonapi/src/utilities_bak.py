@@ -1,0 +1,634 @@
+import shutil
+from pdf2image import convert_from_path
+# from src.config import *
+from config import *
+import numpy as np
+import cv2
+import os
+from urllib.parse import urlparse
+import requests
+import fnmatch
+import logging
+from datetime import datetime
+import numpy as np
+import cv2
+from datetime import datetime
+from sys import platform
+import pytesseract
+from flask import jsonify
+import skimage as sk
+import pickle
+from PyPDF2 import PdfFileWriter, PdfFileReader
+# import threading, queue
+from concurrent.futures import ThreadPoolExecutor, wait, as_completed
+import queue
+
+# reader = easyocr.Reader(['vi'])
+# create an instance of each transformer
+
+modelHandSignatures = pickle.load(open(os.path.join(os.getcwd(), 'src\Classification_Model.p'), "rb"))
+Categories = ["1", "2", "3"]
+
+if platform == "win32":
+   #pytesseract.pytesseract.tesseract_cmd = os.path.join(os.getcwd(), 'Tesseract-OCR\\tesseract.exe')
+    pytesseract.pytesseract.tesseract_cmd = PATH_TESSERACT_EXE
+
+def Convert_PDF_toImage(pdfPath):
+    pages = []
+    if platform == "linux" or platform == "linux2":
+        pages = convert_from_path(pdfPath, DPI)
+    elif platform == "darwin":
+        pages = convert_from_path(pdfPath, DPI)
+    elif platform == "win32":
+        pages = convert_from_path(pdfPath, DPI, poppler_path=PATH_PDF_BIN)
+    for page in pages:
+        page.save(pdfPath.replace(".pdf", "") + '_page_' +
+                  str(pages.index(page) + 1) + '.jpg', 'JPEG')
+
+def Convert_PDF_toImageV2(pdfPath):
+    pages = []
+    if platform == "linux" or platform == "linux2":
+        pages = convert_from_path(pdfPath, DPI)
+    elif platform == "darwin":
+        pages = convert_from_path(pdfPath, DPI)
+    elif platform == "win32":
+        pages = convert_from_path(pdfPath, DPI, poppler_path=PATH_PDF_BIN)
+    for page in pages:
+        page.save(pdfPath.replace(".pdf", ".jpg"), 'JPEG')
+    return -1
+
+def Resize_Image_Keep_Ratio(image, width=None, height=None, inter=cv2.INTER_AREA):
+    # initialize the dimensions of the image to be resized and
+    # grab the image size
+    dim = None
+    print(image.shape[:2])
+    (h, w) = image.shape[:2]
+
+    # if both the width and height are None, then return the
+    # original image
+    if width is None and height is None:
+        return image
+
+    # check to see if the width is None
+    if width is None:
+        # calculate the ratio of the height and construct the
+        # dimensions
+        r = height / float(h)
+        dim = (int(w * r), height)
+
+    # otherwise, the height is None
+    else:
+        # calculate the ratio of the width and construct the
+        # dimensions
+        r = width / float(w)
+        dim = (width, int(h * r))
+
+    # resize the image
+    resized = cv2.resize(image, dim, interpolation=inter)
+
+    # return the resized image
+    return resized
+
+def Compute_Hist(image):
+    hist = np.zeros((256,), np.uint8)
+    h, w = image.shape[:2]
+    for i in range(h):
+        for j in range(w):
+            hist[image[i][j]] += 1
+    return hist
+
+def Equal_Hist(hist):
+    cumulator = np.zeros_like(hist, np.float64)
+    for i in range(len(cumulator)):
+        cumulator[i] = hist[:i].sum()
+    new_hist = (cumulator - cumulator.min()) / \
+        (cumulator.max() - cumulator.min()) * 255
+    new_hist = np.uint8(new_hist)
+    return new_hist
+
+def Run_Equal_Hist(img):
+    hist = Compute_Hist(img)
+    new_hist = Equal_Hist(hist)
+    h, w = img.shape[:2]
+    for i in range(h):
+        for j in range(w):
+            img[i, j] = new_hist[img[i, j]]
+    return img
+
+def Group_H_Lines(h_lines, thin_thresh):
+    new_h_lines = []
+    while len(h_lines) > 0:
+        thresh = sorted(h_lines, key=lambda x: x[0][1])[0][0]
+        lines = [line for line in h_lines if thresh[1] -
+                 thin_thresh <= line[0][1] <= thresh[1] + thin_thresh]
+        h_lines = [line for line in h_lines if thresh[1] - thin_thresh >
+                   line[0][1] or line[0][1] > thresh[1] + thin_thresh]
+        x = []
+        for line in lines:
+            x.append(line[0][0])
+            x.append(line[0][2])
+        x_min, x_max = min(x) - int(5*thin_thresh), max(x) + int(5*thin_thresh)
+        new_h_lines.append([x_min, thresh[1], x_max, thresh[1]])
+    return new_h_lines
+
+def Group_V_Lines(v_lines, thin_thresh):
+    new_v_lines = []
+    while len(v_lines) > 0:
+        thresh = sorted(v_lines, key=lambda x: x[0][0])[0][0]
+        lines = [line for line in v_lines if thresh[0] -
+                 thin_thresh <= line[0][0] <= thresh[0] + thin_thresh]
+        v_lines = [line for line in v_lines if thresh[0] - thin_thresh >
+                   line[0][0] or line[0][0] > thresh[0] + thin_thresh]
+        y = []
+        for line in lines:
+            y.append(line[0][1])
+            y.append(line[0][3])
+        y_min, y_max = min(y) - int(4*thin_thresh), max(y) + int(4*thin_thresh)
+        new_v_lines.append([thresh[0], y_min, thresh[0], y_max])
+    return new_v_lines
+
+def Seg_Intersect(line1: list, line2: list):
+    a1, a2 = line1
+    b1, b2 = line2
+    da = a2-a1
+    db = b2-b1
+    dp = a1-b1
+
+    def Perp(a):
+        b = np.empty_like(a)
+        b[0] = -a[1]
+        b[1] = a[0]
+        return b
+
+    dap = Perp(da)
+    denom = np.dot(dap, db)
+    num = np.dot(dap, dp)
+    return (num / denom.astype(float))*db + b1
+
+def Get_Bottom_Right(right_points, bottom_points, points):
+    for right in right_points:
+        for bottom in bottom_points:
+            if [right[0], bottom[1]] in points:
+                return right[0], bottom[1]
+    return None, None
+
+def Download_File(fileName, url):
+    with open(fileName, 'wb') as handle:
+        response = requests.get(str(url), stream=True)
+
+        if not response.ok:
+            return False
+
+        for block in response.iter_content(1024):
+            if not block:
+                break
+            handle.write(block)
+    return True
+
+def Get_FileName(urlFile):
+    x = urlparse(urlFile)
+    fileName = os.path.basename(x.path)
+    return fileName
+
+def Process_Get_Data(url):
+    fileName = Get_FileName(url)
+    folderName = fileName.replace(".pdf", "")
+    dataFolder = os.path.join(DATA_PATH, folderName)
+    makeDir = False
+    if not os.path.exists(dataFolder):
+        os.makedirs(dataFolder)
+        makeDir = True
+    else:
+        for file in os.listdir(dataFolder):
+            filePath = os.path.join(dataFolder, file)
+            if os.path.isfile(filePath) or os.path.islink(filePath):
+                os.unlink(filePath)
+            elif os.path.isdir(filePath):
+                shutil.rmtree(filePath)
+        makeDir = True
+    if makeDir == True:
+        pathDowwnload = os.path.join(dataFolder, fileName)
+        if Download_File(pathDowwnload, url):
+            Convert_PDF_toImage(os.path.join(dataFolder, fileName))
+    
+    return dataFolder
+
+def Get_Data(url, type):
+    results = []
+    fileName = Get_FileName(url)
+    folderName = fileName.replace(".pdf", "")
+    dataFolder = os.path.join(DATA_PATH, folderName)
+    makeDir = False
+    if not os.path.exists(dataFolder):
+        os.makedirs(dataFolder)
+        makeDir = True
+    else:
+        for file in os.listdir(dataFolder):
+            filePath = os.path.join(dataFolder, file)
+            if os.path.isfile(filePath) or os.path.islink(filePath):
+                os.unlink(filePath)
+            elif os.path.isdir(filePath):
+                shutil.rmtree(filePath)
+        makeDir = True
+    if makeDir == True:
+        pathDownload = os.path.join(dataFolder, fileName)
+        if Download_File(pathDownload, url):
+            inputStream = open(os.path.join(dataFolder, fileName), 'rb')
+            inputPdf = PdfFileReader(inputStream)
+            for i in range(inputPdf.numPages):
+                SavePDFIndex(inputPdf, dataFolder, fileName, i)
+            q = queue.Queue()
+            executor = ThreadPoolExecutor()
+            futures = [executor.submit(ProcessData, os.path.join(dataFolder, fileName).replace(".pdf", "") + "_page_%s.pdf" % i, type, q, i) for i in range(inputPdf.numPages)]
+            for future in as_completed(futures):
+                results.extend(future.result())
+            inputStream.close()
+            failurePages = []
+            for q_item in q.queue:
+                failurePages.append(q_item)
+    return {
+        "results": results,
+        "failurePage": failurePages
+    }
+
+def Get_Data_Single(url, type):
+    results = []
+    fileName = Get_FileName(url)
+    folderName = fileName.replace(".pdf", "")
+    dataFolder = os.path.join(DATA_PATH, folderName)
+    makeDir = False
+    if not os.path.exists(dataFolder):
+        os.makedirs(dataFolder)
+        makeDir = True
+    else:
+        for file in os.listdir(dataFolder):
+            filePath = os.path.join(dataFolder, file)
+            if os.path.isfile(filePath) or os.path.islink(filePath):
+                os.unlink(filePath)
+            elif os.path.isdir(filePath):
+                shutil.rmtree(filePath)
+        makeDir = True
+    if makeDir == True:
+        pathDownload = os.path.join(dataFolder, fileName)
+        if Download_File(pathDownload, url):
+            failurePages = []
+            inputStream = open(os.path.join(dataFolder, fileName), 'rb')
+            inputPdf = PdfFileReader(inputStream)
+            for i in range(inputPdf.numPages):
+                SavePDFIndex(inputPdf, dataFolder, fileName, i)
+            q = queue.Queue()
+            for i in range(inputPdf.numPages):
+                res = ProcessData(os.path.join(dataFolder, fileName).replace(".pdf", "") + "_page_%s.pdf" % i, type, q, i)
+                if(res == STATUS_FAIL_READFILE):
+                    inputStream.close()
+                    return {
+                        "results": STATUS_FAIL_READFILE,
+                        "failurePage": []
+                    }
+                else:
+                    results.extend(res["res"])
+                    if(len(res["failPages"]) != 0):
+                        failurePages.extend(res["failPages"])
+            inputStream.close()
+            for q_item in q.queue:
+                failurePages.append(q_item)
+            
+            
+    return {
+        "results": results,
+        "failurePage": failurePages
+    }
+
+
+def ProcessData(pdfPath, type, q, i):
+    pages = []
+    if platform == 'linux' or platform == 'linux2':
+        pages = convert_from_path(pdfPath, DPI)
+    elif platform == 'darwin':
+        pages = convert_from_path(pdfPath, DPI)
+    elif platform == 'win32':
+        pages = convert_from_path(pdfPath, DPI, poppler_path=PATH_PDF_BIN)
+    image = pdfPath.replace(".pdf", ".jpg")
+    pages[0].save(image, 'JPEG')
+    pageIm = str(i+1)
+    result = []
+    try:
+        result = OCR_Image(image, type, pageIm)
+    except Exception as e:
+        print(e)
+        print('OCR error at ' + str(i+1))
+        q.put(int(i) + 1)
+    return result
+
+def SavePDFIndex(inputpdf, dataFolder, fileName, i):
+    try:
+        output = PdfFileWriter()
+        output.addPage(inputpdf.getPage(i))
+        path = os.path.join(dataFolder, fileName).replace(
+            ".pdf", "") + "_page_%s.pdf" % i
+        with open(path, "wb") as outputStream:
+            output.write(outputStream)
+    except Exception as e:
+        print('SavePDFIndex err:')
+        print(e)
+    return 1
+
+def Get_All_Images(dataFolder):
+    listImageName = [f for f in os.listdir(
+        dataFolder) if fnmatch.fnmatch(f, '*.jpg')]
+    return listImageName
+
+def Save_Log(status, contentInfor):
+    now = datetime.now()
+    filenameLog = os.path.join(LOG_PATH, now.strftime("%d%m%Y_%H%M%S"))
+    logging.basicConfig(filename=str(filenameLog)+'.log',
+                        filemode='w',
+                        format='%(asctime)s %(message)s',
+                        # datefmt = '%H:%M:%S',
+                        level=logging.DEBUG
+                        )
+    logger = logging.getLogger()
+
+    logger.debug(status)
+    logger.info(contentInfor)
+    return
+
+def Check_IsSigned_EFF(image):
+    flat_data = []
+    img_resized = sk.transform.resize(image, (150, 150, 3))
+    flat_data.append(img_resized.flatten())
+    flat_data = np.array(flat_data)
+    y_output = modelHandSignatures.predict(flat_data)
+    y_output = Categories[y_output[0]]
+    return y_output
+
+def Get_Cols(thresh, ver_kernel):
+    cols = 0
+    # Find number of columns
+    # chọn Iteration theo số nguyên tố
+    vertical = cv2.morphologyEx(
+        thresh, cv2.MORPH_RECT, ver_kernel, iterations=7)
+    # cv2.imshow('vcc', vertical)
+    # cv2.waitKey(0)
+    cnts = cv2.findContours(vertical, cv2.RETR_EXTERNAL,
+                            cv2.CHAIN_APPROX_SIMPLE)
+    cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+    cols = len(cnts) - 1
+    return cols
+
+def Try_Or(value, key=''):
+    if key == 'stt':
+        try:
+            return int(value)
+        except:
+            return value
+    if key == 'date':
+        try:
+            value = datetime.strptime(value, '%d/%m/%Y').date()
+            return value
+        except Exception as e:
+            print(e)
+            return value
+
+def Process_OCR_V2(fileName, typeFile, listText, dataFolder):
+    image = os.path.join(dataFolder, fileName)
+    table_image = cv2.imread(image)
+    # trái cộng phải trừ, trái bằng phải (trên : dưới, trái : phải)
+    table_image = table_image[120:5670, 120:5670]
+    table_image = Resize_Image_Keep_Ratio(table_image, height=IMG_HEIGHT)
+    table_image = cv2.cvtColor(table_image, cv2.COLOR_BGR2GRAY)
+    enhance_im = Run_Equal_Hist(table_image)
+    gray = enhance_im
+    thresh, img_bin = cv2.threshold(
+        gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+    img_bin = 255-img_bin
+    kernel_len = gray.shape[1]//120
+    hor_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_len, 1))
+    image_horizontal = cv2.erode(img_bin, hor_kernel, iterations=7)
+    horizontal_lines = cv2.dilate(image_horizontal, hor_kernel, iterations=7)
+
+    h_lines = cv2.HoughLinesP(
+        horizontal_lines, 1, np.pi/180, 100, maxLineGap=250)
+
+    new_horizontal_lines = Group_H_Lines(h_lines, kernel_len)
+
+    kernel_len = gray.shape[1]//120
+    ver_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, kernel_len))
+    image_vertical = cv2.erode(img_bin, ver_kernel, iterations=3)
+    vertical_lines = cv2.dilate(image_vertical, ver_kernel, iterations=3)
+    v_lines = cv2.HoughLinesP(
+        vertical_lines, 1, np.pi/180, 100, maxLineGap=250)
+    new_vertical_lines = Group_V_Lines(v_lines, kernel_len)
+
+    points = []
+    cols = Get_Cols(img_bin, ver_kernel)
+    if ((typeFile == '0' and cols != 8) or (typeFile == '1' and cols != 9)):
+        print("FAIL")
+        return jsonify(
+            Status=STATUS_FAIL_READFILE,
+            Data=None,
+            Message=CONTENT_INFOR_FAIL
+        )
+    else:
+        for hline in new_horizontal_lines:
+            x1A, y1A, x2A, y2A = hline
+            for vline in new_vertical_lines:
+                x1B, y1B, x2B, y2B = vline
+
+                line1 = [np.array([x1A, y1A]), np.array([x2A, y2A])]
+                line2 = [np.array([x1B, y1B]), np.array([x2B, y2B])]
+
+                x, y = Seg_Intersect(line1, line2)
+                if x1A <= x <= x2A and y1B <= y <= y2B:
+                    points.append([int(x), int(y)])
+
+        cells = []
+
+        listContent = []
+        listContentTmp = []
+        for point in points:
+            left, top = point
+            right_points = [p for p in points if p[0] > left and p[1] == top]
+            bottom_points = [p for p in points if p[1] > top and p[0] == left]
+            right, bottom = Get_Bottom_Right(
+                right_points, bottom_points, points)
+            if right and bottom:
+                imgRec = cv2.rectangle(
+                    table_image, (left, top), (right, bottom), (0, 0, 255), 5)
+
+                # Slicing to crop the image
+                cropped_image = table_image[top+7:bottom-7, left+7:right-7]
+                cropped_image = Resize_Image_Keep_Ratio(
+                    cropped_image, height=128)
+                # cropped_image = Run_Equal_Hist(cropped_image)
+                # listContent.append(cropped_image)
+                # if(len(listContent) == cols):
+                #     cv2.imwrite(fileName.replace('.jpg', '') + str([top,bottom,left,right]) + '_crop.jpg',listContent[cols -1])
+                #     listContent.clear()
+                # cropped_gray = cv2.cvtColor(cropped_image, cv2.COLOR_BGR2GRAY)
+                cropped_blur = cv2.GaussianBlur(cropped_image, (3, 3), 0)
+                cropped_thresh = cv2.threshold(
+                    cropped_blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+                # print(reader.readtext(cropped_blur, detail = 0))
+                # Morph open to remove noise and invert image
+                kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
+                opening = cv2.morphologyEx(
+                    cropped_thresh, cv2.MORPH_OPEN, kernel, iterations=1)
+                # closing = cv2.morphologyEx(opening, cv2.MORPH_OPEN, kernel, iterations=1)
+                invert = 255 - opening
+                listContent.append(pytesseract.image_to_string(invert, lang='vie', config=TESSERACT_CONFIG)
+                                   .replace("\n", " ")
+                                   .replace("l ", " ")
+                                   .replace("`", "")
+                                   .strip())
+                if (len(listContent) == cols):
+                    # cv2.imwrite(str([top,bottom,left,right]) + '_blur.jpg', cropped_blur)
+                    listContent[cols - 1] = Check_IsSigned_EFF(cropped_blur)
+                    if (typeFile == '0'):  # Danh sach ky nhan DV, NLD
+                        receiverItem = {
+                            "OrderIdx": Try_Or(listContent[0], key='stt'),
+                            "Name": listContent[1],
+                            "UnitName": listContent[2],
+                            "UnitParentName": listContent[3],
+                            "Code": listContent[4],
+                            "Birthday": listContent[5],
+                            "Reason": listContent[6],
+                            "Status": str(listContent[7])
+                        }
+                        listContentTmp.append(receiverItem)
+                        listContent.clear()
+                    elif (typeFile == '1'):  # Danh sach ky nhan Gia dinh
+                        receiverItem = {
+                            "OrderIdx": Try_Or(listContent[0], key='stt'),
+                            "Name": str(listContent[1]),
+                            "UnitName": str(listContent[2]),
+                            "UnitParentName": str(listContent[3]),
+                            "Code": str(listContent[4]),
+                            "Birthday": str(listContent[5]),
+                            "Relationship": listContent[6],
+                            "Reason": str(listContent[7]),
+                            "Status": str(listContent[8])
+                        }
+                        listContentTmp.append(receiverItem)
+                        listContent.clear()
+        del listContentTmp[0]
+        # listText.extend(listContentTmp)
+        cv2.imwrite(image.replace('.jpg', '') + '_rec.jpg', imgRec)
+        return listContentTmp
+
+def OCR_Image(image, typeFile, pageIm):
+    resultsOCR = {
+        "res": [],
+        "failPages": []
+    }
+    table_image = cv2.imread(image)
+    # trái cộng phải trừ, trái bằng phải (trên : dưới, trái : phải)
+    table_image = table_image[120:5670, 120:5670]
+    print(table_image.shape)
+    table_image = Resize_Image_Keep_Ratio(table_image, height=IMG_HEIGHT)
+    table_image = cv2.cvtColor(table_image, cv2.COLOR_BGR2GRAY)
+    enhance_im = Run_Equal_Hist(table_image)
+    gray = enhance_im
+    _, img_bin = cv2.threshold(
+        gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+    img_bin = 255-img_bin
+    kernel_len = gray.shape[1]//120
+    hor_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_len, 1))
+    image_horizontal = cv2.erode(img_bin, hor_kernel, iterations=5)
+    horizontal_lines = cv2.dilate(image_horizontal, hor_kernel, iterations=5)
+
+    h_lines = cv2.HoughLinesP(
+        horizontal_lines, 1, np.pi/180, 100, maxLineGap=250)
+
+    new_horizontal_lines = Group_H_Lines(h_lines, kernel_len)
+
+    kernel_len = gray.shape[1]//100
+    ver_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, kernel_len))
+    image_vertical = cv2.erode(img_bin, ver_kernel, iterations=3)
+    vertical_lines = cv2.dilate(image_vertical, ver_kernel, iterations=3)
+    v_lines = cv2.HoughLinesP(
+        vertical_lines, 1, np.pi/180, 100, maxLineGap=250)
+    new_vertical_lines = Group_V_Lines(v_lines, kernel_len)
+
+    points = []
+    failPages = []
+    cols = Get_Cols(img_bin, ver_kernel)
+    # tableImCR = image_horizontal + image_vertical
+    # tableImCR = 255 - tableImCR
+    # cv2.imshow('tb', tableImCR)
+    # cv2.waitKey(0)
+    # table_image_copy = cv2.bitwise_and(table_image, table_image, mask=tableImCR)
+    # cv2.imshow('masked', table_image_copy)
+    # cv2.waitKey(0)
+    # cv2.imshow('vcc', image_vertical)
+    # cv2.waitKey(0)
+    print(cols)
+    if ((typeFile == '0' and cols == 9 and pageIm == '1') or (typeFile == '1' and cols == 8 and pageIm == '1')):
+        return STATUS_FAIL_READFILE
+    elif ((typeFile == '0' and cols != 8) or (typeFile == '1' and cols != 9)):
+        print("FAIL!!!")
+        failPages.append(pageIm)
+        resultsOCR["res"] = []
+        resultsOCR["failPages"] = failPages
+        return resultsOCR
+    else:
+        for hline in new_horizontal_lines:
+            x1A, y1A, x2A, y2A = hline
+            for vline in new_vertical_lines:
+                x1B, y1B, x2B, y2B = vline
+
+                line1 = [np.array([x1A, y1A]), np.array([x2A, y2A])]
+                line2 = [np.array([x1B, y1B]), np.array([x2B, y2B])]
+                x, y = Seg_Intersect(line1, line2)
+                if x1A <= x <= x2A and y1B <= y <= y2B:
+                    points.append([int(x), int(y)])
+
+        listContent = []
+        listContentTmp = []
+        for point in points:
+            left, top = point
+            right_points = [p for p in points if p[0] > left and p[1] == top]
+            bottom_points = [p for p in points if p[1] > top and p[0] == left]
+            right, bottom = Get_Bottom_Right(
+                right_points, bottom_points, points)
+            if right and bottom:
+                imgRec = cv2.rectangle(table_image, (left, top), (right, bottom), (0, 0, 255), 5)
+                print(point)
+                cropped_image = table_image[top+5:bottom-5, left+5:right-5] # Slicing to crop the image
+                # cv2.imshow('crop', cropped_image)
+                # cv2.waitKey(0)
+                cropped_image = Resize_Image_Keep_Ratio(cropped_image, height=128)
+                #cropped_image = Run_Equal_Hist(cropped_image)
+                #cropped_gray = cv2.cvtColor(cropped_image, cv2.COLOR_BGR2GRAY)
+                cropped_blur = cv2.GaussianBlur(cropped_image, (3, 3), 0)
+                #cropped_thresh = cv2.threshold(cropped_blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+                # Morph open to remove noise and invert image
+                #kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2,2))
+                #opening = cv2.morphologyEx(cropped_thresh, cv2.MORPH_OPEN, kernel, iterations=1)
+                #closing = cv2.morphologyEx(opening, cv2.MORPH_OPEN, kernel, iterations=1)
+                #invert = 255 - opening
+                listContent.append(cropped_image) # thay bằng cropped_blur
+                if(len(listContent) == cols):
+                    statusSig = Check_IsSigned_EFF(cropped_image) # thay bằng cropped_blur
+                    contentCCCD = pytesseract.image_to_string(listContent[4], config=TESSERACT_CONFIG).replace("\n"," ").replace("l "," ").replace("`", "").strip()
+                    orderIdx = pytesseract.image_to_string(listContent[0], config=TESSERACT_CONFIG).replace("\n"," ").replace("l "," ").replace("`", "").strip()
+                    receiverItem = {
+                        "OrderIdx": Try_Or(orderIdx, key = 'stt'),
+                        "Code": contentCCCD,
+                        "Status": str(statusSig),
+                        "Page": pageIm
+                    }
+                    listContentTmp.append(receiverItem)
+                    listContent.clear()
+                    
+        del listContentTmp[0]
+        # listText.extend(listContentTmp)
+        cv2.imwrite(image.replace('.jpg', '') + '_rec.jpg', imgRec)
+        resultsOCR["res"] = listContentTmp
+        resultsOCR["failPages"] = failPages
+        return resultsOCR
+        
+if __name__ == "__main__":
+    #Convert_PDF_toImageV2(os.path.join(DATA_PATH, 'testData', '20211115100958992_File_scanNLD_(160ng)_page_7.pdf'))
+    url = os.path.join(DATA_PATH, 'testData', '20211115100958992_File_scanNLD_(160ng)_page_6.jpg')
+    OCR_Image(url, 0, '8')
