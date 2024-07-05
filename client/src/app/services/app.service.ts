@@ -7,7 +7,6 @@ import {
   ResponseContentType,
 } from "@angular/http";
 import { Injectable, OnInit } from "@angular/core";
-import { resolve, reject } from "q";
 import "rxjs/add/operator/map";
 import { HttpHeaders } from "@angular/common/http";
 import { AppLanguage } from "./app.language";
@@ -25,10 +24,6 @@ export class AppService implements OnInit {
   apiRoot = "http://localhost:8080/";
   clientRoot = '';
   portalRoot = '';
-  // apiRoot = 'https://api-ldld.mallfinder.vn/';
-  // apiRoot = 'http://api.congdoantphochiminhksc.vn/';
-  // clientRoot = "http://congdoantphochiminhksc.vn/";
-  // portalRoot = "http://congdoantphochiminhksc.vn/";
 
   headers: any;
   options: any;

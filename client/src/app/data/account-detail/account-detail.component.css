@@ -26,11 +26,11 @@
   
 }
 
-.personal .vnpt-upload-img .k-upload {
+.personal .master-upload-img .k-upload {
     display: none;
 }
 
-.personal .vnpt-upload-img img {
+.personal .master-upload-img img {
     width: 160px;
 }
 
@@ -109,7 +109,7 @@
         max-height: none;
     }
 
-    .personal .vnpt-upload-img img {
+    .personal .master-upload-img img {
         width: 99px;
     }
 }
