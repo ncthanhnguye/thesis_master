@@ -1,0 +1,2082 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MsgDeleteOk" xml:space="preserve">
+    <value>Xóa thành công</value>
+  </data>
+  <data name="MsgFormatDate" xml:space="preserve">
+    <value>dd/MM/yyyy</value>
+  </data>
+  <data name="MsgLoginFail" xml:space="preserve">
+    <value>Tài khoản hoặc mật khẩu không đúng</value>
+  </data>
+  <data name="MsgNotFound" xml:space="preserve">
+    <value>Đối tượng không tồn tại</value>
+  </data>
+  <data name="MsgSuccess" xml:space="preserve">
+    <value>Lưu thành công</value>
+  </data>
+  <data name="MsgAccessDenined" xml:space="preserve">
+    <value>Bạn không có quyền truy cập trang này!</value>
+  </data>
+  <data name="MsgRoleDefault" xml:space="preserve">
+    <value>Bạn không có quyền xóa nhóm người dùng này</value>
+  </data>
+  <data name="MsgException" xml:space="preserve">
+    <value>Mã lỗi {0}</value>
+  </data>
+  <data name="MsgUserLock" xml:space="preserve">
+    <value>Tài khoản Api đã bị khóa</value>
+  </data>
+  <data name="MsgInValidData" xml:space="preserve">
+    <value>Data {0} không hợp lệ</value>
+  </data>
+  <data name="MsgNotFoundSetting" xml:space="preserve">
+    <value>Đối tượng cài đặt {0} không tồn tại</value>
+  </data>
+  <data name="MsgErrorMaximumLength" xml:space="preserve">
+    <value>Chiều dài tối đa cho phép là {1} ký tự</value>
+  </data>
+  <data name="MsgErrorMinimumLength" xml:space="preserve">
+    <value>Chiều dài tối thiểu bắt buộc của {0} là {1} ký tự</value>
+  </data>
+  <data name="MsgErrorRequire" xml:space="preserve">
+    <value>Giá trị của {0} đang rỗng</value>
+  </data>
+  <data name="Label_File_Code" xml:space="preserve">
+    <value>Mã định danh</value>
+  </data>
+  <data name="Label_File_SerialNo" xml:space="preserve">
+    <value>Số ký hiệu</value>
+  </data>
+  <data name="Label_File_ID" xml:space="preserve">
+    <value>Định danh tài liệu</value>
+  </data>
+  <data name="Label_FileLog_ID" xml:space="preserve">
+    <value>Định danh log tài liệu</value>
+  </data>
+  <data name="Label_FileLog_CreateAt" xml:space="preserve">
+    <value>Ngày tạo log tài liệu</value>
+  </data>
+  <data name="Label_File_Title" xml:space="preserve">
+    <value>Tiêu đề tài liệu</value>
+  </data>
+  <data name="Label_File_Description" xml:space="preserve">
+    <value>Miêu tả tài liệu</value>
+  </data>
+  <data name="Label_File_UserName" xml:space="preserve">
+    <value>Tên người dùng tài liệu</value>
+  </data>
+  <data name="Label_FileLog_UserName" xml:space="preserve">
+    <value>Tên người dùng tài liệu</value>
+  </data>
+  <data name="Label_File_AssignUnits" xml:space="preserve">
+    <value>Phân quyền tài liệu</value>
+  </data>
+  <data name="Label_File_FileUrls" xml:space="preserve">
+    <value>Tài liệu đính kèm</value>
+  </data>
+  <data name="MsgErrorInvalidType" xml:space="preserve">
+    <value>Kiểu dữ liệu {0} không hợp lệ</value>
+  </data>
+  <data name="Label_File_DelFlg" xml:space="preserve">
+    <value>Cờ 'xóa'</value>
+  </data>
+  <data name="Label_File_CreateAt" xml:space="preserve">
+    <value>Ngày tạo tài liệu</value>
+  </data>
+  <data name="Label_File_UpdateAt" xml:space="preserve">
+    <value>Ngày cập nhật tài liệu</value>
+  </data>
+  <data name="MsgErrorRegularExpressionNumber" xml:space="preserve">
+    <value>{0} phải là số</value>
+  </data>
+  <data name="MsgErrorPhone" xml:space="preserve">
+    <value>Định dạng của {0} không đúng số điện thoại</value>
+  </data>
+  <data name="MsgErrorRegularExpressionInteger" xml:space="preserve">
+    <value>{0} không phải là số nguyên</value>
+  </data>
+  <data name="MsgErrorDateWithFormat" xml:space="preserve">
+    <value>Dữ liệu của {0} không đúng định dạng ngày</value>
+  </data>
+  <data name="Login_IDNotNull" xml:space="preserve">
+    <value>ID không được rỗng</value>
+  </data>
+  <data name="Login_OTPNotMatch" xml:space="preserve">
+    <value>Mã OTP không đúng</value>
+  </data>
+  <data name="Login_OTPNotNull" xml:space="preserve">
+    <value>OTP không được rỗng</value>
+  </data>
+  <data name="Login_OTPOutOfSize" xml:space="preserve">
+    <value>OTP không được vượt quá 6 ký tự</value>
+  </data>
+  <data name="Login_Phone" xml:space="preserve">
+    <value>Điện thoại</value>
+  </data>
+  <data name="Login_PhoneNotNull" xml:space="preserve">
+    <value>Điện thoại không được rỗng</value>
+  </data>
+  <data name="NotFoundByName" xml:space="preserve">
+    <value>Không tìm thấy {0} trong hệ thống</value>
+  </data>
+  <data name="Login_AccLock" xml:space="preserve">
+    <value>Điện thoại {0} đã bị khóa. Không thể tiếp tục đăng nhập</value>
+  </data>
+  <data name="Login_DisplayGender_F" xml:space="preserve">
+    <value>Nữ</value>
+  </data>
+  <data name="Login_DisplayGender_M" xml:space="preserve">
+    <value>Nam</value>
+  </data>
+  <data name="Login_DisplayGender_O" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="MsgErrorRang" xml:space="preserve">
+    <value>Gía trị của {0} phải nằm trong khoảng {1} đến {2}</value>
+  </data>
+  <data name="MsgErrorStartEndDatetime" xml:space="preserve">
+    <value>Gía trị của ngày {0} phải nhỏ hơn hoặc bằng ngày {1}</value>
+  </data>
+  <data name="Login_PhoneMinLength" xml:space="preserve">
+    <value>Số điện thoại tối thiểu 10 kí tự</value>
+  </data>
+  <data name="MsgNoRecordBranch" xml:space="preserve">
+    <value>Bạn chưa tạo cửa hàng hoặc cửa hàng của bạn chưa được duyệt</value>
+  </data>
+  <data name="MsgErrorVideoUrlMaxSize" xml:space="preserve">
+    <value>Dung lượng video tối đa cho phép là {0} MB</value>
+  </data>
+  <data name="MsgErrorImageUrlMaxSize" xml:space="preserve">
+    <value>Dung lượng hình ảnh tối đa cho phép là {0} MB</value>
+  </data>
+  <data name="MsgErrorFileUrlMaxSize" xml:space="preserve">
+    <value>Dung lượng tệp tin tối đa cho phép là {0} MB</value>
+  </data>
+  <data name="MsgErrorNotFoundPath" xml:space="preserve">
+    <value>Đường dẫn {0} không tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgErrorBase64Incorrect" xml:space="preserve">
+    <value>Dữ liệu base64 không chính xác</value>
+  </data>
+  <data name="MsgErrorNotFoundConfig" xml:space="preserve">
+    <value>Không tìm thấy giá trị config của các {0}</value>
+  </data>
+  <data name="Login_OTPCodeContent" xml:space="preserve">
+    <value>{0} la ma xac thuc ung dung So Ngoai Vu</value>
+  </data>
+  <data name="MsgErrorIsExists" xml:space="preserve">
+    <value>{0} Đã tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgErrorRequiredDeleteID" xml:space="preserve">
+    <value>Vui lòng chọn mẫu tin cần xóa</value>
+  </data>
+  <data name="MsgErrorSignatureIncorrect" xml:space="preserve">
+    <value>Chữ ký để tích hợp với hệ thống không hợp lệ</value>
+  </data>
+  <data name="MsgErrorPaymentExisted" xml:space="preserve">
+    <value>Cửa hàng đang được thanh toán, vui lòng kiểm tra lại!</value>
+  </data>
+  <data name="MsgErrorPaymentNotExpiry" xml:space="preserve">
+    <value>Cửa hàng chưa đến hạn thanh toán, vui lòng kiểm tra lại!</value>
+  </data>
+  <data name="MsgCreateDataSuccess" xml:space="preserve">
+    <value>Tạo dữ liệu {0} thành công!</value>
+  </data>
+  <data name="MsgUpdateDataSuccess" xml:space="preserve">
+    <value>Cập nhật dữ liệu {0} thành công!</value>
+  </data>
+  <data name="Lable_page_ID" xml:space="preserve">
+    <value>Đường dẫn</value>
+  </data>
+  <data name="Lable_page_Nm" xml:space="preserve">
+    <value>Tên trang</value>
+  </data>
+  <data name="Label_obj_page" xml:space="preserve">
+    <value>trang</value>
+  </data>
+  <data name="MsgErrorHasSpace" xml:space="preserve">
+    <value>Gía trị của {0} không được chứa ký tự khoản trắng</value>
+  </data>
+  <data name="MsgSaveOk" xml:space="preserve">
+    <value>Dữ liệu đã được lưu thành công</value>
+  </data>
+  <data name="MsgUploadOk" xml:space="preserve">
+    <value>Dữ liệu tải lên thành công</value>
+  </data>
+  <data name="User_Description" xml:space="preserve">
+    <value>Diễn giải</value>
+  </data>
+  <data name="User_Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="User_RoleID" xml:space="preserve">
+    <value>Nhóm người dùng</value>
+  </data>
+  <data name="User_UserName" xml:space="preserve">
+    <value>Tài khoản</value>
+  </data>
+  <data name="Control_ID" xml:space="preserve">
+    <value>Mã nút</value>
+  </data>
+  <data name="Control_Name" xml:space="preserve">
+    <value>Tên nút</value>
+  </data>
+  <data name="User_FullName" xml:space="preserve">
+    <value>Họ tên</value>
+  </data>
+  <data name="MsgErrorHasException" xml:space="preserve">
+    <value>Đã xảy ra lỗi trong quá trình giao dịch, vui lòng liên hệ quản trị để xử lý. Chân thành xin lỗi về sự bất tiện này!</value>
+  </data>
+  <data name="MsgErrorPaymentProcess" xml:space="preserve">
+    <value>Có lỗi trong quá trình thanh toán, thanh toán đã bị hủy!</value>
+  </data>
+  <data name="MsgSuccessPayment" xml:space="preserve">
+    <value>Quá trình giao dịch thành công!</value>
+  </data>
+  <data name="Txt_Status_Approve" xml:space="preserve">
+    <value>Đã phê duyệt</value>
+  </data>
+  <data name="Txt_Status_Reject" xml:space="preserve">
+    <value>Không được duyệt</value>
+  </data>
+  <data name="Txt_Status_Waiting" xml:space="preserve">
+    <value>Đang chờ duyệt</value>
+  </data>
+  <data name="MsgApproveDataSuccess" xml:space="preserve">
+    <value>Đã phê duyệt {0} thành công</value>
+  </data>
+  <data name="Label_Branch" xml:space="preserve">
+    <value>cửa hàng</value>
+  </data>
+  <data name="MsgRejectDataSuccess" xml:space="preserve">
+    <value>Đã từ chối phê duyệt {0} thành công</value>
+  </data>
+  <data name="Branch_Comment" xml:space="preserve">
+    <value>Lý do không phê duyệt cửa hàng</value>
+  </data>
+  <data name="Branch_IDList" xml:space="preserve">
+    <value>Danh sách cửa hàng</value>
+  </data>
+  <data name="Txt_Status_Deleted" xml:space="preserve">
+    <value>Đã xóa</value>
+  </data>
+  <data name="Txt_Status_Locked" xml:space="preserve">
+    <value>Đã khóa</value>
+  </data>
+  <data name="MsgDeleteDataSuccess" xml:space="preserve">
+    <value>Đã xóa {0} thành công</value>
+  </data>
+  <data name="MsgLockDataSuccess" xml:space="preserve">
+    <value>Đã khóa {0} thành công</value>
+  </data>
+  <data name="Branch_Phone1" xml:space="preserve">
+    <value>SĐT</value>
+  </data>
+  <data name="MsgUnLockDataSuccess" xml:space="preserve">
+    <value>Đã mở khóa {0} thành công</value>
+  </data>
+  <data name="Label_Deal" xml:space="preserve">
+    <value>khuyến mãi</value>
+  </data>
+  <data name="MsgErrorDontInputPhone" xml:space="preserve">
+    <value>Vui lòng nhập số điện thoại của {0}</value>
+  </data>
+  <data name="MsgValidData" xml:space="preserve">
+    <value>Dữ liệu {0} có tồn tại trong hệ thống</value>
+  </data>
+  <data name="Txt_AccountNm" xml:space="preserve">
+    <value>chủ sở hữu</value>
+  </data>
+  <data name="Label_Discount_IconUrl" xml:space="preserve">
+    <value>Icon loại giảm giá</value>
+  </data>
+  <data name="Label_Discount_ID" xml:space="preserve">
+    <value>Mã loại giảm giá</value>
+  </data>
+  <data name="Label_Discount_Nm" xml:space="preserve">
+    <value>Tên loại giảm giá</value>
+  </data>
+  <data name="Label_Holiday_Date" xml:space="preserve">
+    <value>Ngày lễ (Dương lịch)</value>
+  </data>
+  <data name="Label_Holiday_Description" xml:space="preserve">
+    <value>Diễn giải ngày lễ</value>
+  </data>
+  <data name="Label_Role_ID" xml:space="preserve">
+    <value>ID Nhóm người dùng</value>
+  </data>
+  <data name="Label_Role_Name" xml:space="preserve">
+    <value>Tên nhóm người dùng</value>
+  </data>
+  <data name="Label_RolePage_PageID" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="Label_RolePage_RoleID" xml:space="preserve">
+    <value>Nhóm người dùng</value>
+  </data>
+  <data name="MsgUploadDataSuccess" xml:space="preserve">
+    <value>Upload thành công</value>
+  </data>
+  <data name="User_Part" xml:space="preserve">
+    <value>Chức vụ</value>
+  </data>
+  <data name="User_UnitID" xml:space="preserve">
+    <value>Đơn vị</value>
+  </data>
+  <data name="MsgErrorIDIsNotExists" xml:space="preserve">
+    <value>ID của {0} không tồn tại</value>
+  </data>
+  <data name="Label_Comment_Description" xml:space="preserve">
+    <value>Nội dung bình luận</value>
+  </data>
+  <data name="Label_Comment_FileUrls" xml:space="preserve">
+    <value>File bình luận</value>
+  </data>
+  <data name="Label_Comment_ID" xml:space="preserve">
+    <value>ID bình luận</value>
+  </data>
+  <data name="Label_Comment_IssueID" xml:space="preserve">
+    <value>ID công việc của bình luận</value>
+  </data>
+  <data name="Label_Comment_Reporter" xml:space="preserve">
+    <value>Người bình luận</value>
+  </data>
+  <data name="Label_IssueType_ID" xml:space="preserve">
+    <value>ID loại công việc</value>
+  </data>
+  <data name="Label_IssueType_Name" xml:space="preserve">
+    <value>Tên loại công việc</value>
+  </data>
+  <data name="Label_Issue_Assignee" xml:space="preserve">
+    <value>Người chiu trách nhiệm chính công việc</value>
+  </data>
+  <data name="Label_Issue_Code" xml:space="preserve">
+    <value>Mã công việc</value>
+  </data>
+  <data name="Label_Issue_Description" xml:space="preserve">
+    <value>Mô tả công việc</value>
+  </data>
+  <data name="Label_Issue_DueDate" xml:space="preserve">
+    <value>Ngày dự kiến kết thúc công việc</value>
+  </data>
+  <data name="Label_Issue_ID" xml:space="preserve">
+    <value>ID công việc</value>
+  </data>
+  <data name="Label_Issue_LinkID" xml:space="preserve">
+    <value>Mã liên kết</value>
+  </data>
+  <data name="Label_Issue_LinkType" xml:space="preserve">
+    <value>Loại liên kết</value>
+  </data>
+  <data name="Label_Issue_LinkUrl" xml:space="preserve">
+    <value>Link liên kết</value>
+  </data>
+  <data name="Label_Issue_ParentID" xml:space="preserve">
+    <value>Công việc cha</value>
+  </data>
+  <data name="Label_Issue_Priority" xml:space="preserve">
+    <value>Độ quan trọng công việc</value>
+  </data>
+  <data name="Label_Issue_ProgressID" xml:space="preserve">
+    <value>ID tiến độ công việc</value>
+  </data>
+  <data name="Label_Issue_ProjectID" xml:space="preserve">
+    <value>Dự án công việc</value>
+  </data>
+  <data name="Label_Issue_RelatedPersonel" xml:space="preserve">
+    <value>Nhân sự liên quan công việc</value>
+  </data>
+  <data name="Label_Issue_Reporter" xml:space="preserve">
+    <value>Người tạo công việc</value>
+  </data>
+  <data name="Label_Issue_StartDate" xml:space="preserve">
+    <value>Ngày dự kiến bắt đầu công việc</value>
+  </data>
+  <data name="Label_Issue_Status" xml:space="preserve">
+    <value>Tình trạng công việc</value>
+  </data>
+  <data name="Label_Issue_Summary" xml:space="preserve">
+    <value>Tóm tắt công việc</value>
+  </data>
+  <data name="Label_Issue_TypeID" xml:space="preserve">
+    <value>Loại công việc</value>
+  </data>
+  <data name="Label_LogWork_Description" xml:space="preserve">
+    <value>Mô tả Logwork</value>
+  </data>
+  <data name="Label_LogWork_ID" xml:space="preserve">
+    <value>ID Logwork</value>
+  </data>
+  <data name="Label_LogWork_IssueID" xml:space="preserve">
+    <value>ID công việc của Logwork</value>
+  </data>
+  <data name="Label_LogWork_LogDate" xml:space="preserve">
+    <value>Ngày Logwork</value>
+  </data>
+  <data name="Label_LogWork_Reporter" xml:space="preserve">
+    <value>Người Logwork</value>
+  </data>
+  <data name="Label_LogWork_Worked" xml:space="preserve">
+    <value>Thời gian làm việc</value>
+  </data>
+  <data name="Label_Part_Description" xml:space="preserve">
+    <value>Mô tả chức vụ</value>
+  </data>
+  <data name="Label_Part_ID" xml:space="preserve">
+    <value>ID chức vụ</value>
+  </data>
+  <data name="Label_Part_Name" xml:space="preserve">
+    <value>Tên chức vụ</value>
+  </data>
+  <data name="Label_Project_Code" xml:space="preserve">
+    <value>Mã dự án</value>
+  </data>
+  <data name="Label_Project_ID" xml:space="preserve">
+    <value>ID dự án</value>
+  </data>
+  <data name="Label_Project_Name" xml:space="preserve">
+    <value>Tên dự án</value>
+  </data>
+  <data name="Label_Unit_ID" xml:space="preserve">
+    <value>Mã đơn vị</value>
+  </data>
+  <data name="Label_Unit_Leader" xml:space="preserve">
+    <value>Lãnh đạo đơn vị</value>
+  </data>
+  <data name="Label_Unit_Name" xml:space="preserve">
+    <value>Tên đơn vị</value>
+  </data>
+  <data name="Label_Unit_ParentID" xml:space="preserve">
+    <value>Đơn vị cha</value>
+  </data>
+  <data name="Label_GroupChat_ID" xml:space="preserve">
+    <value>ID Nhóm trao đổi công việc</value>
+  </data>
+  <data name="Label_GroupChat_Member" xml:space="preserve">
+    <value>Thành viên nhóm trao đổi công việc</value>
+  </data>
+  <data name="Label_GroupChat_Name" xml:space="preserve">
+    <value>Tên nhóm trao đổi công việc</value>
+  </data>
+  <data name="MsgErrorDueDatetime" xml:space="preserve">
+    <value>Thời gian kết thúc không được nhỏ hơn thời gian bắt đầu</value>
+  </data>
+  <data name="MsgErrorInvalidWorkHour" xml:space="preserve">
+    <value>Số giờ làm việc không hợp lệ</value>
+  </data>
+  <data name="MsgErrorLogHourOverLog" xml:space="preserve">
+    <value>Số giờ Log Work nhiều hơn số giờ còn lại</value>
+  </data>
+  <data name="Label_Issue_AssigneeFrom" xml:space="preserve">
+    <value>Người chuyển tiếp</value>
+  </data>
+  <data name="MsgRestartIssueOk" xml:space="preserve">
+    <value>Công việc đã được mở lại</value>
+  </data>
+  <data name="MsgRatingDataSuccess" xml:space="preserve">
+    <value>Công việc đã được đánh giá thành công</value>
+  </data>
+  <data name="MsgResolveDataSuccess" xml:space="preserve">
+    <value>Công việc đã được kết thúc</value>
+  </data>
+  <data name="MsgErrorSearchMonthInvalid" xml:space="preserve">
+    <value>Vui lòng chọn tháng xem nhỏ hơn hoặc bằng tháng hiện tại</value>
+  </data>
+  <data name="MsgErrorHaveChildDelete" xml:space="preserve">
+    <value>Không thể xóa công việc cha "{0}" khi có công việc con tồn tại</value>
+  </data>
+  <data name="MsgErrorIssueDeleteType" xml:space="preserve">
+    <value>Không thể xóa loại công việc "{0}" vì có công việc "{1}" đang là loại công việc này</value>
+  </data>
+  <data name="MsgErrorPartDeleteUser" xml:space="preserve">
+    <value>Không thể xóa chức vụ "{0}" vì có tài khoản "{1}" đang là chức vụ này</value>
+  </data>
+  <data name="MsgErrorUnitDeleteUser" xml:space="preserve">
+    <value>Không thể xóa đơn vị "{0}" vì có tài khoản hoặc đơn vị đang thuộc đơn vị này</value>
+  </data>
+  <data name="MsgErrorPeriodDelete" xml:space="preserve">
+    <value>Không thể xóa kỳ báo cáo "{0}" vì có kỳ báo cáo đang thuộc kỳ báo cáo này</value>
+  </data>
+  <data name="MsgErrorUserDeleteIssue" xml:space="preserve">
+    <value>Không thể xóa người dùng "{0}" vì có công việc liên quan "{1}"</value>
+  </data>
+  <data name="MsgErrorUserDeleteUnit" xml:space="preserve">
+    <value>Không thể xóa người dùng "{0}" vì "{0}" đang là lãnh đạo của đơn vị "{1}"</value>
+  </data>
+  <data name="MsgErrorUserRoleDelete" xml:space="preserve">
+    <value>Không thể xóa nhóm người dùng "{0}" vì có tài khoản "{1}" thuộc nhóm này</value>
+  </data>
+  <data name="MsgErrorSmallerThan" xml:space="preserve">
+    <value>"{0}" phải bé hơn "{1}" </value>
+  </data>
+  <data name="MsgErrorLogDatetime" xml:space="preserve">
+    <value>Không thể logwork vào ngày lớn hơn ngày hiện tại</value>
+  </data>
+  <data name="MsgErrorSamePerson" xml:space="preserve">
+    <value>Người tạo và người nhận công việc không được trùng nhau.</value>
+  </data>
+  <data name="Label_Report_ApprovedComplete" xml:space="preserve">
+    <value>Lãnh đạo đánh giá/Duyệt xử lý xong</value>
+  </data>
+  <data name="Label_Report_CompleteinMonth" xml:space="preserve">
+    <value>Tổng số việc/Hoàn thành trong tháng</value>
+  </data>
+  <data name="Label_Report_Expired" xml:space="preserve">
+    <value>Chuyển tiếp từ tháng trước/Hết hạn</value>
+  </data>
+  <data name="Label_Report_LeaderinMonth" xml:space="preserve">
+    <value>Lãnh đạo giao trong tháng/Hoàn thành trong tháng</value>
+  </data>
+  <data name="Label_Report_LeaderinNextMonth" xml:space="preserve">
+    <value>Lãnh đạo giao trong tháng/Gối sang tháng khác</value>
+  </data>
+  <data name="Label_Report_NotComplete" xml:space="preserve">
+    <value>Lãnh đạo đánh giá/Chưa xử lý xong</value>
+  </data>
+  <data name="Label_Report_NotRating" xml:space="preserve">
+    <value>Lãnh đạo đánh giá/Chưa đánh giá</value>
+  </data>
+  <data name="Label_Report_OnTime" xml:space="preserve">
+    <value>Xử lý xong/Đúng hạn</value>
+  </data>
+  <data name="Label_Report_OutDate1" xml:space="preserve">
+    <value>Chưa xử lý xong/Quá hạn</value>
+  </data>
+  <data name="Label_Report_OutDate2" xml:space="preserve">
+    <value>Xử lý xong/Quá hạn</value>
+  </data>
+  <data name="Label_Report_StillValid" xml:space="preserve">
+    <value>Chưa xử lý xong/Còn hạn</value>
+  </data>
+  <data name="Label_Report_Sum" xml:space="preserve">
+    <value>Tổng số việc/Tổng cộng</value>
+  </data>
+  <data name="Label_Report_SumOut" xml:space="preserve">
+    <value>Tổng số công việc quá hạn</value>
+  </data>
+  <data name="Label_Report_Unexpired" xml:space="preserve">
+    <value>Chuyển tiếp từ tháng trước/Còn hạn</value>
+  </data>
+  <data name="MsgErrorSearchPeriodInvalid" xml:space="preserve">
+    <value>Thời gian tìm kiếm (quý/năm) không hợp lệ</value>
+  </data>
+  <data name="MsgErrorWrongOldPassword" xml:space="preserve">
+    <value>Mật khẩu cũ không đúng.</value>
+  </data>
+  <data name="MsgErrorMultiTopic" xml:space="preserve">
+    <value>Có nhiều chủ đề khảo sát đang ở trạng thái hoạt động.</value>
+  </data>
+  <data name="MsgErrorNoActiveTopic" xml:space="preserve">
+    <value>Không có chủ đề khảo sát đang ở trạng thái hoạt động.</value>
+  </data>
+  <data name="MsgErrorNoChoice" xml:space="preserve">
+    <value>Không có lựa chọn trả lời trong câu hỏi "{0}".</value>
+  </data>
+  <data name="MsgErrorNoQuestion" xml:space="preserve">
+    <value>Không có câu hỏi trong chủ đề khảo sát.</value>
+  </data>
+  <data name="MsgErrorChoiceNullOrder" xml:space="preserve">
+    <value>Số thứ tự của câu trả lời "{0}" không tồn tại.</value>
+  </data>
+  <data name="MsgErrorChoiceSameOrder" xml:space="preserve">
+    <value>Câu trả lời "{0}" và câu trả lời "{1}" bị trùng số thứ tự.</value>
+  </data>
+  <data name="MsgErrorQuestionNullOrder" xml:space="preserve">
+    <value>Số thứ tự của câu hỏi "{0}" không tồn tại.</value>
+  </data>
+  <data name="MsgErrorQuestionSameOrder" xml:space="preserve">
+    <value>Câu hỏi "{0}" và câu hỏi "{1}" bị trùng số thứ tự.</value>
+  </data>
+  <data name="User_Phone" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="MsgErrorUpdateEndAt" xml:space="preserve">
+    <value>Thời gian kết thúc họp không được nhỏ hơn ngày hiện tại</value>
+  </data>
+  <data name="MsgErrorUpdateMeetingDate" xml:space="preserve">
+    <value>Ngày họp không được nhỏ hơn ngày hiện tại</value>
+  </data>
+  <data name="MsgErrorUpdateStartAt" xml:space="preserve">
+    <value>Thời gian bắt đầu họp không được nhỏ hơn ngày hiện tại</value>
+  </data>
+  <data name="Label_Female" xml:space="preserve">
+    <value>Nữ</value>
+  </data>
+  <data name="Label_Male" xml:space="preserve">
+    <value>Nam</value>
+  </data>
+  <data name="Label_Other" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="MsgErrorAccDeleteUser" xml:space="preserve">
+    <value>Không thể xóa {0} vì có liên kết với User {1}</value>
+  </data>
+  <data name="MsgCheckInOK" xml:space="preserve">
+    <value>Điểm danh thành công</value>
+  </data>
+  <data name="Label_Meeting_Admin" xml:space="preserve">
+    <value>Chủ trì</value>
+  </data>
+  <data name="MsgNoMeeting" xml:space="preserve">
+    <value>Hiện tại bạn không có đại hội nào có thể tham gia</value>
+  </data>
+  <data name="MsgCheckInRequired" xml:space="preserve">
+    <value>Vui lòng điểm danh để tham gia đại hội</value>
+  </data>
+  <data name="MsgPhoneNotFound" xml:space="preserve">
+    <value>Số điện thoại này chưa có trong hệ thống, vui lòng liên hệ admin</value>
+  </data>
+  <data name="MsgErrorDuplicateMetting" xml:space="preserve">
+    <value>Bạn bị trùng với lịch họp lúc {0}, vui lòng xem lại</value>
+  </data>
+  <data name="MsgErrorException" xml:space="preserve">
+    <value>Có lỗi xảy ra, vui lòng thử lại thao tác</value>
+  </data>
+  <data name="MsgErrorNotPermision" xml:space="preserve">
+    <value>Bạn không được phép tham dự đại hội này.</value>
+  </data>
+  <data name="MsgTitleDuplicate" xml:space="preserve">
+    <value>Trùng lịch họp</value>
+  </data>
+  <data name="MsgTitleNotPermision" xml:space="preserve">
+    <value>Từ chối tham dự</value>
+  </data>
+  <data name="MsgLeaveSuccess" xml:space="preserve">
+    <value>Báo vắng của bạn đã được gởi thành công.</value>
+  </data>
+  <data name="MsgTitleSuccessJoinMeeting" xml:space="preserve">
+    <value>Đã tham gia đại hội</value>
+  </data>
+  <data name="MsgVotingEnd" xml:space="preserve">
+    <value>Biểu quyết này đã kết thúc</value>
+  </data>
+  <data name="MsgVotingNotStart" xml:space="preserve">
+    <value>Biểu quyết này chưa được bắt đầu</value>
+  </data>
+  <data name="Label_AssignList" xml:space="preserve">
+    <value>Danh sách người được gán họp</value>
+  </data>
+  <data name="Label_DataAcc_PersonalID" xml:space="preserve">
+    <value>Khóa định danh người dùng</value>
+  </data>
+  <data name="Label_DataAcc_UnitID" xml:space="preserve">
+    <value>Khóa định danh đơn vị người dùng</value>
+  </data>
+  <data name="Label_MeetingID" xml:space="preserve">
+    <value>Khóa định danh đại hội</value>
+  </data>
+  <data name="MsgAssignUserSuccess" xml:space="preserve">
+    <value>Bạn đã gán người vào đại hội thành công!</value>
+  </data>
+  <data name="MsgSendNotifySuccess" xml:space="preserve">
+    <value>Đã gởi thông báo thành công!</value>
+  </data>
+  <data name="Label_Meeting_Address" xml:space="preserve">
+    <value>Địa chỉ đại hội</value>
+  </data>
+  <data name="Label_Meeting_Date" xml:space="preserve">
+    <value>Ngày họp</value>
+  </data>
+  <data name="Label_Meeting_EndAt" xml:space="preserve">
+    <value>Thời gian kết thúc</value>
+  </data>
+  <data name="Label_Meeting_ID" xml:space="preserve">
+    <value>ID đại hội</value>
+  </data>
+  <data name="Label_Meeting_Name" xml:space="preserve">
+    <value>Tên đại hội</value>
+  </data>
+  <data name="Label_Meeting_StartAt" xml:space="preserve">
+    <value>Thời gian bắt đầu</value>
+  </data>
+  <data name="Label_Process_Name" xml:space="preserve">
+    <value>Tên tiến trình</value>
+  </data>
+  <data name="Label_Question_EndAt" xml:space="preserve">
+    <value>Thời gian kết thúc</value>
+  </data>
+  <data name="Label_Question_GroupID" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="Label_Question_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Label_Question_Name" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Label_Question_NumberSelection" xml:space="preserve">
+    <value>Số câu trả lời</value>
+  </data>
+  <data name="Label_Question_ParentID" xml:space="preserve">
+    <value>Nguồn</value>
+  </data>
+  <data name="Label_Question_StartAt" xml:space="preserve">
+    <value>Thời gian bắt đầu</value>
+  </data>
+  <data name="Label_Question_Type" xml:space="preserve">
+    <value>Nhóm</value>
+  </data>
+  <data name="MsgError_Question_NumberSelection" xml:space="preserve">
+    <value>{0} phải lớn hơn 0</value>
+  </data>
+  <data name="MsgErrorNotPermisionFunc" xml:space="preserve">
+    <value>Bạn không có quyền truy cập tính năng này</value>
+  </data>
+  <data name="MsgErrAccountHaveUserExixts" xml:space="preserve">
+    <value>Cá nhân đã tồn tại tài khoản trong hệ thống</value>
+  </data>
+  <data name="Label_IdeaDetail_ID" xml:space="preserve">
+    <value>Khóa định danh của ý kiến người dùng</value>
+  </data>
+  <data name="Label_Idea_ID" xml:space="preserve">
+    <value>Khóa định danh phiên phát biểu</value>
+  </data>
+  <data name="MsgErrorOtherAccountApproved" xml:space="preserve">
+    <value>Đang có một người khác phát biểu ý kiến</value>
+  </data>
+  <data name="MsgErrorOtherProcessApprove" xml:space="preserve">
+    <value>Người dùng đã được duyệt phát biểu ý kiến từ một luồng khác</value>
+  </data>
+  <data name="MsgErrorOtherProcessClose" xml:space="preserve">
+    <value>Việc phát biểu ý kiến của người dùng này đã bị đóng từ một luồng khác.</value>
+  </data>
+  <data name="MsgExpressIdea" xml:space="preserve">
+    <value>Kính mời đồng chí {0} trình bày ý kiến của mình.</value>
+  </data>
+  <data name="MsgVotingNotDeclare" xml:space="preserve">
+    <value>Vui lòng chờ chủ trì công bố kết quả</value>
+  </data>
+  <data name="MsgVotingStarted" xml:space="preserve">
+    <value>{0} này đã được bắt đầu</value>
+  </data>
+  <data name="Msg_Error_Meeting_InputFlg" xml:space="preserve">
+    <value>Dữ liệu nhập vào bị lỗi.</value>
+  </data>
+  <data name="Msg_Error_Meeting_Ongoing" xml:space="preserve">
+    <value>Không thể bắt đầu chủ đề vì có chủ đề khác đang diễn ra.</value>
+  </data>
+  <data name="MsgErrorProgressMeettingIsAcctive" xml:space="preserve">
+    <value>Có một phiên phát biểu ý kiến khác đang mở cho đại hội này</value>
+  </data>
+  <data name="MsgSendRegistSuccess" xml:space="preserve">
+    <value>Bạn đã đăng ký phát biểu ý kiến thành công!</value>
+  </data>
+  <data name="MsgWaitingAdminStartMeeting" xml:space="preserve">
+    <value>Vui lòng chờ chủ trì bắt đầu đại hội</value>
+  </data>
+  <data name="MsgAccountPhoneErrorFormat" xml:space="preserve">
+    <value>Số điện thoại {0} không hợp lệ.</value>
+  </data>
+  <data name="MsgNextExpressIdea" xml:space="preserve">
+    <value>Mời đồng chí {0} chuẩn bị. </value>
+  </data>
+  <data name="MsgDeleteRegistSuccess" xml:space="preserve">
+    <value>Đã hủy bỏ đăng ký phát biểu thành công.</value>
+  </data>
+  <data name="MsgErrorPermission" xml:space="preserve">
+    <value>Bạn không có quyền truy cập vào đại hội này</value>
+  </data>
+  <data name="MsgErrorProcessNegative" xml:space="preserve">
+    <value>Số thứ tự kịch bản không thể là số âm.</value>
+  </data>
+  <data name="MsgErrorProcessSameOrder" xml:space="preserve">
+    <value>Số thứ tự kịch bản đã tồn tại.</value>
+  </data>
+  <data name="MsgEndMeetingSuccess" xml:space="preserve">
+    <value>Kết thúc đại hội thành công</value>
+  </data>
+  <data name="MsgStartMeetingSuccess" xml:space="preserve">
+    <value>Bắt đầu đại hội thành công</value>
+  </data>
+  <data name="MsgMeetingEnded" xml:space="preserve">
+    <value>Đại hội đã kết thúc</value>
+  </data>
+  <data name="MsgErrorDeleteMeetingAdmin" xml:space="preserve">
+    <value>Không thể xóa chủ trì đại hội.</value>
+  </data>
+  <data name="MsgErrorUpdateMeetingAdmin" xml:space="preserve">
+    <value>Không thể thay đổi thông tin chủ trì.</value>
+  </data>
+  <data name="MsgNotPermissionScan" xml:space="preserve">
+    <value>Bạn không có quyền điểm danh đại hội này</value>
+  </data>
+  <data name="MsgQRCodeInvalid" xml:space="preserve">
+    <value>QR Code này không hợp lệ</value>
+  </data>
+  <data name="MsgErrorDocumentNegative" xml:space="preserve">
+    <value>Số thứ tự tài liệu bị âm</value>
+  </data>
+  <data name="MsgMeetingEndedAfterTime" xml:space="preserve">
+    <value>Bạn chỉ có thể kết thúc đại hội sau {0} phút từ lúc bắt đầu đại hội</value>
+  </data>
+  <data name="MsgErrorDocumentSameOrder" xml:space="preserve">
+    <value>Số thứ tự tài liệu bị trùng</value>
+  </data>
+  <data name="MsgLoginByMobileRequired" xml:space="preserve">
+    <value>Vui lòng sử dụng điện thoại đã đăng nhập để quét.</value>
+  </data>
+  <data name="MsgNotFoundObject" xml:space="preserve">
+    <value>Không tìm thấy {0} trong hệ thống. Xin vui lòng kiểm tra lại!</value>
+  </data>
+  <data name="User_Email" xml:space="preserve">
+    <value>Địa chỉ email</value>
+  </data>
+  <data name="Label_Tag_Aniversary" xml:space="preserve">
+    <value>Kỉ niệm</value>
+  </data>
+  <data name="Label_Tag_Note" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="MsgErrorSendMail" xml:space="preserve">
+    <value>Địa chỉ mail server chưa được thiết lập. Vui lòng liên hệ quản trị viên để xử lý.</value>
+  </data>
+  <data name="MsgSendMailSuccess" xml:space="preserve">
+    <value>Hệ thống đã gởi mail thành công.</value>
+  </data>
+  <data name="User_Account_Info" xml:space="preserve">
+    <value>Thông tin tài khoản của địa chỉ email</value>
+  </data>
+  <data name="Label_Event_Admin" xml:space="preserve">
+    <value>Chủ sự kiện</value>
+  </data>
+  <data name="Label_Event_Date" xml:space="preserve">
+    <value>Ngày diễn ra</value>
+  </data>
+  <data name="Label_Event_EndAt" xml:space="preserve">
+    <value>Thời gian kết thúc</value>
+  </data>
+  <data name="Label_Event_ID" xml:space="preserve">
+    <value>Khóa định danh sự kiện</value>
+  </data>
+  <data name="Label_Event_Name" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Label_Event_StartAt" xml:space="preserve">
+    <value>Thời gian bắt đầu</value>
+  </data>
+  <data name="Label_Event_Tag" xml:space="preserve">
+    <value>Nhãn</value>
+  </data>
+  <data name="Label_Event_Type" xml:space="preserve">
+    <value>Phân loại sự kiện</value>
+  </data>
+  <data name="MsgErrorEventDueDatetime" xml:space="preserve">
+    <value>Thời gian kết thúc không được nhỏ hơn thời gian bắt đầu</value>
+  </data>
+  <data name="MsgErrorUpdateEventDate" xml:space="preserve">
+    <value>Ngày diễn ra không được nhỏ hơn ngày hiện tại.</value>
+  </data>
+  <data name="MsgErrorUpdateEventEndAt" xml:space="preserve">
+    <value>Thời gian kết thúc không được nhỏ hơn ngày hiện tại</value>
+  </data>
+  <data name="MsgErrorUpdateEventStartAt" xml:space="preserve">
+    <value>Thời gian bắt đầu không được nhỏ hơn ngày hiện tại</value>
+  </data>
+  <data name="Label_RolePage_ControlStr" xml:space="preserve">
+    <value>Các nút điều khiển</value>
+  </data>
+  <data name="Label_Process_StartAt" xml:space="preserve">
+    <value>Thời gian bắt đầu</value>
+  </data>
+  <data name="MsgErrorProcessSameStartAt" xml:space="preserve">
+    <value>Đã tồn tại tiến trình có cùng thời gian bắt đầu</value>
+  </data>
+  <data name="MsgErrorAccountNotFound" xml:space="preserve">
+    <value>Tài khoản không tồn tại.</value>
+  </data>
+  <data name="MsgErrorUnitNotFound" xml:space="preserve">
+    <value>Đơn vị/ phòng ban không tồn tại</value>
+  </data>
+  <data name="MsgNotPermissionStartMeeting" xml:space="preserve">
+    <value>Bạn không có quyền bắt đầu đại hội {0}</value>
+  </data>
+  <data name="MsgRejectOk" xml:space="preserve">
+    <value>Đại hội đã bị từ chối phê duyệt</value>
+  </data>
+  <data name="MsgErrorQuestionDup" xml:space="preserve">
+    <value>Chỉ có thể thể tạo 1 câu hỏi cho 1 chủ đề</value>
+  </data>
+  <data name="Label_Meeting_Element" xml:space="preserve">
+    <value>Thành phần</value>
+  </data>
+  <data name="Label_Meeting_EndDate" xml:space="preserve">
+    <value>Ngày kết thúc không được bỏ trống</value>
+  </data>
+  <data name="MsgErrorUpdateMeetingEndDate" xml:space="preserve">
+    <value>Ngày kết thúc không được nhỏ hơn ngày bắt đầu</value>
+  </data>
+  <data name="Label_Reward_Contents" xml:space="preserve">
+    <value>Lý do , hình thức</value>
+  </data>
+  <data name="Label_Reward_Date" xml:space="preserve">
+    <value>Tháng năm</value>
+  </data>
+  <data name="Label_Reward_PersonalID" xml:space="preserve">
+    <value>Đảng viên</value>
+  </data>
+  <data name="Label_Reward_Unit" xml:space="preserve">
+    <value>Cấp quyết định</value>
+  </data>
+  <data name="Label_Study_FromDate" xml:space="preserve">
+    <value>Từ tháng năm</value>
+  </data>
+  <data name="Label_Study_Method" xml:space="preserve">
+    <value>Loại văn bằng, chứng chỉ</value>
+  </data>
+  <data name="Label_Study_SchoolName" xml:space="preserve">
+    <value>Tên trường hoặc cơ sở đào tạo</value>
+  </data>
+  <data name="Label_Study_ToDate" xml:space="preserve">
+    <value>Đến tháng năm</value>
+  </data>
+  <data name="Label_Work_Job" xml:space="preserve">
+    <value>Công việc</value>
+  </data>
+  <data name="Label_Work_Place" xml:space="preserve">
+    <value>Nơi ở</value>
+  </data>
+  <data name="Label_Work_Position" xml:space="preserve">
+    <value>Chức vụ</value>
+  </data>
+  <data name="Label_Office" xml:space="preserve">
+    <value>Văn bản</value>
+  </data>
+  <data name="Label_Office_IDList" xml:space="preserve">
+    <value>Danh sách khóa định danh văn bản</value>
+  </data>
+  <data name="MsgUnDeleteDataSuccess" xml:space="preserve">
+    <value>Đã bỏ xóa {0} thành công</value>
+  </data>
+  <data name="Label_Unit_Level" xml:space="preserve">
+    <value>Cấp đơn vị</value>
+  </data>
+  <data name="MsgErrorIsExistVotingMember" xml:space="preserve">
+    <value>Thành viên bầu cử đã tồn tại</value>
+  </data>
+  <data name="Label_Office_Description" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Label_Office_ID" xml:space="preserve">
+    <value>Khóa định danh văn bản</value>
+  </data>
+  <data name="Label_Office_Name" xml:space="preserve">
+    <value>Trích yếu</value>
+  </data>
+  <data name="Label_Office_OfficeDt" xml:space="preserve">
+    <value>Ngày văn bản</value>
+  </data>
+  <data name="Label_Office_SerialNo" xml:space="preserve">
+    <value>Số ký hiệu</value>
+  </data>
+  <data name="Label_Office_TypeID" xml:space="preserve">
+    <value>Hình thức</value>
+  </data>
+  <data name="MsgErrorMinimumMember" xml:space="preserve">
+    <value>Cần có ít nhất 2 thành viên bầu cử</value>
+  </data>
+  <data name="Label_Abroad_Place" xml:space="preserve">
+    <value>Nước nào</value>
+  </data>
+  <data name="Label_Abroad_Reason" xml:space="preserve">
+    <value>Nội dung đi</value>
+  </data>
+  <data name="Label_Asset_Quantity" xml:space="preserve">
+    <value>Số lượng tài sản</value>
+  </data>
+  <data name="Label_Asset_Reason" xml:space="preserve">
+    <value>Nội dung giải trình nguồn gốc tài sản tăng thêm và tổng thu nhập</value>
+  </data>
+  <data name="Label_Asset_Type" xml:space="preserve">
+    <value>Loại tài sản, thu nhập</value>
+  </data>
+  <data name="Label_Asset_Value" xml:space="preserve">
+    <value>Giá trị tài sản, thu nhập</value>
+  </data>
+  <data name="Label_Personal_BirthDate" xml:space="preserve">
+    <value>Ngày sinh</value>
+  </data>
+  <data name="Label_Personal_Gender" xml:space="preserve">
+    <value>Giới tính</value>
+  </data>
+  <data name="Label_Personal_HomeTown" xml:space="preserve">
+    <value>Quê quán</value>
+  </data>
+  <data name="Label_Personal_ID" xml:space="preserve">
+    <value>ID cá nhân</value>
+  </data>
+  <data name="Label_Config_Description" xml:space="preserve">
+    <value>Mô tả cấu hình</value>
+  </data>
+  <data name="Label_Config_ID" xml:space="preserve">
+    <value>ID cấu hình</value>
+  </data>
+  <data name="Label_Config_Value" xml:space="preserve">
+    <value>Giá trị cấu hình</value>
+  </data>
+  <data name="Label_Personal_PartyMemberType" xml:space="preserve">
+    <value>Loại Đảng viên</value>
+  </data>
+  <data name="Label_Personal_Alias" xml:space="preserve">
+    <value>Bí danh</value>
+  </data>
+  <data name="Label_Personal_BirthName" xml:space="preserve">
+    <value>Họ và tên khai sinh</value>
+  </data>
+  <data name="Label_Personal_CurrentAddress" xml:space="preserve">
+    <value>Nơi tạm trú</value>
+  </data>
+  <data name="Label_Personal_HKTT" xml:space="preserve">
+    <value>Nơi thường trú</value>
+  </data>
+  <data name="Label_Personal_PartyCardID" xml:space="preserve">
+    <value>Số thẻ Đảng viên</value>
+  </data>
+  <data name="Label_Personal_PartyProfileNo" xml:space="preserve">
+    <value>Số lý lịch</value>
+  </data>
+  <data name="Label_Personal_Phone" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="Label_Personal_DTNJoinPlaceID" xml:space="preserve">
+    <value>Nơi kết nạp vào Đoàn TNCSHCM</value>
+  </data>
+  <data name="Label_Personal_Introducer1" xml:space="preserve">
+    <value>Người giới thiệu vào Đảng (1)</value>
+  </data>
+  <data name="Label_Personal_Introducer2" xml:space="preserve">
+    <value>Người giới thiệu vào Đảng (2)</value>
+  </data>
+  <data name="Label_Personal_PartyOfficialPlaceID" xml:space="preserve">
+    <value>Nơi công nhận chính thức</value>
+  </data>
+  <data name="Label_Meeting_FromDate" xml:space="preserve">
+    <value>Từ ngày</value>
+  </data>
+  <data name="Label_Meeting_ToDate" xml:space="preserve">
+    <value>Đến ngày</value>
+  </data>
+  <data name="Label_Meeting_Guest" xml:space="preserve">
+    <value>Khách mời</value>
+  </data>
+  <data name="Label_Meeting_Note" xml:space="preserve">
+    <value>Chuẩn bị</value>
+  </data>
+  <data name="Label_Member_Seat_Position" xml:space="preserve">
+    <value>Vị trí ngồi</value>
+  </data>
+  <data name="MsgErrorUpdateStartAtCurrTime" xml:space="preserve">
+    <value>Thời gian bắt đầu không thể nhỏ hơn thời gian hiện tại</value>
+  </data>
+  <data name="Label_Address_ID" xml:space="preserve">
+    <value>Mã địa giới hành chính</value>
+  </data>
+  <data name="Label_Address_Name" xml:space="preserve">
+    <value>Tên địa giới hành chính</value>
+  </data>
+  <data name="MsgErrorIsIDUnitExists" xml:space="preserve">
+    <value>Mã đơn vị {0} đã tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgErrorSpecialChar" xml:space="preserve">
+    <value>{0} không được chứa ký tự đặt biệt</value>
+  </data>
+  <data name="Label_Office_EndDt" xml:space="preserve">
+    <value>Ngày hết hạn</value>
+  </data>
+  <data name="MsgDateInValidData" xml:space="preserve">
+    <value>{0} phải lớn hơn hoặc bằng ngày hiện tại</value>
+  </data>
+  <data name="Label_Level" xml:space="preserve">
+    <value>Cấp</value>
+  </data>
+  <data name="MsgNotifyMeetingDay" xml:space="preserve">
+    <value>Bạn có lịch họp {1} {2}, {0}. Trân trọng!</value>
+  </data>
+  <data name="MsgOfficeProcessMain" xml:space="preserve">
+    <value>Bạn đã được phân công xử lý chính văn bản {0} lúc {1}. Trân trọng!</value>
+  </data>
+  <data name="Lable_20" xml:space="preserve">
+    <value>Lĩnh vực yêu cầu</value>
+  </data>
+  <data name="Label_Process_Cmt_Fields" xml:space="preserve">
+    <value>Lĩnh vực</value>
+  </data>
+  <data name="MsgProcessSMS" xml:space="preserve">
+    <value>A/c co thong tin dia ban Vttp can xu ly ma so {0} theo link {1}</value>
+  </data>
+  <data name="MsgErrorTooManyUnit" xml:space="preserve">
+    <value>Đã chọn quá nhiều đơn vị</value>
+  </data>
+  <data name="MsgMeetingNotChangeable" xml:space="preserve">
+    <value>Đại hội đã duyệt/từ chối duyệt không thể chỉnh sửa/xóa</value>
+  </data>
+  <data name="User_Unit" xml:space="preserve">
+    <value>Tổ Chức</value>
+  </data>
+  <data name="MsgEndDateProcess" xml:space="preserve">
+    <value>Ngày hết hạn phải lớn hơn hoặc bằng ngày hiện tại</value>
+  </data>
+  <data name="MsgFeedbackDateProcess" xml:space="preserve">
+    <value>Ngày hẹn phải lớn hơn hoặc bằng ngày tạo thông tin.</value>
+  </data>
+  <data name="MsgPersonalUnitExist" xml:space="preserve">
+    <value>Người dùng hiện tại đã tồn tại trong tổ chức này.</value>
+  </data>
+  <data name="MsgErrorIsExistsArchiveFolder" xml:space="preserve">
+    <value>Đã tồn tại tên thư mục này</value>
+  </data>
+  <data name="RowName" xml:space="preserve">
+    <value>Tên dòng</value>
+  </data>
+  <data name="Label_News_Description" xml:space="preserve">
+    <value>Nội dung của tin</value>
+  </data>
+  <data name="MsgErrorMediaTooMany" xml:space="preserve">
+    <value>Số tập tin vượt quá dung lượng cho phép, vui lòng xoá bớt</value>
+  </data>
+  <data name="Label_Archive_File_Name" xml:space="preserve">
+    <value>Tên tập tin</value>
+  </data>
+  <data name="Label_Archive_Name" xml:space="preserve">
+    <value>Tên thư mục</value>
+  </data>
+  <data name="RpTemplate_Des" xml:space="preserve">
+    <value>Mô tả mẫu báo cáo</value>
+  </data>
+  <data name="RpTemplate_ID" xml:space="preserve">
+    <value>ID Mẫu báo cáo</value>
+  </data>
+  <data name="RpTemplate_Index" xml:space="preserve">
+    <value>Số thứ tự mẫu báo cáo</value>
+  </data>
+  <data name="RpTemplate_Name" xml:space="preserve">
+    <value>Tên mẫu báo cáo</value>
+  </data>
+  <data name="DynamicReport_Value" xml:space="preserve">
+    <value>Giá trị ô báo cáo</value>
+  </data>
+  <data name="Label_Unit_Contact_Address" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="Label_Unit_Contact_Description" xml:space="preserve">
+    <value>Miêu tả</value>
+  </data>
+  <data name="Label_Unit_Contact_Name" xml:space="preserve">
+    <value>Tên đối tác</value>
+  </data>
+  <data name="Label_Personal_Career" xml:space="preserve">
+    <value>Nghề nghiệp</value>
+  </data>
+  <data name="Label_Personal_CMND" xml:space="preserve">
+    <value>CMND</value>
+  </data>
+  <data name="Label_Personal_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Label_Personal_Name" xml:space="preserve">
+    <value>Họ và Tên</value>
+  </data>
+  <data name="Label_Personal_Nationality" xml:space="preserve">
+    <value>Quốc tịch</value>
+  </data>
+  <data name="Label_Unit_Contact_Address_En_Lan" xml:space="preserve">
+    <value>Địa chỉ(Song ngữ tiếng Anh)</value>
+  </data>
+  <data name="Label_Unit_Contact_Description_En_Lan" xml:space="preserve">
+    <value>Miêu tả(Song ngữ tiếng Anh)</value>
+  </data>
+  <data name="Label_Unit_Contact_Name_En_Lan" xml:space="preserve">
+    <value>Tên đối tác(Song ngữ tiếng Anh)</value>
+  </data>
+  <data name="_MsgMaxLength150" xml:space="preserve">
+    <value>Tối đa ký tự là 150</value>
+  </data>
+  <data name="_MsgMaxLength20" xml:space="preserve">
+    <value>Tối đa ký tự là 20</value>
+  </data>
+  <data name="_MsgRequired" xml:space="preserve">
+    <value>Bắt buộc</value>
+  </data>
+  <data name="_MsgRequiredNumber" xml:space="preserve">
+    <value>Chỉ nhận ký tự số</value>
+  </data>
+  <data name="_MsgMaxLength100" xml:space="preserve">
+    <value>Tối đa ký tự là 100</value>
+  </data>
+  <data name="Pro5Step_Description" xml:space="preserve">
+    <value>Mô tả bước</value>
+  </data>
+  <data name="Pro5Step_Name" xml:space="preserve">
+    <value>Tên bước</value>
+  </data>
+  <data name="Pro5Step_OrderIndex" xml:space="preserve">
+    <value>Số thứ tự</value>
+  </data>
+  <data name="_MsgMaxLength250" xml:space="preserve">
+    <value>Tối đa 250 ký tự !</value>
+  </data>
+  <data name="_M_PAYMENT" xml:space="preserve">
+    <value>Cổng thanh toán</value>
+  </data>
+  <data name="_CV_PRO5_GROUP_STEP" xml:space="preserve">
+    <value>Bước hồ sơ</value>
+  </data>
+  <data name="_MsgMaxLength500" xml:space="preserve">
+    <value>Tối đa ký tự là 500</value>
+  </data>
+  <data name="_MsgMaxLength200" xml:space="preserve">
+    <value>Tối đa ký tự là 200</value>
+  </data>
+  <data name="_MsgNotUpdated" xml:space="preserve">
+    <value>Không có dữ liệu mới để cập nhật</value>
+  </data>
+  <data name="_MsgNotValidState" xml:space="preserve">
+    <value>Định dang dữ liệu gửi đi không đúng</value>
+  </data>
+  <data name="Label_1" xml:space="preserve">
+    <value>Chuyên mục</value>
+  </data>
+  <data name="Label_2" xml:space="preserve">
+    <value>Nguồn bài viết</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Định dạng dữ liệu gửi đi không đúng</value>
+  </data>
+  <data name="MsgErrorInvalidNumber" xml:space="preserve">
+    <value>Số không hợp lệ</value>
+  </data>
+  <data name="OrderIndex_Common" xml:space="preserve">
+    <value>Số thứ tự không được nhỏ hơn 0</value>
+  </data>
+  <data name="MsgErrorMaximumValue" xml:space="preserve">
+    <value>Giá trị tối đa là {0}</value>
+  </data>
+  <data name="MsgErrorMinimumValue" xml:space="preserve">
+    <value>Giá trị tối thiểu là {0}</value>
+  </data>
+  <data name="_MsgRangeValue_0_32767" xml:space="preserve">
+    <value>Khoảng giá trị cho phép là: 0...32767</value>
+  </data>
+  <data name="MsgErrorUnitDeleteMenu" xml:space="preserve">
+    <value>Không thể xóa chuyên mục "{0}" vì có chuyên mục con đang thuộc chuyên mục này</value>
+  </data>
+  <data name="MsgErrorDateNotValue" xml:space="preserve">
+    <value>Lỗi ngày nhập ngày tháng không có giá trị</value>
+  </data>
+  <data name="Email_subject" xml:space="preserve">
+    <value>Thông báo đăng ký hồ sơ</value>
+  </data>
+  <data name="Register_SeCode" xml:space="preserve">
+    <value>. Ma bao mat:</value>
+  </data>
+  <data name="Register_Success" xml:space="preserve">
+    <value>Ban da dang ky ho so thanh cong. Ma ho so:</value>
+  </data>
+  <data name="Notice_Of_Document_Approval" xml:space="preserve">
+    <value>THÔNG BÁO VỀ VIỆC PHÊ DUYỆT HỒ SƠ</value>
+  </data>
+  <data name="Label_Late" xml:space="preserve">
+    <value>Trễ hẹn</value>
+  </data>
+  <data name="Label_Normal" xml:space="preserve">
+    <value>Bình thường</value>
+  </data>
+  <data name="Label_Warning" xml:space="preserve">
+    <value>Cảnh báo</value>
+  </data>
+  <data name="MsgVnpayLockAmountNotMatch" xml:space="preserve">
+    <value>Số tiền của lần giao dịch là {0} không khớp với số tiền được trả về từ hệ thống VNPay là {1}</value>
+  </data>
+  <data name="MsgVnpayLockOrderIdNotFound" xml:space="preserve">
+    <value>Không tồn tại đơn hàng với mã {0} trong hệ thống!</value>
+  </data>
+  <data name="MsgVnpayLockStatusNotSuccess" xml:space="preserve">
+    <value>Trạng thái giao dịch không thành công. Data được trả về từ VNPay: {0}</value>
+  </data>
+  <data name="MsgVnpayPaid" xml:space="preserve">
+    <value>Hồ sơ đã thanh toán</value>
+  </data>
+  <data name="MsgNotifyDocDayVN" xml:space="preserve">
+    <value>Bạn có 1 lịch hẹn lúc {0} ngày {1} để lấy Hồ sơ {2}</value>
+  </data>
+  <data name="MsgNotifyDocDayEN" xml:space="preserve">
+    <value>You have an appointment at {0} {1} to get your Document {2}</value>
+  </data>
+  <data name="Notice_Of_Document_Denying" xml:space="preserve">
+    <value>THÔNG BÁO VỀ VIỆC TỪ CHỐI HỒ SƠ</value>
+  </data>
+  <data name="MsgNotifyReleaseEN" xml:space="preserve">
+    <value>Your document {0} has been released</value>
+  </data>
+  <data name="MsgNotifyReleaseVN" xml:space="preserve">
+    <value>Hồ sơ {0} của bạn đã được phát hành </value>
+  </data>
+  <data name="Label_Footer" xml:space="preserve">
+    <value>Footer</value>
+  </data>
+  <data name="Label_Header" xml:space="preserve">
+    <value>Header</value>
+  </data>
+  <data name="Label_Image" xml:space="preserve">
+    <value>Ảnh liên kết (phải)</value>
+  </data>
+  <data name="MsgErrorLength" xml:space="preserve">
+    <value>Chiều dài cho phép là {1} ký tự</value>
+  </data>
+  <data name="_MsgDateEOGThanError" xml:space="preserve">
+    <value>Phải lớn hơn hoặc bằng ngày hiện tại</value>
+  </data>
+  <data name="_MsgDateLessThanError" xml:space="preserve">
+    <value>Phải nhỏ hơn ngày hiện tại</value>
+  </data>
+  <data name="MsgErrorStatusInvalid" xml:space="preserve">
+    <value>Trạng thái của đối tượng không hợp lệ</value>
+  </data>
+  <data name="MsgGetDataOk" xml:space="preserve">
+    <value>Nhận dữ liệu thành công!</value>
+  </data>
+  <data name="MsgErrorInvalidBirthDate" xml:space="preserve">
+    <value>{0} phải bé hơn ngày hiện tại</value>
+  </data>
+  <data name="MsgErrorExistingDataLink" xml:space="preserve">
+    <value>Lỗi: Đang tồn tại liên kết dữ liệu với bảng khác</value>
+  </data>
+  <data name="MsgPaymentSuccess" xml:space="preserve">
+    <value>Bạn vừa thanh toán thành công phí hồ sơ {0}. Số tiền là {1} vnđ</value>
+  </data>
+  <data name="MsgErrorPaymentNotExist" xml:space="preserve">
+    <value>Không tìm thấy giao dịch thanh toán</value>
+  </data>
+  <data name="MsgPaymentNotSuccess" xml:space="preserve">
+    <value>Trạng thái giao dịch không thành công</value>
+  </data>
+  <data name="MsgErrorInvalidCVPro5Group" xml:space="preserve">
+    <value>Dữ liệu loại hồ sơ đang bị lỗi, xin vui lòng chọn loại hồ sơ khác</value>
+  </data>
+  <data name="MsgErrorSignDateError" xml:space="preserve">
+    <value>Thời gian ký nhận cần phải lớn hơn hoặc bằng thời gian thanh toán. Thời gian thanh toán là {0}.</value>
+  </data>
+  <data name="MsgErrorSignedError" xml:space="preserve">
+    <value>Hồ sơ đã được được ký nhận không thể ký nhận lần nữa.</value>
+  </data>
+  <data name="MsgErrorUnSignedError" xml:space="preserve">
+    <value>Hồ sơ chưa được ký nhận nên không thể hủy bỏ ký nhận.</value>
+  </data>
+  <data name="Label_All" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="Label_Complete" xml:space="preserve">
+    <value>Hoàn thành</value>
+  </data>
+  <data name="Label_Incomplete" xml:space="preserve">
+    <value>Chưa hoàn thành</value>
+  </data>
+  <data name="MsgErrorMissingContactDB" xml:space="preserve">
+    <value>Không tìm thấy thông tin số điện thoại liên hệ trong hệ thống.</value>
+  </data>
+  <data name="Label_Position" xml:space="preserve">
+    <value>Chức vụ</value>
+  </data>
+  <data name="Label_Post_Reference" xml:space="preserve">
+    <value>Nguồn tin</value>
+  </data>
+  <data name="MsgChatNotInGroup" xml:space="preserve">
+    <value>Bạn không thuộc thành viên trong đại hội này</value>
+  </data>
+  <data name="Msg_AccountLoginNotFound" xml:space="preserve">
+    <value>Không tìm thấy thông tin tài khoản đăng nhập</value>
+  </data>
+  <data name="Label_MeetingVote_No" xml:space="preserve">
+    <value>Không đồng ý</value>
+  </data>
+  <data name="Label_MeetingVote_Yes" xml:space="preserve">
+    <value>Đồng ý</value>
+  </data>
+  <data name="Label_MeetingVote_None" xml:space="preserve">
+    <value>Không biểu quyết</value>
+  </data>
+  <data name="MsgMeetingIsEnded" xml:space="preserve">
+    <value>Lịch họp đã kết thúc. Không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingIsNotStart" xml:space="preserve">
+    <value>Lịch họp chưa bắt đầu. không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingNotExists" xml:space="preserve">
+    <value>Lịch họp chưa được khởi tạo hoặc đã bị xóa</value>
+  </data>
+  <data name="MsgMeetingVoteIsNotChange" xml:space="preserve">
+    <value>Biểu quyết đã bắt đầu hoặc đã kết thúc. Không thể thay đổi</value>
+  </data>
+  <data name="MsgMeetingVoteIsNotSend" xml:space="preserve">
+    <value>Biểu quyết chưa bắt đầu hoặc đã kết thúc. Không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingVoteNotFound" xml:space="preserve">
+    <value>Biểu quyết chưa được khởi tạo hoặc đã bị xóa</value>
+  </data>
+  <data name="Label_Menu_Map" xml:space="preserve">
+    <value>Bản đồ</value>
+  </data>
+  <data name="Label_Menu_Meeting" xml:space="preserve">
+    <value>Đại hội</value>
+  </data>
+  <data name="Label_Menu_Post" xml:space="preserve">
+    <value>Tin tức</value>
+  </data>
+  <data name="Label_Menu_SocialNetwork" xml:space="preserve">
+    <value>Mạng xã hội</value>
+  </data>
+  <data name="MsgSocialNetworkLockOrDel" xml:space="preserve">
+    <value>Bài viết đã được xóa hoặc đã bị ẩn vì nội dung không phù hợp</value>
+  </data>
+  <data name="Label_PostComment_Status_All" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="Label_PostComment_Status_Lock" xml:space="preserve">
+    <value>Đã ẩn</value>
+  </data>
+  <data name="Label_PostComment_Status_UnLock" xml:space="preserve">
+    <value>Đã hiển thị</value>
+  </data>
+  <data name="MsgCommentLock" xml:space="preserve">
+    <value>Bình luận đã được ẩn</value>
+  </data>
+  <data name="MsgCommentUnLock" xml:space="preserve">
+    <value>Bình luận đã được hiển thị</value>
+  </data>
+  <data name="MsgSocialNetworkLock" xml:space="preserve">
+    <value>Bài viết đã được ẩn</value>
+  </data>
+  <data name="Label_SocialNetwork_Status_Lock" xml:space="preserve">
+    <value>Đã ẩn</value>
+  </data>
+  <data name="Label_SocialNetwork_Status_UnLock" xml:space="preserve">
+    <value>Đã hiển thị</value>
+  </data>
+  <data name="MsgSocialNetWorkUnLock" xml:space="preserve">
+    <value>Bài viết đã được hiển thị</value>
+  </data>
+  <data name="Label_MeetingElection_None" xml:space="preserve">
+    <value>Không hợp lệ</value>
+  </data>
+  <data name="MsgMeetingElectionIsNotChange" xml:space="preserve">
+    <value>Bầu cử đã bắt đầu hoặc đã kết thúc. Không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingElectionIsNotSend" xml:space="preserve">
+    <value>Bầu cử chưa bắt đầu hoặc đã kết thúc. Không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingElectionNotFound" xml:space="preserve">
+    <value>Bầu cử chưa được khởi tạo hoặc đã bị xóa</value>
+  </data>
+  <data name="MsgMeetingElectionNotEnd" xml:space="preserve">
+    <value>Bầu cử chưa kết thúc. Không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingVoteNotEnd" xml:space="preserve">
+    <value>Biểu quyết chưa kết thúc. Không thể tiếp tục</value>
+  </data>
+  <data name="Label_ESeatMapType_Table" xml:space="preserve">
+    <value>Hội trường</value>
+  </data>
+  <data name="MsgMeetingRegistSpeakIsNotChange" xml:space="preserve">
+    <value>Nội dung đăng ký phát biểu đã được mời. Không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingRegistSpeakNotFound" xml:space="preserve">
+    <value>Nội dung đăng ký phát biểu chưa được khởi tạo hoặc đã xóa. Vui lòng kiểm tra lại</value>
+  </data>
+  <data name="Label_MeetingAddMemberBody" xml:space="preserve">
+    <value>{0} vừa được mời tham gia đại hội</value>
+  </data>
+  <data name="Label_MeetingImageBody" xml:space="preserve">
+    <value>{0} Đã gửi một hình ảnh vào đại hội</value>
+  </data>
+  <data name="Label_MeetingRemoveMemberBody" xml:space="preserve">
+    <value>{0} vừa được mời ra khỏi đại hội</value>
+  </data>
+  <data name="Label_MeetingUpdateSeatMemberBody" xml:space="preserve">
+    <value>{0} vừa được cập nhật chỗ ngồi mới</value>
+  </data>
+  <data name="Label_SocialNetworkComment_Insert" xml:space="preserve">
+    <value>{0} bình luận bài viết</value>
+  </data>
+  <data name="Label_SocialNetworkComment_Update" xml:space="preserve">
+    <value>{0} thay đổi bình luận bài viết</value>
+  </data>
+  <data name="Label_SocialNetworkLike_Delete" xml:space="preserve">
+    <value>{0} bỏ thích bài viết</value>
+  </data>
+  <data name="Label_SocialNetworkLike_Insert" xml:space="preserve">
+    <value>{0} thích bài viết</value>
+  </data>
+  <data name="Label_SocialNetwork_Insert" xml:space="preserve">
+    <value>{0} đăng một bài viết mới</value>
+  </data>
+  <data name="Label_SocialNetwork_Update" xml:space="preserve">
+    <value>{0} cập nhật bài viết của mình</value>
+  </data>
+  <data name="Label_Post_Status_Approve" xml:space="preserve">
+    <value>Đã duyệt</value>
+  </data>
+  <data name="Label_Post_Status_UnApprove" xml:space="preserve">
+    <value>Đang chờ</value>
+  </data>
+  <data name="MsgPostApprove" xml:space="preserve">
+    <value>Tin bài đã được phê duyệt</value>
+  </data>
+  <data name="MsgPostUnApprove" xml:space="preserve">
+    <value>Tin bài đã được hủy phê duyệt</value>
+  </data>
+  <data name="LabelPostLatest" xml:space="preserve">
+    <value>Mới nhất</value>
+  </data>
+  <data name="Label_ForgotPassword" xml:space="preserve">
+    <value>Quên mật khẩu</value>
+  </data>
+  <data name="MsgEmailConfigNotFound" xml:space="preserve">
+    <value>Chưa cấu hình mail server hoặc mẫu gửi mail.</value>
+  </data>
+  <data name="MsgEmailIsConflict" xml:space="preserve">
+    <value>Email này không tồn tại hoặc bị xung đột tài khoản</value>
+  </data>
+  <data name="MsgEmailIsExists" xml:space="preserve">
+    <value>Email đã tồn tại. Không thể đăng ký tài khoản với email này</value>
+  </data>
+  <data name="MsgPasswordNotMatch" xml:space="preserve">
+    <value>Mật khẩu không trùng khớp</value>
+  </data>
+  <data name="MsgUpdatePasswordSuccess" xml:space="preserve">
+    <value>Mật khẩu đã được thay đổi</value>
+  </data>
+  <data name="MsgAccountNotFound" xml:space="preserve">
+    <value>Tài khoản không tồn tại</value>
+  </data>
+  <data name="MsgMeetingMemberNotFound" xml:space="preserve">
+    <value>Tài khoản không phải là thành viên của đại hội này</value>
+  </data>
+  <data name="MsgSeatMapRowLimit" xml:space="preserve">
+    <value>Sơ đồ chỗ ngồi cho phép tối đa 500 hàng</value>
+  </data>
+  <data name="MsgMeetingMemberSeatMapIsExists" xml:space="preserve">
+    <value>Vị trí đã có người ngồi</value>
+  </data>
+  <data name="MsgAcceptExtension" xml:space="preserve">
+    <value>Tập tin tải lên không hợp lệ. Chỉ chấp nhận các tập tin có phần mở rộng {0}</value>
+  </data>
+  <data name="MsgFileUploadNotValid" xml:space="preserve">
+    <value>Tập tin tải lên không hợp lệ</value>
+  </data>
+  <data name="MsgMeetingElectionIsNotEnd" xml:space="preserve">
+    <value>Bỏ phiếu / Bầu cử chưa kết thúc. Không thể tiếp tục</value>
+  </data>
+  <data name="_MsgMaxValue" xml:space="preserve">
+    <value>Giá trị tối đa là {0}</value>
+  </data>
+  <data name="_MsgMinValue" xml:space="preserve">
+    <value>Giá trị tối thiểu là {0}</value>
+  </data>
+  <data name="MsgStrikeThroughNumMax" xml:space="preserve">
+    <value>Số lượng gạch tối đa phải nhỏ hơn số lượng ứng cử viên</value>
+  </data>
+  <data name="MsgMeetingCommentCanNotDelete" xml:space="preserve">
+    <value>Nội dung này không thể xóa.</value>
+  </data>
+  <data name="MsgErrUserNameIsExixts" xml:space="preserve">
+    <value>Tài khoản đã tồn tại trong hệ thống: {0}</value>
+  </data>
+  <data name="MsgErrUnitIDIsExixts" xml:space="preserve">
+    <value>ID Đơn vị đã tồn tại trong hệ thống: {0}</value>
+  </data>
+  <data name="MsgErrUnitNameIsExixts" xml:space="preserve">
+    <value>Tên Đơn vị đã tồn tại trong hệ thống: {0}</value>
+  </data>
+  <data name="MsgErrUnitIDNotExixts" xml:space="preserve">
+    <value>ID Đơn vị chưa tồn tại trong hệ thống: {0}</value>
+  </data>
+  <data name="MsgPositionNotFound" xml:space="preserve">
+    <value>Chức vụ {0} không tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgRoleDefaultNotFound" xml:space="preserve">
+    <value>Vui lòng cấu hình tham số nhóm người dùng</value>
+  </data>
+  <data name="MsgRoleNotFound" xml:space="preserve">
+    <value>Nhóm người dùng {0} không tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgUnitNotFound" xml:space="preserve">
+    <value>Đơn vị {0} không tồn tại trong hệ thống</value>
+  </data>
+  <data name="Label_CommunistPartyPosition" xml:space="preserve">
+    <value>Chức vụ đảng</value>
+  </data>
+  <data name="Label_Ethnic" xml:space="preserve">
+    <value>Dân tộc</value>
+  </data>
+  <data name="Label_PoliticalTheory" xml:space="preserve">
+    <value>Lý luận chính trị</value>
+  </data>
+  <data name="MsgMeetingMemberParentNotExists" xml:space="preserve">
+    <value>Chưa đăng ký thành viên tham gia đại hội cấp trên hoặc thành viên đã được quản trị đại hội cấp trên duyệt tham dự. Không thể hủy đăng ký</value>
+  </data>
+  <data name="MsgMeetingParentNotExists" xml:space="preserve">
+    <value>Đại hội cấp trên chưa được khởi tạo hoặc không tồn tại.</value>
+  </data>
+  <data name="MsgMeetingGroupNotFound" xml:space="preserve">
+    <value>Kỳ đại hội chưa được khởi tạo hoặc đã kết thúc.</value>
+  </data>
+  <data name="Label_Menu_Setting" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="Label_Qualification" xml:space="preserve">
+    <value>Trình độ chuyên môn</value>
+  </data>
+  <data name="Label_UnitType" xml:space="preserve">
+    <value>Khối đối tượng</value>
+  </data>
+  <data name="MsgMeetingCurInGroupIsExists" xml:space="preserve">
+    <value>Đã tồn tại đại hội {0} trong kỳ họp {1} của đơn vị {2}. Không thể tiếp tục tạo mới đại hội trong kỳ này!</value>
+  </data>
+  <data name="MsgMeetingMemberApproveSuccess" xml:space="preserve">
+    <value>Phê duyệt tham dự đại hội thành công</value>
+  </data>
+  <data name="MsgMeetingMemberRegistSuccess" xml:space="preserve">
+    <value>Đăng ký tham dự đại hội cấp trên thành công</value>
+  </data>
+  <data name="MsgMeetingMemberUnApproveSuccess" xml:space="preserve">
+    <value>Hủy phê duyệt tham dự đại hội thành công</value>
+  </data>
+  <data name="MsgMeetingMemberUnRegistSuccess" xml:space="preserve">
+    <value>Hủy đăng ký tham dự đại hội cấp trên thành công</value>
+  </data>
+  <data name="MsgMeetingMemberIsExistsInMeeting" xml:space="preserve">
+    <value>Thành viên đã tồn tại trong đại hội. Không thể tiếp tục</value>
+  </data>
+  <data name="MsgMeetingInGroupIsExists" xml:space="preserve">
+    <value>Tồn tại các đại hội {0} trong kỳ họp này, không thể xóa!</value>
+  </data>
+  <data name="MsgUserAccountIsExist" xml:space="preserve">
+    <value>Tồn tại tài khoản {0} đang được cấp quyền sử dụng cho {1}. Không thể xóa!</value>
+  </data>
+  <data name="Label_MeetingElection_Start_Title" xml:space="preserve">
+    <value>Bắt đầu bỏ phiếu / bầu cử</value>
+  </data>
+  <data name="Label_MeetingVote_Start_Title" xml:space="preserve">
+    <value>Bắt đầu biểu quyết</value>
+  </data>
+  <data name="Label_MeetingMemberGroup" xml:space="preserve">
+    <value>Ban thẩm tra tư cách đại biểu</value>
+  </data>
+  <data name="Label_MeetingElection_Remind_Description" xml:space="preserve">
+    <value>Kính mời các đồng chí tham gia bỏ phiếu/bầu cử nội dung {0}. Nếu đã tham gia vui lòng bỏ qua thông báo này</value>
+  </data>
+  <data name="Label_MeetingMember_CD" xml:space="preserve">
+    <value>Đại biểu chỉ định</value>
+  </data>
+  <data name="Label_MeetingMember_DN" xml:space="preserve">
+    <value>Đại biểu đương nhiên</value>
+  </data>
+  <data name="MsgMeetingSeatMapOutOfValue" xml:space="preserve">
+    <value>Tổng số ghế không được vượt quá {0}</value>
+  </data>
+  <data name="Label_MeetingMemberGroup_BTTTCDB" xml:space="preserve">
+    <value>Ban thẩm tra tư cách đại biểu</value>
+  </data>
+  <data name="Label_MeetingMemberGroup_Default" xml:space="preserve">
+    <value>Mặc định</value>
+  </data>
+  <data name="Label_MeetingMember_Admin" xml:space="preserve">
+    <value>Quản trị đại hội</value>
+  </data>
+  <data name="MsgMeetingGroupDuplicateDate" xml:space="preserve">
+    <value>Năm thi đua không hợp lệ. Trùng với thời gian Năm thi đua {0}</value>
+  </data>
+  <data name="MsgMeetingMemberNotSendComment" xml:space="preserve">
+    <value>Không thể gửi tin nhắn văn bản, hình ảnh trong thời gian diễn ra đại hội</value>
+  </data>
+  <data name="MsgRegistSpeakDateTimeNotValid" xml:space="preserve">
+    <value>Không thể đăng ký / chỉnh sửa nội dung phát biểu trong thời gian diễn ra đại hội</value>
+  </data>
+  <data name="MsgMeetingEndTitle" xml:space="preserve">
+    <value>ĐÃ KẾT THÚC</value>
+  </data>
+  <data name="MsgMeetingEndDes" xml:space="preserve">
+    <value>BAN TỔ CHỨC XIN CHÂN THÀNH CÁM ƠN QUÝ VỊ ĐẠI BIỂU</value>
+  </data>
+  <data name="MsgMeetingElectionMemberEnd" xml:space="preserve">
+    <value>Bạn đã hoàn thành bỏ phiếu / bầu cử. Vui lòng chờ công bố kết quả</value>
+  </data>
+  <data name="MsgMeetingVoteMemberEnd" xml:space="preserve">
+    <value>Bạn đã hoàn thành biểu quyết. Vui lòng chờ công bố kết quả!</value>
+  </data>
+  <data name="Label_MeetingVote_Remind_Description" xml:space="preserve">
+    <value>Kính mời các đồng chí tham gia biểu quyết nội dung {0}. Nếu đã tham gia vui lòng bỏ qua thông báo này</value>
+  </data>
+  <data name="MsgMeetingRatingEnd" xml:space="preserve">
+    <value>Bạn đã hoàn thành đánh giá cuộc họp</value>
+  </data>
+  <data name="MsgMeetingCommentRating_Description" xml:space="preserve">
+    <value>Kính mời quý đại biểu tham gia đánh giá chất lượng cuộc họp</value>
+  </data>
+  <data name="MsgMeetingElectionEnd" xml:space="preserve">
+    <value>Bỏ phiếu / Bầu cử đã kết thúc</value>
+  </data>
+  <data name="MsgMeetingVoteEnd" xml:space="preserve">
+    <value>Biểu quyết đã kết thúc</value>
+  </data>
+  <data name="MsgMeetingVote2" xml:space="preserve">
+    <value>Biểu quyết phải có tối thiểu 2 nội dung. (Vui lòng liên  hệ quản trị)</value>
+  </data>
+  <data name="MsgMeetingElectionNotEnd_NotPublish" xml:space="preserve">
+    <value>Bỏ phiếu / Bầu cử chưa kết thúc. Không thể công bố</value>
+  </data>
+  <data name="MsgMeetingElection_MemberAdmin" xml:space="preserve">
+    <value>Bạn không có quyền kết thúc bỏ phiếu/bầu cử</value>
+  </data>
+  <data name="MsgMeetingElection_PublishMemberAdmin" xml:space="preserve">
+    <value>Bạn không có quyền công bố kết quả bỏ phiếu / bầu cử</value>
+  </data>
+  <data name="MsgMeetingVoteNotEnd_NotPublish" xml:space="preserve">
+    <value>Biểu quyết chưa kết thúc. Không thể công bố</value>
+  </data>
+  <data name="MsgMeetingVote_MemberAdmin" xml:space="preserve">
+    <value>Bạn không có quyền kết thúc biểu quyết</value>
+  </data>
+  <data name="MsgMeetingVote_PublishMemberAdmin" xml:space="preserve">
+    <value>Bạn không có quyền công bố kết quả biểu quyết</value>
+  </data>
+  <data name="MsgMeeting_MemberAdmin" xml:space="preserve">
+    <value>Bạn không có quyền kết thúc cuộc họp</value>
+  </data>
+  <data name="MsgMeetingCommentMeetingEnd_Description" xml:space="preserve">
+    <value>Đại hội Đoàn {0} đã kết thúc, Ban tổ chức Đại hội xin trân trọng cám ơn quý vị Đại biểu đã tham gia</value>
+  </data>
+  <data name="MsgMeetingVote2_NotValid" xml:space="preserve">
+    <value>Vui lòng biểu quyết đầy đủ nội dung trước khi gửi bình chọn</value>
+  </data>
+  <data name="Label_MeetingMember_TBBC" xml:space="preserve">
+    <value>Trưởng ban bầu cử</value>
+  </data>
+  <data name="MsgMeetingElection_MemberTTBC" xml:space="preserve">
+    <value>Bạn không có quyền kết thúc bỏ phiếu / bầu cử</value>
+  </data>
+  <data name="Label_MeetingMemberGroup_BKP" xml:space="preserve">
+    <value>Ban kiểm phiếu</value>
+  </data>
+  <data name="MsgMeetingVote_MemberTBBC" xml:space="preserve">
+    <value>Bạn không có quyền kết thúc biểu quyết</value>
+  </data>
+  <data name="MsgAccountImportExcelDuplicate" xml:space="preserve">
+    <value>Tài khoản trong excel tải lên bị trùng lặp. Gồm {0}</value>
+  </data>
+  <data name="MsgOrganizationImportExcelDuplicate" xml:space="preserve">
+    <value>ID Đơn vị trong excel tải lên bị trùng lặp. Gồm {0}</value>
+  </data>
+  <data name="MsgMeetingElection_Start_MemberTTBC" xml:space="preserve">
+    <value>Bạn không có quyền bắt đầu bỏ phiếu / bầu cử</value>
+  </data>
+  <data name="MsgMeetingVote_Start_MemberTBBC" xml:space="preserve">
+    <value>Bạn không có quyền bắt đầu biểu quyết</value>
+  </data>
+  <data name="MsgMeeting_MemberAdmin_CheckIn" xml:space="preserve">
+    <value>Bạn không có quyền điểm danh đại hội này</value>
+  </data>
+  <data name="MsgMeetingCheckinR2Started" xml:space="preserve">
+    <value>Điểm danh lần 2 đã bắt đầu</value>
+  </data>
+  <data name="MsgMeetingElectionMemberMin1" xml:space="preserve">
+    <value>Tối thiểu 1 ứng viên</value>
+  </data>
+  <data name="MsgMeetingMemberCheckin_Started" xml:space="preserve">
+    <value>Điểm danh lần 2 đã được bắt đầu</value>
+  </data>
+  <data name="MsgMeetingMemberCheckin_Not" xml:space="preserve">
+    <value>Vui lòng điểm danh trước khi tham gia biểu quyết, bỏ phiếu / bầu cử</value>
+  </data>
+  <data name="MsgMeetingVoteResultNotFound" xml:space="preserve">
+    <value>Không tìm thấy kết quả biểu quyết</value>
+  </data>
+  <data name="Label_MeetingVote_Other" xml:space="preserve">
+    <value>Ý kiến khác</value>
+  </data>
+  <data name="MsgMeetingElectionResultNotFound" xml:space="preserve">
+    <value>Không tìm thấy kết quả bỏ phiếu / bầu cử</value>
+  </data>
+  <data name="MsgMeetingElectionStarting" xml:space="preserve">
+    <value>Bỏ phiếu / bầu cử {0} đang diễn ra. Không thể bắt đầu bỏ phiếu / bầu cử này</value>
+  </data>
+  <data name="MsgMeetingVoteStarting" xml:space="preserve">
+    <value>Biểu quyết {0} đang diễn ra. Không thể bắt đầu biểu quyết này</value>
+  </data>
+  <data name="MsgMeeting_MemberConfigViewCheckIn" xml:space="preserve">
+    <value>Bạn không có quyền chỉnh sửa màn hình chào điểm danh</value>
+  </data>
+  <data name="Msg_Error_Access_Denied" xml:space="preserve">
+    <value>Không có quyền truy cập</value>
+  </data>
+  <data name="Label_MeetingRemind" xml:space="preserve">
+    <value>Thời gian {0}. Địa chỉ {1}. Chỗ ngồi {2}</value>
+  </data>
+  <data name="MsgMeetingVote_ExportMemberAdmin" xml:space="preserve">
+    <value>Bạn không có quyền xuát danh sách thành viên</value>
+  </data>
+  <data name="MsgErrUserNameIsNotExixts" xml:space="preserve">
+    <value>Tài khoản không tồn tại trong hệ thống. {0}</value>
+  </data>
+  <data name="MsgSeatNumImportExcelDuplicate" xml:space="preserve">
+    <value>Chỗ ngồi bị trùng lặp trong tập tin excel được tải lên {0}</value>
+  </data>
+  <data name="MsgSeatNumTypeNotExists" xml:space="preserve">
+    <value>Phân loại chỗ ngồi không hợp lệ gồm {0}. Phân loại hợp lệ phải thuộc 1 trong các từ khóa sau {1} </value>
+  </data>
+  <data name="MsgUserNameInHeaderNullOrEmpty" xml:space="preserve">
+    <value>UserName trong Header bị sai</value>
+  </data>
+  <data name="MsgErrorUnitGroupDelete" xml:space="preserve">
+    <value>Không thể xóa khối / cụm thi đua. Vì có liên quan đến khối / cụm {0} đang sử dụng</value>
+  </data>
+  <data name="MsgPeriodYearDelete" xml:space="preserve">
+    <value>Không thể xóa năm thi đua. Vì có liên quan đến đợt thi đua {0} đang sử dụng</value>
+  </data>
+  <data name="Label_RewardRegistStatus_Failed" xml:space="preserve">
+    <value>Không đạt</value>
+  </data>
+  <data name="Label_RewardRegistStatus_Passed" xml:space="preserve">
+    <value>Đạt danh hiệu</value>
+  </data>
+  <data name="Label_RewardRegistStatus_Rejected" xml:space="preserve">
+    <value>Từ chối</value>
+  </data>
+  <data name="Label_RewardRegistStatus_Sended" xml:space="preserve">
+    <value>Đã gửi</value>
+  </data>
+  <data name="Label_RewardRegistStatus_Voted" xml:space="preserve">
+    <value>Đã gửi bình xét</value>
+  </data>
+  <data name="Label_RewardRegistType_CN" xml:space="preserve">
+    <value>Cá nhân</value>
+  </data>
+  <data name="Label_RewardRegistType_TT" xml:space="preserve">
+    <value>Tập thể</value>
+  </data>
+  <data name="MsgApprovedOk" xml:space="preserve">
+    <value>Đã chuyển bình xét thi đua</value>
+  </data>
+  <data name="MsgFailedOk" xml:space="preserve">
+    <value>Không đạt thi đua</value>
+  </data>
+  <data name="MsgPassedOk" xml:space="preserve">
+    <value>Đã đạt danh hiệu thi đua</value>
+  </data>
+  <data name="MsgRejectedOk" xml:space="preserve">
+    <value>Đã từ chối xét thi đua</value>
+  </data>
+  <data name="MsgRewardRegistNotAccount" xml:space="preserve">
+    <value>Không tìm thấy thông tin cá nhân đăng ký</value>
+  </data>
+  <data name="MsgRewardRegistNotDelete" xml:space="preserve">
+    <value>Đăng ký thi đua đã được xử lý. Không thể xóa</value>
+  </data>
+  <data name="MsgRewardRegistNotUnit" xml:space="preserve">
+    <value>Không tim thấy thông tin tập thể đăng ký</value>
+  </data>
+  <data name="MsgPeriodBetweenStartEndBetweenPeriodYear" xml:space="preserve">
+    <value>Ngày bắt đầu và ngày kết thúc đợt thi đua phải nằm trong khoảng {0} - {1}</value>
+  </data>
+  <data name="MsgPeriodDueBetweenStartEnd" xml:space="preserve">
+    <value>Hạn đăng ký thi đua phải nằm trong khoảng {0} - {1}</value>
+  </data>
+  <data name="MsgPeriodStartEnd" xml:space="preserve">
+    <value>Ngày bắt đầu phải nhỏ hơn ngày kết thúc</value>
+  </data>
+  <data name="MsgRewardRegistDueDate" xml:space="preserve">
+    <value>Đã hết thời gian đăng ký</value>
+  </data>
+  <data name="MsgRewardRegistNotChange" xml:space="preserve">
+    <value>Đăng ký thi đua đã được xử lý. Không thể thay đổi</value>
+  </data>
+  <data name="MsgAccountBirthdayToday" xml:space="preserve">
+    <value>Ngày sinh không thể lớn hơn ngày hiện tại</value>
+  </data>
+  <data name="MsgUnitInUnitType" xml:space="preserve">
+    <value>Phân loại của Đơn vị / Tổ chức phải là 1 trong các dữ liệu {0}</value>
+  </data>
+  <data name="MsgRewardPassedLimit" xml:space="preserve">
+    <value>Số lượng đăng ký thi đua được xét đạt danh hiệu {0} tối đa là {1}.</value>
+  </data>
+  <data name="MsgPeriodNameIsExists" xml:space="preserve">
+    <value>Đợt thi đua {0} đã tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgPeriodYearNameIsExists" xml:space="preserve">
+    <value>Năm thi đua {0} đã tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgRewardMethodNameIsExists" xml:space="preserve">
+    <value>Hình thức khen thưởng {0} đã tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgRewardNameNameIsExists" xml:space="preserve">
+    <value>Danh hiệu thi đua {0} đã tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgRewardResolvedCodeIsExists" xml:space="preserve">
+    <value>Số quyết định {0} đã tồn tại trong hệ thống</value>
+  </data>
+  <data name="MsgRewardRegistStartDate_EndDate" xml:space="preserve">
+    <value>Vui lòng xét thi đua trong khoảng thời gian {0} - {1}</value>
+  </data>
+  <data name="MsgPeriodStartEndVoted" xml:space="preserve">
+    <value>Ngày bắt đầu bình xét phải nhỏ hơn ngày kết thúc bình xét</value>
+  </data>
+  <data name="MsgPeriodStartEndVotedBetweenPeriod" xml:space="preserve">
+    <value>Ngày bắt đầu và ngày kết thúc bình xét hi đua phải nằm trong khoảng {0} - {1}</value>
+  </data>
+  <data name="MsgPdfUrlNotFound" xml:space="preserve">
+    <value>Đường dẫn tập tin PDF không tồn tại</value>
+  </data>
+  <data name="MsgRewardStatusNotNone" xml:space="preserve">
+    <value>Thông tin nhận tiền đã được xử lý. Không thể sửa hoặc xóa</value>
+  </data>
+  <data name="Label_None" xml:space="preserve">
+    <value>Tạo mới</value>
+  </data>
+  <data name="Label_NotSigned" xml:space="preserve">
+    <value>Chưa ký</value>
+  </data>
+  <data name="Label_Signed" xml:space="preserve">
+    <value>Đã ký</value>
+  </data>
+  <data name="LabelSigned_Warning" xml:space="preserve">
+    <value>Không thể nhận dạng chữ ký</value>
+  </data>
+  <data name="MsgErrorRewardNotExist" xml:space="preserve">
+    <value>Không tồn tại trong danh sách nhận tiền</value>
+  </data>
+  <data name="MsgErrorRewardSigned" xml:space="preserve">
+    <value>Đã ký nhận trước đó</value>
+  </data>
+  <data name="_MsgEmailFormat" xml:space="preserve">
+    <value>Email này không đúng định dạng</value>
+  </data>
+  <data name="Label_Approved" xml:space="preserve">
+    <value>Đã duyệt</value>
+  </data>
+  <data name="Label_OCR" xml:space="preserve">
+    <value>Đã quét</value>
+  </data>
+  <data name="Label_Send" xml:space="preserve">
+    <value>Đã gửi</value>
+  </data>
+  <data name="Label_Waiting" xml:space="preserve">
+    <value>Chờ gửi</value>
+  </data>
+</root>
