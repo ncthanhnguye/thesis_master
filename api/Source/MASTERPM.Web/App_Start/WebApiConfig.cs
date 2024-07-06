@@ -188,9 +188,8 @@ namespace MASTERPM.Web
     public class LanguageMessageHandler : DelegatingHandler
     {
         private const string LangviVN = "vi-VN";
-        private const string LangenUS = "en-US";
 
-        private readonly List<string> _supportedLanguages = new List<string> { LangviVN, LangenUS };
+        private readonly List<string> _supportedLanguages = new List<string> { LangviVN };
 
         private bool SetHeaderIfAcceptLanguageMatchesSupportedLanguage(HttpRequestMessage request)
         {
