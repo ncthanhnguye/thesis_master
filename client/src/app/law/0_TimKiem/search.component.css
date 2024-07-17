@@ -25,9 +25,6 @@
 }
 .search .form-control {
 	border: 1px solid hsl(0, 0%, 80%);
-	/* padding-left: 0;
-	padding-right: 0; */
-
 	border-radius: 4px;
 	&:active, &:focus {
 		outline: none;
@@ -281,26 +278,20 @@
 	-o-transition: all .4s ease-in-out;
 	-webkit-transition: all .4s ease-in-out;
 	transition: all .4s ease-in-out;
-		}
+}
 
-		.bn632-hover:hover {
+.bn632-hover:hover {
 	background-position: 100% 0;
 	-o-transition: all .4s ease-in-out;
 	-webkit-transition: all .4s ease-in-out;
 	transition: all .4s ease-in-out;
-		}
+}
 
-		.bn632-hover:focus {
+.bn632-hover:focus {
 	outline: none;
-		}
+}
 
-		.bn632-hover.bn25 {
-	background-image: linear-gradient(
-		to right,
-		#29323c,
-		#485563,
-		#2b5876,
-		#4e4376
-	);
+.bn632-hover.bn25 {
+	background-image: linear-gradient( to right, #29323c,#485563,#2b5876,#4e4376);
 	box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
-		}
+}

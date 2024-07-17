@@ -13,26 +13,26 @@ namespace MASTERPM.Model
     using System.Collections.Generic;
     
     [Serializable]
-    public partial class AD_ROLE_PAGE: ICloneable
+    public partial class database_firewall_rules: ICloneable
     {
-    	public AD_ROLE_PAGE () {}
+    	public database_firewall_rules () {}
     
     	#region ICloneable Members
-        public AD_ROLE_PAGE Clone()
+        public database_firewall_rules Clone()
         {
-            return (AD_ROLE_PAGE)this.MemberwiseClone(); 
+            return (database_firewall_rules)this.MemberwiseClone(); 
         }
     
         object ICloneable.Clone()
         {
-            return (AD_ROLE_PAGE)this.MemberwiseClone();
+            return (database_firewall_rules)this.MemberwiseClone();
         }
         #endregion
-        public string RoleID { get; set; }
-        public string PageID { get; set; }
-        public string Value { get; set; }
-        public Nullable<System.DateTime> CreateAt { get; set; }
-        public Nullable<System.DateTime> UpdateAt { get; set; }
-        public Nullable<bool> ActiveFlg { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string start_ip_address { get; set; }
+        public string end_ip_address { get; set; }
+        public System.DateTime create_date { get; set; }
+        public System.DateTime modify_date { get; set; }
     }
 }

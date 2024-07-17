@@ -24,71 +24,62 @@ import { SearchComponent } from "./law/0_TimKiem/search.component";
 import { DataCrawlComponent } from "./importExcel/data-crawl/data-crawl.component";
 
 export class AppRouter {
-  public static routes: Routes = [
-    
-    { path: AppConsts.page.login, component: LoginComponent },
-    { path: AppConsts.page.permision, component: PermisionComponent },
+	public static routes: Routes = [
 
-    {
-      path: AppConsts.page.user,
-      component: UserComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.role,
-      component: RoleComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.userRole,
-      component: UserRoleComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.page,
-      component: PageComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.control,
-      component: ControlComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.config,
-      component: ConfigComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.common,
-      component: CommonComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.accounts,
-      component: AccountsComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.accountDetail,
-      component: AccountDetailComponent,
-      canActivate: [AuthGuard],
-    },
-    {
-      path: AppConsts.page.pro5Organization,   component: OrganizationComponent,   canActivate: [AuthGuard],  },
+		{ path: AppConsts.page.login, component: LoginComponent },
+		{ path: AppConsts.page.permision, component: PermisionComponent },
+		{ path: AppConsts.page.user, component: UserComponent },
+		{ path: AppConsts.page.role, component: RoleComponent },
+		{
+			path: AppConsts.page.userRole,
+			component: UserRoleComponent,
+			canActivate: [AuthGuard],
+		},
+		{
+			path: AppConsts.page.page,
+			component: PageComponent,
+			canActivate: [AuthGuard],
+		},
+		{
+			path: AppConsts.page.control,
+			component: ControlComponent,
+			canActivate: [AuthGuard],
+		},
+		{
+			path: AppConsts.page.config,
+			component: ConfigComponent,
+			canActivate: [AuthGuard],
+		},
+		{
+			path: AppConsts.page.common,
+			component: CommonComponent,
+			canActivate: [AuthGuard],
+		},
+		{
+			path: AppConsts.page.accounts,
+			component: AccountsComponent,
+			canActivate: [AuthGuard],
+		},
+		{
+			path: AppConsts.page.accountDetail,
+			component: AccountDetailComponent,
+			canActivate: [AuthGuard],
+		},
+		{
+			path: AppConsts.page.pro5Organization, component: OrganizationComponent, canActivate: [AuthGuard], },
 
-    { path: 'law', component: LawComponent },
-    { path: 'chapter', component: ChapterComponent },
-    { path: 'chapterItem', component: ChapterItemComponent },
-    { path: 'artical', component: ArticalComponent },
-    { path: 'claust', component: ClaustComponent },
-    { path: 'point', component: PointComponent },
-    { path: 'search', component: SearchComponent },
-    { path: 'data-crawl', component: DataCrawlComponent },
-    {
-      path: '**', redirectTo: AppConsts.page.search
-    },
+		{ path: 'law', component: LawComponent },
+		{ path: 'chapter', component: ChapterComponent },
+		{ path: 'chapterItem', component: ChapterItemComponent },
+		{ path: 'artical', component: ArticalComponent },
+		{ path: 'claust', component: ClaustComponent },
+		{ path: 'point', component: PointComponent },
+		{ path: 'search', component: SearchComponent },
+		{ path: 'data-crawl', component: DataCrawlComponent },
+		{
+			path: '**', redirectTo: AppConsts.page.search
+		},
 
 
-  ];
+	];
 }

@@ -172,6 +172,9 @@
     <Compile Include="Core\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\TResult.cs" />
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>MASTERModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DATA_1_Luat.cs">
       <DependentUpon>MASTERModel.tt</DependentUpon>
     </Compile>

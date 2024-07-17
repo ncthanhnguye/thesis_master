@@ -1,262 +1,246 @@
 <section class="role router-outlet-content">
-  <div class="row">
-    <div class="col-md-12 col-12">
-      <div class="page-name">{{ pageName }}</div>
-      <hr />
-    </div>
-    <div class="col-md-12 col-12">
-      <div [ngClass]="'control control-search'">
-        <label>
-          <span [textContent]="'SearchText' | translate"></span>
-        </label>
-        <input
-          kendoTextBox
-          [(ngModel)]="searchOption.SearctText"
-          (keypress)="onSearchKeyPress($event)"
-          (change)="onSearchTextChange($event)"
-        />
-        <button
-          kendoButton
-          (click)="onRemoveSearchText()"
-          [primary]="true"
-          [look]="'outline'"
-          [icon]="'close-outline'"
-          [ngClass]="'btn-remove'"
-          *ngIf="searchOption.SearctText !== ''"
-        ></button>
-        <button
-          kendoButton
-          (click)="onSearch()"
-          [primary]="true"
-          [look]="'outline'"
-          [icon]="'search'"
-          [ngClass]="'btn-search'"
-        ></button>
-      </div>
-    </div>
-    <div class="col-md-12 col-12">
-      <div class="btn-addNew custom-btn-addNew">
-        <button
-          kendoButton
-          (click)="onAddNewRole()"
-          *ngIf="controlDefault || control.AddNew"
-          [title]="'AddNew' | translate"
-        >
-          <span>{{ "AddNew" | translate }}</span>
-        </button>
-      </div>
-    </div>
-    <div class="col-md-12 col-12">
-      <label>
-        <span [textContent]="'' | translate"></span>
-      </label>
-      <kendo-grid
-        *ngIf="dataRoles.length > 0"
-        [data]="dataRoleGridDataResult"
-        [selectable]="dataRoleSelectableSettings"
-        (pageChange)="onRolePageChange($event)"
-        (selectedKeysChange)="onRoleSelectedKeysChange()"
-        [pageSize]="dataRolePageSize"
-        [skip]="dataRoleSkip"
-        [pageable]="true"
-        [kendoGridSelectBy]="'ID'"
-        [selectedKeys]="dataRoleSelection"
-        [loading]="loading"
-        [sortable]="dataRoleSort"
-        [sort]="dataRoleSortByField"
-        (sortChange)="onRoleSortChange($event)"
-        [filterable]="false"
-        [groupable]="false"
-        [group]="dataRoleState.group"
-        [filter]="dataRoleState.filter"
-        (dataStateChange)="onRoleDataStateChange($event)"
-      >
-        <kendo-grid-column
-          [title]="'Function' | translate"
-          [width]="120"
-          [headerClass]="{ headerCommon: true }"
-        >
-          <ng-template kendoGridCellTemplate let-dataItem>
-            <div class="btn-toolbar" role="toolbar">
-              <div class="btn-group mr-2 g-btn g-btn-edit" role="group">
-                <button
-                  kendoGridRemoveCommand
-                  (click)="onEditRole(dataItem.ID)"
-                  *ngIf="controlDefault || control.Edit"
-                  [iconClass]="'fa fa-pencil'"
-                  [title]="'Edit' | translate"
-                ></button>
-              </div>
-              <div class="btn-group mr-2 g-btn g-btn-delete" role="group">
-                <button
-                  kendoGridRemoveCommand
-                  [iconClass]="'fa fa-trash-o'"
-                  *ngIf="controlDefault || control.Delete"
-                  [title]="'Delete' | translate"
-                  (click)="onDeleteRole(dataItem.ID)"
-                ></button>
-              </div>
-            </div>
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column
-          [field]="'ID'"
-          [width]="180"
-          [title]="'Role_ID' | translate"
-        >
-        </kendo-grid-column>
-        <kendo-grid-column [field]="'Name'" [title]="'Role_Name' | translate">
-        </kendo-grid-column>
-        <kendo-grid-column [title]="'Nhóm người dùng cha' | translate">
-          <ng-template kendoGridCellTemplate let-dataItem>
-            {{ dataItem.ParentName }}
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column
-          [field]="'PageID'"
-          [title]="'Role_DefaultPage' | translate"
-        >
-        </kendo-grid-column>
-        <kendo-grid-column
-          [field]="'DefaultFlg'"
-          [width]="80"
-          [title]="'Role_DefaultFlg' | translate"
-          [filterable]="false"
-          class="g-col-checked"
-        >
-          <ng-template kendoGridCellTemplate let-dataItem>
-            <input
-              type="checkbox"
-              [checked]="dataItem.DefaultFlg"
-              [disabled]="true"
-            />
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-messages
-          [noRecords]="'NoRecords' | translate"
-          [pagerOf]="'pagerOf' | translate"
-          [pagerItems]="'pagerItems' | translate"
-        >
-        </kendo-grid-messages>
-      </kendo-grid>
-      <span class="emptydata-message" *ngIf="dataRoles.length === 0">{{
-        "NoRecords" | translate
-      }}</span>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-md-12 col-12">
+			<div class="page-name">{{ pageName }}</div>
+			<hr />
+		</div>
+		<div class="col-md-12 col-12">
+			<div [ngClass]="'control control-search'">
+				<label>
+					<span [textContent]="'Tìm kiếm' | translate"></span>
+				</label>
+				<input kendoTextBox [(ngModel)]="searchOption.SearctText" (keypress)="onSearchKeyPress($event)" (change)="onSearchTextChange($event)" />
+				<button
+					kendoButton (click)="onRemoveSearchText()" [primary]="true" [look]="'outline'"
+					[icon]="'close-outline'" [ngClass]="'btn-remove'" *ngIf="searchOption.SearctText !== ''" ></button>
+				<button
+					kendoButton (click)="onSearch()" [primary]="true" [look]="'outline'" [icon]="'search'" [ngClass]="'btn-search'"
+				></button>
+			</div>
+		</div>
+		<div class="col-md-12 col-12">
+			<div class="btn-addNew custom-btn-addNew">
+				<button
+					kendoButton
+					(click)="onAddNewRole()"
+					*ngIf="controlDefault || control.AddNew"
+					[title]="'AddNew' | translate"
+				>
+					<span>{{ "AddNew" | translate }}</span>
+				</button>
+			</div>
+		</div>
+		<div class="col-md-12 col-12">
+			<label>
+				<span [textContent]="'' | translate"></span>
+			</label>
+			<kendo-grid
+				*ngIf="dataRoles.length > 0"
+				[data]="dataRoleGridDataResult"
+				[selectable]="dataRoleSelectableSettings"
+				(pageChange)="onRolePageChange($event)"
+				(selectedKeysChange)="onRoleSelectedKeysChange()"
+				[pageSize]="dataRolePageSize"
+				[skip]="dataRoleSkip"
+				[pageable]="true"
+				[kendoGridSelectBy]="'ID'"
+				[selectedKeys]="dataRoleSelection"
+				[loading]="loading"
+				[sortable]="dataRoleSort"
+				[sort]="dataRoleSortByField"
+				(sortChange)="onRoleSortChange($event)"
+				[filterable]="false"
+				[groupable]="false"
+				[group]="dataRoleState.group"
+				[filter]="dataRoleState.filter"
+				(dataStateChange)="onRoleDataStateChange($event)"
+			>
+				<kendo-grid-column
+					[title]="'Function' | translate"
+					[width]="120"
+					[headerClass]="{ headerCommon: true }"
+				>
+					<ng-template kendoGridCellTemplate let-dataItem>
+						<div class="btn-toolbar" role="toolbar">
+							<div class="btn-group mr-2 g-btn g-btn-edit" role="group">
+								<button
+									kendoGridRemoveCommand
+									(click)="onEditRole(dataItem.ID)"
+									*ngIf="controlDefault || control.Edit"
+									[iconClass]="'fa fa-pencil'"
+									[title]="'Edit' | translate"
+								></button>
+							</div>
+							<div class="btn-group mr-2 g-btn g-btn-delete" role="group">
+								<button
+									kendoGridRemoveCommand
+									[iconClass]="'fa fa-trash-o'"
+									*ngIf="controlDefault || control.Delete"
+									[title]="'Delete' | translate"
+									(click)="onDeleteRole(dataItem.ID)"
+								></button>
+							</div>
+						</div>
+					</ng-template>
+				</kendo-grid-column>
+				<kendo-grid-column
+					[field]="'ID'"
+					[width]="180"
+					[title]="'Role_ID' | translate"
+				>
+				</kendo-grid-column>
+				<kendo-grid-column [field]="'Name'" [title]="'Role_Name' | translate">
+				</kendo-grid-column>
+				<kendo-grid-column [title]="'Nhóm người dùng cha' | translate">
+					<ng-template kendoGridCellTemplate let-dataItem>
+						{{ dataItem.ParentName }}
+					</ng-template>
+				</kendo-grid-column>
+				<kendo-grid-column
+					[field]="'PageID'"
+					[title]="'Role_DefaultPage' | translate"
+				>
+				</kendo-grid-column>
+				<kendo-grid-column
+					[field]="'DefaultFlg'"
+					[width]="80"
+					[title]="'Role_DefaultFlg' | translate"
+					[filterable]="false"
+					class="g-col-checked"
+				>
+					<ng-template kendoGridCellTemplate let-dataItem>
+						<input
+							type="checkbox"
+							[checked]="dataItem.DefaultFlg"
+							[disabled]="true"
+						/>
+					</ng-template>
+				</kendo-grid-column>
+				<kendo-grid-messages
+					[noRecords]="'NoRecords' | translate"
+					[pagerOf]="'pagerOf' | translate"
+					[pagerItems]="'pagerItems' | translate"
+				>
+				</kendo-grid-messages>
+			</kendo-grid>
+			<span class="emptydata-message" *ngIf="dataRoles.length === 0">{{
+				"NoRecords" | translate
+			}}</span>
+		</div>
+	</div>
 </section>
 
 <kendo-dialog
-  *ngIf="roleDialogOpened"
-  class="role x-dialog"
-  [draggable]="true"
-  [ngClass]="'window-center dialog-info'"
+	*ngIf="roleDialogOpened"
+	class="role x-dialog"
+	[draggable]="true"
+	[ngClass]="'window-center dialog-info'"
 >
-  <div class="employe-detail">
-    <div class="x-close-div">
-      <div class="title-info-req">
-        <strong>{{ "Role_Info" | translate }}</strong>
-      </div>
-      <button
-        kendoButton
-        class="xbutton-dialog"
-        [icon]="'close'"
-        [title]="'Close_Box' | translate"
-        (click)="onCloseRoleDialog('cancel')"
-      ></button>
-    </div>
-    <div class="row">
-      <div class="col-md-12 col-12">
-        <div class="row">
-          <div class="col-md-12 col-12">
-            <div [ngClass]="'control'">
-              <label>
-                <span [textContent]="'Role_ID' | translate"></span>
-                <span class="required">(*)</span>
-              </label>
-              <input
-                kendoTextBox
-                [(ngModel)]="dataRoleItemtemp.ID"
-                [disabled]="!addNew"  (keypress)="filterInput($event)"
-              />
-            </div>
-          </div>
-          <div class="col-md-12 col-12">
-            <div [ngClass]="'control'">
-              <label>
-                <span [textContent]="'Role_Name' | translate"></span>
-                <span class="required">(*)</span>
-              </label>
-              <input
-                kendoTextBox
-                [(ngModel)]="dataRoleItemtemp.Name"
-                [disabled]="!addNew && !editItem"
-              />
-            </div>
-          </div>
+	<div class="employe-detail">
+		<div class="x-close-div">
+			<div class="title-info-req">
+				<strong>{{ "Role_Info" | translate }}</strong>
+			</div>
+			<button
+				kendoButton
+				class="xbutton-dialog"
+				[icon]="'close'"
+				[title]="'Close_Box' | translate"
+				(click)="onCloseRoleDialog('cancel')"
+			></button>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-12">
+				<div class="row">
+					<div class="col-md-12 col-12">
+						<div [ngClass]="'control'">
+							<label>
+								<span [textContent]="'Role_ID' | translate"></span>
+								<span class="required">(*)</span>
+							</label>
+							<input
+								kendoTextBox
+								[(ngModel)]="dataRoleItemtemp.ID"
+								[disabled]="!addNew" (keypress)="filterInput($event)"
+							/>
+						</div>
+					</div>
+					<div class="col-md-12 col-12">
+						<div [ngClass]="'control'">
+							<label>
+								<span [textContent]="'Role_Name' | translate"></span>
+								<span class="required">(*)</span>
+							</label>
+							<input
+								kendoTextBox
+								[(ngModel)]="dataRoleItemtemp.Name"
+								[disabled]="!addNew && !editItem"
+							/>
+						</div>
+					</div>
 
-          <div class="col-md-12 col-12">
-            <div [ngClass]="'control'">
-              <label>
-                <span [textContent]="'Nhóm người dùng cha' | translate"></span>
-              </label>
-              <kendo-combobox
-                [data]="dataRolesParentFilter"
-                [textField]="'Name'"
-                [valueField]="'ID'"
-                [(ngModel)]="dataRoleItemtemp.ParentID"
-                [allowCustom]="false"
-                [valuePrimitive]="true"
-                [filterable]="true"
-                (filterChange)="RolesParentHandleFilter($event)"
-              ></kendo-combobox>
-            </div>
-          </div>
+					<div class="col-md-12 col-12">
+						<div [ngClass]="'control'">
+							<label>
+								<span [textContent]="'Nhóm người dùng cha' | translate"></span>
+							</label>
+							<kendo-combobox
+								[data]="dataRolesParentFilter"
+								[textField]="'Name'"
+								[valueField]="'ID'"
+								[(ngModel)]="dataRoleItemtemp.ParentID"
+								[allowCustom]="false"
+								[valuePrimitive]="true"
+								[filterable]="true"
+								(filterChange)="RolesParentHandleFilter($event)"
+							></kendo-combobox>
+						</div>
+					</div>
 
-          <div class="col-md-12 col-12">
-            <div [ngClass]="'control'">
-              <label>
-                <span [textContent]="'Role_DefaultPage' | translate"></span>
-              </label>
-              <kendo-combobox
-                [data]="pageUrlsFilter"
-                [textField]="'Name'"
-                [valueField]="'ID'"
-                [(ngModel)]="dataRoleItemtemp.PageID"
-                [allowCustom]="true"
-                [valuePrimitive]="false"
-                [filterable]="true"
-                [valueNormalizer]="valueNormalizerAdmin"
-                (filterChange)="pageUrlsHandleFilter($event)"
-              ></kendo-combobox>
-            </div>
-          </div>
+					<div class="col-md-12 col-12">
+						<div [ngClass]="'control'">
+							<label>
+								<span [textContent]="'Role_DefaultPage' | translate"></span>
+							</label>
+							<kendo-combobox
+								[data]="pageUrlsFilter"
+								[textField]="'Name'"
+								[valueField]="'ID'"
+								[(ngModel)]="dataRoleItemtemp.PageID"
+								[allowCustom]="true"
+								[valuePrimitive]="false"
+								[filterable]="true"
+								[valueNormalizer]="valueNormalizerAdmin"
+								(filterChange)="pageUrlsHandleFilter($event)"
+							></kendo-combobox>
+						</div>
+					</div>
 
-          <div class="col-md-6 col-12">
-            <div [ngClass]="'control'">
-              <label>
-                <input
-                  type="checkbox"
-                  [(ngModel)]="dataRoleItemtemp.DefaultFlg"
-                  [disabled]="!addNew && !editItem"
-                />
-                {{ "Role_DefaultFlg" | translate }}
-              </label>
-            </div>
-          </div>
-          <div class="col-md-12 col-12">
-            <div class="btn-dialog-wrapper">
-              <button
-                class="btn-dialog btn-save"
-                (click)="onSaveRole()"
-                *ngIf="controlDefault || control.Save"
-              >
-                {{ "COMMON_SAVE" | translate }}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+					<div class="col-md-6 col-12">
+						<div [ngClass]="'control'">
+							<label>
+								<input
+									type="checkbox"
+									[(ngModel)]="dataRoleItemtemp.DefaultFlg"
+									[disabled]="!addNew && !editItem"
+								/>
+								{{ "Role_DefaultFlg" | translate }}
+							</label>
+						</div>
+					</div>
+					<div class="col-md-12 col-12">
+						<div class="btn-dialog-wrapper">
+							<button
+								class="btn-dialog btn-save"
+								(click)="onSaveRole()"
+								*ngIf="controlDefault || control.Save"
+							>
+								{{ "COMMON_SAVE" | translate }}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </kendo-dialog>

@@ -20,7 +20,6 @@ export class AppConsts {
     search: "search",
     permision: "permision",
     changePassword: "change-password",
-    settingChangePassword: "setting-change-password",
     user: "ad/user",
     role: "ad/role",
     userRole: "ad/user-role",

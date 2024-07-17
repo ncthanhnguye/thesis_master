@@ -1,38 +1,20 @@
-/* @import '@angular/material/prebuilt-themes/deeppurple-amber.css'; */
 
-html,
-body,
-.dashboard-main-wrapper {
+
+html,body {
     width: 100%;
     height: 100%;
     position: absolute;
     overflow-x: hidden;
-    /* background-color: #eff0f0 !important; */
 }
 
-.bg {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
 
 .k-toolbar .k-button-icon {
     border-radius: 25%;
 }
 
 .router-outlet-content {
-    /* top: 70px;
-    position: absolute;
-    left: 200px;
-    max-width: calc(100% - 200px);
-    min-height: calc(100% - 85px);
-    width: 100%;
-    height: 100%;*/
     padding: 15px;
     margin-top: 7px;
-    /* background-color: #eff0f0; */
 }
 
 .router-outlet-content>header>i {

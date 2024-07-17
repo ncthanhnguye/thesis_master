@@ -5,3 +5,7 @@
 /api/Source/VNPTPM.Web/obj
 /client/node_modules
 /api/Source/packages
+/api/Source/MASTERPM.Model/bin
+/api/Source/MASTERPM.Model/obj
+/api/Source/MASTERPM.Web/bin
+/api/Source/MASTERPM.Web/obj
