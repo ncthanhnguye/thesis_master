@@ -1,5 +1,3 @@
-# config.py
-
 # Cấu hình cho SQL Server
 SQL_HOST = 'Tylerdo'
 SQL_DATABASE = 'THESIS_MASTER'
