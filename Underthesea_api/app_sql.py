@@ -1,9 +1,10 @@
+
 from flask import Flask, request, jsonify
 from db import get_all_data
 from utils import extract_keywords, normalize_keyword, calculate_similarity
 from cache import cache
+from config import FLASK_HOST, FLASK_PORT, DEBUG_MODE
 
-# Khởi tạo Flask app
 app = Flask(__name__)
 cache.init_app(app)
 
@@ -15,14 +16,14 @@ def process_text_api():
     if not text:
         return jsonify({'error': 'No text provided'}), 400
     
-    # Gọi hàm để xử lý và trích xuất từ khóa
+    #hàm để xử lý và trích xuất
     keywords = extract_keywords(text)
     normalized_keywords = [normalize_keyword(keyword) for keyword in keywords]
 
-    # Gọi hàm để lấy toàn bộ dữ liệu từ bảng DATA_CRAWL
+    #hàm để lấy toàn bộ dữ liệu từ DATA_CRAWL
     all_data = get_all_data()
 
-    # Tìm dòng đầu tiên có tỷ lệ trùng khớp cao nhất
+    #dòng đầu tiên có tỷ lệ trùng khớp cao nhất
     best_match = None
     best_match_keywords = None
     highest_similarity = 0
@@ -34,7 +35,7 @@ def process_text_api():
             highest_similarity = similarity
             best_match = luat
             best_match_keywords = keywords_list
-            break  # Dừng lại sau khi tìm thấy dòng đầu tiên
+            break  # Dừng lại 
 
     if best_match:
         return jsonify({
@@ -44,7 +45,7 @@ def process_text_api():
             'similarity': highest_similarity
         })
     else:
-        return jsonify({'message': 'Không tìm thấy dòng nào có tỷ lệ trùng khớp cao'}), 404
+        return jsonify({'message': 'Không tìm thấy'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8089)
+    app.run(debug=DEBUG_MODE, host=FLASK_HOST, port=FLASK_PORT)

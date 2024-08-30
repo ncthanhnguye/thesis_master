@@ -1,28 +1,36 @@
-from config import connect_db
-from cache import cache
+import pyodbc
+from config import SQL_HOST, SQL_DATABASE, SQL_USER, SQL_PASSWORD
 
-@cache.cached(timeout=300, key_prefix='all_data')
+def connect_db():
+    # Kết nối SQL Server
+    conn = pyodbc.connect(f'DRIVER={{SQL Server}};'
+                          f'SERVER={SQL_HOST};'
+                          f'DATABASE={SQL_DATABASE};'
+                          f'UID={SQL_USER};'
+                          f'PWD={SQL_PASSWORD}')
+    return conn
+
 def get_all_data():
-    conn = connect_db()  # Kết nối đến cơ sở dữ liệu
-    cursor = conn.cursor()  # Tạo con trỏ để thực hiện các truy vấn SQL
-
-    query = "SELECT KeyWords, Luat FROM DATA_CRAWL"  # Truy vấn SQL để lấy cột KeyWords và Luat
+    conn = connect_db() 
     
-    try:
-        cursor.execute(query)  # Thực thi truy vấn
-        results = cursor.fetchall()  # Lấy tất cả các dòng kết quả
+    cursor = conn.cursor() 
 
-        # Mỗi dòng dữ liệu sẽ là một tuple chứa KeyWords và Luat
+    query = "SELECT KeyWords, Luat FROM DATA_CRAWL"  # Truy vấn SQL 
+    try:
+        cursor.execute(query) 
+        results = cursor.fetchall()  
+
+        # Mỗi dòng dữ liệu sẽ là chứa KeyWords và Luat
         data = []
         for row in results:
-            keywords = eval(row[0]) if isinstance(row[0], str) else row[0]  # Chuyển đổi chuỗi thành danh sách
+            keywords = eval(row[0]) if isinstance(row[0], str) else row[0]  # Chuyển chuỗi thành danh sách
             luat = row[1]
             data.append((keywords, luat))
 
     except Exception as e:
         print(f"Error occurred: {e}")
-        data = []  # Nếu xảy ra lỗi, trả về danh sách rỗng
-
-    conn.close()  # Đóng kết nối với cơ sở dữ liệu
+        data = []  
+    finally:
+        conn.close()  
     
-    return data  # Trả về danh sách các tuple (KeyWords, Luat)
+    return data  #Trả về danh sách

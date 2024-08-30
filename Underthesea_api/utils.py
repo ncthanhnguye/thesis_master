@@ -3,7 +3,7 @@ from collections import Counter
 from underthesea import word_tokenize
 import numpy as np
 
-# Đọc stopwords từ file
+# Đọc stopwords
 with open('vietnamese-stopwords.txt', 'r', encoding='utf-8') as file:
     stopwords = [line.strip() for line in file]
 
