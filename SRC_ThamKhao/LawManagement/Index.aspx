@@ -1,0 +1,114 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index"
+    MasterPageFile="~/MasterPageLEARNIX.master" %>
+
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
+
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+
+        <ContentTemplate>
+
+
+            <div style="background-color: #112538; overflow: auto">
+                <%--Logo Page--%>
+                <asp:HiddenField ID="hdfState" runat="server" />
+                <asp:HiddenField ID="hdfMaxLenghPlate" runat="server" />
+                <div style="display: none">
+                  
+                </div>
+
+                <%--Tutorial Guide--%>
+
+                <div class="textLogoForm" style="padding-top: 60px">
+                    <div id="DivUserIcon" runat="server" visible="true">
+                        <table width="650px" class="HeightLanding">
+                            <tr id="HomeUser" style="display: '';">
+                                <td align="left" valign="middle">
+
+                                    <table class="Table_5_Column clsTableIcon" id="TableHomeUser" runat="server">
+                                        <tr>
+                                            <td align="center">
+                                                <input class="ImgView ImageIcon" type="button" onclick="TransferPage('./Viewlaw.aspx');" />
+                                                <div class="SubTextIcon">
+                                                    View Law
+                                                </div>
+                                            </td>
+
+                                            <td align="center" id="TDLicensePlateIcon_User" runat="server">
+                                                <input id="LicensePlate_IconUser" runat="server" class="ImgImport ImageIcon" type="button"
+                                                    onclick="TransferPage('./Importlaw.aspx');" />
+                                                <div class="SubTextIcon">
+                                                    Import Law
+                                                </div>
+                                            </td>
+                                            <td align="center" id="TD1" runat="server">
+                                                <input id="BatchPlateSearch_IconUser" runat="server" class="ImgSearch ImageIcon" type="button"
+                                                    onclick="TransferPage('./Searchlaw.aspx');" />
+                                                <div class="SubTextIcon">
+                                                   Search Law
+                                                </div>
+                                            </td>
+                                            <td align="center" id="TD2" runat="server">
+                                                <input id="Button1" runat="server" class="ImgEdit ImageIcon" type="button"
+                                                    onclick="TransferPage('./editlaw.aspx');" />
+                                                <div class="SubTextIcon">
+                                                   Edit Law
+                                                </div>
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                            <td align="center">
+                                                <input class="ImgConcept ImageIcon" type="button" onclick="TransferPage('./Concept.aspx');" />
+                                                <div class="SubTextIcon">
+                                                    Concept
+                                                </div>
+                                            </td>
+
+                                            <td align="center" id="TD3" runat="server">
+                                                <input id="Button2" runat="server" class="ImgKeyphrase ImageIcon" type="button"
+                                                    onclick="TransferPage('./Key_phrase.aspx');" />
+                                                <div class="SubTextIcon">
+                                                    Keyphrase
+                                                </div>
+                                            </td>
+                                            <td align="center" id="TD4" runat="server">
+                                                <input id="Button3" runat="server" class="ImgTracking ImageIcon" type="button"
+                                                    onclick="TransferPage('./Transactions.aspx');" />
+                                                <div class="SubTextIcon">
+                                                   Tracking Transactions
+                                                </div>
+                                            </td>
+                                            <td align="center" id="TD5" runat="server">
+                                                <input id="Button4" runat="server" class="ImgUser ImageIcon" type="button"
+                                                    onclick="TransferPage('./UserManagement.aspx');" />
+                                                <div class="SubTextIcon">
+                                                   User Management
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+  
+            <script type="text/javascript">
+                function TransferPage(page) {
+                    try {
+                        window.location.href = page;
+                    } catch (e) {
+
+                    }
+
+                }
+               
+            </script>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
+</asp:Content>

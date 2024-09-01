@@ -172,9 +172,6 @@
     <Compile Include="Core\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\TResult.cs" />
-    <Compile Include="database_firewall_rules.cs">
-      <DependentUpon>MASTERModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DATA_1_Luat.cs">
       <DependentUpon>MASTERModel.tt</DependentUpon>
     </Compile>
@@ -270,6 +267,7 @@
     <Compile Include="Validate\MaxValueAttribute.cs" />
     <Compile Include="Validate\MinValueAttribute.cs" />
     <Compile Include="Validate\NumberValueAttribute.cs" />
+    <Compile Include="VM\Data_Law_ImportVM .cs" />
     <Compile Include="VM\RewardProcessVM.cs" />
     <Compile Include="VM\ChangePasswordVM.cs" />
     <Compile Include="VM\CommonMenuVM.cs" />

@@ -41,7 +41,6 @@
         <EntityTypeShape EntityType="MASTERPMModel.KeyPhrase" Width="1.5" PointX="14.75" PointY="12.75" />
         <EntityTypeShape EntityType="MASTERPMModel.KeyPhraseMapping" Width="1.5" PointX="16.75" PointY="0.75" />
         <EntityTypeShape EntityType="MASTERPMModel.user" Width="1.5" PointX="16.75" PointY="4.75" />
-        <EntityTypeShape EntityType="MASTERPMModel.database_firewall_rules" Width="1.5" PointX="16.75" PointY="8.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

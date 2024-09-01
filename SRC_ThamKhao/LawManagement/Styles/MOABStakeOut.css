@@ -1,0 +1,113 @@
+﻿
+/* ------------------------------------------- Stake Out ---------------------------------- */
+.soimgplate { min-height:30px; min-width:75px; max-height:30px; max-width:75px;cursor:pointer } /* sen min, max vi con dung cho hover*/
+.soimgcar { min-height:55px; min-width:90px; max-height:55px; max-width:90px;cursor:pointer }
+.soimageMap  {max-height:55px; max-width:55px;cursor:pointer }
+.soHeaderStyle { word-wrap: break-word; white-space: normal;}
+
+.scrollTableHL img { cursor:pointer; }
+
+.soCarimageHover
+{
+	width:552px; 
+	height:312px; 
+	z-index:1000; 
+	background: url(../../Images/NewLanding/Popup_Map.png?v=5.1.061413.0949) no-repeat center; 	
+	position: absolute;	
+	display: none; 
+}
+
+.soCarimageHover img
+{
+	width:442px;
+	height:275px;
+	padding: 25px 0px 0px 12px ;
+	}
+	
+.soAnchorWindow_BG
+{
+	position:absolute; z-index:1000; left:0px; top:0px; float:left; filter:alpha(opacity=30); opacity:0.3; background-color:Gray;
+	}
+
+.soWindowInfo
+{
+	width:466px; 
+	height:300px; 
+	z-index:1001; 
+	background-color:White;	
+	border:1px solid black;
+	position: absolute;	
+	display: none; 
+}
+	
+.soAnchorWindow
+{
+	width:552px; 
+	height:312px; 
+	z-index:1001; 
+	background: url(../../Images/NewLanding/Popup_Map.png?v=5.1.061413.0949) no-repeat center; 	
+	position: absolute;	
+	display: none; 
+}
+
+
+.soAnchorWindow iframe
+{
+	width:454px;
+	height:288px;
+	border:0px;
+	margin: 23px 0px 0px 10px;	
+	}
+.txtFromTo
+{
+ width:120px;   
+    }
+    .DivCarHover
+    {
+      position:absolute;
+        border:10px solid Gray;
+        border-radius:10px;
+        background-color:Gray;         
+        display:none;    
+        padding:0px;
+        margin:0px; 
+        z-index:100;
+        }     
+       
+       
+       /******** Map Hover ********/
+.DivMapHoverSO
+{
+    height: 444px;
+    width: 600px;
+    border: 2px solid #fafafa;    
+    z-index: 21;
+    display: none;
+    position:absolute;
+    top: 60px;
+    left: 250px;
+    z-index:9999;
+}
+.DivMapLargeSO
+{
+    background-color: #ECECEC;
+    height: 90%;
+    width: 100%;
+}
+.SubAddressSO
+{
+    background-color: #9AA0A8;
+    height: 10%;
+    width: 100%;
+    line-height: 20px;
+    color: #000000;
+    font-size: 10.5pt;
+    text-align: center;
+    vertical-align:middle;
+}  
+.testSO
+{
+    height:100px;
+    width:100px;
+    border:1px solid red;
+    }  

@@ -1,0 +1,131 @@
+﻿.GridSavedSearch
+{
+    font-family: 'Roboto', sans-serif;
+    border-collapse: collapse;
+    border: 1px solid white;
+    font-size: 12px;
+    white-space: nowrap;
+    background-color: White;
+    width: 100%;
+}
+.GridSavedSearch tr:not(.CssHeaderStyle)
+{
+    height: 35px;
+}
+.GridSavedSearch tr:not(.CssHeaderStyle):not(.selectedRow):not(.selectedAlternateRow):hover
+{
+    background-color: #718DCA;
+    color:#ffffff;
+}
+.selectedRow, .selectedAlternateRow
+{
+    background-color:rgb(54, 59, 74);
+    color:#ffffff;    
+}
+.GridSavedSearch td, th
+{
+    border: 2px solid white;
+    padding: 3px 2px;  
+    border-collapse: collapse;
+}
+.GridSavedSearch thead th a
+{
+    white-space: pre-wrap;
+    width: 50px;
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+.GridSavedSearch thead th
+{
+    background-color: #1F60B0;
+    color: #fff;
+    text-align: center;
+    border: none;
+}
+
+.GridSavedSearch .CssItemStyle
+{
+    background-color: #EEEEEE;
+    color: #2B2B2B;
+    
+}
+.GridSavedSearch .CssAlternatinsStyle
+{
+    background-color: #ffffff;
+    color: #2B2B2B;
+    
+}
+.GridSavedSearch .CssHeaderStyle, .GridSavedSearch .CssHeaderStyle a
+{
+    font-size: 13px;
+    font-family: Arial;
+    font-weight: bold;
+    background-color: #A5BFDD;
+    color: #2e5582;
+    height: 30px;
+    font-size: 10pt;
+    text-decoration: none;
+}
+.NameSearch
+{
+    width:120px;
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ #535358*/   
+    cursor:pointer;  
+    color:#2E77BA
+    }
+.NameSearch:hover
+{
+    text-decoration:underline;
+}
+.DivGrid
+{
+    height:210px;
+    overflow:auto;
+    overflow-y:hidden;
+    width:669px;
+    margin:10px auto
+    }
+    .HardBreak
+    {
+          white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ #535358*/    
+        }
+
+.clsDivFilterSavedSearch {
+   
+    width:490px;
+    margin:20px auto;
+    
+}
+.clsListStateSelected {
+padding-left:100px
+}
+.clsDivFilterSavedSearch > div:not(.clsListStateSelected){
+   
+    display:table-row
+}
+    .clsDivFilterSavedSearch > div:not(.clsListStateSelected) > div{  
+    display:table-cell;
+    width:130px;
+    vertical-align:middle
+    }
+    .clsDivFilterSavedSearch div input{
+         margin:5px 0;
+        display:table-cell;
+        width:350px;
+        vertical-align:middle
+    }
+.clsFontStyle {
+ color:#2B2B2B;
+ font-weight:bold;
+    font-size:10pt
+}

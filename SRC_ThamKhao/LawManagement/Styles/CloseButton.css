@@ -1,0 +1,138 @@
+﻿.btn-close {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: #0066ff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 150ms;
+}
+
+    .btn-close .icon-cross {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: none;
+        position: relative;
+        width: 40px;
+        height: 40px;
+    }
+
+        .btn-close .icon-cross:before, .btn-close .icon-cross:after {
+            content: "";
+            position: absolute;
+            top: 17px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #fff;
+            border-radius: 6px;
+        }
+
+        .btn-close .icon-cross:before {
+            transform: rotate(45deg);
+        }
+
+        .btn-close .icon-cross:after {
+            transform: rotate(-45deg);
+        }
+
+        .btn-close .icon-cross span {
+            display: block;
+        }
+
+    .btn-close:hover, .btn-close:focus {
+        transform: rotateZ(90deg);
+        background: #0052cc;
+    }
+
+.cross-stand-alone {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+    .cross-stand-alone:before, .cross-stand-alone:after {
+        content: "";
+        position: absolute;
+        top: 18px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #000;
+        border-radius: 4px;
+    }
+
+    .cross-stand-alone:before {
+        transform: rotate(45deg);
+    }
+
+    .cross-stand-alone:after {
+        transform: rotate(-45deg);
+    }
+
+    .cross-stand-alone span {
+        display: block;
+    }
+
+.cross-1px {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+    .cross-1px:before, .cross-1px:after {
+        content: "";
+        position: absolute;
+        top: 39.5px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #000;
+        border-radius: 1px;
+    }
+
+    .cross-1px:before {
+        transform: rotate(45deg);
+    }
+
+    .cross-1px:after {
+        transform: rotate(-45deg);
+    }
+
+    .cross-1px span {
+        display: block;
+    }
+
+body {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: flex-start;
+    height: 100vh;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
