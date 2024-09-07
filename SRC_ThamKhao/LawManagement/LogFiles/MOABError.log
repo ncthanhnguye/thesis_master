@@ -1,0 +1,304 @@
+- 12-18-22 02:27:10.548: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-18-22 02:29:01.213: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 02:35:20.032: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 02:36:25.233: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 03:36:56.789: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 03:37:03.924: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 23:03:46.749: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 23:09:32.398: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 23:09:37.195: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 23:14:21.474: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 23:31:15.188: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 23:32:50.052: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-19-22 23:34:06.643: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 86
+- 12-20-22 00:21:49.029: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 00:29:07.001: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 00:57:24.966: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 01:08:37.329: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 01:25:15.049: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 01:25:18.367: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 01:25:55.286: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 01:45:33.624: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 21:50:14.898: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 22:30:06.803: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 22:30:13.000: RedirectPageToLearn: BackLearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 67
+- 12-20-22 22:30:16.881: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 22:53:10.987: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 23:33:43.556: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 23:38:03.742: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 23:45:58.893: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-20-22 23:51:16.012: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 00:03:27.109: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 00:06:26.791: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 00:19:50.670: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 00:22:30.142: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 00:36:46.934: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 00:48:20.702: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 00:59:43.190: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72
+- 12-21-22 01:02:54.510: RedirectPageToLearn: LearnNewLanding;System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.End()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at System.Web.HttpResponse.Redirect(String url)
+   at MasterPageLEARNIX.RedirectPageToLearn(String targetWeb) in d:\study\LVUpdate_2021.06.28\Program\LawManagement\MasterPageLEARNIX.master.cs:line 72

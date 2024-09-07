@@ -1,0 +1,4028 @@
+﻿body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+    padding: 0;
+    font-weight: 400;
+}
+
+* html body {
+    text-align: center;
+}
+
+.footercontent::after {
+    content: "230";
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    opacity: 0.5;
+}
+
+.fl {
+    float: left;
+}
+
+.clr {
+    clear: both
+}
+
+.px1 {
+    height: 1px;
+    overflow: hidden;
+}
+
+.px3 {
+    height: 3px;
+    overflow: hidden;
+}
+
+.px5 {
+    height: 5px;
+    overflow: hidden;
+}
+
+.px10 {
+    height: 10px;
+    overflow: hidden;
+}
+
+.px20 {
+    height: 20px;
+    overflow: hidden;
+}
+
+.cmVsep {
+    height: 8px;
+    overflow: hidden;
+}
+
+.cmHsep {
+    width: 8px;
+    overflow: hidden;
+}
+
+p {
+    line-height: 130%;
+}
+
+h1 {
+    font-size: 24px;
+    color: #4a4a4a;
+    clear: both;
+    line-height: 110%;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: left 5px;
+    padding-left: 25px;
+}
+
+.spacer {
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+    height: 3px;
+}
+/*/*1.2 Hyperlinks*/
+/*a {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: #F79A18;
+    }*/
+
+#span_a {
+    cursor: pointer;
+}
+
+table#tblcontainer {
+    padding: 0;
+    margin: 0 auto;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+/* 2. SITE STRUCTURE & APPEARANCE */
+/*-------------------------------------------------------------------------------------------*/
+/*2.1 Header*/
+#header {
+    width: 100%;
+    position: relative;
+    color: #FFF;
+    height: 105px;
+    /*background: url(https://cdn.thuvienphapluat.vn/images/bg-header-xuan.gif) no-repeat top right;*/
+    background: url(https://cdn.thuvienphapluat.vn/images/banner-tet.png) no-repeat top right;
+    padding: 0;
+    margin: 0;
+}
+
+    #header .logo {
+        border-top-style: none;
+        border-right-style: none;
+        border-bottom-style: none;
+        border-left-style: none;
+        float: left;
+        margin: 0;
+        margin-bottom: 5px;
+        margin-right: 3px;
+    }
+/*.name-logo {
+	float: left;
+	color: #ff0000;
+	text-transform: uppercase;
+	font-size: 16px;
+	margin-top: 10px;
+	font-family: "Times New Roman", Times, serif;
+	position: relative;
+	font-weight: bold;
+}*/
+.name-logo {
+    float: left;
+    color: #ff0000;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    position: absolute;
+    font-weight: bold;
+    left: 80px;
+    top: 42px;
+}
+
+    .name-logo span.slogan {
+        color: #ff0000;
+        font-size: 15px;
+        /*margin-top: 10px;*/
+        font-family: "Times New Roman", Times, serif;
+        float: left;
+        text-transform: none;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    .name-logo a:hover, .name-logo span {
+        text-decoration: none;
+    }
+
+/*2.2 Top links*/
+#toplinks {
+    position: absolute;
+    top: 42px;
+    right: 20px;
+    color: #0e70a4;
+}
+
+    #toplinks span {
+        padding-right: 0px;
+        padding-left: 0px;
+        color: #0e70a4;
+    }
+
+    #toplinks .icon {
+        position: relative;
+        top: 1px;
+        padding-left: 2px;
+    }
+
+    #toplinks span a.linkstop {
+        color: #0e70a4;
+        padding-left: 3px;
+    }
+
+    #toplinks span a {
+        color: #FFF;
+    }
+
+        #toplinks span a.linkstop-r {
+            color: #0e70a4;
+            padding-left: 3px;
+            background-image: url(https://cdn.thuvienphapluat.vn/images/bullet.png);
+            background-repeat: no-repeat;
+            background-position: right center;
+            padding-right: 10px;
+        }
+
+.text-header {
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+}
+/*2.4 Content*/
+#main-content {
+    width: 100%;
+}
+
+    #main-content img {
+        padding-bottom: 5px;
+        margin-right: 30px;
+    }
+
+.idTabs {
+    clear: both;
+    padding: 0px;
+}
+
+    .idTabs li {
+        display: inline;
+    }
+
+        .idTabs li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left.gif);
+            background-repeat: no-repeat;
+            background-position: left top;
+            color: #000000;
+            float: left;
+        }
+
+            .idTabs li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 5px;
+                padding-bottom: 4px;
+                padding-top: 2px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right.gif);
+                background-repeat: no-repeat;
+                background-position: right top;
+                padding-left: 4px;
+                line-height: 20px;
+            }
+
+            .idTabs li a.current {
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left-over.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+            }
+
+                .idTabs li a.current span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 8px;
+                    padding-bottom: 4px;
+                    padding-top: 2px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right-over.gif);
+                    background-repeat: no-repeat;
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    color: #fff;
+                }
+
+.idTabs-bottom {
+    width: 740px;
+    float: left;
+}
+
+    .idTabs-bottom .list-news a {
+        color: #000;
+    }
+
+        .idTabs-bottom .list-news a:hover {
+            color: #0E70A4;
+        }
+
+.idTabs-New-Mid {
+    float: left;
+}
+
+.idTabs-New-bottom {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-bottom-new.gif);
+    background-position: left bottom;
+    /*background-repeat: no-repeat;*/
+    width: 553px;
+    float: left;
+    height: 15px;
+}
+
+.idTabs-New-bottom-lag {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-bottom-new-lag.gif);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    width: 762px;
+    float: left;
+    height: 15px;
+}
+
+.idTabs-New-Mid .list-news a {
+    color: #000;
+}
+
+    .idTabs-New-Mid .list-news a:hover {
+        color: #0E70A4;
+    }
+
+.content {
+    float: left;
+    clear: both;
+    width: 615px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #F89B1A;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 15px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+    display: none;
+}
+
+.Content-SearchLegal {
+    float: left;
+    clear: both;
+    width: 615px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #F89B1A;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 3px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+}
+
+.contentNew {
+    float: left;
+    clear: both;
+    width: 531px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #F89B1A;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 15px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+    margin-bottom: 0px;
+    display: none;
+}
+
+.idTabs-Home {
+    clear: both;
+    padding: 0px;
+}
+
+    .idTabs-Home li {
+        display: inline;
+    }
+
+        .idTabs-Home li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left.gif);
+            background-repeat: no-repeat;
+            background-position: left top;
+            color: #000000;
+            float: left;
+        }
+
+            .idTabs-Home li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 10px;
+                padding-bottom: 2px;
+                padding-top: 4px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right.gif);
+                background-repeat: no-repeat;
+                background-position: right top;
+                padding-left: 6px;
+                line-height: 20px;
+            }
+
+            .idTabs-Home li a.current {
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left-over.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+            }
+
+                .idTabs-Home li a.current span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 10px;
+                    padding-bottom: 2px;
+                    padding-top: 4px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right-over.gif);
+                    background-repeat: no-repeat;
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    color: #fff;
+                }
+
+.idTabs-Home-Mid {
+    width: 637px;
+    float: left;
+}
+
+.idTabs-Home-bottom {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-bottom-Home.gif);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    width: 637px;
+    float: left;
+    height: 15px;
+}
+
+.idTabs-Home-Mid .list-news a {
+    color: #000;
+}
+
+    .idTabs-Home-Mid .list-news a:hover {
+        color: #0E70A4;
+    }
+
+.idTabs-Home-Content {
+    float: left;
+    clear: both;
+    width: 615px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #F89B1A;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+    display: none;
+}
+
+.contentDoc {
+    float: left;
+    clear: both;
+    width: 740px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #F89B1A;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 15px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+    display: none;
+    min-height: 180px;
+    height: auto !important;
+    z-index: 10;
+    background: #fff;
+    text-align: left;
+}
+
+.links-search {
+    padding-right: 15px;
+}
+
+#search-Home {
+    /*
+	background-image: url(https://cdn.thuvienphapluat.vn/images/bg-search-Home.gif);
+	background-repeat: no-repeat;
+	border:1px solid #C1CAD2;
+	height: 35px;
+	padding: 0px;
+	border-top-style: none;
+	margin-bottom: 1px;
+	margin-top:1px;*/
+    border: 1px solid #C1CAD2;
+    background: url(https://cdn.thuvienphapluat.vn/images/spr_masthd_slate_20100628_ltr.png);
+    background-repeat: repeat-x;
+    height: 30px;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+.txt-search-Home {
+    /*color:gray;
+	float:left;
+	font-style:italic;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 516px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;*/
+    width: 480px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    color: #AFAFAF;
+    padding-left: 20px;
+    /*font-size:10px;*/
+}
+
+.txt-search-Home1 {
+    /*color:gray;
+	float:left;
+	font-style:italic;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 516px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;*/
+    width: 490px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    padding-left: 10px;
+    font-style: normal;
+    color: #000;
+}
+
+.button-search-Home {
+    /*width:67px;
+	height:27px;
+	color:#FFF;
+	cursor:pointer;
+	border:none;
+	float:right;
+	display:block;
+	background-image: url(https://cdn.thuvienphapluat.vn/images/btn-search.png);
+	background-repeat: no-repeat;
+	margin-top: 4px;
+	margin-right: 8px;
+	padding-bottom: 3px;*/
+    background: #FDCE3E url(https://cdn.thuvienphapluat.vn/images/gsprite_pg_slate_20100521.png);
+    background-position: left -1672px;
+    width: 102px;
+    height: 25px;
+    margin-bottom: 3px;
+    margin-top: 1px;
+    font-weight: bold;
+    border: 1px solid #E5A716;
+}
+
+#search {
+    /*background-image: url(https://cdn.thuvienphapluat.vn/images/bg-search.gif);
+	background-repeat: no-repeat;
+	height: 35px;
+	padding: 0px;
+	border-top-style: none;
+	margin-bottom: 15px;*/
+    border: 1px solid #C1CAD2;
+    background: url(https://cdn.thuvienphapluat.vn/images/spr_masthd_slate_20100628_ltr.png);
+    background-repeat: repeat-x;
+    height: 30px;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+#search-Solr {
+    /*background-image: url(https://cdn.thuvienphapluat.vn/images/bg-search.gif);
+	background-repeat: no-repeat;
+	height: 35px;
+	padding: 0px;
+	border-top-style: none;
+	margin-bottom: 15px;*/
+    border: 1px solid #C1CAD2;
+    background: url(https://cdn.thuvienphapluat.vn/images/spr_masthd_slate_20100628_ltr.png);
+    background-repeat: repeat-x;
+    height: 30px;
+    padding: 0px;
+    margin-bottom: 3px;
+}
+
+.txt-search {
+    /*color:#617a87;
+	float:left;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 590px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;
+	width:395px;*/
+    width: 480px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    color: #AFAFAF;
+    padding-left: 20px;
+    /*font-size:10px;*/
+}
+
+.txt-search1 {
+    /*color:#617a87;
+	float:left;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 590px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;
+	width:405px;*/
+    width: 490px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    padding-left: 10px;
+    font-style: normal;
+    color: #000;
+}
+
+.txt-search-legal {
+    /*color:#617a87;
+	float:left;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 590px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;
+	width:395px;*/
+    width: 605px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    color: #AFAFAF;
+    padding-left: 20px;
+    /*font-size:10px;*/
+}
+
+.txt-search-legal1 {
+    /*color:#617a87;
+	float:left;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 590px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;
+	width:405px;*/
+    width: 615px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    padding-left: 10px;
+    font-style: normal;
+    color: #000;
+}
+
+
+.txt-searchDetail {
+    /*color:#617a87;
+	float:left;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 590px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;*/
+    width: 685px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    color: #AFAFAF;
+    padding-left: 20px;
+    /*font-size:10px;*/
+}
+
+.txt-searchDetail1 {
+    /*color:#617a87;
+	float:left;
+	padding-right: 3;
+	padding-bottom: 3;
+	padding-left: 3px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	width: 590px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-left: 10px;
+	padding-top: 5px;
+	margin-top: 6px;*/
+    width: 295px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    height: 20px;
+    margin-left: 2px;
+    padding-left: 10px;
+    font-style: normal;
+    color: #000;
+}
+
+.button-search {
+    /*width:67px;
+	height:27px;
+	color:#FFF;
+	cursor:pointer;
+	border:none;
+	float:right;
+	display:block;
+	background-image: url(https://cdn.thuvienphapluat.vn/images/btn-search.png);
+	background-repeat: no-repeat;
+	margin-top: 4px;
+	margin-right: 5px;
+	padding-bottom: 3px;*/
+    background: #FDCE3E url(https://cdn.thuvienphapluat.vn/images/gsprite_pg_slate_20100521.png);
+    background-position: left -1672px;
+    width: 102px;
+    height: 25px;
+    margin-bottom: 3px;
+    margin-top: 1px;
+    font-weight: bold;
+    border: 1px solid #E5A716;
+}
+
+#service-right {
+}
+
+#support {
+    /*float: right;*/
+    width: 233px;
+    position: relative;
+    top: -20px;
+}
+
+.box-support {
+    font-size: 12px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #dcd1cb;
+    border-left-color: #dcd1cb;
+    float: right;
+    width: 203px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 1px;
+}
+
+.top-support {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/support-top.gif);
+    background-repeat: no-repeat;
+    float: right;
+    height: 11px;
+    width: 235px;
+}
+
+.bottom-support {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/support-bottom.gif);
+    background-repeat: no-repeat;
+    float: right;
+    height: 11px;
+    width: 235px;
+}
+
+.icon_support {
+    margin-bottom: 0px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #dddcdc;
+}
+
+.none {
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    padding-bottom: 0;
+}
+
+.icon_support a {
+    padding-left: 5px;
+}
+
+a.sup {
+    color: #0e70a4;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bullet.png);
+    background-position: right 6px;
+    background-repeat: no-repeat;
+    padding-right: 12px;
+}
+
+.icon_support p a:hover {
+    text-decoration: underline;
+    color: #41ad64;
+}
+
+.icon_support img.icon {
+    margin-right: 10px;
+    margin-top: 1px;
+    float: left;
+}
+
+.icon_support p a {
+    text-decoration: none;
+    display: block;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 110%;
+    font-weight: normal;
+}
+
+#news {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.box-comment {
+    float: left;
+    width: 312px;
+}
+
+.box-comment-right {
+    float: left;
+    width: 208px;
+    margin-left: 15px;
+}
+
+.box-standard {
+    font-size: 12px;
+    padding-right: 15px;
+    padding-left: 5px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+    width: 290px;
+    clear: both;
+    padding-top: 5px;
+    height: 130px;
+}
+
+.box-GoiY {
+    font-size: 12px;
+    padding-right: 15px;
+    padding-left: 5px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+    width: 290px;
+    clear: both;
+    padding-top: 10px;
+    height: 115px;
+}
+
+.top-news {
+    float: left;
+    margin-right: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-news.gif);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 312px;
+}
+
+.bottom-news {
+    float: left;
+    margin-right: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bottom-news.gif);
+    background-repeat: no-repeat;
+    height: 10px;
+    width: 312px;
+}
+
+.top-news-right {
+    float: left;
+    margin-right: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-news-right.gif);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 208px;
+}
+
+.box-standard-right {
+    font-size: 12px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #fae3c4;
+    border-left-color: #fae3c4;
+    width: 206px;
+    clear: both;
+    padding-top: 10px;
+    height: 130px;
+}
+
+.box-standard-login {
+    font-size: 12px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #fae3c4;
+    border-left-color: #fae3c4;
+    width: 206px;
+    clear: both;
+}
+
+.bottom-news-right {
+    float: left;
+    margin-right: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bottom-news-right.gif);
+    background-repeat: no-repeat;
+    height: 10px;
+    width: 208px;
+}
+
+ul.list-blue {
+    list-style-image: none;
+    list-style-type: none;
+}
+
+    ul.list-blue li {
+        padding-left: 10px;
+        padding-top: 2px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/dot-red.gif);
+        background-repeat: no-repeat;
+        background-position: left 9px;
+        margin-top: 4px;
+    }
+
+.title {
+    float: left;
+    text-decoration: none;
+    padding-right: 6px;
+    background: #fff;
+    color: #f15a22;
+    float: left;
+    font-weight: bold;
+    margin-top: -20px;
+}
+
+    .title span {
+        float: left;
+        padding: 0;
+        padding-top: 2px;
+        background: url(https://cdn.thuvienphapluat.vn/images/icon/arrow-title.png) no-repeat 0 4px;
+        padding-left: 20px;
+    }
+
+        .title span strong {
+            cursor: pointer;
+        }
+
+            .title span strong.linever {
+                cursor: default;
+                color: #FAE789;
+                padding: 0 5px 0 5px;
+            }
+
+    .title a {
+        color: #F15A22;
+    }
+
+ul.list-blue2 {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+    margin-left: 5px;
+}
+
+    ul.list-blue2 li {
+        padding-left: 10px;
+        padding-top: 1px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+        background-repeat: no-repeat;
+        background-position: left 4px;
+        margin-top: 4px;
+    }
+
+.idTabs2-left {
+    clear: both;
+    float: left;
+    width: 106px;
+    background: url(https://cdn.thuvienphapluat.vn/images/icon/arrow-title.png) no-repeat 0 0;
+    padding: 4px 8px 0px;
+    margin: 0;
+    position: relative;
+    z-index: 99;
+}
+
+    .idTabs2-left h3 {
+        font: bold 14px Arial, Helvetica, sans-serif;
+        color: #d45122;
+        padding: 0;
+        padding-top: 4px;
+        padding-bottom: 1px;
+        margin-left: 3px;
+    }
+
+ul.list-news {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+}
+
+    ul.list-news li {
+        padding-left: 10px;
+        padding-top: 2px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+        background-repeat: no-repeat;
+        background-position: left 8px;
+        margin-top: 4px;
+        min-height: 20px;
+    }
+
+        ul.list-news li.bg-0 {
+            background-color: #fff;
+        }
+
+        ul.list-news li.bg-1 {
+            background-color: #f9f9f9;
+        }
+
+.list-news .ld a {
+    color: #cb501b;
+}
+
+#left-column {
+    float: left;
+    width: 550px;
+}
+
+.idTabs3 {
+    clear: both;
+    padding: 0px;
+    position: relative;
+    z-index: 100;
+}
+
+    .idTabs3 li {
+        display: inline;
+    }
+
+        .idTabs3 li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            color: #746059;
+            font-weight: bold;
+            float: left;
+        }
+
+            .idTabs3 li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 10px;
+                padding-bottom: 2px;
+                padding-top: 4px;
+                padding-left: 6px;
+                line-height: 20px;
+            }
+
+            .idTabs3 li a.selected {
+                float: left;
+                text-decoration: none;
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left3.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+                color: #fff;
+                float: left;
+            }
+
+                .idTabs3 li a.selected span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 15px;
+                    padding-bottom: 2px;
+                    padding-top: 4px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right3.gif);
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    background-repeat: no-repeat;
+                }
+
+.idTabs3-content {
+    float: left;
+    clear: both;
+    width: 552px;
+    border: 1px solid #C8D4DB;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    border-top: 2px solid #feac3a;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.idTabs4 {
+    clear: both;
+    padding: 0px;
+    position: relative;
+    z-index: 100;
+}
+
+    .idTabs4 li {
+        display: inline;
+    }
+
+        .idTabs4 li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            color: #746059;
+            font-weight: bold;
+            float: left;
+        }
+
+            .idTabs4 li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 10px;
+                padding-bottom: 2px;
+                padding-top: 4px;
+                padding-left: 6px;
+                line-height: 20px;
+            }
+
+            .idTabs4 li a.selected {
+                float: left;
+                text-decoration: none;
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left3.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+                color: #fff;
+                float: left;
+            }
+
+                .idTabs4 li a.selected span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 15px;
+                    padding-bottom: 2px;
+                    padding-top: 4px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right3.gif);
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    background-repeat: no-repeat;
+                }
+
+.idTabs4-content {
+    float: left;
+    clear: both;
+    width: 552px;
+    border: 1px solid #C8D4DB;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    border-top: 2px solid #feac3a;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.idTabs5 {
+    clear: both;
+    padding: 0px;
+    position: relative;
+    z-index: 100;
+}
+
+    .idTabs5 li {
+        display: inline;
+    }
+
+        .idTabs5 li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            color: #746059;
+            font-weight: bold;
+            float: left;
+        }
+
+            .idTabs5 li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 10px;
+                padding-bottom: 2px;
+                padding-top: 4px;
+                padding-left: 6px;
+                line-height: 20px;
+            }
+
+            .idTabs5 li a.selected {
+                float: left;
+                text-decoration: none;
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left3.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+                color: #fff;
+                float: left;
+            }
+
+                .idTabs5 li a.selected span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 15px;
+                    padding-bottom: 2px;
+                    padding-top: 4px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right3.gif);
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    background-repeat: no-repeat;
+                }
+
+.idTabs5-content {
+    float: left;
+    clear: both;
+    width: 552px;
+    border: 1px solid #C8D4DB;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    border-top: 2px solid #feac3a;
+    border-radius: 0px 0px 6px 6px;
+}
+
+    .idTabs5-content a {
+        color: #000;
+    }
+
+        .idTabs5-content a:hover {
+            color: #0E70A4;
+        }
+
+.content-nocolor {
+    clear: both;
+    background: #fff;
+    overflow: hidden;
+    padding: 8px 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.content-color {
+    clear: both;
+    background: #faf6f5;
+    overflow: hidden;
+    padding: 8px 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+
+
+.content-0 {
+    clear: both;
+    background: #fff;
+    overflow: hidden;
+    padding: 8px 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.content-1 {
+    clear: both;
+    background: #f6f6f6;
+    overflow: hidden;
+    padding: 8px 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.ByKey-1 ._mB {
+    background-color: #f7a941;
+    margin-right: 5px;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 2px;
+    line-height: 14px;
+    vertical-align: baseline;
+    cursor: default;
+}
+
+.ByKey-1 {
+    clear: both;
+    background: #f4f4f5;
+    overflow: hidden;
+    padding: 4px 0;
+    margin: 0;
+    margin-bottom: 3px;
+}
+
+    .ByKey-1 .number {
+        display: none;
+    }
+
+    .ByKey-1 .nqTitleLink {
+        font-weight: bold;
+        line-height: 18px;
+        padding: 5px 5px 5px 8px;
+        width: 395px;
+    }
+
+.left-col {
+    float: left;
+    width: 425px;
+    margin: 0;
+    padding: 0;
+}
+
+.left-col-Content {
+    float: left;
+    width: 560px;
+    margin: 0;
+    padding: 0;
+}
+
+.number {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bg-number.gif);
+    color: #f15a22;
+    background-repeat: no-repeat;
+    text-align: center;
+    float: left;
+    height: 18px;
+    width: 24px;
+    padding-top: 5px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.nq {
+    color: #000;
+    text-align: left;
+    float: left;
+    margin-left: 8px;
+    width: 370px;
+    font-weight: bold;
+}
+
+.nq-Content {
+    color: #000;
+    text-align: left;
+    float: left;
+    margin-left: 8px;
+    width: 520px;
+    font-weight: bold;
+}
+
+.nq p {
+    line-height: 18px;
+}
+
+.nq-Content p {
+    line-height: 18px;
+}
+
+.nqTitle a:hover {
+    color: #0E70A4;
+}
+
+.nqTitle a {
+    color: #000;
+    font-size: 12px;
+}
+
+    .nqTitle a b {
+        background: yellow;
+    }
+
+.nqContent {
+    font-weight: normal;
+    color: #000;
+    font-size: 11px;
+}
+
+.nqTitle a em {
+    font-style: normal;
+    background: yellow;
+    font-weight: bold;
+}
+
+.nqContent em, .nqContent b {
+    font-style: normal;
+    background: yellow;
+    font-weight: bold;
+}
+
+.links-bot {
+    font-weight: normal;
+    padding: 0;
+    padding-bottom: 5px;
+    font-size: 11px;
+    padding-top: 5px;
+}
+
+    .links-bot a {
+        color: #003F7A;
+        padding-right: 3px;
+        padding-left: 3px;
+    }
+
+        .links-bot a:hover {
+            color: #f15a22;
+            text-decoration: none;
+        }
+
+.right-col {
+    float: right;
+    width: 122px;
+    font-size: 11px;
+}
+
+.text-green {
+    color: #003F7A;
+}
+
+.text-red {
+    color: #f15a22;
+}
+
+.text-blue {
+    color: #0E70C3;
+}
+
+.green-text {
+    color: #003F7A;
+}
+
+a.details {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bg-detail.gif);
+    background-repeat: no-repeat;
+    font-size: 11px;
+    color: #f15a22;
+    text-decoration: none;
+    height: 22px;
+    width: 74px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    float: right;
+    text-align: center;
+    padding-top: 3px;
+    padding-right: 3px;
+}
+
+    a.details:hover {
+        background-image: url(https://cdn.thuvienphapluat.vn/images/bg-detail.gif);
+        background-repeat: no-repeat;
+        text-decoration: underline;
+    }
+
+#box-middle {
+    float: left;
+    width: 193px;
+    margin-bottom: 10px;
+}
+
+#middle-column {
+    float: left;
+    width: 193px;
+    margin-right: 13px;
+}
+
+.middle {
+    font-size: 12px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #c8d4db;
+    border-left-color: #c8d4db;
+    width: 171px;
+    clear: both;
+    background-repeat: repeat-y;
+}
+
+.top-mid {
+    float: left;
+    margin-right: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-mid.gif);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 10px;
+    width: 193px;
+}
+
+.top-mid-login {
+    float: left;
+    margin-right: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-mid-login.gif);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 193px;
+}
+
+.bottom-mid {
+    float: left;
+    margin-right: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bottom-mid.gif);
+    background-repeat: no-repeat;
+    height: 10px;
+    width: 193px;
+}
+
+ul.list-mid {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+}
+
+    ul.list-mid li {
+        padding-left: 10px;
+        padding-top: 2px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+        background-repeat: no-repeat;
+        background-position: left 5px;
+        margin: 8px 0;
+    }
+
+.title-right {
+    font-size: 13px;
+    font-weight: bold;
+    color: #076da5;
+}
+
+#middle-column .list-text {
+    width: 95%;
+    padding-left: 10px;
+    float: left;
+}
+
+.list-text1 {
+    width: 100%;
+    padding-left: 0px;
+    float: left;
+}
+
+.title-right {
+    font-size: 12px;
+    font-weight: bold;
+    color: #076da5;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #F89B1A;
+    padding: 0 0 5px 0;
+}
+
+.align-center {
+    text-align: center
+}
+
+.align-left {
+    text-align: left
+}
+
+ul.list-right {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+}
+
+    ul.list-right li {
+        /*padding-left: 10px;*/
+        padding-top: 0px;
+        /*background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+	background-repeat: no-repeat;
+	background-position: left 3px;*/
+        margin-top: 6px;
+        line-height: 16px;
+        border-bottom: 1px dotted #CCBFBF;
+        padding-bottom: 6px;
+    }
+
+ul.list-rightCongDong {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+}
+
+    ul.list-rightCongDong li {
+        padding-top: 0px;
+        line-height: 16px;
+        padding: 5px 0;
+        border-bottom: 1px dotted #ccc;
+    }
+
+ul.list-right li.TKVB {
+    padding-left: 10px;
+    padding-top: 0px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/dot-red.gif);
+    background-repeat: no-repeat;
+    background-position: left 7px;
+    margin-top: 0px;
+    line-height: 16px;
+}
+
+ul.list-right li a {
+    color: #000;
+}
+
+.list-right li a:hover {
+    color: #0e70a4;
+}
+
+ul.list-right1 {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+}
+
+    ul.list-right1 li {
+        padding-left: 10px;
+        padding-top: 0px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+        background-repeat: no-repeat;
+        background-position: left 7px;
+        line-height: 20px;
+    }
+
+        ul.list-right1 li.TKVB {
+            padding-left: 10px;
+            padding-top: 0px;
+            background-image: url(https://cdn.thuvienphapluat.vn/images/dot-red.gif);
+            background-repeat: no-repeat;
+            background-position: left 6px;
+            margin-top: 4px;
+            line-height: 16px;
+        }
+
+        ul.list-right1 li a {
+            color: #000;
+        }
+
+.list-right1 li a:hover {
+    color: #0e70a4;
+}
+
+a.detail2 {
+    color: #f15a22;
+    text-decoration: underline;
+    font-size: 11px;
+    float: right;
+    line-height: 30px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/arrow2.gif);
+    background-repeat: no-repeat;
+    background-position: right 12px;
+    padding-right: 8px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+    a.detail2:hover {
+        text-decoration: none;
+    }
+
+.email-message {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bg-message.jpg);
+    background-repeat: no-repeat;
+    height: 97px;
+    clear: both;
+    width: 100%;
+}
+
+.btn-regis {
+    width: 74px;
+    height: 22px;
+    color: #FFF;
+    cursor: pointer;
+    border: none;
+    float: right;
+    display: block;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/btn-registry.png);
+    background-repeat: no-repeat;
+    margin-top: 60px;
+    margin-right: 33px;
+    padding-bottom: 3px;
+    background-color: transparent;
+}
+
+#middle-column .mid-bottom {
+    width: 95%;
+    padding-left: 0px;
+}
+
+#right-column {
+    float: left;
+    width: 193px;
+    /*margin-left: 8px;*/
+    border-left-width: 0px;
+    border-left-style: solid;
+    border-left-color: #FAE3C4;
+    padding-left: 9px;
+}
+
+.search-hot {
+    width: 100%;
+    font-size: 14px;
+}
+
+    .search-hot .keyword {
+        padding: 0px
+    }
+
+.right-mid {
+    margin-bottom: 10px;
+}
+
+.nq-right {
+    color: #000;
+    text-align: left;
+    width: 100%;
+    margin-left: 10px;
+}
+
+    .nq-right a {
+        color: #000;
+        line-height: 20px;
+    }
+
+        .nq-right a:hover {
+            color: #0E70A4;
+        }
+
+.txt-blue {
+    color: #075b9f;
+}
+
+.txt-purple a {
+    color: #7f2b5a;
+}
+
+.txt-red a {
+    color: #ff0000;
+}
+
+.txt-yellow a {
+    color: #9c8c46;
+}
+
+.txt-green a {
+    color: #64992d;
+}
+
+.txt-0 a {
+    color: #8C0945;
+}
+
+.txt-1 a {
+    color: #12076F;
+}
+
+.txt-2 a {
+    color: #5C7996;
+}
+
+.txt-3 a {
+    color: #9c8c46;
+}
+
+.txt-4 a {
+    color: #64992d;
+}
+
+#banner-footer {
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+}
+
+    #banner-footer .basic {
+        width: 318px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/img-basic-1.jpg);
+        background-repeat: no-repeat;
+        height: 165px;
+        float: left;
+        margin-right: 10px;
+    }
+
+ul.list-banner {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+    margin-left: 115px;
+    margin-top: 70px;
+    float: left;
+}
+
+    ul.list-banner li {
+        padding-left: 10px;
+        padding-top: 2px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/arrow-white.png);
+        background-repeat: no-repeat;
+        background-position: left 7px;
+        color: #FFF;
+        font-size: 11px;
+        padding-bottom: 1px;
+    }
+
+.btn-bottom {
+    width: 96px;
+    height: 28px;
+    color: #FFF;
+    cursor: pointer;
+    border: none;
+    float: left;
+    display: block;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/btn-bottom.png);
+    background-repeat: no-repeat;
+    margin-right: 33px;
+    padding-bottom: 1px;
+    background-color: transparent;
+    margin-left: 115px;
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 0px;
+    text-align: left;
+    padding-left: 7px;
+}
+
+#banner-footer .pro {
+    width: 318px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/img-pro.jpg);
+    background-repeat: no-repeat;
+    height: 165px;
+    float: left;
+    margin-right: 10px;
+}
+
+#banner-footer .lawsoft {
+    width: 312px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/img-lawsoft.jpg);
+    background-repeat: no-repeat;
+    height: 165px;
+    float: right;
+}
+
+#bottom {
+    position: relative;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: #F89B1A;
+    margin-top: 10px;
+    background-color: #f8f4f3;
+    padding-right: 10px;
+    padding-left: 15px;
+    float: left;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    width: 955px;
+}
+
+    #bottom .link-columns {
+        position: relative;
+        float: left;
+        background-image: none;
+        list-style-type: none;
+    }
+
+        #bottom .link-columns p {
+            background-image: none;
+            list-style-type: none;
+            color: #8d8d8d;
+            text-align: left;
+        }
+
+            #bottom .link-columns p a {
+                background-image: none;
+                list-style-type: none;
+                text-align: left;
+                color: #8d8d8d;
+            }
+
+                #bottom .link-columns p a:hover {
+                    color: #41ad64;
+                    text-decoration: none
+                }
+
+        #bottom .link-columns .links-list {
+            width: 160px;
+            list-style-type: none;
+            float: left;
+            position: relative;
+        }
+
+            #bottom .link-columns .links-list ul {
+                list-style-type: none;
+            }
+
+                #bottom .link-columns .links-list ul li {
+                    padding-left: 7px;
+                    list-style-type: none;
+                }
+
+                    #bottom .link-columns .links-list ul li a {
+                        text-decoration: none;
+                        background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+                        background-repeat: no-repeat;
+                        background-position: left 7px;
+                        padding-left: 10px;
+                        text-align: left;
+                        line-height: 120%;
+                        padding-top: 4px;
+                        padding-bottom: 4px;
+                        float: left;
+                        width: 140px;
+                        color: #363b3e;
+                    }
+
+                        #bottom .link-columns .links-list ul li a:hover {
+                            text-decoration: none;
+                            color: #0e70a4
+                        }
+
+#bottom-links .bottom-links-content {
+    width: 980px;
+    text-align: center;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    position: relative;
+}
+
+#bottom .line-bot {
+    position: relative;
+    float: left;
+    list-style-type: none;
+    height: 20px;
+    background-position: left;
+    width: 2px;
+    background-repeat: repeat-y;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+#bottom .company {
+    width: 350px;
+    position: relative;
+    float: left;
+    background-image: none;
+    list-style-type: none;
+}
+
+.logo-bottom {
+    margin-bottom: 10px;
+    margin-left: 90px;
+}
+
+#bottom .link-columns .links-list-large {
+    width: 220px;
+    list-style-type: none;
+    float: left;
+    position: relative;
+}
+
+    #bottom .link-columns .links-list-large ul {
+        list-style-type: none;
+    }
+
+        #bottom .link-columns .links-list-large ul li {
+            padding-left: 7px;
+            list-style-type: none;
+        }
+
+            #bottom .link-columns .links-list-large ul li a {
+                text-decoration: none;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+                background-repeat: no-repeat;
+                background-position: left 7px;
+                padding-left: 10px;
+                text-align: left;
+                line-height: 120%;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                float: left;
+                width: 190px;
+                color: #363b3e;
+            }
+
+                #bottom .link-columns .links-list-large ul li a:hover {
+                    text-decoration: none;
+                    color: #0e70a4
+                }
+
+.footercontent {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    margin-top: 1px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #f2eae8;
+    font: normal 11px Verdana, Geneva, sans-serif;
+    color: #434242;
+}
+
+    .footercontent p strong .txt-ls {
+        color: #ff0000;
+    }
+
+.block p {
+    padding: 5px 0 0 5px;
+}
+
+/*================= Research sult page=================*/
+#left-column-sub {
+    width: 714px;
+    float: left;
+}
+
+#left-column-sub1 {
+    width: 553px;
+    float: left;
+}
+
+#block-info {
+    width: 732px;
+    border-left: #C8D4DB solid 1px;
+    border-right: #C8D4DB solid 1px;
+    padding-right: 20px;
+    padding-left: 15px;
+    float: left;
+}
+
+.info-top {
+    clear: both;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-info.gif);
+    height: 34px;
+    /*width: 679px;*/
+    width: 734px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #dc5526;
+    padding-right: 20px;
+    padding-left: 15px;
+    padding-top: 10px;
+    margin-top: 0px
+}
+
+.info-bottom {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bottom-info.gif);
+    height: 15px;
+    width: 100%;
+    background-repeat: no-repeat;
+    float: left;
+    padding-bottom: 15px;
+}
+
+#block-info-3col {
+    width: 516px;
+    border-left: #C8D4DB solid 1px;
+    border-right: #C8D4DB solid 1px;
+    padding-right: 20px;
+    padding-left: 15px;
+    float: left;
+}
+
+.info-top-filter {
+    clear: both;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-info-3col.gif);
+    height: 34px;
+    width: 528px;
+    font-size: 11px;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    color: #dc5526;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.info-top-3col {
+    clear: both;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-info-3col.gif);
+    height: 34px;
+    width: 518px;
+    font-size: 13px;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    color: #dc5526;
+    padding-right: 20px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.info-bottom-3col {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-bottom-new.gif);
+    height: 15px;
+    width: 100%;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.info-bottom-3col1 {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/bottom-info-3col.gif);
+    height: 15px;
+    width: 100%;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+#block-info .info-left {
+    float: left;
+    width: 102px;
+}
+
+#block-info .info-right {
+    float: right;
+    width: 577px;
+}
+
+#block-info .info-midle {
+    float: left;
+    width: 270px;
+    margin-right: 10px;
+}
+
+.info-red {
+    color: #ff0000;
+    font-size: 13px;
+}
+
+.info-orange {
+    color: #cb501b;
+}
+
+.info-purple {
+    color: #9e1583;
+}
+
+.info-orange-dark {
+    color: #c21a31;
+}
+
+.info-green-light {
+    color: #159e91;
+}
+
+.info-green {
+    color: #309614;
+}
+
+.info-blue {
+    color: #1877ab;
+}
+
+.info-gray {
+    color: #666;
+    font-size: 11px;
+}
+
+#right-column-sub {
+    width: 240px;
+    float: right;
+}
+
+#right-column-sub1 {
+    width: 193px;
+    float: right;
+}
+
+.support-sub {
+    width: 100%;
+}
+
+.sub-organge {
+    font-size: 13px;
+    color: #df5727;
+}
+
+.title-right-sub {
+    font-size: 13px;
+    font-weight: bold;
+    color: #076da5;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/title-right-sub.gif);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    text-transform: uppercase;
+    line-height: 35px;
+    margin-bottom: 10px;
+    clear: both;
+}
+
+.line-blue {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #dcdcdc;
+    clear: both;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.backup {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.block-sharing {
+    swidth: 100%;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.block-research-quickly {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+ul.sub-list-right {
+    list-style-image: none;
+    list-style-type: none;
+    clear: both;
+    margin-left: 0px;
+}
+
+    ul.sub-list-right li {
+        padding-left: 15px;
+        padding-top: 0px;
+        background-image: url(https://cdn.thuvienphapluat.vn/images/dot-red.gif);
+        background-repeat: no-repeat;
+        background-position: left 8px;
+        margin-top: 0px;
+        line-height: 18px;
+        border-bottom-width: 0px;
+        border-bottom-style: solid;
+        border-bottom-color: #dcdcdc;
+        padding-bottom: 0px;
+    }
+
+        ul.sub-list-right li a {
+        }
+
+            ul.sub-list-right li a:hover {
+                color: #0e70a4;
+            }
+
+    ul.sub-list-right .no-line {
+        border-bottom-style: none;
+    }
+
+/*==============Search advance=================*/
+.dropdown-large {
+    text-align: left;
+    background-color: #FFF;
+    border: 1px solid #beb2b0;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    width: 135px;
+    margin-left: 0px;
+}
+
+.dropdown-small {
+    text-align: left;
+    background-color: #FFF;
+    border: 1px solid #beb2b0;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    width: 85px;
+    margin-left: 2px;
+    margin-right: 3px;
+}
+
+.dropdown-small-last {
+    text-align: left;
+    background-color: #FFF;
+    border: 1px solid #beb2b0;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    width: 90px;
+    margin-left: 5px;
+    margin-right: 0px;
+}
+
+#nghiquyet {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/*------- Paging -------*/
+.wp-pagenavi {
+    clear: both;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+}
+
+    .wp-pagenavi a, .wp-pagenavi a:link {
+        padding: 4px 6px;
+        margin: 3px;
+        text-decoration: none;
+        border: 1px solid #dcd1cb;
+        color: #333333;
+        text-shadow: 0 1px 0 #FFFFFF;
+        background: url(https://cdn.thuvienphapluat.vn/images/bgoff.jpg) repeat-x;
+    }
+
+        .wp-pagenavi a:hover {
+            border: 1px solid #dcd1cb;
+            color: #FFFFFF;
+            text-shadow: 0 1px 0 #000000;
+            background: url(https://cdn.thuvienphapluat.vn/images/bgon.jpg) repeat-x;
+        }
+
+    .wp-pagenavi span.pages {
+        padding: 4px 6px;
+        margin: 3px;
+        color: #333333;
+        border: 1px solid #dcd1cb;
+        background: url(https://cdn.thuvienphapluat.vn/images/bgoff.jpg) repeat-x;
+    }
+
+    .wp-pagenavi span.current {
+        padding: 4px 6px;
+        margin: 3px;
+        border: 1px solid #dcd1cb;
+        color: #FFFFFF;
+        text-shadow: 0 1px 0 #000000;
+        background: url(https://cdn.thuvienphapluat.vn/images/bgon.jpg) repeat-x;
+    }
+
+    .wp-pagenavi span.extend {
+        padding: 4px 6px;
+        margin: 3px;
+        border: 1px solid #dcd1cb;
+        color: #333333;
+        background: url(https://cdn.thuvienphapluat.vn/images/bgoff.jpg) repeat-x;
+    }
+
+.left-col-sub {
+    float: left;
+    width: 570px;
+    margin: 0;
+    padding: 0;
+}
+
+.nq-sub {
+    color: #000;
+    text-align: left;
+    float: left;
+    margin-left: 8px;
+    width: 535px;
+    font-weight: bold;
+}
+
+.info-left-advan {
+    float: left;
+    width: 120px;
+}
+
+.info-right-advan {
+    float: right;
+    width: 409px;
+}
+
+.search-hot-advan {
+    width: 178px;
+    font-size: 14px;
+    margin-left: 30px;
+}
+
+.info-top2 {
+    clear: both;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/top-info.gif);
+    height: 34px;
+    width: 679px;
+    font-weight: bold;
+    color: #dc5526;
+    padding-right: 20px;
+    padding-left: 15px;
+    padding-top: 10px;
+    margin-top: 10px
+}
+
+#block-info-advan {
+    width: 549px;
+    /*background-image: url(https://cdn.thuvienphapluat.vn/images/mid-info.gif);
+	background-repeat: repeat-y;
+	padding-right: 10px;
+	padding-left: 10px;*/
+    float: left;
+    border: 1px solid #C8D4DB;
+    padding-left: 2px;
+    /*padding-top: 15px;*/
+    margin-bottom: 10px;
+    margin-top: -1px;
+}
+
+.dateField {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/icon-date.gif);
+    background-position: right center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: 1px solid #beb2b0;
+    width: 131px;
+}
+
+.dateFieldEnd {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/icon-date.gif);
+    background-position: right center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: 1px solid #beb2b0;
+    width: 110px;
+    height: 18px;
+}
+
+.cmPager {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+    .cmPager a {
+        text-shadow: 0 1px 0 #FFFFFF;
+        color: #333333;
+        padding: 4px 6px;
+        border: solid 1px #dcd1cb;
+        overflow: hidden;
+        text-decoration: none;
+    }
+
+        .cmPager a:hover {
+            color: #FFFFFF;
+            background: #F89B1A;
+        }
+
+    .cmPager b {
+        color: Red;
+    }
+
+        .cmPager b:hover {
+            color: #FFFFFF;
+        }
+
+.lnkP, A.lnkP, A.lnkP:hover {
+    /*display:inline-block;*/
+    margin: 2px;
+    /*font-size:11px;*/
+    font-weight: bold;
+    color: black;
+    /*padding: 1 4 1 4;*/
+    padding: 4px;
+    border: solid 1px #666;
+}
+
+    A.lnkP:hover {
+        background-color: #ff9900
+    }
+
+.cmseal {
+    width: 232px;
+    position: absolute;
+    margin-left: 260px;
+    margin-top: 40px;
+    z-index: 10;
+}
+
+.diemtin {
+    color: Red;
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#FieldFast label {
+    padding-left: 5px;
+}
+
+#StatusFast label {
+    padding: 0 5px 0 5px;
+}
+
+/*Clearfix*/
+.clearfix {
+    display: inline-block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.box_bm_m {
+    border: 0px solid #bdc8d5;
+    padding: 0px 0px 10px 0px;
+    width: 190px;
+    float: right;
+}
+
+    .box_bm_m a {
+        float: left;
+        width: 62px;
+        text-align: center;
+        padding-top: 48px;
+        font: normal 11px Arial;
+        color: #555
+    }
+
+    .box_bm_m ul li {
+        list-style: none;
+        float: left;
+    }
+
+    .box_bm_m a:hover {
+        text-decoration: none;
+    }
+
+    .box_bm_m a.ykien {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -4096px
+    }
+
+        .box_bm_m a.ykien:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -2460px;
+        }
+
+    .box_bm_m a.yahoo {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px 12px
+    }
+
+        .box_bm_m a.yahoo:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -351px;
+        }
+
+    .box_bm_m a.Facebook {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -66px;
+    }
+
+        .box_bm_m a.Facebook:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -423px;
+        }
+
+    .box_bm_m a.twitter {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -4170px
+    }
+
+        .box_bm_m a.twitter:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -4898px;
+        }
+
+    .box_bm_m a.email {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 17px -147px
+    }
+
+        .box_bm_m a.email:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 17px -627px;
+        }
+
+    .box_bm_m a.save:hover {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -214px
+    }
+
+    .box_bm_m a.save {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -488px;
+    }
+
+    .box_bm_m a.print {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -4243px
+    }
+
+        .box_bm_m a.print:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -2372px;
+        }
+
+    .box_bm_m a.Zingme {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico2.gif) no-repeat 16px -6791px;
+    }
+
+        .box_bm_m a.Zingme:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico2.gif) no-repeat 16px -6842px;
+        }
+
+    .box_bm_m a.LawNote {
+        background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -287px
+    }
+
+        .box_bm_m a.LawNote:hover {
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_ico1.gif) no-repeat 16px -554px;
+        }
+
+    .box_bm_m .right {
+        float: left;
+        width: 78px;
+    }
+
+        .box_bm_m .right a {
+            float: left;
+            width: 38px;
+            background: url(https://cdn.thuvienphapluat.vn/images/common/sprice_bm.gif) no-repeat -10px -946px;
+            padding-left: 30px;
+            font: normal 12px Arial;
+            color: #555;
+            padding-top: 25px;
+        }
+
+input[type="submit"], input[type="reset"], input[type="button"] {
+    cursor: pointer;
+}
+
+#block-info input[type="submit"], #block-info input[type="reset"], #block-info input[type="button"] {
+    background: #FDCE3E url(https://cdn.thuvienphapluat.vn/images/gsprite_pg_slate_20100521.png);
+    background-position: left -1672px;
+    min-width: 102px;
+    padding: 5 2px 0 5px;
+    height: 25px;
+    margin-bottom: 3px;
+    margin-top: 1px;
+    font-weight: bold;
+    border: 1px solid #E5A716;
+}
+
+#block-info-3col input[type="submit"], #block-info-3col input[type="reset"], #block-info-3col input[type="button"] {
+    background: #FDCE3E url(https://cdn.thuvienphapluat.vn/images/gsprite_pg_slate_20100521.png);
+    background-position: left -1672px;
+    min-width: 102px;
+    padding: 5 2px 0 5px;
+    height: 25px;
+    margin-bottom: 3px;
+    margin-top: 1px;
+    font-weight: bold;
+    border: 1px solid #E5A716;
+}
+
+.divTimNhanh {
+    font-size: 11px;
+    text-align: right;
+}
+
+    .divTimNhanh a {
+        /*text-decoration:underline; font-size:10px;*/
+    }
+
+#ThongKe {
+    font-size: 11px;
+}
+
+    #ThongKe a {
+        color: #0E70C3;
+    }
+
+.idTabs-Detail {
+    clear: both;
+    padding: 0px;
+}
+
+    .idTabs-Detail li {
+        display: inline;
+    }
+
+        .idTabs-Detail li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left.gif);
+            background-repeat: no-repeat;
+            background-position: left top;
+            color: #000000;
+            float: left;
+        }
+
+            .idTabs-Detail li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 8px;
+                padding-bottom: 4px;
+                padding-top: 2px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right.gif);
+                background-repeat: no-repeat;
+                background-position: right top;
+                padding-left: 0px;
+                line-height: 20px;
+            }
+
+            .idTabs-Detail li a.current {
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left-over.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+            }
+
+                .idTabs-Detail li a.current span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 10px;
+                    padding-bottom: 4px;
+                    padding-top: 2px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right-over.gif);
+                    background-repeat: no-repeat;
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    color: #fff;
+                }
+
+.idTabs-Detail-bottom {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-bottom.gif);
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    width: 715px;
+    float: left;
+}
+
+    .idTabs-Detail-bottom .list-news a {
+        color: #000;
+    }
+
+        .idTabs-Detail-bottom .list-news a:hover {
+            color: #0E70A4;
+        }
+
+.idTabs-Detai-Content {
+    float: left;
+    clear: both;
+    width: 531px;
+    min-height: 49px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #F89B1A;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 15px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-color: #C8D4DB;
+    border-left-color: #C8D4DB;
+    display: none;
+}
+
+.article-details {
+    font: 11.8pt Times New Roman;
+    padding: 0 0 0 10px;
+}
+
+    .article-details h1.title {
+        font-family: 'Times New Roman';
+        font-size: 14pt;
+        font-weight: bold;
+        margin-top: 0;
+        margin: 10px 0;
+    }
+
+    .article-details h2.lead, .article-details a.lead {
+        color: #5F5F5F;
+        font-family: 'Times New Roman';
+        font-size: 11pt;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+.tacgiagopy {
+    font-weight: bold;
+    color: #F15A22;
+}
+
+.chucvu {
+    color: #F15A22;
+    font-size: 11px;
+    text-align: center;
+}
+
+.exSharingDialog {
+    background: url(https://cdn.thuvienphapluat.vn/images/eShare_bkg_dialogB.gif) no-repeat;
+    background-position: top left;
+    color: #333;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: normal;
+    padding: 0px 0 0 10px;
+    cursor: pointer;
+}
+
+.SearchketQua1 {
+    border: 1px solid #C8D4DB;
+}
+
+.SearchketQua {
+    width: 553px;
+}
+
+.RadioNgonNgu label {
+    padding-right: 20px
+}
+
+.download {
+    width: 210px;
+    padding-left: 100px;
+    padding-top: 40px;
+}
+
+    .download a, .download1 a {
+        text-decoration: line;
+        color: #0E70C3;
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 5px;
+        padding-top: 5px
+    }
+
+    .download p {
+        line-height: normal
+    }
+
+
+#dhtmltooltip {
+    font-size: 11px;
+}
+
+.thanhvien {
+    padding-left: 20px;
+    margin-top: 10px;
+    color: #000;
+    font-size: 12;
+}
+
+.ulYear .ulMonth {
+    margin: 0px;
+    padding: 0px;
+    margin-left: 20px;
+}
+
+.ulYear li {
+    list-style-type: none;
+    padding: 2px 0 2px 10px;
+}
+
+.ulMonth li {
+    list-style-type: none;
+    padding: 2px 0 2px 0px;
+}
+
+.ulYear li a {
+    color: #0E70C3;
+}
+
+.floatLeft {
+    padding-right: 10px;
+}
+
+#SendFeedBack div {
+    background: url(https://cdn.thuvienphapluat.vn/images/icon/moi-gop-y.jpg) no-repeat;
+    width: 111px;
+    height: 24px;
+}
+
+#SendFeedBack:hover div {
+    background: url(https://cdn.thuvienphapluat.vn/images/icon/moi-gop-y.jpg) no-repeat;
+    opacity: 0.8;
+}
+
+
+.idTabs_GioiThieu {
+    clear: both;
+    padding: 0px;
+    position: relative;
+    z-index: 100;
+}
+
+    .idTabs_GioiThieu li {
+        display: inline;
+    }
+
+        .idTabs_GioiThieu li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            color: #746059;
+            font-weight: bold;
+            float: left;
+        }
+
+            .idTabs_GioiThieu li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 10px;
+                padding-bottom: 4px;
+                padding-top: 2px;
+                padding-left: 6px;
+                line-height: 20px;
+            }
+
+            .idTabs_GioiThieu li a.selected {
+                float: left;
+                text-decoration: none;
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left3.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+                color: #f15a22;
+                float: left;
+            }
+
+                .idTabs_GioiThieu li a.selected span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 10px;
+                    padding-bottom: 4px;
+                    padding-top: 2px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right3.gif);
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    background-repeat: no-repeat;
+                }
+
+.idTabs_GioiThieu-content {
+    float: left;
+    clear: both;
+    width: 767px;
+    border: 1px solid #C8D4DB;
+    padding-left: 2px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    margin-top: -1px;
+}
+
+    .idTabs_GioiThieu-content a {
+        color: #000;
+    }
+
+        .idTabs_GioiThieu-content a:hover {
+            color: #0E70A4;
+        }
+
+    .idTabs_GioiThieu-content div {
+        padding: 0 10px 0 10px;
+    }
+
+.news-teaser-photo-crop {
+    background: none repeat scroll 0 0 #EEE;
+    height: 28px;
+    overflow: hidden;
+    width: 40px;
+    padding: 1px;
+}
+
+.news-teaser-photo_thumbmail {
+    background-position: center;
+    width: 40px;
+    height: 30px;
+}
+
+.TaiVanBan {
+    text-align: center;
+    padding-top: 20px;
+}
+
+    .TaiVanBan a {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+.btn-okk {
+    width: 31px;
+    height: 20px;
+    color: #FFF;
+    cursor: pointer;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/ok.jpg);
+    background-repeat: no-repeat;
+    font-size: 11px;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    background-color: transparent;
+}
+
+.ItemStyle {
+    padding-right: 10px;
+    width: 265px;
+}
+
+.ContentLabel {
+    font-size: 10px;
+}
+
+.lstq_cat {
+    color: #0560A6;
+    font-size: 90%;
+    font-size: 9px;
+    padding-bottom: 15px;
+}
+
+.imgLawyer {
+    float: left;
+    padding: 5px 10px 10px 0;
+    width: 80px;
+    height: 80px;
+}
+
+.titlelawyer {
+    color: #004276;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.urlHyperLink {
+    color: #004276;
+    font-weight: bold;
+}
+
+.idTabs-VBMoi {
+    padding: 0px;
+    margin: 0px;
+}
+
+    .idTabs-VBMoi li {
+        float: left;
+        list-style-type: none;
+        padding-left: 10px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+        .idTabs-VBMoi li .current {
+            color: #F79A18;
+        }
+
+.ttDoiTac {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/DoiTac/title_dt.gif);
+    background-position: top left;
+    background-repeat: no-repeat;
+    border: 1px solid #F89B1A;
+    padding: 8px 12px 5px 62px;
+}
+
+    .ttDoiTac a {
+        padding-right: 21px;
+    }
+
+        .ttDoiTac a img {
+            height: 30px;
+            width: 74px;
+        }
+
+#songngu-dialog-form_vb {
+    background: #fff;
+}
+
+.vbtviet {
+    width: 49%;
+    float: left;
+    height: 555px;
+    overflow: auto;
+}
+
+.vbtanh {
+    width: 49%;
+    float: right;
+    height: 555px;
+    overflow: auto;
+}
+
+.sticky #idTabs {
+    position: fixed;
+    top: 0;
+    left: 10;
+    border-bottom: 2px solid #F89B1A;
+    background: #fff;
+    width: 761px;
+    z-index: 1000;
+}
+
+.sticky .bn-left {
+    position: fixed;
+    top: 0;
+    margin-top: 10px;
+    z-index: 99;
+}
+
+.sticky .__mucluc {
+    position: fixed;
+    top: 0;
+    margin-top: 28px;
+    z-index: 1000;
+    width: 760px;
+}
+
+#ShowBMTip {
+    background: #fff;
+}
+
+
+ul.muclucVB {
+    margin: 10px;
+    padding: 0;
+    padding-left: 5px;
+}
+
+    ul.muclucVB li {
+        list-style-type: none;
+        margin-top: 5px;
+    }
+
+        ul.muclucVB li p {
+            padding-left: 15px;
+        }
+
+        ul.muclucVB li a:hover {
+            color: #076DA5;
+        }
+
+        ul.muclucVB li.lever-1 a {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        ul.muclucVB li.lever-2 {
+            padding-left: 10px;
+        }
+
+            ul.muclucVB li.lever-2 a {
+                padding-left: 10px;
+                font-size: 11px;
+            }
+
+        ul.muclucVB li.lever-3 {
+            padding-left: 20px;
+        }
+
+        ul.muclucVB li.lever-4 {
+            padding-left: 30px;
+        }
+
+        ul.muclucVB li.lever-5 {
+            padding-left: 40px;
+        }
+
+        ul.muclucVB li.lever-6 {
+            padding-left: 50px;
+        }
+
+.__mucluc {
+    display: none;
+    width: 760px;
+    padding: 2px 0 2px 0;
+    background: #D6D6D6;
+}
+
+.mlContent {
+    display: none;
+    position: absolute;
+    max-height: 300px;
+    overflow: auto;
+    width: 760px;
+    background: #D6D6D6;
+    z-index: 100;
+    background: #E4E4E4;
+    border-bottom: 2px solid #F89B1A;
+    border-top: 1px dotted #F89B1A;
+}
+
+    .mlContent .ff {
+        padding: 10px;
+    }
+
+.clsBookmark, .clsBookmark > * {
+    background: #FFFF96;
+}
+
+.clsBookmark1, .clsBookmark1 > * {
+    color: #DD0000;
+    font-weight: bold
+}
+
+.clsBookmark10, .clsBookmark10 > * {
+    color: #DD0000;
+    font-weight: bold
+}
+
+.clsBookmark2, .clsBookmark2 > * {
+    color: #9900FF;
+    font-weight: bold
+}
+
+.clsBookmark3, .clsBookmark3 > * {
+    color: #09C48F;
+    font-weight: bold
+}
+
+.clsBookmark4, .clsBookmark4 > * {
+    color: #FD0EBA;
+    font-weight: bold
+}
+
+.clsBookmark5, .clsBookmark5 > * {
+    color: Blue;
+    font-weight: bold
+}
+
+
+.clsBookmark_dc, .clsBookmark_dc > * {
+    color: blue !important;
+    cursor: pointer !important;
+}
+
+
+.clsBookmark_bm, .clsBookmark_bm > * {
+    background: unset !important;
+    color: blue !important;
+    cursor: pointer !important;
+}
+
+
+.SclsBookmark1 {
+    background: #DD0000
+}
+
+.SclsBookmark2 {
+    background: #9900FF
+}
+
+.SclsBookmark3 {
+    background: #09C48F
+}
+
+.SclsBookmark4 {
+    background: #FD0EBA
+}
+
+
+.clsBookmarkClear {
+    background: transparent;
+}
+
+#TB_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10110;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    filter: alpha(opacity=10);
+    -moz-opacity: 0.1;
+    opacity: 0.1;
+}
+
+#TB_window {
+    position: absolute;
+    background: white;
+    z-index: 100;
+    color: black;
+    display: none;
+    border: 1px solid #525252;
+    background: #D6D6D6;
+}
+
+    #TB_window .child {
+        width: 698px;
+        height: 320px;
+        overflow-y: auto;
+        background: #fff;
+    }
+
+    #TB_window #bmTitle {
+        width: 99%;
+        padding: 3px;
+        font-weight: bold;
+    }
+
+    #TB_window #bmContent {
+        width: 99%;
+        padding: 2px;
+    }
+
+#TB_closeWindow {
+    height: 10px;
+    padding: 5px 25px 10px 0;
+    float: right;
+}
+
+.titleBMNoContent {
+    font-weight: bold;
+    padding-bottom: 5px;
+    font-size: 20px;
+    color: Red;
+}
+
+#divltrLienQuanHieuLucTungPhanDialog .child {
+    max-height: 352px;
+}
+
+.muclucVB li #bmContent {
+    margin-left: 20px;
+    border: 1px dotted #123;
+}
+
+.bCacNoiDungSuaDoi {
+    font-size: 11px;
+    color: Red;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#bmContent b a {
+    color: #0000FF;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#bmContent #bmTitle {
+    padding-bottom: 10px;
+}
+/*.gdv_tiMoi{color:Red;font-weight:bold;text-decoration:underline;text-transform:uppercase;}*/
+
+.mnGoiDV {
+    position: fixed;
+    background: #fff;
+    width: 200px;
+    padding-bottom: 5px;
+    display: none;
+    border: 1px dotted #123;
+}
+
+    .mnGoiDV ul {
+        font-size: 11px;
+        font-weight: bold;
+        list-style-image: none;
+        list-style-type: none;
+        margin-left: 15px;
+    }
+
+        .mnGoiDV ul li {
+            background-position: left 5px;
+            padding-left: 10px;
+            padding-top: 1px;
+            background-image: url(https://cdn.thuvienphapluat.vn/images/arrow.gif);
+            background-repeat: no-repeat;
+            background-position: left 5px;
+            margin-top: 4px;
+        }
+
+.lPMTVPL .linkstop {
+    color: #0E70A4;
+}
+
+#ShowBMTip .middle {
+    padding-right: 5px;
+    width: 176px;
+}
+
+.content1 p a {
+    text-decoration: none;
+    color: #000;
+    cursor: default;
+}
+
+.content1 h1 a {
+    text-decoration: none;
+    color: #000;
+    cursor: default;
+}
+
+.content1 h2 a {
+    text-decoration: none;
+    color: #000;
+    cursor: default;
+}
+
+.content1 p a:hover {
+    text-decoration: none
+}
+
+.content1 h1 a:hover {
+    text-decoration: none
+}
+
+.content1 h2 a:hover {
+    text-decoration: none
+}
+
+.content1 p a.text-blue {
+    text-decoration: none;
+    color: #0E70C3;
+    cursor: pointer;
+}
+
+    .content1 p a.text-blue:hover {
+        text-decoration: underline
+    }
+
+
+.content1 p a.clsBookmark b {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.aHNDL {
+    margin-left: 5px;
+    float: right;
+    border: 1px solid #DAE0F1
+}
+
+
+.bmTitleNoContent {
+    background: #FFFF96;
+    cursor: pointer;
+    width: 185px;
+}
+
+.bmTitleNoContentChild {
+    display: none;
+}
+
+.content1 h1 {
+    padding-left: 0px;
+}
+
+
+#bttop {
+    position: fixed;
+    bottom: 150px;
+    right: 10px;
+    cursor: pointer;
+    display: none;
+    color: #fff;
+    font: bold 10pt Arial,Helvetica,sans-serif;
+    text-transform: uppercase;
+}
+
+    #bttop:hover {
+        background: #28A4E1;
+    }
+
+.clsBookmark {
+    cursor: pointer;
+}
+
+#aregister {
+    text-decoration: none;
+}
+
+#register1 {
+    font-weight: bold;
+    color: Red;
+    font-family: Arial;
+    font-size: 11px;
+}
+
+#register2 {
+    font-weight: bold;
+    color: Red;
+    font-family: Arial;
+    font-size: 11px;
+}
+
+#divThamDoYKien ul {
+    margin: 0;
+    padding: 0;
+}
+
+    #divThamDoYKien ul li {
+        list-style-type: none;
+        padding-top: 5px;
+    }
+
+
+.idTabs_tnpl {
+    clear: both;
+    padding: 0px;
+    position: relative;
+    z-index: 100;
+}
+
+    .idTabs_tnpl li {
+        display: inline;
+    }
+
+        .idTabs_tnpl li a {
+            float: left;
+            text-decoration: none;
+            padding-right: 6;
+            padding-left: 6px;
+            color: #746059;
+            font-weight: bold;
+            float: left;
+        }
+
+            .idTabs_tnpl li a span {
+                float: left;
+                margin-right: 2px;
+                padding-right: 10px;
+                padding-bottom: 4px;
+                padding-top: 2px;
+                padding-left: 6px;
+                line-height: 20px;
+            }
+
+            .idTabs_tnpl li a.selected {
+                float: left;
+                text-decoration: none;
+                padding-right: 6;
+                padding-left: 6px;
+                background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-left3.gif);
+                background-repeat: no-repeat;
+                background-position: left top;
+                color: #f15a22;
+                float: left;
+            }
+
+                .idTabs_tnpl li a.selected span {
+                    float: left;
+                    margin-right: 2px;
+                    padding-right: 10px;
+                    padding-bottom: 4px;
+                    padding-top: 2px;
+                    background-image: url(https://cdn.thuvienphapluat.vn/images/tabs-right3.gif);
+                    background-position: right top;
+                    padding-left: 6px;
+                    line-height: 20px;
+                    background-repeat: no-repeat;
+                }
+
+.idTabs_tnpl-content {
+    float: left;
+    clear: both;
+    width: 767px;
+    border: 1px solid #C8D4DB;
+    padding-left: 2px;
+    padding-top: 15px;
+    margin-bottom: 10px;
+    margin-top: -1px;
+}
+
+    .idTabs_tnpl-content a {
+        color: #000;
+    }
+
+        .idTabs_tnpl-content a:hover {
+            color: #0E70A4;
+        }
+
+    .idTabs_tnpl-content ul {
+        margin-left: 30px;
+    }
+
+.tabtnpl {
+    padding: 10px;
+}
+
+.tnpl {
+    color: #5498D4;
+}
+
+.tabtnpl a {
+    color: #5498D4;
+}
+
+.ulTNPL li {
+    list-style-type: none;
+    padding: 5px;
+    color: Blue;
+}
+
+    .ulTNPL li:hover {
+        background: #B5FCFA;
+        cursor: pointer;
+    }
+
+.divTNPL a {
+    color: #5498D4;
+}
+
+.divTNPL p {
+    line-height: 150%;
+}
+
+.tabtnpl p {
+    line-height: 150%;
+}
+
+.divTNPL ul {
+    margin-left: 30px;
+}
+
+.tnpl_mucluc ul {
+    margin: 0;
+    padding: 0
+}
+
+.tnpl_mucluc li {
+    list-style-type: none;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/icon_mucluc1.png);
+    background-repeat: no-repeat;
+    padding-top: 7px;
+    padding-left: 10px;
+    width: 200px;
+    height: 21px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    color: White;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+
+    .tnpl_mucluc li.open {
+        background-image: url(https://cdn.thuvienphapluat.vn/images/icon_mucluc2.png);
+    }
+
+.tnpl_mucluc div ul {
+    margin: 0;
+    padding: 0
+}
+
+    .tnpl_mucluc div ul li {
+        background: none;
+        height: auto
+    }
+
+
+ul.list-blueHNDL li {
+    padding-left: 10px;
+    margin: 5px 0;
+    font-weight: bold;
+    list-style-type: none;
+}
+
+    ul.list-blueHNDL li a {
+        color: #019EDC;
+    }
+
+
+.middle-home {
+    background-color: #fff3e6;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+ul.list-rightCongDong li.txt-4 {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.right-col p {
+    padding-bottom: 2px;
+}
+
+#divThuocTinh h1 {
+    font-size: 12px;
+    line-height: 15px;
+    color: black;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+    #divThuocTinh h1 span {
+        font-size: 12px;
+        text-transform: uppercase
+    }
+
+.Tomtatvanban {
+    padding-top: 10px;
+}
+
+    .Tomtatvanban h2 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .Tomtatvanban .author {
+        float: left;
+        border: 1px solid #AFAFAF;
+        padding: 2px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+        .Tomtatvanban .author img {
+            padding-bottom: 5px;
+            width: 100px;
+        }
+
+    .Tomtatvanban p {
+        margin-bottom: 10px;
+        line-height: 1.6em;
+    }
+
+    .Tomtatvanban a {
+        color: #003F7A;
+    }
+
+    .Tomtatvanban li {
+        margin-left: 10px
+    }
+
+.tv-breadcrumbs {
+    background-image: url(https://cdn.thuvienphapluat.vn/images/dieu-huong-bg.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    height: 28px;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 736px
+}
+
+    .tv-breadcrumbs ul {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+    }
+
+        .tv-breadcrumbs ul li {
+            font-size: 11px;
+            float: left;
+            display: inline;
+            font-family: arial;
+            padding: 13px 20px 2px 10px;
+            height: 14px;
+            background-image: url(https://cdn.thuvienphapluat.vn/images/muiten.png);
+            background-repeat: no-repeat;
+            background-position: right 2px;
+        }
+
+        .tv-breadcrumbs ul .brbg-none {
+            background-image: none;
+            color: #666;
+            width: 505px;
+            overflow: hidden;
+            line-height: 14px;
+            max-width: 480px;
+        }
+
+        .tv-breadcrumbs ul li a {
+            color: #0a91e6;
+            text-decoration: none;
+        }
+
+            .tv-breadcrumbs ul li a:hover {
+                text-decoration: underline;
+            }
+
+#divltrLienQuanHieuLucTungPhanDialog .child .tt .bmTitle {
+    cursor: pointer;
+    padding: 5px;
+    background: #f0f7ff;
+    margin-top: 2px;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/expand.png);
+    background-repeat: no-repeat;
+    background-position: 4px center;
+    padding-left: 22px;
+    clear: both;
+}
+
+#divltrLienQuanHieuLucTungPhanDialog .child .tt .bmTitleActive {
+    background: #D1D1D1;
+    background-image: url(https://cdn.thuvienphapluat.vn/images/collapse.png);
+    background-repeat: no-repeat;
+    background-position: 4px center;
+}
+
+#divltrLienQuanHieuLucTungPhanDialog .child .tt .bmTitle .hhl {
+    color: red;
+}
+
+.hhl {
+    color: red;
+}
+
+#divltrLienQuanHieuLucTungPhanDialog .child .tt .bmTitleChild {
+    margin-left: 20px;
+}
+
+    #divltrLienQuanHieuLucTungPhanDialog .child .tt .bmTitleChild .bmTitle {
+        margin-top: 0px;
+    }
+
+
+#FavoriteFolderfrom ul {
+    margin: 0;
+    padding: 0;
+    max-height: 200px;
+    overflow: auto;
+    border-bottom: 1px solid #b7bec5;
+    margin-bottom: 5px;
+}
+
+#FavoriteFolderfrom li {
+    list-style-type: none;
+    padding: 5px;
+}
+
+    #FavoriteFolderfrom li .Fcheckbox {
+        float: left;
+        margin-right: 5px;
+    }
+
+    #FavoriteFolderfrom li a {
+        color: red;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 11px;
+        margin-left: 5px;
+    }
+
+    #FavoriteFolderfrom li .Ftext {
+        display: none;
+    }
+
+.mAmount {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: #dc5526;
+    width: 170px;
+    display: inline;
+    height: 35px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+
+.ttlq {
+    width: 195px;
+}
+
+    .ttlq ul {
+        margin: 0;
+        padding: 0;
+    }
+
+        .ttlq ul li {
+            list-style-type: none;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+            .ttlq ul li:first-child {
+                font: normal 16px Arial,sans-serif;
+                font-weight: bold;
+                color: #555;
+                border-bottom: 1px solid #f7721b;
+            }
+
+            .ttlq ul li a {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                color: #066cd2;
+                text-align: left;
+                padding-top: 10px;
+                font-size: 14px;
+                font-family: Arial;
+                float: none;
+            }
+
+                .ttlq ul li a img {
+                    float: left;
+                    width: 50px;
+                    padding-right: 5px;
+                    padding-top: 5px;
+                    height: 50px;
+                }
+
+.ssvb {
+    width: 100%;
+    display: none;
+}
+
+    .ssvb a {
+        width: 100%;
+        font-size: 13px;
+        font-weight: bold;
+        color: red;
+        text-decoration: underline;
+        padding: 0px;
+        margin-top: 0px;
+        text-align: left;
+        margin-top: 20px;
+    }
+
+#cmDiagram a > span {
+    color: Red !important;
+}

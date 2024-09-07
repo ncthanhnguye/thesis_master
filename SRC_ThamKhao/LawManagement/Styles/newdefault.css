@@ -1,0 +1,446 @@
+﻿.divMASConfig
+{width:273px; height:136px; background-image:url(../../Images/bg_MAS.png); background-repeat:no-repeat;}
+.panelMASSelectAlert
+{
+	width:420px; height:545px; z-index:150; border:1px solid black; background-color:#d9e1f1; position:absolute;
+}
+.DynamicModalBG 
+{
+	background-color:Gray;filter:alpha(opacity=50);opacity:0.5;position:absolute; top:0px; left:0px; z-index:100;
+}
+.divPanelHeaderSelectAlert
+{
+	width:100%; height:20px; position:relative; float:left; background-color:#8080FF; font-family:arial;
+}
+.panelcaption
+{
+	width:100%; height:30px; FONT-SIZE: 16pt; COLOR: #333399; FONT-FAMILY:Arial, Helvetica, sans-serif;font-weight:bold; 
+	text-align:center; padding-top:5px;
+}
+.divHotlistStatus
+{
+	width:169px; height:95px; overflow:auto; border:1px solid black; background-color:White; margin-left:59px;
+}
+.gridHotlistSource td{padding:3px 0 0 5px; color:Black; font-size:10.5pt; white-space:nowrap;}
+
+.divHitAlertMatrix
+{
+	width:405px; height:180px; position:relative; margin-left:auto; margin-right:auto; background-image:url(../../Images/bg_Matrix.png); background-repeat:no-repeat;	
+}
+
+.headerstyle_P
+{
+	FONT-SIZE: 16px; COLOR: #333399; FONT-FAMILY:Arial, Helvetica, sans-serif;font-weight:bold;
+	width:100%; text-align:center; float:left; padding-top:10px;
+}
+.headerstyle_P1
+{
+	FONT-SIZE: 14px; COLOR: #333399; FONT-FAMILY:Arial, Helvetica, sans-serif;font-weight:bold;
+}
+
+.panelMasSelectIcon
+{
+	width:450px; min-height:580px;z-index:105; border:1px solid black; background-color:White; position:absolute;
+}
+.DynamicModalBG_SelectIcon 
+{
+	background-color:Gray;filter:alpha(opacity=5);opacity:0.1;position:absolute; top:0px; left:0px; z-index:104; float:left;
+}
+.divHotlistStatusSelectIcon
+{
+	width:400px; height:160px; overflow:auto; border:1px solid black; background-color:White;
+}
+.divContentSelectIcon
+{
+	FLOAT: left; WIDTH: 100%; min-height:560px; height:auto !important; height:560px; text-align:center;
+}
+/* select icon table*/
+.divTableSelectIcon
+{
+	width:300px;  height:170px; overflow:auto;
+}
+.divTableSelectIcon .top
+{
+	width:277px; height:13px; background-image:url(../../Images/bg_MAS_Config_top.png); background-repeat:no-repeat;
+}
+.divTableSelectIcon .middle
+{
+	width:273px; min-height:114px; height:auto !important; height:114px; background-image:url(../../Images/bg_MAS_Config_center.png);
+	float:left; margin-left:2px;background-repeat:repeat;
+}
+
+.tblSetIcon {margin-left:auto; margin-right:auto;}
+
+.divTableSelectIcon .bottom
+{
+	width:277px; height:13px; background-image:url(../../Images/bg_MAS_Config_bottom.png); background-repeat:no-repeat;
+	margin-top:0px; text-align:center; float:left; 
+}
+.drophover
+{
+	border: 0px solid #cccccc; background-color:#a9defa;
+}
+.moveimage
+{
+	z-index:10; position:absolute; width:20px; height:20px;
+}
+.moveimagetotable
+{
+	width:20px; height:20px;
+}
+.fileupload
+{
+	filter:alpha(opacity=0);opacity:0.0;position:absolute; top:0px; left:0px; z-index:1; float:left; height:24px; width:165px;
+	
+}
+.IsClickClass
+{
+	border:2px solid red;
+}
+.itemTable
+{
+	width:20px; height:20px;z-index:10;
+}
+.itemDragGrid
+{
+	width:20px; height:20px; z-index:10;
+}
+.itemTDofGrid
+{
+	width:50px; height:22px; text-align:center;
+}
+/*for select icon page*/
+.iframePopup
+{
+	FLOAT: left; WIDTH: 100%; height:560px; overflow-y:auto; z-index:150; 
+}
+
+.panelSelectHotList
+{
+	width:410px; height:350px; z-index:150; border:1px solid black; background-color:White; position:absolute;
+}
+.divID_Temp
+{
+	filter:alpha(opacity=0);opacity:0;position:absolute; top:0px; left:0px;
+}
+
+.divDragging
+{
+	width:2; height:290; position:absolute; background-color:White; z-index:100;
+}
+
+.divContentParent
+{
+	background-color:#8796f5; border:1px solid red;
+}	
+
+/*=================*/
+
+.popupAlertSetIcon
+{
+	background-color:#D8E1F0; border:1px solid #000000; position:absolute; z-index:160; width:400px; min-height:170px; height:auto !important; height:180px; text-align:center;
+}
+.popupEditSF
+{
+	background-color:#D8E1F0; border:1px solid #000000; position:absolute; z-index:160; width:400px;text-align:center;
+}
+.popupAlertSetIcon1
+{
+	background-color:#d9e1f1; border:1px solid black; position:absolute; z-index:160; width:400px; min-height:100px; height:auto !important; height:100px; text-align:center;
+}
+
+.popupAlertSetIconMapIt
+{
+	background-color:#d9e1f1; border:1px solid black; position:absolute; z-index:160; width:400px; min-height:100px; height:auto !important; height:200px; text-align:center;
+}
+
+
+.gctPopupHeight
+{
+	position:absolute; min-height:100px;height:auto !important; height:100px; border:1px solid black; background-color:#d9e1f1; z-index:171;
+}
+
+.GctOverLayClass
+{
+	position:absolute; z-index:155; left:0px; top:0px; float:left; filter:alpha(opacity=50); opacity:0.5; background-color:Gray;
+}
+.GctOverLayClass2
+{
+	position:absolute; z-index:165; left:0px; top:0px; float:left; filter:alpha(opacity=50); opacity:0.5; background-color:Gray;
+}
+.GctTitleRow { font-family: arial; font-size:12px;height:24px; padding-top:3px; padding-left:5px; text-align:left; 
+	color:White ;font-weight :bold; cursor:move;background:	#ffffff !important;}
+.GctTitle { font-family: arial; font-size:12px;padding-left:3px; cursor:default;  font-weight: bold;}
+.GctClose { font-family: arial; font-size:11px;right:0px;cursor:pointer; padding-right:15px; font-weight: bold;} 
+/*Add new mas user*/
+.newadduser
+{
+	font-size:18px;font-weight:bold; color:#3325ab;
+}
+.configusermas
+{
+	color:#3325ab;font-size:15px;font-weight:bold;
+}
+
+.headerstyle3
+{
+	FONT-SIZE: 16px; 
+	COLOR: #1b0da1; 
+	FONT-FAMILY:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+
+.mapcontrolcorner
+{
+	width:40px; height:127px;background:url(../../Images/mapcontrol.png?v=5.1.061313.1700) no-repeat top left; margin-left:5px;
+}
+
+#centercolMAS_640
+{
+	float:left;
+	background-color: #ffffff;
+	min-height:465px;
+	height:auto !important;
+	height:500px;	
+	width:688px;
+	margin-left:-2px;
+	
+}
+
+.maslayout_top
+{
+	width:100%; height:12px;background-image:url(../../Images/MAS_Layout_Top.png ); background-repeat:no-repeat;float:left;
+}
+.maslayout_Mid
+{
+	width:295px; min-height:50px; height:auto !important;height:12px;background-image:url(../../Images/MAS_Layout_mid.png ); background-repeat:repeat;float:left;
+}
+.maslayout_Bottom
+{
+	width:100%; height:12px;background-image:url(../../Images/MAS_Layout_Bottom.png ); background-repeat:no-repeat;float:left;
+}
+.mastitle
+{
+	color:#ffffff; font-family:Arial; font-size:12px;
+}
+
+.MessageBox_325px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_370px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_410px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_450px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_500px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_550px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_570px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_788px{
+	height:22px; background:	#ffffff !important;
+}
+.MessageBox_810px{
+	height:22px; background:	#ffffff !important;
+}
+
+.MessageBox_title{
+	height:22px; background:	#ffffff !important;
+	
+}
+
+.ConfigurePanel
+{
+	width:600px; height:555px; z-index:110; border:1px solid black; background-color:#d9e1f1; position:absolute;
+}
+.Header_410px
+{
+	height:22px; background:	#ffffff !important;
+}
+.fontStylePopup_13 {font-family:Arial; font-size:13.5pt; font-weight:bold;}
+.fontStylePopup_Header {font-family:Arial; font-size:10.5pt; font-weight:bold; color:White;}
+.fontStylePopup_10 {font-family:Arial; font-size:10.5pt; }
+.fontStylePopup_11 {font-family:Arial; font-size:11.5pt; }
+.fontStylePopup_9 {font-family:Arial; font-size:9pt;}
+.fontStylePopup_Available {font-family:Arial; font-size:9pt;color:Black;}
+.cfeSources {height:130px;text-align:left;  width:140px; overflow:auto; border:1px solid #808080; background-color:White;color:Black;padding:1px; margin:1px;font-size:11pt}
+.cfeAlerts {height:130px;text-align:left;overflow:auto;border:1px solid #808080;background-color:White;color:Black;padding:1px; margin:1px;font-size:11pt}
+.cfeAlerts td {white-space:nowrap;}
+.gridNowrap td,th{border-collapse:collapse; white-space:nowrap;padding:0px 0px 0px 5px; color:Black;}
+
+.savesearchformBg
+{
+	BORDER: gray 1px solid;  OVERFLOW: hidden; WIDTH: 490px; HEIGHT: 380px;background-image:url(../../Images/bg_opacity_search.png);background-repeat:repeat;
+}
+
+.gridSaveSearch td
+{	
+	line-height: 25px;
+}
+.savesearchdelete
+{FLOAT: left; WIDTH: 235px; height:125px; MARGIN-TOP: 15px; border:1px solid gray; margin-left:60px; overflow:auto; background-color:White;}
+
+.grdDeleteSaveSearch
+{
+	width:100%; border:0px solid black; border-collapse:collapse;
+}
+
+.grdDeleteSaveSearch td{ padding:5px 0 0 5px;}
+.gridSaveSearch th {height:30px; font-size:10pt; font-weight:bold; border:0px;}
+.bgHeader{background-image:url(../../Images/bg_opacity_th.jpg); background-repeat:repeat;}
+
+.gridAlert td,th{ padding:0px 3px; border:1px solid white; border-collapse:collapse;}
+.gridAlert th{color:Black; font-family:Arial; font-size:10.5pt; height:22px;padding:0px 3px;}
+
+.grUserMas
+{
+	text-align:center; width:100%; border:1px solid gray;border-collapse:collapse; background-color:White;
+}
+.grUserMas td {border:1px solid black;}
+.clsTableAddUser {width:100%; border-collapse:collapse;}
+.clsTableAddUser td {padding:1px 0px 0 0;}
+
+
+.form_addMASUser{float:left; width:100%; height:525px; overflow-y:auto;}
+
+.checkboxgrayparent{ width:13px; height: 13px; position:relative;}
+.checkboxgray
+{
+	width:13px; height:13px; background-color:Gray; position:absolute;
+	background-color:Gray;filter:alpha(opacity=50);opacity:0.5;
+}
+
+/*Jpopup*/
+.j_Content
+{
+	font-family:Arial;
+	font-size:10.5pt;
+	padding:20px;
+	text-align:center;
+	color:#000000
+}
+.j_ContentEditAdmin
+{
+	font-family:Arial;
+	font-size:10.5pt;
+	padding:20px 10px 20px 10px;
+	text-align:center;
+	color:#000000
+}
+.j_Close_Button
+{
+	text-align:right; width:30px; padding-right:5px;
+}
+.j_Button_Control
+{
+	text-align:center;
+	padding-bottom:20px;
+	width:100%;
+}
+
+/*Scroll Image*/
+.jThumbnailScroller{position:relative; width:640px; height:122px; margin:0; border:1px solid #eee; padding:0; overflow:hidden; float:left;
+	background-image:url(../../Images/bg_scroll.jpg); background-repeat-x:repeat;}
+.jThumbnailScroller .jTscrollerContainer{position:absolute; min-width:685px;}
+
+.jThumbnailScroller .jTscroller
+{
+	position:relative; background-color:#4b4baa; height:122px; margin:0; left:0; top:0; display:inline-block; *display:inline;	
+}
+
+
+.jThumbnailScroller .jTscroller img{border:none; width:96px; height:58px;}
+.jThumbnailScroller .jTscroller div:first-child{margin-left:0px;}
+
+.jThumbnailScroller#tS1{width:100%;}
+
+.jThumbnailScroller .jTscroller > DIV {width: 100px; height:114px; text-align:center; float:left; padding:3px; 
+	border-right:1px solid black; border-top:1px solid black; border-bottom:1px solid black; overflow:hidden; vertical-align:middle;}
+.divScrollerText {font-family:Arial; font-size:9pt; color:White; }
+.vScrollerCurrent{background-color:#3219d2;}
+.vScrollerHover{background-color:#87cdfa;}
+.vScrollerData{margin-top:8px; float:left; width:100px;}
+.vScrollerData_MAS{display:table-cell; width:100px; height:60px; vertical-align:middle; }
+.textAlertType {word-wrap: break-word; width:100px;}
+
+/*Popup Styles*/
+.Popup_Wrap 
+{
+	display:	block;
+	background:	none #d9e1f1;
+}
+.Popup_Wrap h3 
+{
+	font-weight: normal;
+	display: block;
+	background:	#ffffff;
+	cursor: move;
+	height: 23px;
+	border-bottom: 1px solid black;
+}
+.Popup_Wrap h3 span 
+{
+	padding:	3px 25px 2px 8px;
+	display:	inline-block;
+}
+.Popup_Wrap a.j_Close_Button
+{
+	display:	block;
+	position:	absolute;
+	top:		4px;
+	right:		3px;
+	width:		inherit;
+	padding:	0;
+}
+.Popup_Wrap .j_Content 
+{
+	display:	block;
+	font-family: Arial;
+	text-align: center;
+	color:#000000;
+	width:		auto !important; /*fix IE6*/
+	width:		200px;
+	min-width:	200px;
+	margin:	20px 25px 20px 25px;
+}
+.j_Div_Button_Control 
+{
+	text-align: center;
+	display: block;
+	padding-bottom: 20px;
+}
+
+.H_UpperCase { text-transform: uppercase; }
+
+.lblNoteHitInfo
+{
+    word-wrap:break-word;
+    width:150px;
+    text-align:left;
+    }
+    .tblAlertManagement tr
+    {
+        height:30px;
+        }
+    .tblAlertManagement
+    {
+        margin: 0px auto;
+        text-align:left;
+        }
+        
+        .cellNoRecordGrid
+        {
+            width:100%;            
+            font-family:Arial;
+            font-size:11pt;
+            text-align:center;
+            padding-top:60px;
+            }

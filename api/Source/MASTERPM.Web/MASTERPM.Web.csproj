@@ -212,6 +212,7 @@
     <Compile Include="Api\Ad\UserController.cs" />
     <Compile Include="Api\Base\BaseController.cs" />
     <Compile Include="Api\Data\QRCodeHelperController.cs" />
+    <Compile Include="Api\ImportExcel\ImportLawController.cs" />
     <Compile Include="Api\ImportExcel\ImportDataCrawlController.cs" />
     <Compile Include="Api\Law\1_Luat.cs" />
     <Compile Include="Api\Law\2_Chuong.cs" />

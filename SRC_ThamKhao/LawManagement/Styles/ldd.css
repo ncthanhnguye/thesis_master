@@ -1,0 +1,540 @@
+
+ul, #myUL {
+    list-style-type: none;
+}
+
+#myUL {
+    margin: 0;
+    padding: 0;
+}
+
+.caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
+    .caret::before {
+        content: "\25B6";
+        color: black;
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+.caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    ' transform: rotate(90deg);
+}
+
+.nested {
+    display: none;
+}
+
+.active {
+  display: block;
+}
+
+
+
+
+ul.tree, ul.tree ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    ul.tree ul {
+        margin-left: 10px;
+        background: url(vline.png) repeat-y;
+    }
+
+    ul.tree li {
+        padding: 3px 10px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #369;
+       
+    }
+
+    ul.tree ul li {
+        background: url(node.png) no-repeat;
+    }
+
+        ul.tree ul li.last,
+        ul.tree ul li:last-child {
+            background: #fff url(lastnode.png) no-repeat;
+        }
+.active > li > a:-webkit-any-link {
+    color: #084162 !important;
+}
+li:hover > a:-webkit-any-link:not(.caret-down) {
+    color: #03a2ff !important
+}
+        /*******************************/
+
+.divcontainer, .divSearchResult {
+    font-family: arial;
+    font-size: 24px;
+    margin-top: 5px;
+    background-color: aliceblue;
+}
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13pt;
+    text-align: center;
+    width: 950px;
+    height: 100px;
+  
+    /* background-color: red; */
+    margin: 0 auto;
+}
+
+    .form-inline label {
+        margin: 15px 10px 35px 30px;
+    }
+
+    .form-inline input {
+        vertical-align: middle;
+        margin: 5px 10px 5px 0;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+    .form-inline button {
+        padding: 10px 20px;
+        background-color: #203242;
+        cursor: pointer;
+        border: 1px solid black;      
+        width: 150px;
+        color: White;
+        font-weight: bold;
+        font-family: Arial;
+        cursor: pointer;
+        font-size: 11pt;
+        margin: 2px
+    }
+
+        .form-inline button:hover {
+            background-color: #88A1C2;
+        }
+
+        /**************************/
+.tblcontent {
+    width: 1200px;
+  height:560px;
+}
+.tblcontent td{
+    padding:10px
+}
+/*********************/
+
+
+/*=================*/
+
+.popupAlertSetIcon {
+    background-color: #D8E1F0;
+    border: 1px solid #000000;
+    position: absolute;
+    z-index: 160;
+    width: 400px;
+    min-height: 170px;
+    height: auto !important;
+    height: 180px;
+    text-align: center;
+}
+
+.popupEditSF {
+    background-color: #D8E1F0;
+    border: 1px solid #000000;
+    position: absolute;
+    z-index: 160;
+    width: 400px;
+    text-align: center;
+}
+
+.popupAlertSetIcon1 {
+    background-color: #d9e1f1;
+    border: 1px solid black;
+    position: absolute;
+    z-index: 160;
+    width: 400px;
+    min-height: 100px;
+    height: auto !important;
+    height: 100px;
+    text-align: center;
+}
+
+.popupAlertSetIconMapIt {
+    background-color: #d9e1f1;
+    border: 1px solid black;
+    position: absolute;
+    z-index: 160;
+    width: 400px;
+    min-height: 100px;
+    height: auto !important;
+    height: 200px;
+    text-align: center;
+}
+
+
+.gctPopupHeight {
+    position: absolute;
+    min-height: 100px;
+    height: auto !important;
+    height: 100px;
+    border: 1px solid black;
+    background-color: #d9e1f1;
+    z-index: 171;
+}
+
+.GctOverLayClass {
+    position: absolute;
+    z-index: 155;
+    left: 0px;
+    top: 0px;
+    float: left;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    background-color: Gray;
+}
+
+.GctOverLayClass2 {
+    position: absolute;
+    z-index: 165;
+    left: 0px;
+    top: 0px;
+    float: left;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    background-color: Gray;
+}
+
+.GctTitleRow {
+    font-family: arial;
+    font-size: 12px;
+    height: 24px;
+    padding-top: 3px;
+    padding-left: 5px;
+    text-align: left;
+    color: White;
+    font-weight: bold;
+    cursor: move;
+    background: #3f5879 !important;
+}
+
+.GctTitle {
+    font-family: arial;
+    font-size: 12px;
+    padding-left: 3px;
+    cursor: default;
+    font-weight: bold;
+}
+
+.GctClose {
+    font-family: arial;
+    font-size: 11px;
+    right: 0px;
+    cursor: pointer;
+    padding-right: 15px;
+    font-weight: bold;
+}
+/*Add new mas user*/
+.LHJvCe {
+    color: #70757a;
+    display: flex;
+    justify-content: space-between;
+    -webkit-transition: all 220ms ease-in-out;
+    line-height: 43px;
+    min-width: 652px;
+   
+
+}
+
+.DKV0Md {
+    padding-top: 4px;
+    padding-top: 5px;
+}
+.LC20lb {
+    display: inline-block;
+    line-height: 1.3;
+    margin-bottom: 3px;
+}
+.MBeuO {
+    font-family: arial,sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.g a {
+    color: #1a0dab;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,.1);
+}
+.g a:hover {
+   
+  cursor:pointer;
+  text-decoration:underline;
+}
+.g {
+    line-height: 0.58;
+    text-align: left;
+}
+.std, .g {
+    font-family: arial,sans-serif;
+    font-size: 14px;
+}
+
+.divlawDetail {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 560px;
+    width: 700px;
+    overflow: auto;
+}
+
+.divlawEditDetail {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 560px;
+    overflow: auto;
+}
+.divQuestion{
+    color: red;
+    text-align:left;
+}
+.clsButtonAdd {
+    background-color: #003b63;
+    color: white;
+    text-align: center;
+    width: 110px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+.clsEditDeleteButton {
+    color: #2163ad;
+    margin-left: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.clsAddnewcheckboxExtractAuto {
+    text-align: left;
+    margin-left: 10px;
+}
+.clsPopupTable  {
+    width:100%;
+    color:black;
+}
+    .clsPopupTable td:first-child{
+        width:137px
+    }
+    .clsPopupTable td {
+        text-align: left;
+        vertical-align: middle !important;
+        margin: 5px;padding:5px;
+        height: 20px;
+        font-size:13px;
+    }
+.clsPopupTableTD1 {
+    width: 30%;
+    vertical-align: middle !important;
+    text-align: left;
+    margin: 5px;
+}
+.clsAddnewtype{
+    width:200px;
+    font-size:13px;
+    font-weight:bold;
+}
+.clsAddnewtype_content, .clsAddnewtype_manual_Content {
+    width: 620px;
+    height: 250px;
+}
+
+.clsAddnewLaw_Table {
+    width: 630px;
+}
+
+.clsAddnewLaw_SubTable input {
+    width: 375px;
+    height:20px;
+}
+.clsAddnewsubtype{
+    padding-left:5px;
+}
+.clsAddnewsubtype select{
+    width:200px;
+}
+
+/************* KEY Phrases keyphrase*******************/
+.clsTextboxAutoCompletedKeyPhrase {
+    width: 180px;
+    height: 18px;
+    border-radius: 25px;
+    border: 2px solid #084162;
+    margin:10px;
+}
+.clsDivkeyphrases img{
+    width:18px;
+    height:18px;
+}
+.clsDivkeyphrases {
+    width: 250px;
+    max-height: 500px;
+    overflow-y: auto;
+    font-weight: bold;
+    color: steelblue;
+}
+.clsDivkeyphrases div{
+ cursor:default;
+ 
+}
+
+.clsDivkeyphrases div:hover{
+       text-decoration:underline;
+       color:purple;
+}
+    .clsDivkeyphrases div span {
+        text-decoration: none !important;
+        color: #2163ad !important;
+        font-size: 13px;
+    }
+.clsTableKeyphrase{
+
+}
+.clsKeyHighlight{
+    color:cornflowerblue
+}
+
+.clsDivkeyphrases_AddDelete {
+    height: 50px;
+    text-align: center;
+    /* padding: 5px; */
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    vertical-align: middle;
+    max-width:900px;
+    
+}
+.clsDivkeyphrases_Newkey{
+    color:cadetblue
+}
+
+/************* KEY Phrases keyphrase*******************/
+
+.clsImport {
+    text-align: center;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+  
+.clsImport  table td{
+   vertical-align:top;
+  
+   font-weight:bold;
+   padding: 7px;
+   text-align:left;
+}
+
+
+
+a:-webkit-any-link {
+    color: #072ce3 !important;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.dvleft {
+    width: 400px;
+    height: 555px;
+    text-align: left;
+    padding-right: 20px;
+    overflow: auto
+}
+
+
+.clsButtonPopUpClose {
+    width: 25px;
+    height: 25px !important;
+    float: right;
+    position: relative;
+    top: -5px;
+    cursor:pointer;
+}
+
+
+/********************************CONCEPT**************************/
+.clsConceptlist div, .clsConceptSelected, .clsKeyPhraseSelected, .clsUserSelected {
+    width: 95%;
+    padding-left: 10px;
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding-top: 5px;
+    overflow: auto;
+    max-height: 555px;
+}
+
+.clsConceptlist div {
+    color: black
+}
+
+.clsConceptlist div:hover {
+        color: blue;
+}
+
+.divlawConceptDetail {
+    padding: 10px;
+    font-size: 20px;
+    color: blue;
+    max-height: 555px;
+}
+.divlawKeyPhraseDetail {
+    padding: 10px;
+    color: blue;
+    max-height: 555px;
+    overflow: auto;
+}
+.clsConceptSelected, .clsKeyPhraseSelected, .clsUserSelected {
+    color: blue !important;
+}
+
+.clsTableConcept td{
+    padding:5px;
+}
+.clsEdit_ConceptContent {
+    width: 500px;
+    height: 250px;
+  
+}
+
+.clsEdit_Conceptname {
+    width: 510px;
+    height: 26px;
+  
+}
+.clsTDConcept {
+    height: 35px !important;
+    padding: 5px !important;
+}
+
+/********************************CONCEPT**************************/
+/********************************TblTransactions**************************/
+
+.clsTblTransactions tr {
+    cursor:pointer
+}
+.clsTblTransactions tr:hover{
+    color:blue
+}
+
+/********************************TblTransactions**************************/

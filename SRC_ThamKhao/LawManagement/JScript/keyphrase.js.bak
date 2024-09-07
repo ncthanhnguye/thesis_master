@@ -1,0 +1,161 @@
+﻿var KeyPhraseChanged = function () {
+    this.lstAdd = new Array();
+    this.lstDelete = new Array();
+    $('.clsDivkeyphrases div').each(function () {
+        if ($(this).attr('isDelete')== 1 && $(this).attr('isAdd') == 0) {
+            this.lstDelete.push($(this).text());
+        }
+        else if ($(this).attr('isDelete') == 0 && $(this).attr('isAdd') == 1) {
+            this.lstAdd.push($(this).text());
+        }
+    });
+}
+function ViewKeyPhrases_Concept() { 
+    if (lastConceptID == null) {
+        ShowPopup('Law Search - Warning', 'Please select a Concept to View', null);
+        return;
+    }
+    ShowProcessing();
+    PageMethods.ViewDetailConcept_KeyPhrase(lastConceptID, function (data) {
+        HideProcessing();
+        ShowDetailConcept_KeyPhrases(data);
+    }, function () { HideProcessing(); });
+}
+function ViewKeyPhrases() {
+    var lstArticalID = new Array();
+    if ($('[id$=cboDieu]').val() == -1) {
+        $('[id$=cboDieu] option').each(function () {
+            if ($(this).val() != -1)
+                lstArticalID.push($(this).val());
+        });
+    }
+    else
+        lstArticalID.push($('[id$=cboDieu]').val());
+    ShowProcessing();
+    PageMethods.ViewDetailArtical_KeyPhrase(lstArticalID, function (data) {
+        HideProcessing();
+        if (data == null) return;
+        var scontent = data.law == null ? '' : GetHTMLLawContent(data.law);
+        ShowDetail_KeyPhrases(data.keys, scontent);
+    }, function () {  HideProcessing(); });
+}
+function KeyPhraseChanged_Confirm() {
+    var keyPhraseChanged = new KeyPhraseChanged();
+    if (keyPhraseChanged.lstAdd.length > 0 || keyPhraseChanged.lstDelete.length > 0) {
+        //clsAddnewtype_Error
+        var scontent = '';
+        if (keyPhraseChanged.lstAdd.length>0)
+            scontent + '<div><b>Thêm mới</b>: ' + keyPhraseChanged.lstAdd.join(' ') + ' </div>';
+        if (keyPhraseChanged.lstDelete.length > 0)
+            scontent + '<div><b>Xóa:</b> ' + keyPhraseChanged.lstDelete.join(' ') + ' </div>';
+        var opt = [
+            {
+                name: 'Confirm', fClick: function () {
+                    ClosePopup();
+                    ShowProcessing();
+                    PageMethods.KeyPhrase_Changed(keyPhraseChanged, function (data) {
+                        HideProcessing();
+                        ShowPopup('Law Search - KeyPhrases', 'Completed.', null);
+                    }, function () { HideProcessing(); });
+                },
+            }, {
+                name: "Cancel", fClick: function () { ClosePopup(); }
+            }
+        ];
+      
+        ShowPopup('Law Search - KeyPhrases', scontent, opt);
+    }
+}
+function ShowDetailConcept_KeyPhrases(data) {
+    var scontent = data == null || data.law == null ? '' : data.Content;
+    ShowDetail_KeyPhrases(data.keys, scontent)
+}
+
+function ShowDetail_KeyPhrases(keys, scontent) {
+   
+    var skeyphrases = GetHTML_KeyPhrasesContent(keys);
+    var adddeletekey = GetHTML_AddDeleteKeyPhrase();
+    var stable = GetRowDataHTML([adddeletekey], 'colspan="2"')+ GetRowDataHTML([scontent, skeyphrases], '');
+    stable = GetTableHTML(stable, 'clsTableKeyphrase');
+    var opt = [
+        {
+            name: 'Update', fClick: function () {
+                ClosePopup(); 
+                KeyPhraseChanged_Confirm(); 
+            },      }, {    name: "Cancel", fClick: function () {     ClosePopup(); }
+        }
+    ];
+    ShowPopup('Law Search - KeyPhrases', stable, opt);
+}
+function GetHTML_KeyPhrasesContent(keys) {
+    if (keys == null) return '';
+    var shtml = '<div class="clsDivkeyphrases">';
+    for (var i = 0; i < keys.length; i++) {
+        shtml += GetKeyPhraseDiv(keys[i].Key,''); 
+      //  shtml += keys[i].Key + ' ';
+    }
+    shtml += '</div>';
+    return shtml;
+}
+function GetKeyPhraseDiv(key, appendInDiv) {
+
+    return String.format('<div onclick="Keyphrase_Click(this);" {1} isDelete="0" >{0}</div>', key, appendInDiv);
+}
+//
+function GetHTML_AddDeleteKeyPhrase() {
+
+    var shtml = '<div class="clsDivkeyphrases_AddDelete">';
+    shtml += 'Key Phrase: <input  class="clsDivkeyphrases_textbox" type ="textbox"> <input  type ="button" onclick="AddNewKeyPhrase()" value="Add" class="button100" />&nbsp; <input type ="button" value="Delete" onclick="DeleteKeyPhrase()" class="button100" />';
+    shtml += '</div>';
+    return shtml;
+}
+
+function Keyphrase_Click(o) {
+    $('.clsDivkeyphrases_textbox').val($(o).text());
+}
+function GetFocuskey() {
+    var newkey = $('.clsDivkeyphrases_textbox').val();
+    if (newkey == '' || newkey == null) return '';
+    newkey = newkey.replace(/ /g, "_");
+    return newkey;
+}
+function AddNewKeyPhrase() {
+    var newkey = GetFocuskey();
+    if (newkey == '' || newkey == null) return;
+    var f = false;
+    $('.clsDivkeyphrases div').each(function () {
+        if ($(this).text().toLowerCase() == newkey.toLowerCase()) {
+            f = true;
+            if ($(this).attr('isDelete') == 1) {
+                $(this).attr('isDelete', 0);
+                $(this).attr('isAdd', 1);
+                $(this).css("color", "steelblue");
+                return;
+            }
+
+        }
+    });
+    if (!f) {
+        var snewkey = GetKeyPhraseDiv(newkey, 'class="clsDivkeyphrases_Newkey" isAdd="1"'); 
+        $(snewkey).insertBefore($('.clsDivkeyphrases div').first());
+    }
+    else
+        $('.clsTableKeyphrase_Error').text('Keyphrase does exist.')
+    $('.clsDivkeyphrases_textbox').val('');
+}
+function DeleteKeyPhrase() {
+    var newkey = GetFocuskey();
+    $('.clsDivkeyphrases div').each(function () {
+        if ($(this).text().toLowerCase() == newkey.toLowerCase()) {
+            if ($(this).attr('isAdd') == '1')
+                $(this).remove();
+            else {
+                $(this).attr('isDelete', 1); $(this).attr('isAdd', 0);
+                $(this).css("color", "red");
+            }
+        } 
+    });
+    $('.clsDivkeyphrases_textbox').val('');
+}
+
+

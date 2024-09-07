@@ -59,6 +59,5 @@ namespace MASTERPM.Model
         public virtual DbSet<KeyPhrase> KeyPhrase { get; set; }
         public virtual DbSet<KeyPhraseMapping> KeyPhraseMapping { get; set; }
         public virtual DbSet<user> user { get; set; }
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

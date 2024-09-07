@@ -1,0 +1,59 @@
+﻿<%@ Page Language="C#" Async="true" AsyncTimeout="8800" AutoEventWireup="true" CodeFile="ViewLaw.aspx.cs" Inherits="ViewLaw" MasterPageFile="~/MasterPageLEARNIX.master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <table width="1000" border="0" align="center" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td style="width: 100%; background-color:#2163ad">
+                    <div class="form-inline" style="color:white">
+                      <div> <label>Tra Cứu Văn Bản Pháp Luật </label></div> 
+                        <asp:DropDownList ID="cboLuat" runat="server" Height="34px" Width="167px" AutoPostBack="false" OnSelectedIndexChanged="cboLuat_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:Button ID="btnView" runat="server" Text="View" OnClick="btnView_Click" Width="100px" Style="margin: 10px; font-weight: bold" />
+                          <asp:Button Visible="false" ID="btnUpdateKeyPhrase" runat="server" Text="Reset Key Phrases" Style="margin: 10px; font-weight: bold" OnClick="btnUpdateKeyPhrase_Click" />
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div style="border: 1px; border-color: black">
+                        <table class="tblcontent" border="1">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">Chương:
+                                        <asp:DropDownList ID="cboChuong" runat="server" AutoPostBack="true" OnSelectedIndexChanged="cboChuong_SelectedIndexChanged"></asp:DropDownList>
+                                        Mục:
+                                        <asp:DropDownList ID="cboMuc" runat="server" AutoPostBack="true" OnSelectedIndexChanged="cboMuc_SelectedIndexChanged"></asp:DropDownList>
+                                        Điều:
+                                        <asp:DropDownList ID="cboDieu" runat="server" AutoPostBack="true" OnSelectedIndexChanged="cboDieu_SelectedIndexChanged"></asp:DropDownList>
+                                        <asp:Button ID="btnViewDetail" runat="server" CssClass="button150" Text="View Details" OnClientClick="ViewLawDetails();return false;" />
+                                      
+                                      
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="dvleft">
+                                            <nav class="my-menu">
+                                                <ul class="my-nav tree"></ul>
+                                            </nav>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="divContentHTMLLaw" class="divlawDetail" runat="server">
+                                           
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</asp:Content>

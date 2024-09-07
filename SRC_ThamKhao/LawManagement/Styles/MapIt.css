@@ -1,0 +1,128 @@
+﻿body
+{
+}
+.TableTimeLine
+{
+    width: 100%;
+    padding-top: 30px;
+}
+.LineContain
+{
+    overflow: hidden;
+    table-layout: fixed;
+    width:1236px;
+    position:relative;
+}
+.divLineTable
+{
+    position: relative;
+    left: 0;
+}
+.LineTable
+{
+    width: 100%;
+}
+
+.divLineBackground > td
+{
+    min-width: 103px;
+    padding-top: 10px;
+    cursor:pointer;         
+} 
+.backgroundLine
+{
+    height: 16px;
+    background-color: #A6C8FD;
+    padding-top: 1px; 
+    text-align:left;   
+}
+.circle
+{
+    width: 7px;
+    height: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background-color: #4F81BD;
+    border: 4px solid #ffffff; 
+    margin-left:45px;  
+}
+.backgroundLine .SelectedCirCle
+{
+     background-color: #ff0000;
+}
+.circle:hover
+{
+     border: 4px solid #9A9790; 
+    }
+    
+    .txtInclined a:hover
+{
+    padding:1px;
+     border: 1px solid #9A9790; 
+    }
+.txtInclined
+{
+    position: relative;
+    height: 85px;   
+    text-align:left;
+}
+.txtInclined a
+{
+    position: absolute;
+    -webkit-transform: rotate(313deg);
+    -moz-transform: rotate(313deg);
+    -o-transform: rotate(313deg);   
+    margin-top: 30px;   
+ -ms-transform: rotate(313deg);
+  transform: rotate(313deg);
+   margin-left:0px;    
+}
+.txtDateSelect
+{
+    color: #ff0000;
+    }
+
+
+.TimeLineLeft, .TimeLineRight
+{
+    width: 40px;
+    height: 40px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    cursor:pointer;
+}
+.TimeLineRight
+{
+    background: #ffffff url(../Images/TimeLineRight.png?v=5.1.061413.0949) center center;
+    position:absolute;
+    z-index:10;   
+}
+.TimeLineLeft
+{
+    background: #ffffff url(../Images/TimeLineLeft.png?v=5.1.061413.0949) center center;
+   position:absolute;
+    z-index:10;  
+}
+.TimeLineRight:hover, .TimeLineLeft:hover
+{
+    background-color: #88A1C2;
+}
+.TimeLineRight:disabled, .TimeLineLeft:disabled
+{
+    background-color: #7C7871;
+}
+
+#divPlateImage img
+{
+    width:112px;
+    height:42px;
+    
+    }
+ #divVehicleImage img
+{
+    width:144px;
+    height:108px;
+    
+    }
