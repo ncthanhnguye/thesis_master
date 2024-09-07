@@ -1,5 +1,6 @@
-Flask==2.1.2
-pyodbc==4.0.32
-Flask-Caching==1.10.1
-underthesea==1.3.1
-numpy==1.23.1
+Flask
+pyodbc
+Flask-Caching
+underthesea
+numpy
+torch
