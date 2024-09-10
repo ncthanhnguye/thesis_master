@@ -74,7 +74,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 		  // Optionally, you can add other search parameters here
 		};
 	
-		const result = await this.appService.doPOST('api/underthesea', dataRequest);
+		const result = await this.appService.doPOST_Python('underthesea', dataRequest);
 		if (result) {
 		  this.resultData = result; // Store the fetched data
 		  this.totalPages = Math.ceil(this.resultData.length / this.pageSize);
