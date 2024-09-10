@@ -70,13 +70,13 @@ export class SearchComponent implements OnInit, OnDestroy {
 	async onSearch() {
 		this.searchDetail = true;
 		const dataRequest = {
-		  searchText: this.searchOption.searchText1,
+		  text: this.searchOption.searchText1,
 		  // Optionally, you can add other search parameters here
 		};
 	
-		const result = await this.appService.doGET('api/TimKiem/Search', dataRequest);
+		const result = await this.appService.doPOST('api/underthesea', dataRequest);
 		if (result) {
-		  this.resultData = result.Data; // Store the fetched data
+		  this.resultData = result; // Store the fetched data
 		  this.totalPages = Math.ceil(this.resultData.length / this.pageSize);
 		  this.onPageChange(0); // Call onPageChange to update DataList for the first page
 		}

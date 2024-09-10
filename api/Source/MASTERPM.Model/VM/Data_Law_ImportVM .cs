@@ -20,13 +20,13 @@ namespace MASTERPM.Model
     [MetadataType(typeof(Data_Law_ImportVM_VALID))]
     public partial class Data_Law_ImportVM
     {
-        //public int ID { get; set; }
-        //public string TenCauHoi { get; set; }
-        //public string LinhVuc { get; set; }
-        //public string NoiDungCauHoi { get; set; }
-        //public string CauTraLoi { get; set; }
-        //public string Luat { get; set; }
-        //public string KeyWords { get; set; }
+        public int ID { get; set; }
+        public string TenCauHoi { get; set; }
+        public string LinhVuc { get; set; }
+        public string NoiDungCauHoi { get; set; }
+        public string CauTraLoi { get; set; }
+        public string Luat { get; set; }
+        public string KeyWords { get; set; }
 
     }
 }

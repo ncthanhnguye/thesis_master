@@ -22,6 +22,7 @@ export class AppService implements OnInit {
 
   
   apiRoot = "http://localhost:8080/";
+  apiPythonRoot = "http://localhost:8089/";
   clientRoot = '';
   portalRoot = '';
 
@@ -84,13 +85,24 @@ export class AppService implements OnInit {
         .toPromise()
         .then(
           (res) => res.json(),
-          (err) => {
-            if (err.statusText === "Unauthorized") {
-              //this.appSwal.showWarning(this.language.translate.instant('MsgUnauthorized'), false);
-              this.router.navigate([AppConsts.page.login]);
-            }
-            return null;
-          }
+        );
+      return data;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  
+  async doGET_Python(methodUrl: any, params: any) {
+    this.createHeaders();
+    const apiURL = `${this.apiPythonRoot}${methodUrl}`;
+    try {
+      const data = await this.http
+        .get(apiURL, { headers: this.headers, params })
+        .toPromise()
+        .then(
+          (res) => res.json(),
         );
       return data;
     } catch (e) {
@@ -102,6 +114,25 @@ export class AppService implements OnInit {
   async doPOST(methodUrl: any, dataRequest: any) {
     this.createHeaders();
     const apiURL = `${this.apiRoot}${methodUrl}`;
+    try {
+      const data = await this.http
+        .post(apiURL, dataRequest, { headers: this.headers })
+        .toPromise()
+        .then(
+          (res) => res.json(),
+          (err) => console.log(err)
+        );
+      return data;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  
+  async doPOST_Python(methodUrl: any, dataRequest: any) {
+    this.createHeaders();
+    const apiURL = `${this.apiPythonRoot}${methodUrl}`;
     try {
       const data = await this.http
         .post(apiURL, dataRequest, { headers: this.headers })
@@ -170,32 +201,6 @@ export class AppService implements OnInit {
     }
   }
 
-  async doDownload(methodUrl: any, params: any) {
-    this.createHeaders();
-    const apiURL = `${this.apiRoot}${methodUrl}`;
-    try {
-      const data = await this.http
-        .get(apiURL, {
-          headers: this.headers,
-          params,
-          responseType: ResponseContentType.Blob,
-        })
-        .toPromise()
-        .then(
-          (res) => res.json(),
-          (err) => {
-            if (err.statusText === "Unauthorized") {
-              this.router.navigate([AppConsts.page.login]);
-            }
-            return null;
-          }
-        );
-      return data;
-    } catch (e) {
-      console.log(e);
-      return null;
-    }
-  }
 
   encodeParams(params: any): string {
     let body = "";
