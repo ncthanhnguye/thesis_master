@@ -1,10 +1,15 @@
 python version 3.10
 ---------------------
 Cài env để cài môi trường
-python  -m venv .venv
-.\.venv\Scripts\Activate.ps1  
+python  -m venv .venv !!! Lệnh này chỉ chạy duy nhất 1 lần khi tạo source để cài thư viện thôi.
+.\.venv\Scripts\Activate.ps1   !!! Lần thứ 2 khi chạy source chỉ chạy lệnh này đổ xuồng.
 (python-m pip install --upgrade pip)
-pip install -r requirements.txt
+pip install -r requirements.txt !!! Lệnh này chạy khi thêm viện mới cần cài để chạy.
 -----------------
 Chạy source:
 Run cmd: Python app_sql.py
+
+----------------------------
+Lệnh bõ qua cros khi chạy ở local:
+Mở CMD:
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir="C://Chrome dev session" --disable-web-security --test-type
