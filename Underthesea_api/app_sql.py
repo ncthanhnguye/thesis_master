@@ -3,9 +3,12 @@ from db import get_all_data
 from utils import extract_keywords, normalize_keyword, calculate_similarity
 from cache import cache
 from config import FLASK_HOST, FLASK_PORT, DEBUG_MODE
+from cors_config import init_cors 
 
 app = Flask(__name__)
 cache.init_app(app)
+
+init_cors(app)
 
 @app.route('/underthesea', methods=['POST'])
 def process_text_api():
@@ -13,8 +16,8 @@ def process_text_api():
     text = data.get('text', '')
 
     if not text:
-        return jsonify({'error': 'No text provided'}), 400
-    
+        return jsonify({'error': 'Không có dữ liệu văn bản'}), 400
+
     # Hàm để xử lý và trích xuất từ khóa
     keywords = extract_keywords(text)
     normalized_keywords = [normalize_keyword(keyword) for keyword in keywords]
@@ -50,7 +53,7 @@ def process_text_api():
             ]
         })
     else:
-        return jsonify({'message': 'Không tìm thấy kết quả phù hợp'}),
+        return jsonify({'message': 'Không tìm thấy kết quả phù hợp'})
 
 if __name__ == '__main__':
     app.run(debug=DEBUG_MODE, host=FLASK_HOST, port=FLASK_PORT)

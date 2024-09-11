@@ -4,3 +4,4 @@ Flask-Caching
 underthesea
 numpy
 torch
+flask-cors
