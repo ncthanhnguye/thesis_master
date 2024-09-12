@@ -15,22 +15,32 @@ def get_all_data():
     
     cursor = conn.cursor() 
 
-    query = "SELECT KeyWords, Luat FROM DATA_CRAWL"  # Truy vấn SQL 
+    # Truy vấn SQL để lấy tất cả các trường
+    query = "SELECT * FROM DATA_CRAWL"  # Truy vấn tất cả các cột trong bảng DATA_CRAWL
     try:
-        cursor.execute(query) 
-        results = cursor.fetchall()  
+        cursor.execute(query)
+        results = cursor.fetchall()
 
-        # Mỗi dòng dữ liệu sẽ là chứa KeyWords và Luat
+        # Lấy danh sách tên các cột từ 
+        columns = [column[0] for column in cursor.description]
+
         data = []
         for row in results:
-            keywords = eval(row[0]) if isinstance(row[0], str) else row[0]  # Chuyển chuỗi thành danh sách
-            luat = row[1]
-            data.append((keywords, luat))
+            # Tạo một dictionary chứa tất cả các cột và giá trị
+            row_data = {}
+            for i, column in enumerate(columns):
+                row_data[column] = row[i]
+            
+            # Nếu cột KeyWords là chuỗi, chuyển đổi thành danh sách
+            if 'KeyWords' in row_data and isinstance(row_data['KeyWords'], str):
+                row_data['KeyWords'] = eval(row_data['KeyWords'])
+
+            data.append(row_data)
 
     except Exception as e:
         print(f"Error occurred: {e}")
-        data = []  
+        data = []  # Trả về danh sách trống nếu có lỗi
     finally:
-        conn.close()  
+        conn.close()
     
-    return data  #Trả về danh sách
+    return data  # Trả về danh sách, mỗi dòng là một dictionary
