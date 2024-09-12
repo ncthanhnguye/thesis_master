@@ -420,8 +420,10 @@ namespace MOABSearch.Common
             this.Name = details.Name;
             this.Password = Decrypt(details.Password);
             this.Phone = details.Phone;
+            
+            this.Password = details.Password;
 
-            this.Provider = details.Provider;
+            //this.Provider = details.Provider;
             this.UserName = details.UserName;
             this.ID = details.ID;
             this.Name_UserName = details.Name_UserName;
@@ -569,7 +571,7 @@ namespace MOABSearch.Common
             try
             {
                 UserProvider up = new UserProvider();
-                UserDetails details = up.GetUserDetails(userName, MySecurity.EncryptSHA512(password), (int)userType);
+                UserDetails details = up.GetUserDetails(userName, password, (int)userType);
                 return new NormalUser(details);
             }
             catch (System.Data.SqlClient.SqlException ex)

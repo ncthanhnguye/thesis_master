@@ -86,7 +86,7 @@ public partial class ViewLaw : System.Web.UI.Page
         cboChuong.Items.Clear();
         cboChuong.Items.Add(new ListItem("-Tất cả-", "-1"));
         LuatProvider pd = new LuatProvider();
-        DataSet ds = pd.ExecuteDataSet("select ID, name from Chapter where lawid =" + LawID + " order by Number");
+        DataSet ds = pd.ExecuteDataSet("select ID, name from Chapter where LawID =" + LawID + " order by number");
 
         if (ds != null)
         {

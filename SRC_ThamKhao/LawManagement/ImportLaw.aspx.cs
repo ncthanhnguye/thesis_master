@@ -18,12 +18,12 @@ public partial class ImportLaw : System.Web.UI.Page
 
         LawDoc l = new LawDoc();
         l.ParseContent(true, txtContent.Text, txtName.Text);
-        //if(txtContent_HTML.Text.Trim()!="")
-        //{
-        //    LuatProvider pd = new LuatProvider();
-        //    string sql = string.Format("Insert into [LawHTML](LawID, ContentHTML) values ({0},N'{1}')", l.ID, txtContent_HTML.Text.Trim());
-        //    pd.ExecuteDataSet(sql);
-        //}
+        if (txtContent.Text.Trim() != "")
+        {
+            LuatProvider pd = new LuatProvider();
+            string sql = string.Format("Insert into [LawHTML](LawID, ContentHTML) values ({0},N'{1}')", l.ID, txtContent.Text.Trim());
+            pd.ExecuteDataSet(sql);
+        }
         Response.Redirect("EditLaw.aspx?ID=" + l.ID);
     }
 }
