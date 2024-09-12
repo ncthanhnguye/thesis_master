@@ -24,19 +24,10 @@ export class AppLanguage {
         return localStorage.getItem('culture');
     }
 
-
-    setPortal(lang: any) {
-        this.translate.use(lang);
-        localStorage.setItem('portal', lang);
-    }
-
-    defaultPortal() {
-        let lang = localStorage.getItem('portal');
-        if (!lang) { lang = 'vi-VN'; }
-        this.translate.setDefaultLang(lang);
-    }
-
-    getPortal() {
-        return localStorage.getItem('portal');
+    setDefaultLanguage(){
+      let lang = localStorage.getItem('culture');
+      if (!lang) { lang = 'vi-VN'; }
+      this.translate.setDefaultLang(lang);
+      this.set(lang)
     }
 }
