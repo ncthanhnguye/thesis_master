@@ -36,7 +36,7 @@ namespace MOABSearch.BLL
         }
         public UserDetails GetUserDetails(string UserName, string RawPass, int type)
         {
-            string strSQl = string.Format("select top 1 * from [user] WITH (NOLOCK) where UserName='{0}' and Password='{1}' and type={2}"
+            string strSQl = string.Format("select top 1 * from [user] WITH (NOLOCK) where username='{0}' and password='{1}' and Type={2}"
                , UserName, RawPass, type);
             return GetUserDetails(strSQl);
           

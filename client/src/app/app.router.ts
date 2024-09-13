@@ -22,6 +22,7 @@ import { ClaustComponent } from "./law/5_Khoan/claust.component";
 import { PointComponent } from "./law/6_Diem/point.component";
 import { SearchComponent } from "./law/0_TimKiem/search.component";
 import { DataCrawlComponent } from "./importExcel/data-crawl/data-crawl.component";
+import { ImportWordComponent } from "./import-word/import-word.component";
 
 export class AppRouter {
 	public static routes: Routes = [
@@ -76,6 +77,7 @@ export class AppRouter {
 		{ path: 'point', component: PointComponent },
 		{ path: 'search', component: SearchComponent },
 		{ path: 'data-crawl', component: DataCrawlComponent },
+		{ path: 'import-word', component: ImportWordComponent },
 		{
 			path: '**', redirectTo: AppConsts.page.search
 		},
