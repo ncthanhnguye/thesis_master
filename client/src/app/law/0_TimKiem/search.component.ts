@@ -76,7 +76,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 	
 		const result = await this.appService.doPOST_Python('underthesea', dataRequest);
 		if (result) {
-		  this.resultData = result.results; // Store the fetched data
+		  this.resultData = result; // Store the fetched data
 		  this.totalPages = Math.ceil(this.resultData.length / this.pageSize);
 		  this.onPageChange(0); // Call onPageChange to update DataList for the first page
 		}

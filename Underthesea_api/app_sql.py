@@ -28,12 +28,12 @@ def process_text_api():
     # Danh sách để lưu trữ các kết quả phù hợp
     matches = []
 
-    for KeyWords, Luat in all_data:
-        normalized_keywords_list = [normalize_keyword(keyword) for keyword in KeyWords]
+    for keywords_list, luat in all_data:
+        normalized_keywords_list = [normalize_keyword(keyword) for keyword in keywords_list]
         similarity = calculate_similarity(normalized_keywords, normalized_keywords_list)
         matches.append({
-            'Luat': Luat,
-            'keywords': KeyWords,
+            'luat': luat,
+            'keywords': keywords_list,
             'similarity': similarity
         })
 
