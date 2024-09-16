@@ -85,9 +85,11 @@
 				</div>
 
 				<div class="leaderboard__profiles" *ngFor="let item of DataList" >
-					<div class="leaderboard__profile" (click)="onDetail(item.ID)" >
-						<p class="leaderboard__name" [innerText]="item.TenCauHoi"></p>
-						<p class="leaderboard__name" [innerText]="item.CauTraLoi"></p>
+					<div class="leaderboard__profile" (click)="onDetail(item.data.ID)" >
+						<p class="leaderboard__name" [innerText]="item.data.TenCauHoi"></p>
+						<p class="leaderboard__name" [innerText]="item.data.CauTraLoi"></p>
+						<p class="leaderboard__name" [innerText]="item.data.Luat"></p>
+						<p class="leaderboard__name" [innerText]="item.similarity"></p>
 					</div>
 				</div>
 				<div class="pagination">
