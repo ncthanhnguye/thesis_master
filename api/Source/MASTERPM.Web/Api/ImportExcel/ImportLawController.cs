@@ -7,6 +7,7 @@ using System.Web.Routing;
 using MASTERPM.Model;
 using MASTERPM.Model.Commons;
 using MASTERPM.Model.Core;
+using MASTERPM.Model.VM;
 using MASTERPM.Web.Api.Base;
 
 namespace MASTERPM.Web.Api.Profile
@@ -30,8 +31,6 @@ namespace MASTERPM.Web.Api.Profile
                     DATA_CRAWL dataItem = null;
                     foreach (var item in dataRequest)
                     {
-                        
-
                         dataItem = new DATA_CRAWL()
                         {
                             ID = item.ID ,
@@ -46,6 +45,53 @@ namespace MASTERPM.Web.Api.Profile
                         this.Repository.Add(dataItem);
 
                     
+                    }
+
+                    this.Repository.UnitOfWork.SaveChanges();
+                }
+
+                return Json(new TResult()
+                {
+                    Status = (short)EStatus.Ok,
+                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgSaveOk),
+                });
+            }
+            catch (Exception e)
+            {
+                throw new Exception("", e);
+            }
+        }
+
+        [HttpPost]
+        [Route("SaveWord")]
+        public IHttpActionResult SavesWord(IEnumerable<Data_LawVM> lawData, IEnumerable<Data_Law_HTML_VM> lawHtml)
+        {
+            try
+            {
+                if (lawData != null && lawHtml != null)
+                {
+                    DATA_1_Luat dataItem = null;
+                    foreach (var item in lawData)
+                    {
+                        dataItem = new DATA_1_Luat()
+                        {
+                            ID = item.ID,
+                            Title = item.Title,
+                            Content = item.Content,
+                        };
+
+                        this.Repository.Add(dataItem);
+                    }
+
+                    Data_Luat_HTML dataHtml = null;
+                    foreach (var itemHtml in lawHtml)
+                    {
+                        dataHtml = new Data_Luat_HTML()
+                        {
+                            ID = itemHtml.ID,
+                            LawID = itemHtml.LawID,
+                            ContentHTML = itemHtml.ContentHTML,
+                        };
                     }
 
                     this.Repository.UnitOfWork.SaveChanges();

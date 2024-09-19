@@ -196,6 +196,9 @@
     <Compile Include="DATA_CRAWL.cs">
       <DependentUpon>MASTERModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data_Luat_HTML.cs">
+      <DependentUpon>MASTERModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DATA_MENU.cs">
       <DependentUpon>MASTERModel.tt</DependentUpon>
     </Compile>
@@ -267,6 +270,8 @@
     <Compile Include="Validate\MaxValueAttribute.cs" />
     <Compile Include="Validate\MinValueAttribute.cs" />
     <Compile Include="Validate\NumberValueAttribute.cs" />
+    <Compile Include="VM\Data_LawVM.cs" />
+    <Compile Include="VM\Data_Law_HTML_VM.cs" />
     <Compile Include="VM\Data_Law_ImportVM .cs" />
     <Compile Include="VM\RewardProcessVM.cs" />
     <Compile Include="VM\ChangePasswordVM.cs" />
