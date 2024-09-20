@@ -3,6 +3,23 @@
         flex-wrap: nowrap !important;
     }
 
+    tr {
+        text-align: center;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .btn-back {
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+    }
+
     .search-btn {
         display: flex;
         justify-content: center;
@@ -80,9 +97,14 @@
 
         .import-success {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             padding-bottom: 16px;
+        }
+
+        .input-law-name {
+            width: 50%;
+            padding: 5px 10px;
         }
 
         .btn-save-word {

@@ -32,5 +32,6 @@ namespace MASTERPM.Model
         public Nullable<int> Index { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public string ContentHTML { get; set; }
     }
 }

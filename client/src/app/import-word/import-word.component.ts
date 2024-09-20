@@ -22,6 +22,12 @@ import { AppLanguage } from '../services/app.language';
 	styleUrls: ['./import-word.component.css']
 })
 export class ImportWordComponent implements OnInit {
+	lawData: {
+		// ID: number,
+		Title: string,
+		Content: string,
+		ContentHTML: string,
+	}
 	lawWordData: {
 		chuong: string[],
 		muc: string[],
@@ -33,9 +39,12 @@ export class ImportWordComponent implements OnInit {
 	loading = false;
 	pageName = 'Import dữ liệu về luật'; 
 	fileDataImport: any;
+	nameLaw: '';
 
 	unit: Array<{ Name: string, ID: string }> = [];
 	unitFilter: Array<{ Name: string, ID: string }> = [];
+
+	Law: Array<{ ID: number; Index: number; Title: string; Content: string; ContentHTML: string; }> = [];
 
 	public uploadSaveUrl = 'saveUrl';
 	public uploadRemoveUrl = 'removeUrl';
@@ -121,10 +130,16 @@ export class ImportWordComponent implements OnInit {
 		this.user = this.authenticationService.user;
 		this.setDefault();
 		// this.setSelectableSettings();
+		this.lawData = {
+			// ID: number,
+			Title: null,
+			Content: null,
+			ContentHTML: null,
+		}
 	}
 
 	async ngOnInit() {
-		// this.getManagePersonals();
+		this.getLaw();
 	}
 
 	ngOnDestroy(): void {
@@ -169,6 +184,9 @@ export class ImportWordComponent implements OnInit {
 		// this.getManagePersonals();
 	}
 
+	onBack() {
+		this.enabledImportWordFlg = !this.enabledImportWordFlg;
+	}
 
 	onChangeFunction(e, dataItem) {
 		if (e.id == 'Edit') {
@@ -224,8 +242,11 @@ export class ImportWordComponent implements OnInit {
 
 	async loadDoc(e) {
 		this.fileDataImport = (await this.file.readDocx(e.files[0].rawFile, 'html')) as string;
+		if (this.fileDataImport != null || this.fileDataImport != undefined) {
+			this.lawData.ContentHTML = this.fileDataImport;
+		}
+
 		const rawData = (await this.file.readDocx(e.files[0].rawFile, 'text')) as string
-		console.log(rawData)
 		if (this.fileDataImport != null && this.fileDataImport != undefined) {
 			this.processText(rawData);
 			this.showSuccessMessage();
@@ -273,19 +294,29 @@ export class ImportWordComponent implements OnInit {
 		}, 5000);
 	}
 
-	async onSavePersonals() {
-		const dataRequests = [];
-		// for (let i = 0; i < this.ManagePersonals.length; i++) {
-		// 	dataRequests.push(this.ManagePersonals[i]);
-		// }
-		// const result = await this.appService.doPOST('api/ImportDataCrawl/Saves', dataRequests);
-		// if (result && result.Status === 1) {
-		// 	this.notification.showSuccess(result.Msg);
-		// 	this.enabledImportWordFlg = false;
-		// 	// this.getManagePersonals();
-		// } else {
-		// 	this.appSwal.showWarning(result.Msg, false);
-		// }
+	async getLaw() {
+		const result = await this.appService.doGET('api/Law/GetLaw', null);
+		if (result) {
+			this.Law = result.Data;
+			console.log(this.Law);
+			
+		}
+	}
+
+	async onSaveLaw() {
+		console.log(this.nameLaw);
+		
+		this.lawData.Content = this.nameLaw;	
+		const dataRequest = [this.lawData];
+		
+		const result = await this.appService.doPOST('api/ImportWordLaw/Saves', dataRequest);
+		if (result && result.Status === 1) {
+			this.notification.showSuccess(result.Msg);
+			this.enabledImportWordFlg = false;
+			// this.getManagePersonals();
+		} else {
+			this.appSwal.showWarning(result.Msg, false);
+		}
 	}
 
 	async getUnitName() {

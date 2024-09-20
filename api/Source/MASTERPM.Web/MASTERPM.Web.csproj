@@ -212,6 +212,7 @@
     <Compile Include="Api\Ad\UserController.cs" />
     <Compile Include="Api\Base\BaseController.cs" />
     <Compile Include="Api\Data\QRCodeHelperController.cs" />
+    <Compile Include="Api\ImportWord\ImportWordLawController.cs" />
     <Compile Include="Api\ImportExcel\ImportLawController.cs" />
     <Compile Include="Api\ImportExcel\ImportDataCrawlController.cs" />
     <Compile Include="Api\Law\1_Luat.cs" />
@@ -282,6 +283,7 @@
     <Content Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Api\App_LocalResources\" />
     <Folder Include="bin\" />
     <Folder Include="obj\" />
     <Folder Include="Upload\" />

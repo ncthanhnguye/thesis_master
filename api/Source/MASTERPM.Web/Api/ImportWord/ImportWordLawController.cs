@@ -12,39 +12,29 @@ using MASTERPM.Web.Api.Base;
 
 namespace MASTERPM.Web.Api.Profile
 {
-    [RoutePrefix("api/ImportLaw")]
+    [RoutePrefix("api/ImportWordLaw")]
     [AllowAnonymous]
-    public class ImportLawController : BaseController
+    public class ImportWordLawController : BaseController
     {
-        
         [HttpPost]
         [Route("Saves")]
-        public IHttpActionResult Saves(IEnumerable<Data_Law_ImportVM> dataRequest)
+        public IHttpActionResult SavesWord(IEnumerable<Data_LawVM> dataRequest)
         {
             try
             {
-
                 if (dataRequest.Count() > 0)
                 {
-
-
-                    DATA_CRAWL dataItem = null;
+                    DATA_1_Luat dataItem = null;
                     foreach (var item in dataRequest)
                     {
-                        dataItem = new DATA_CRAWL()
+                        dataItem = new DATA_1_Luat()
                         {
-                            ID = item.ID ,
-                            TenCauHoi = item.TenCauHoi,
-                            LinhVuc = item.LinhVuc,
-                            NoiDungCauHoi = item.NoiDungCauHoi,
-                            CauTraLoi = item.CauTraLoi,
-                            Luat = item.Luat,
-                            KeyWords = item.KeyWords,
+                            Title = item.Title,
+                            Content = item.Content,
+                            ContentHTML = item.ContentHTML,
                         };
 
                         this.Repository.Add(dataItem);
-
-                    
                     }
 
                     this.Repository.UnitOfWork.SaveChanges();
@@ -69,7 +59,7 @@ namespace MASTERPM.Web.Api.Profile
             try
             {
         
-                var result = this.Repository.GetQuery<DATA_CRAWL>()
+                var result = this.Repository.GetQuery<DATA_1_Luat>()
                     
                     .OrderBy(r => r.ID).ToList();
 

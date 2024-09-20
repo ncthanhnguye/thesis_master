@@ -4,7 +4,8 @@
 		<span>Import thành công</span>
 	</div>
 	<div class="row admin" >
-		<div class="col-md-12 col-12">
+		<div class="col-md-12 col-12 page-header">
+			<img src="/assets/images/back-black.png" alt="back" class="btn-back" (click)="onBack()" *ngIf="enabledImportWordFlg">
 			<div class="page-name">{{pageName}}</div>
 			<hr>
 		</div>
@@ -63,8 +64,8 @@
 			</div>
 		</div>
 		<!-- <div class="col-md-3 col-12">
-			<span (click)="showAdvancedImportExcel()" class="import-span">
-				<span>{{ 'ImportExcel_Block' | translate }}</span>
+			<span (click)="showAdvancedImportWord()" class="import-span">
+				<span>{{ 'ImportWord_Block' | translate }}</span>
 			</span>
 		</div> -->
 	</div>
@@ -90,16 +91,17 @@
 				</kendo-upload>
 			</div>
 		</div>
-		<div class="col-md-12 col-12 import-success" *ngIf="fileDataImport != null">			
+		<div class="col-md-12 col-12 import-success" *ngIf="fileDataImport != null">
+			<input class="input-law-name" type="text" placeholder="Nhập tên văn bản luật" [(ngModel)]="nameLaw" *ngIf="controlDefault || control.SaveImport">
 			<button *ngIf="controlDefault || control.SaveImport" class="btn-dialog btn-save-word"
-				(click)="onSavePersonals()">
+				(click)="onSaveLaw()">
 				<span>{{'Save' | translate}}</span>
 			</button>
 		</div>
 	</div>
 
 	<div class="panelbar-wrapper">
-		<div class="col-md-12 col-12 content" >
+		<div class="col-md-12 col-12 content" *ngIf="enabledImportWordFlg">
 			<div class="file-content" [innerHTML]="fileDataImport"></div>
 		</div>
 	</div>
