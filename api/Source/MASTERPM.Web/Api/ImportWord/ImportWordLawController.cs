@@ -32,6 +32,10 @@ namespace MASTERPM.Web.Api.Profile
                             Title = item.Title,
                             Content = item.Content,
                             ContentHTML = item.ContentHTML,
+                            LawNumber = item.LawNumber,
+                            LawDate = item.LawDate,
+                            TotalChapter = item.TotalChapter,
+                            Status = item.Status,
                         };
 
                         this.Repository.Add(dataItem);

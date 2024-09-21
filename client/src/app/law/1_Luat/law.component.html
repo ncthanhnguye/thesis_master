@@ -16,7 +16,7 @@
         (sortChange)="onUserSortChange($event)" [filter]="dataGridState.filter" [filterable]="true"
         (dataStateChange)="onGridDataStateChange($event)">
 
-        <kendo-grid-column [title]="'Function' " [width]="120" [headerClass]="{'headerCommon': true}">
+        <kendo-grid-column [title]="'Function' " [width]="100" [headerClass]="{'headerCommon': true}">
           <ng-template kendoGridCellTemplate let-dataItem>
             <div class="btn-toolbar" role="toolbar">
               <div class="btn-group mr-2 g-btn g-btn-edit" role="group">
@@ -31,17 +31,16 @@
             </div>
           </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column [field]="'ID'" [width]="50" [title]="ID"></kendo-grid-column>
-        <kendo-grid-column [field]="'Name'" [width]="150" [title]="Name"></kendo-grid-column>
-        <kendo-grid-column [field]="'LawDate'" [width]="90" [title]="LawDate">
+        <kendo-grid-column [field]="'ID'" [width]="50" [title]="'ID'"></kendo-grid-column> <!-- Tên cột hiển thị là 'Mã Số' -->
+        <kendo-grid-column [field]="'Content'" [width]="150" [title]="'Luật'"></kendo-grid-column>
+        <kendo-grid-column [field]="'LawDate'" [width]="90" [title]="'Ngày'">
           <ng-template kendoGridCellTemplate let-dataItem>
             {{dataItem.LawDate | date: 'dd/MM/yyyy '}}
           </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column [field]="'LawNumber'" [width]="90" [title]="LawDate"> </kendo-grid-column>
-        <kendo-grid-column [field]="'TotalChapters'" [width]="90" [title]="LawDate"> </kendo-grid-column>
-        <kendo-grid-column [field]="'TotalArtical'" [width]="90" [title]="LawDate"> </kendo-grid-column>
-        <kendo-grid-column [field]="'Status'" [width]="90" [title]="LawDate"> </kendo-grid-column>
+        <kendo-grid-column [field]="'LawNumber'" [width]="90" [title]="'Bộ Luật Số'"> </kendo-grid-column>
+        <kendo-grid-column [field]="'TotalChapters'" [width]="90" [title]="'Số Chương'"> </kendo-grid-column>
+        <kendo-grid-column [field]="'Status'" [width]="90" [title]="'Trạng Thái'"> </kendo-grid-column>
       </kendo-grid>
     </div>
   </div>

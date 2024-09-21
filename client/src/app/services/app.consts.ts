@@ -43,6 +43,7 @@ export class AppConsts {
     selectOption: "select-option",
     forgotPassword: 'forgot-password',
     pro5Organization: "profile/organization",
+    law: "law",
 
 
 

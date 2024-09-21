@@ -5,13 +5,13 @@
 	</div>
 	<div class="row admin" >
 		<div class="col-md-12 col-12 page-header">
-			<img src="/assets/images/back-black.png" alt="back" class="btn-back" (click)="onBack()" *ngIf="enabledImportWordFlg">
+			<!-- <img src="/assets/images/back-black.png" alt="back" class="btn-back" (click)="onBack()" *ngIf="enabledImportWordFlg"> -->
 			<div class="page-name">{{pageName}}</div>
 			<hr>
 		</div>
 	</div>
 
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-9 col-12" *ngIf="!enabledImportWordFlg">
 			<div class="group">
 				<div [ngClass]="group-search ">
@@ -63,21 +63,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="col-md-3 col-12">
-			<span (click)="showAdvancedImportWord()" class="import-span">
-				<span>{{ 'ImportWord_Block' | translate }}</span>
-			</span>
-		</div> -->
-	</div>
-	<!-- <div class="row" *ngIf="!enabledImportWordFlg ">
-		<div class="col-md-8 col-12 list-member-title">
-			<div class="btn-listOfChange "></div>
-			<span class="title-text" *ngIf="ManagePersonals">Danh sách ({{ManagePersonals.length}}) </span>
-		</div>
 	</div> -->
 
-
-	<div class="row body-import" *ngIf="enabledImportWordFlg ">
+	<div class="row body-import">
 		<div class="col-md-12 col-12" *ngIf="!fileDataImport">
 			<div [ngClass]="'control'">
 				<label>
@@ -92,8 +80,8 @@
 			</div>
 		</div>
 		<div class="col-md-12 col-12 import-success" *ngIf="fileDataImport != null">
-			<input class="input-law-name" type="text" placeholder="Nhập tên văn bản luật" [(ngModel)]="nameLaw" *ngIf="controlDefault || control.SaveImport">
-			<button *ngIf="controlDefault || control.SaveImport" class="btn-dialog btn-save-word"
+			<input class="input-law-name" type="text" placeholder="Nhập tên văn bản luật" [(ngModel)]="nameLaw">
+			<button class="btn-dialog btn-save-word"
 				(click)="onSaveLaw()">
 				<span>{{'Save' | translate}}</span>
 			</button>
@@ -101,7 +89,7 @@
 	</div>
 
 	<div class="panelbar-wrapper">
-		<div class="col-md-12 col-12 content" *ngIf="enabledImportWordFlg">
+		<div class="col-md-12 col-12 content">
 			<div class="file-content" [innerHTML]="fileDataImport"></div>
 		</div>
 	</div>

@@ -22,6 +22,9 @@ namespace MASTERPM.Model.VM
         public string Title { get; set; }
         public string Content { get; set; }
         public string ContentHTML { get; set; }
-
+        public string LawNumber { get; set; }
+        public string LawDate { get; set; }
+        public int TotalChapter { get; set; }
+        public int Status { get; set; }
     }
 }

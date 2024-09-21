@@ -33,5 +33,9 @@ namespace MASTERPM.Model
         public string Title { get; set; }
         public string Content { get; set; }
         public string ContentHTML { get; set; }
+        public string LawNumber { get; set; }
+        public Nullable<int> Status { get; set; }
+        public Nullable<int> TotalChapter { get; set; }
+        public string LawDate { get; set; }
     }
 }
