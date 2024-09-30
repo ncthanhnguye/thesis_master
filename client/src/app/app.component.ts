@@ -53,4 +53,16 @@ export class AppComponent {
 	switchLanguage(language: string) {
 		this.language.set(language);
 	}
+
+	/// Gán giá trị là (Trống) nếu không có data trả về
+	mapDataWithDefault(data) {
+		const newData = { ...data };
+		// Duyệt qua các thuộc tính của đối tượng, thay thế nếu null hoặc undefined hoặc '
+		for (const key in newData) {
+			if (newData[key] === null || newData[key] === undefined || newData[key] == '') {
+				newData[key] = '(Trống)';
+			}
+		}
+		return newData;
+	}
 }

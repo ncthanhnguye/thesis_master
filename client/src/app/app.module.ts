@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { RouterModule } from "@angular/router";
@@ -26,7 +26,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
 
-import { DropDownsModule } from "@progress/kendo-angular-dropdowns";
+import { ComboBoxModule, DropDownsModule } from "@progress/kendo-angular-dropdowns";
 import { DateInputModule,  DatePickerModule,} from "@progress/kendo-angular-dateinputs";
 import { InputsModule } from "@progress/kendo-angular-inputs";
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
@@ -112,6 +112,7 @@ import { AppLanguage } from "./services/app.language";
     DatePickerModule,
     InfiniteScrollModule,
     GridModule,
+    ComboBoxModule,
     ExcelModule,
     ExcelExportModule,
     LayoutModule,

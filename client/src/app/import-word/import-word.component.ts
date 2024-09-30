@@ -17,172 +17,289 @@ import { Router } from '@angular/router';
 import { AppRouter } from '../app.router';
 
 @Component({
-	selector: 'app-import-word',
-	templateUrl: './import-word.component.html',
-	styleUrls: ['./import-word.component.css']
+  selector: 'app-import-word',
+  templateUrl: './import-word.component.html',
+  styleUrls: ['./import-word.component.css']
 })
 export class ImportWordComponent implements OnInit {
-	lawData: {
-		// ID: number,
-		Title: string,
-		Content: string,
-		ContentHTML: string,
-		LawNumber: string,
-		LawDate: string,
-		TotalChapter: number,
-		Status: number,
-	}
-	lawWordData: {
-		chuong: string[],
-		muc: string[],
-		dieu: string[],
-		khoan: string[],
-		diem: string[],
-	}
-	user: any;
-	loading = false;
-	pageName = 'Import dữ liệu về luật';
-	fileDataImport: any;
-	nameLaw: '';
+  lawData: {
+    // ID: number,
+    Title: string,
+    Content: string,
+    ContentHTML: string,
+    LawNumber: string,
+    LawDate: string,
+    TotalChapter: number,
+    Status: number,
+  }
+  lawWordData: {
+    lawNumber: string,
+    lawDate: string,
+    chuong: Array<{ content: string, muc: any[], dieu: any[] }>,
+    muc: Array<{ content: string, dieu: any[] }>,
+    dieu: Array<{ content: string, khoan: any[] }>,
+    khoan: Array<{ content: string, diem: any[] }>,
+    diem: Array<{ content: string }>
+  }
+  user: any;
+  loading = false;
+  pageName = 'Import dữ liệu về luật';
+  isFileImport = false;
+  fileDataImport: any;
+  nameLaw: '';
 
-	Law: Array<{ ID: number; Index: number; Title: string; Content: string; ContentHTML: string; }> = [];
+  Law: Array<{ ID: number; Index: number; Title: string; Content: string; ContentHTML: string; }> = [];
 
-	public uploadSaveUrl = 'saveUrl';
-	public uploadRemoveUrl = 'removeUrl';
+  public uploadSaveUrl = 'saveUrl';
+  public uploadRemoveUrl = 'removeUrl';
 
-	filesUpload: Array<FileInfo>;
-	filesUploadName = "";
+  filesUpload: Array<FileInfo>;
+  filesUploadName = "";
 
-	public fileSaveUrl: any;
+  public fileSaveUrl: any;
 
-	tempData = [
-		{
-			UserName: '',
-			Name: '',
-			GenderName: '',
-			BirthDate: '',
-			UnitName: '',
-		}
-	]
+  tempData = [
+    {
+      UserName: '',
+      Name: '',
+      GenderName: '',
+      BirthDate: '',
+      UnitName: '',
+    }
+  ]
 
-	constructor(
-		private translate: TranslateService,
-		private appService: AppService,
-		private language: AppLanguage,
-		private appSwal: AppSwal,
-		public intl: IntlService,
-		private router: Router,
-		private notification: Notification,
-		private file: AppFile,
-		private authenticationService: AuthenticationService,
-		public appControls: AppControls,
-		private appConsts: AppConsts,
-		private appComponent: AppComponent,
-		public appUtils: AppUtils,
-	) {
-		this.authenticationService.getUser();
-		this.user = this.authenticationService.user;
-		this.setDefault();
-		this.lawData = {
-			// ID: number,
-			Title: null,
-			Content: null,
-			ContentHTML: null,
-			LawDate: null,
-			LawNumber: null,
-			TotalChapter: null,
-			Status: null,
-		}
-	}
+  constructor(
+    private translate: TranslateService,
+    private appService: AppService,
+    private language: AppLanguage,
+    private appSwal: AppSwal,
+    public intl: IntlService,
+    private router: Router,
+    private notification: Notification,
+    private file: AppFile,
+    private authenticationService: AuthenticationService,
+    public appControls: AppControls,
+    private appConsts: AppConsts,
+    private appComponent: AppComponent,
+    public appUtils: AppUtils,
+  ) {
+    this.authenticationService.getUser();
+    this.user = this.authenticationService.user;
+    this.setDefault();
+    this.lawData = {
+      // ID: number,
+      Title: null,
+      Content: null,
+      ContentHTML: null,
+      LawDate: null,
+      LawNumber: null,
+      TotalChapter: null,
+      Status: null,
+    }
+  }
 
-	async ngOnInit() {
-		this.getLaw();
-	}
+  async ngOnInit() {
+    // this.getLaw();
+  }
 
-	setDefault() {
-		this.filesUpload = [];
-		this.filesUploadName = "";
-		this.fileSaveUrl = `${this.appService.apiRoot}api/Upload?dirName=${this.user.UserName}&typeData=files&acceptExtensions=[".doc",".docx"]`;
-	}
+  setDefault() {
+    this.filesUpload = [];
+    this.filesUploadName = "";
+    this.fileSaveUrl = `${this.appService.apiRoot}api/Upload?dirName=${this.user.UserName}&typeData=files&acceptExtensions=[".doc",".docx"]`;
+  }
 
-	onSelectEventHandler(e: SelectEvent) {
-		this.loadDoc(e);
-	}
+  onCancelImport() {
+    this.isFileImport = !this.isFileImport;
+    this.fileDataImport = '';
+  }
 
-	async loadDoc(e) {
-		this.fileDataImport = (await this.file.readDocx(e.files[0].rawFile, 'html')) as string;
-		if (this.fileDataImport != null || this.fileDataImport != undefined) {
-			this.lawData.ContentHTML = this.fileDataImport;
-		}
+  onSelectEventHandler(e: SelectEvent) {
+    this.loadDoc(e);
+  }
 
-		const rawData = (await this.file.readDocx(e.files[0].rawFile, 'text')) as string
-		if (this.fileDataImport != null && this.fileDataImport != undefined) {
-			this.processText(rawData);
-			this.showSuccessMessage();
-		}
-	}
+  async loadDoc(e) {
+    this.isFileImport = true;
+    this.fileDataImport = (await this.file.readDocx(e.files[0].rawFile, 'html')) as string;
+    if (this.fileDataImport != null || this.fileDataImport != undefined) {
+      this.lawData.ContentHTML = this.fileDataImport;
+    }
 
-	processText(text: string) {
-		this.lawWordData = {
-			chuong: [],
-			muc: [],
-			dieu: [],
-			khoan: [],
-			diem: []
-		};
+    const rawData = (await this.file.readDocx(e.files[0].rawFile, 'text')) as string
+    if (this.fileDataImport != null) {
+      this.processText(rawData);
+      this.showSuccessMessage();
+    }
+  }
 
-		// Split data into lines for extracting
-		const lines = text.split('\n');
+  processText(text: string) {
+    this.lawWordData = { lawDate: '', lawNumber: '', chuong: [], muc: [], dieu: [], khoan: [], diem: [] };
+    const lines = text.split('\n');
 
-		lines.forEach(line => {
-			// if (line.startsWith('Bộ ')) {
-			// 	this.lawWordData.luat.push(line);
-			// } 
-			// if (line.startsWith(', ngày')) {
-			// 	this.lawWordData
-			// }
-			if (line.startsWith('Chương ')) {
-				this.lawWordData.chuong.push(line);
-			} else if (line.startsWith('Mục ')) {
-				this.lawWordData.muc.push(line);
-			} else if (line.startsWith('Điều ')) {
-				this.lawWordData.dieu.push(line);
-			} else if (/^\d+\./.test(line)) { // Check if the line start with number "1.,2.,..."
-				this.lawWordData.khoan.push(line);
-			} else if (/^[a-z]\)/.test(line)) { // Check if the line start with an alphabet "a), b),..."
-				this.lawWordData.diem.push(line);
-			}
-		});
+    let currentChuong = { content: '', muc: [], dieu: [] };
+    let currentMuc = { content: '', dieu: [] };
+    let currentDieu = { content: '', khoan: [] };
+    let currentKhoan = { content: '', diem: [] };
 
-		// Log hoặc xử lý thêm dữ liệu tách được
-		console.log('Dữ liệu tách được:', this.lawWordData);
-	}
+    let currentContent = '', currentType = '';
+    let isDateCollected = false;
 
-	showSuccessMessage() {
-		const successElement = document.querySelector('.success');
-		successElement.classList.add('visible');
-		setTimeout(() => {
-			successElement.classList.remove('visible');
-		}, 5000);
-	}
+    // Hàm lưu nội dung hiện tại vào cấp thích hợp
+    const saveContent = () => {
+      if (currentContent) {
+        if (currentType === 'chuong') {
+          currentChuong = { content: currentContent.trim(), muc: [], dieu: [] };
+          this.lawWordData.chuong.push(currentChuong);
+        } else if (currentType === 'muc') {
+          currentMuc = { content: currentContent.trim(), dieu: [] };
+          currentChuong.muc.push(currentMuc);
+        } else if (currentType === 'dieu') {
+          currentDieu = { content: currentContent.trim(), khoan: [] };
+          
+          if (currentMuc != null && currentMuc.content.trim() != '') {
+            currentMuc.dieu.push(currentDieu);
+          } else {
+            currentChuong.dieu.push(currentDieu);
+          }
+        } else if (currentType === 'khoan') {
+          currentKhoan = { content: currentContent.trim(), diem: [] };
+          currentDieu.khoan.push(currentKhoan);
+        } else if (currentType === 'diem') {
+          currentKhoan.diem.push({ content: currentContent.trim() });
+        }
+      }
+    };
 
-	async getLaw() {
-		const result = await this.appService.doGET('api/Law/GetLaw', null);
-		if (result) {
-			this.Law = result.Data;
-			console.log(this.Law);
-		}
-	}
+    // Hàm nối nội dung vào các đoạn văn bản sau tiêu đề
+    const appendContent = (trimmedLine: string) => {
+      // Check if the line contains only a title without full content
+      const isTitleOnlyLine = (line: string) => {
+        const titleFullRegex = /^(Chương\s+\S+|Mục\s+\S+|Điều\s+\d+|\d+\.\s+|[a-z]\)\s+)/;
+        const match = line.match(titleFullRegex);
+        if (match) {
+          const title = match[0];
+          const content = line.replace(title, '').trim();
 
-	async onSaveLaw() {
-		this.lawData.Content = this.nameLaw;
-		const dataRequest = [this.lawData];
-		const result = await this.appService.doPOST('api/ImportWordLaw/Saves', dataRequest);
-		if (result && result.Status === 1) {
-			this.notification.showSuccess(result.Msg);
-			this.router.navigate([AppConsts.page.law]);
-		} else {
-			this.appSwal.showWarning(result.Msg, false);
-		}
-	}
+          if (content === '') {
+            return true;
+          }
+          else {
+            return false;
+          }
+        }
+      };
+
+      if (currentType === 'chuong') {
+        if (isTitleOnlyLine(currentContent) == true) {
+          currentChuong.content += ' ' + trimmedLine;
+        }
+      } else if (currentType === 'muc') {
+        if (isTitleOnlyLine(trimmedLine)) {
+          currentMuc.content += ' ' + trimmedLine;
+        }
+      } else if (currentType === 'dieu') {
+        if (isTitleOnlyLine(trimmedLine)) {
+          currentDieu.content += ' ' + trimmedLine;
+        }
+      } else if (currentType === 'khoan') {
+        if (isTitleOnlyLine(trimmedLine)) {
+          currentKhoan.content += ' ' + trimmedLine;
+        }
+      } else if (currentType === 'diem') {
+        if (currentKhoan.diem.length > 0) {
+          // If already has a point, append to the last one
+          const lastDiem = currentKhoan.diem[currentKhoan.diem.length - 1];
+          if (isTitleOnlyLine(trimmedLine)) {
+            lastDiem.content += ' ' + trimmedLine;  // Append content if part of the description
+          }
+        } else {
+          // If no point exists, insert a new point with the current content
+          currentKhoan.diem.push({
+            content: trimmedLine,
+          });
+        }
+      }
+    };
+
+
+
+    // Extract dữ liệu từ các dòng
+    lines.forEach(line => {
+      const trimmedLine = line.trim();
+
+      // Lấy thông tin số và ngày của luật
+      if (/^(Bộ luật số:|Số:)/.test(trimmedLine)) {
+        const boLuatSo = trimmedLine.replace(/(Bộ luật số:|Số:)/, '').trim();
+        this.lawWordData.lawNumber = boLuatSo;
+      }
+      if (trimmedLine.includes('ngày') && !isDateCollected) {
+        const ngayMatch = trimmedLine.match(/ngày (\d{1,2}) tháng (\d{1,2}) năm (\d{4})/);
+        if (ngayMatch) {
+          const ngay = ngayMatch[1].padStart(2, '0');
+          const thang = ngayMatch[2].padStart(2, '0');
+          const nam = ngayMatch[3];
+          const lawDate = `${ngay}/${thang}/${nam}`;
+          this.lawWordData.lawDate = lawDate;
+          isDateCollected = true;
+        }
+      }
+
+      // Phân loại các chương, mục, điều, khoản, điểm
+      if (trimmedLine.startsWith('Chương ')) {
+        saveContent();
+        currentContent = trimmedLine;
+        currentType = 'chuong';
+      } else if (trimmedLine.startsWith('Mục ')) {
+        saveContent();
+        currentContent = trimmedLine;
+        currentType = 'muc';
+      } else if (trimmedLine.startsWith('Điều ')) {
+        saveContent();
+        currentContent = trimmedLine;
+        currentType = 'dieu';
+      } else if (/^\d+\./.test(trimmedLine)) {  // Khoản
+        saveContent();
+        currentContent = trimmedLine;
+        currentType = 'khoan';
+      } else if (/^[a-z]\)/.test(trimmedLine)) {  // Điểm
+        saveContent();
+        currentContent = trimmedLine;
+        currentType = 'diem';
+      } else if (currentType) {
+        // Nếu không phải là dòng tiêu đề, ghép nối nội dung
+        appendContent(trimmedLine);
+      }
+    });
+
+    saveContent();  // Lưu nội dung cuối cùng sau khi kết thúc vòng lặp
+
+    console.log('Extracted data:', this.lawWordData);
+  }
+
+  showSuccessMessage() {
+    const successElement = document.querySelector('.success');
+    successElement.classList.add('visible');
+    setTimeout(() => {
+      successElement.classList.remove('visible');
+    }, 5000);
+  }
+
+  async getLaw() {
+    const result = await this.appService.doGET('api/Law/GetLaw', null);
+    if (result) {
+      this.Law = result.Data;
+      console.log(this.Law);
+    }
+  }
+
+  async onSaveLaw() {
+    this.lawData.Content = this.nameLaw;
+    const dataRequest = [this.lawData];
+    const result = await this.appService.doPOST('api/ImportWordLaw/Saves', dataRequest);
+    if (result && result.Status === 1) {
+      this.notification.showSuccess(result.Msg);
+      this.router.navigate([AppConsts.page.law]);
+    } else {
+      this.appSwal.showWarning(result.Msg, false);
+    }
+  }
 }

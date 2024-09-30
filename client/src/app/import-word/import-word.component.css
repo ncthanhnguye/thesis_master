@@ -103,6 +103,14 @@
             padding: 5px 10px;
         }
 
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            padding-left: 10px;
+        }
+
         .btn-save-word {
             padding: 5px 40px;
             border-radius: 6px;
@@ -111,6 +119,17 @@
 
             &:hover {
                 background-color: #fff4b4;
+            }
+        }
+
+        .btn-cancel {
+            padding: 5px 40px;
+            border-radius: 6px;
+            background-color: #b0d0f1;
+            text-align: center;
+
+            &:hover {
+                background-color: #bfd7ef;
             }
         }
     }

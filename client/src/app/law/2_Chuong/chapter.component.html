@@ -1,19 +1,20 @@
 <section class="router-outlet-content">
   <div class="row">
     <div class="col-md-12 col-12">
-      <div class="page-name">Chapter</div>
+      <div class="page-name">Danh sách Chương</div>
       <hr>
     </div>
     <div class="col-md-12 col-12">
       <button class="btn-addnew" (click)="openAddDialog()">
-        <span>{{ 'AddNew' }}</span>
+        <span>{{ 'Thêm mới' }}</span>
       </button>
     </div>
 
     <div class="col-md-6 col-12 container-datagrid">
-      <div>LawID</div>
-      <kendo-combobox class="cbx-searchOption" [data]="LawFilter" [textField]="'Name'" [valueField]="'ID'"
+      <div>Tìm kiếm Luật</div>
+      <kendo-combobox class="cbx-searchOption" [data]="LawFilter" [textField]="'Content'" [valueField]="'ID'"
         [popupSettings]="{animate: true, appendTo: 'component'}"
+        [placeholder]="'Chọn nội dung tìm kiếm'"
         [(ngModel)]="searchOption.LawID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="LawHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
@@ -28,6 +29,7 @@
         (sortChange)="onUserSortChange($event)" [filter]="dataGridState.filter" [filterable]="true"
         (dataStateChange)="onGridDataStateChange($event)">
 
+        <!-- Cột chức năng (Edit/Delete) -->
         <kendo-grid-column [title]="'Function' " [width]="80" [headerClass]="{'headerCommon': true}">
           <ng-template kendoGridCellTemplate let-dataItem>
             <div class="btn-toolbar" role="toolbar">
@@ -43,15 +45,18 @@
             </div>
           </ng-template>
         </kendo-grid-column>
+
+        <!-- Cột ID -->
         <kendo-grid-column [field]="'ID'" [width]="50" [title]="ID"></kendo-grid-column>
-        <kendo-grid-column [field]="'LawID'" [width]="90" [title]="LawID">
-          <ng-template kendoGridCellTemplate let-dataItem>
-            {{ appUtils.getNameByList(Law, dataItem.LawID) == ""? dataItem.LawID  : appUtils.getNameByList(Law, dataItem.LawID)
-            }}
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column [field]="'Name'" [width]="150" [title]="Name"></kendo-grid-column>
-        <kendo-grid-column [field]="'Title'" [width]="500" [title]="Title"> </kendo-grid-column>
+
+        <!-- Cột LuatID -->
+        <kendo-grid-column [field]="'LuatID'" [width]="90" [title]="'LuatID'"></kendo-grid-column>
+
+        <!-- Cột title Chương -->
+        <kendo-grid-column [field]="'Title'" [width]="150" [title]="'Chương'"></kendo-grid-column>
+
+        <!-- Cột content Chương -->
+        <kendo-grid-column [field]="'Content'" [width]="150" [title]="'Nội dung'"></kendo-grid-column>
       </kendo-grid>
     </div>
   </div>

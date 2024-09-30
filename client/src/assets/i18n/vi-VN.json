@@ -17,7 +17,6 @@
     "accept": "Đồng ý",
     "set": "Đặt",
     "selectTime": "Chọn thòi gian",
-    "cancel": "Hủy",
     "cancelTime": "Hủy thời gian",
 
     "Pro5GroupStep_Info": "Thông tin bước",
@@ -88,7 +87,7 @@
     "Confirm": "Xác nhận",
     "Back": "Trở về",
     "Ok": "Đồng ý",
-    "Cancel": "Hủy bỏ",
+    "Cancel": "Hủy",
     "LogOut": "Đăng xuất",
     "Success": "Thành công",
     "Fail": "Thất bại",
@@ -947,7 +946,6 @@
 
     "FileUploaded": "Đã tải tập tin lên",
     "Level": "Cấp độ",
-    "Cancle": "Hủy",
     "Set": "Thiết lập",
     "Now": "Hiện tại",
     "Review": "Xem trước",

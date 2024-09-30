@@ -240,16 +240,14 @@ export class AppUtils implements OnInit {
         return result;
     }
 
-    public getNameByList(list: any, id: any) {
-
+    public getNameByList(list: any, id: any) {        
         let i: any;
         for (i = 0; i < list.length; i++) {
             if (list[i].ID === id) {
-                return list[i].Name;
+                const dataRendered = list[i].Title + '.' + ' ' + list[i].Content;
+                return dataRendered;
             }
         }
-
-        return '';
     }
 
     public getObjectByList(list: any, value: any) {

@@ -66,7 +66,7 @@
 	</div> -->
 
 	<div class="row body-import">
-		<div class="col-md-12 col-12" *ngIf="!fileDataImport">
+		<div class="col-md-12 col-12" *ngIf="!fileDataImport && isFileImport == false">
 			<div [ngClass]="'control'">
 				<label>
 					<span [textContent]="'FileWordUploadLaw' | translate"></span>
@@ -79,16 +79,24 @@
 				</kendo-upload>
 			</div>
 		</div>
-		<div class="col-md-12 col-12 import-success" *ngIf="fileDataImport != null">
+
+		<div class="col-md-12 col-12 import-success" *ngIf="fileDataImport && isFileImport">
 			<input class="input-law-name" type="text" placeholder="Nhập tên văn bản luật" [(ngModel)]="nameLaw">
-			<button class="btn-dialog btn-save-word"
-				(click)="onSaveLaw()">
-				<span>{{'Save' | translate}}</span>
-			</button>
+
+			<div class="action-button">
+				<button class="btn-dialog btn-cancel"
+					(click)="onCancelImport()">
+					<span>{{'Cancel' | translate}}</span>
+				</button>
+				<button class="btn-dialog btn-save-word"
+					(click)="onSaveLaw()">
+					<span>{{'Save' | translate}}</span>
+				</button>
+			</div>
 		</div>
 	</div>
 
-	<div class="panelbar-wrapper">
+	<div class="panelbar-wrapper" *ngIf="isFileImport">
 		<div class="col-md-12 col-12 content">
 			<div class="file-content" [innerHTML]="fileDataImport"></div>
 		</div>

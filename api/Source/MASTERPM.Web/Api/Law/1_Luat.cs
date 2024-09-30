@@ -41,7 +41,6 @@ namespace MASTERPM.Web.Models.Law
         {
             try
             {
-
                 var allLaw = LawID == null;
                 var allChapter = ChapterID == null;
                 var allChapterItemID = ChapterItemID == null;

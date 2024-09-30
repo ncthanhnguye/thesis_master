@@ -7,6 +7,7 @@ import { IntlService } from '@progress/kendo-angular-intl';
 import { Notification } from 'src/app/services/app.notification';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AppUtils } from 'src/app/services/app.utils';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-chapter-item',
@@ -55,6 +56,7 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
 
   constructor(
     private appService: AppService,
+    private appComponent: AppComponent,
     private appSwal: AppSwal,
     public intl: IntlService,
     private notification: Notification,
@@ -73,7 +75,8 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.setSelectableSettings();
     await this.getFilter();
-    this.searchOption.LawID = 2;
+    await this.getDataGrid();
+    // this.searchOption.LawID = 2;
     this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LawID == this.searchOption.LawID })
     this.onReload();
   }
@@ -113,7 +116,20 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
     }
     const result = await this.appService.doGET('api/ChapterItem/Search', dataRequest);
     if (result) {
-      this.dataGrid = result.Data;
+      this.dataGrid = [];
+
+      result.Data.forEach(item => {
+        const dataLuat = item.DATA_1_Luat;
+        const dataChuong = item.DATA_2_Chuong;
+        const dataMuc = item.DATA_3_Muc;
+
+        const combinedData = {
+          ...this.appComponent.mapDataWithDefault(item.dataLuat),
+          ...this.appComponent.mapDataWithDefault(dataChuong),
+          ...this.appComponent.mapDataWithDefault(dataMuc),
+        };
+        this.dataGrid.push(combinedData);
+      });      
       this.bindDataGrid();
     }
     this.loading = false;
