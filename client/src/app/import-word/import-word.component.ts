@@ -131,6 +131,7 @@ export class ImportWordComponent implements OnInit {
     }
   }
 
+
   processText(text: string) {
     this.lawWordData = { lawDate: '', lawNumber: '', chuong: [], muc: [], dieu: [], khoan: [], diem: [] };
     const lines = text.split('\n');
@@ -149,13 +150,16 @@ export class ImportWordComponent implements OnInit {
         if (currentType === 'chuong') {
           currentChuong = { content: currentContent.trim(), muc: [], dieu: [] };
           this.lawWordData.chuong.push(currentChuong);
+          currentMuc = { content: '', dieu: [] };
         } else if (currentType === 'muc') {
-          currentMuc = { content: currentContent.trim(), dieu: [] };
-          currentChuong.muc.push(currentMuc);
+          if (!currentChuong.muc.some(m => m.content === currentContent.trim())) {
+            currentMuc = { content: currentContent.trim(), dieu: [] };
+            currentChuong.muc.push(currentMuc);
+          }
         } else if (currentType === 'dieu') {
           currentDieu = { content: currentContent.trim(), khoan: [] };
-          
-          if (currentMuc != null && currentMuc.content.trim() != '') {
+
+          if (currentMuc && currentMuc.content.trim() !== '') {
             currentMuc.dieu.push(currentDieu);
           } else {
             currentChuong.dieu.push(currentDieu);
@@ -220,8 +224,6 @@ export class ImportWordComponent implements OnInit {
       }
     };
 
-
-
     // Extract dữ liệu từ các dòng
     lines.forEach(line => {
       const trimmedLine = line.trim();
@@ -264,8 +266,7 @@ export class ImportWordComponent implements OnInit {
         saveContent();
         currentContent = trimmedLine;
         currentType = 'diem';
-      } else if (currentType) {
-        // Nếu không phải là dòng tiêu đề, ghép nối nội dung
+      } else if (currentType && trimmedLine !== '') {
         appendContent(trimmedLine);
       }
     });
@@ -293,6 +294,7 @@ export class ImportWordComponent implements OnInit {
 
   async onSaveLaw() {
     this.lawData.Content = this.nameLaw;
+    console.log('lawData', this.lawData);
     const dataRequest = [this.lawData];
     const result = await this.appService.doPOST('api/ImportWordLaw/Saves', dataRequest);
     if (result && result.Status === 1) {
