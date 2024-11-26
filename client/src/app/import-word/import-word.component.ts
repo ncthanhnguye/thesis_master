@@ -32,21 +32,14 @@ export class ImportWordComponent implements OnInit {
     Status: number,
   }
   lawWordData: {
-    lawNumber: string,
-    lawDate: string,
-    chuong: Array<{ content: string, muc: any[], dieu: any[] }>,
-    muc: Array<{ content: string, dieu: any[] }>,
-    dieu: Array<{ content: string, khoan: any[] }>,
-    khoan: Array<{ content: string, diem: any[] }>,
-    diem: Array<{ content: string }>
+    lawDate: string;
+    lawNumber: string;
+    chapters: any[];
+    chapterItems: any[];
+    articals: any[];
+    clausts: any[];
+    points: any[];
   }
-
-  lastLawID: number;
-  lastChapterID: number;
-  lastChapterItemID: number;
-  lastArticalID: number;
-  lastClaustID: number;
-  lastPointID: number;
 
   user: any;
   loading = false;
@@ -106,12 +99,6 @@ export class ImportWordComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.getLastLawItem();
-    await this.getLastChapterItem();
-    await this.getLastItemInChapterItem();
-    await this.getLastArticalItem();
-    await this.getLastClaustItem();
-    await this.getLastPointItem();
   }
 
   setDefault() {
@@ -144,22 +131,28 @@ export class ImportWordComponent implements OnInit {
   }
 
   processText(text: string) {
-    // Create new UUID
-    let nextLawID = uuidv4();
-    let nextChapterID = uuidv4();
+    // Tạo UUID mới cho các mục
+    let nextChuongID = uuidv4();
     let nextMucID = uuidv4();
     let nextDieuID = uuidv4();
     let nextKhoanID = uuidv4();
     let nextDiemID = uuidv4();
 
-    this.lawWordData = { lawDate: '', lawNumber: '', chuong: [], muc: [], dieu: [], khoan: [], diem: [] };
+    this.lawWordData = {
+      lawDate: '',
+      lawNumber: '',
+      chapters: [],
+      chapterItems: [],
+      articals: [],
+      clausts: [],
+      points: []
+    };
 
     const lines = text.split('\n');
-
-    let currentChuong = { ID: '', content: '', muc: [], dieu: [] };
-    let currentMuc = { ID: '', content: '', dieu: [], chapterID: '' };
-    let currentDieu = { ID: '', content: '', khoan: [], chapterID: '', mucID: '' };
-    let currentKhoan = { ID: '', content: '', diem: [], chapterID: '', mucID: '', dieuID: '' };
+    let currentChuong = { ID: '', content: '', luatID: null };
+    let currentMuc = { ID: '', content: '', luatID: null, chuongID: '' };
+    let currentDieu = { ID: '', content: '', luatID: null, chuongID: '', mucID: '' };
+    let currentKhoan = { ID: '', content: '', luatID: null, chuongID: '', mucID: '', dieuID: '' };
 
     let currentContent = '', currentType = '';
     let isDateCollected = false;
@@ -167,119 +160,76 @@ export class ImportWordComponent implements OnInit {
     const saveContent = () => {
       if (currentContent) {
         if (currentType === 'chuong') {
-          const chapterID = uuidv4();
+          const chuongID = uuidv4();
           currentChuong = {
-            ID: chapterID,
+            ID: chuongID,
             content: currentContent.trim(),
-            muc: [],
-            dieu: []
+            luatID: null
           };
-          this.lawWordData.chuong.push(currentChuong);
-          currentMuc = { ID: '', content: '', dieu: [], chapterID: chapterID }; // Sử dụng nextChapterID đã lưu
-          nextChapterID = chapterID;
+          this.lawWordData.chapters.push(currentChuong);
+          nextChuongID = chuongID;  // Cập nhật UUID cho chương tiếp theo
         } else if (currentType === 'muc') {
-          // Kiểm tra nếu mục đã tồn tại trong chương để tránh tạo lại mục trùng
-          if (!currentChuong.muc.some(m => m.content === currentContent.trim())) {
-            const chapterItemID = uuidv4();
-            currentMuc = {
-              ID: chapterItemID,
-              content: currentContent.trim(),
-              dieu: [],
-              chapterID: nextChapterID
-            };
-            currentChuong.muc.push(currentMuc);
-            nextMucID = chapterItemID;
-          }
+          const chapterItemID = uuidv4();
+          currentMuc = {
+            ID: chapterItemID,
+            content: currentContent.trim(),
+            luatID: null,
+            chuongID: nextChuongID
+          };
+          this.lawWordData.chapterItems.push(currentMuc);
+          nextMucID = chapterItemID;  // Cập nhật UUID cho mục tiếp theo
         } else if (currentType === 'dieu') {
           const articalID = uuidv4();
           currentDieu = {
             ID: articalID,
             content: currentContent.trim(),
-            khoan: [],
-            chapterID: nextChapterID,
-            mucID: currentMuc.ID ? nextMucID : '',
+            luatID: null,
+            chuongID: nextChuongID,
+            mucID: currentMuc.ID || ''
           };
-          if (currentMuc && currentMuc.content.trim() !== '') {
-            currentMuc.dieu.push(currentDieu);
-          } else {
-            currentChuong.dieu.push(currentDieu);
-          }
-          nextDieuID = articalID;
+          this.lawWordData.articals.push(currentDieu);
+          nextDieuID = articalID;  // Cập nhật UUID cho điều tiếp theo
         } else if (currentType === 'khoan') {
           const claustID = uuidv4();
           currentKhoan = {
             ID: claustID,
             content: currentContent.trim(),
-            diem: [],
-            chapterID: nextChapterID,
-            mucID: currentMuc.ID ? nextMucID : '',
-            dieuID: currentDieu.ID ? nextDieuID : ''
+            luatID: null,
+            chuongID: nextChuongID,
+            mucID: currentMuc.ID || '',
+            dieuID: currentDieu.ID || ''
           };
-          currentDieu.khoan.push(currentKhoan);
-          nextKhoanID = claustID;
+          this.lawWordData.clausts.push(currentKhoan);
+          nextKhoanID = claustID;  // Cập nhật UUID cho khoản tiếp theo
         } else if (currentType === 'diem') {
           const pointID = uuidv4();
-          currentKhoan.diem.push({
+          this.lawWordData.points.push({
             ID: nextDiemID,
             content: currentContent.trim(),
-            chapterID: nextChapterID,
-            mucID: currentMuc.ID ? nextMucID : '',
-            dieuID: currentDieu.ID ? nextDieuID : '',
-            khoanID: currentKhoan.ID ? nextKhoanID : ''
+            luatID: null,
+            chuongID: nextChuongID,
+            mucID: currentMuc.ID || '',
+            dieuID: currentDieu.ID || '',
+            khoanID: currentKhoan.ID || ''
           });
-          nextDiemID = pointID;
+          nextDiemID = pointID;  // Cập nhật UUID cho điểm tiếp theo
         }
       }
     };
 
     // Hàm nối nội dung vào các đoạn văn bản sau tiêu đề
     const appendContent = (trimmedLine: string) => {
-      // Check if the line contains only a title without full content
-      const isTitleOnlyLine = (line: string) => {
-        const titleFullRegex = /^(Chương\s+\S+|Mục\s+\S+|Điều\s+\d+|\d+\.\s+|[a-z]\)\s+)/;
-        const match = line.match(titleFullRegex);
-        if (match) {
-          const title = match[0];
-          const content = line.replace(title, '').trim();
-
-          if (content === '') {
-            return true;
-          }
-          else {
-            return false;
-          }
-        }
-      };
-
       if (currentType === 'chuong') {
-        if (isTitleOnlyLine(currentContent) == true) {
-          currentChuong.content += ' ' + trimmedLine;
-        }
+        currentChuong.content += ' ' + trimmedLine;
       } else if (currentType === 'muc') {
-        if (isTitleOnlyLine(trimmedLine)) {
-          currentMuc.content += ' ' + trimmedLine;
-        }
+        currentMuc.content += ' ' + trimmedLine;
       } else if (currentType === 'dieu') {
-        if (isTitleOnlyLine(trimmedLine)) {
-          currentDieu.content += ' ' + trimmedLine;
-        }
+        currentDieu.content += ' ' + trimmedLine;
       } else if (currentType === 'khoan') {
-        if (isTitleOnlyLine(trimmedLine)) {
-          currentKhoan.content += ' ' + trimmedLine;
-        }
+        currentKhoan.content += ' ' + trimmedLine;
       } else if (currentType === 'diem') {
-        if (currentKhoan.diem.length > 0) {
-          // If already has a point, append to the last one
-          const lastDiem = currentKhoan.diem[currentKhoan.diem.length - 1];
-          if (isTitleOnlyLine(trimmedLine)) {
-            lastDiem.content += ' ' + trimmedLine;  // Append content if part of the description
-          }
-        } else {
-          // If no point exists, insert a new point with the current content
-          currentKhoan.diem.push({
-            content: trimmedLine,
-          });
-        }
+        const lastDiem = this.lawWordData.points[this.lawWordData.points.length - 1];
+        lastDiem.content += ' ' + trimmedLine;
       }
     };
 
@@ -328,155 +278,10 @@ export class ImportWordComponent implements OnInit {
       }
     });
 
-    saveContent();  // Lưu nội dung cuối cùng sau khi kết thúc vòng lặp
+    saveContent();  // Lưu nội dung cuối cùng
 
     console.log('Extracted data with UUIDs:', this.lawWordData);
   }
-
-
-  // processText(text: string) {
-  //   this.lawWordData = { lawDate: '', lawNumber: '', chuong: [], muc: [], dieu: [], khoan: [], diem: [] };
-  //   const lines = text.split('\n');
-  //
-  //   let currentChuong = { content: '', muc: [], dieu: [] };
-  //   let currentMuc = { content: '', dieu: [] };
-  //   let currentDieu = { content: '', khoan: [] };
-  //   let currentKhoan = { content: '', diem: [] };
-  //
-  //   let currentContent = '', currentType = '';
-  //   let isDateCollected = false;
-  //
-  //   // Hàm lưu nội dung hiện tại vào cấp thích hợp
-  //   const saveContent = () => {
-  //     if (currentContent) {
-  //       if (currentType === 'chuong') {
-  //         currentChuong = { content: currentContent.trim(), muc: [], dieu: [] };
-  //         this.lawWordData.chuong.push(currentChuong);
-  //         currentMuc = { content: '', dieu: [] };
-  //       } else if (currentType === 'muc') {
-  //         if (!currentChuong.muc.some(m => m.content === currentContent.trim())) {
-  //           currentMuc = { content: currentContent.trim(), dieu: [] };
-  //           currentChuong.muc.push(currentMuc);
-  //         }
-  //       } else if (currentType === 'dieu') {
-  //         currentDieu = { content: currentContent.trim(), khoan: [] };
-  //
-  //         if (currentMuc && currentMuc.content.trim() !== '') {
-  //           currentMuc.dieu.push(currentDieu);
-  //         } else {
-  //           currentChuong.dieu.push(currentDieu);
-  //         }
-  //       } else if (currentType === 'khoan') {
-  //         currentKhoan = { content: currentContent.trim(), diem: [] };
-  //         currentDieu.khoan.push(currentKhoan);
-  //       } else if (currentType === 'diem') {
-  //         currentKhoan.diem.push({ content: currentContent.trim() });
-  //       }
-  //     }
-  //   };
-  //
-  //   // Hàm nối nội dung vào các đoạn văn bản sau tiêu đề
-  //   const appendContent = (trimmedLine: string) => {
-  //     // Check if the line contains only a title without full content
-  //     const isTitleOnlyLine = (line: string) => {
-  //       const titleFullRegex = /^(Chương\s+\S+|Mục\s+\S+|Điều\s+\d+|\d+\.\s+|[a-z]\)\s+)/;
-  //       const match = line.match(titleFullRegex);
-  //       if (match) {
-  //         const title = match[0];
-  //         const content = line.replace(title, '').trim();
-  //
-  //         if (content === '') {
-  //           return true;
-  //         }
-  //         else {
-  //           return false;
-  //         }
-  //       }
-  //     };
-  //
-  //     if (currentType === 'chuong') {
-  //       if (isTitleOnlyLine(currentContent) == true) {
-  //         currentChuong.content += ' ' + trimmedLine;
-  //       }
-  //     } else if (currentType === 'muc') {
-  //       if (isTitleOnlyLine(trimmedLine)) {
-  //         currentMuc.content += ' ' + trimmedLine;
-  //       }
-  //     } else if (currentType === 'dieu') {
-  //       if (isTitleOnlyLine(trimmedLine)) {
-  //         currentDieu.content += ' ' + trimmedLine;
-  //       }
-  //     } else if (currentType === 'khoan') {
-  //       if (isTitleOnlyLine(trimmedLine)) {
-  //         currentKhoan.content += ' ' + trimmedLine;
-  //       }
-  //     } else if (currentType === 'diem') {
-  //       if (currentKhoan.diem.length > 0) {
-  //         // If already has a point, append to the last one
-  //         const lastDiem = currentKhoan.diem[currentKhoan.diem.length - 1];
-  //         if (isTitleOnlyLine(trimmedLine)) {
-  //           lastDiem.content += ' ' + trimmedLine;  // Append content if part of the description
-  //         }
-  //       } else {
-  //         // If no point exists, insert a new point with the current content
-  //         currentKhoan.diem.push({
-  //           content: trimmedLine,
-  //         });
-  //       }
-  //     }
-  //   };
-  //
-  //   // Extract dữ liệu từ các dòng
-  //   lines.forEach(line => {
-  //     const trimmedLine = line.trim();
-  //
-  //     // Lấy thông tin số và ngày của luật
-  //     if (/^(Bộ luật số:|Số:)/.test(trimmedLine)) {
-  //       const boLuatSo = trimmedLine.replace(/(Bộ luật số:|Số:)/, '').trim();
-  //       this.lawWordData.lawNumber = boLuatSo;
-  //     }
-  //     if (trimmedLine.includes('ngày') && !isDateCollected) {
-  //       const ngayMatch = trimmedLine.match(/ngày (\d{1,2}) tháng (\d{1,2}) năm (\d{4})/);
-  //       if (ngayMatch) {
-  //         const ngay = ngayMatch[1].padStart(2, '0');
-  //         const thang = ngayMatch[2].padStart(2, '0');
-  //         const nam = ngayMatch[3];
-  //         const lawDate = `${ngay}/${thang}/${nam}`;
-  //         this.lawWordData.lawDate = lawDate;
-  //         isDateCollected = true;
-  //       }
-  //     }
-  //
-  //     // Phân loại các chương, mục, điều, khoản, điểm
-  //     if (trimmedLine.startsWith('Chương ')) {
-  //       saveContent();
-  //       currentContent = trimmedLine;
-  //       currentType = 'chuong';
-  //     } else if (trimmedLine.startsWith('Mục ')) {
-  //       saveContent();
-  //       currentContent = trimmedLine;
-  //       currentType = 'muc';
-  //     } else if (trimmedLine.startsWith('Điều ')) {
-  //       saveContent();
-  //       currentContent = trimmedLine;
-  //       currentType = 'dieu';
-  //     } else if (/^\d+\./.test(trimmedLine)) {  // Khoản
-  //       saveContent();
-  //       currentContent = trimmedLine;
-  //       currentType = 'khoan';
-  //     } else if (/^[a-z]\)/.test(trimmedLine)) {  // Điểm
-  //       saveContent();
-  //       currentContent = trimmedLine;
-  //       currentType = 'diem';
-  //     } else if (currentType && trimmedLine !== '') {
-  //       appendContent(trimmedLine);
-  //     }
-  //   });
-  //
-  //   saveContent();  // Lưu nội dung cuối cùng sau khi kết thúc vòng lặp
-  //
-  //   console.log('Extracted data:', this.lawWordData);
-  // }
 
   showSuccessMessage() {
     const successElement = document.querySelector('.success');
@@ -486,102 +291,11 @@ export class ImportWordComponent implements OnInit {
     }, 5000);
   }
 
-  // Luật
-  async getLastLawItem() {
-    try {
-      const result = await this.appService.doGET('api/Law/GetLastLawID', null);
-
-      if (result) {
-        this.Law = result.Data;
-        this.lastLawID = result.Data.ID;
-      } else {
-        console.log('Error data');
-      }
-    } catch (e) {
-      console.error('Error: ', e);
-    }
-  }
-
-  // Chương
-  async getLastChapterItem() {
-    try {
-      const result = await this.appService.doGET('api/Chapter/GetLastChapterID', null);
-
-      if (result) {
-        this.lastChapterID = result.Data.ID;
-      } else {
-        console.log('Error data');
-      }
-    } catch (e) {
-      console.error('Error: ', e);
-    }
-  }
-
-  // Mục
-  async getLastItemInChapterItem() {
-    try {
-      const result = await this.appService.doGET('api/ChapterItem/GetLastChapterItemID', null);
-
-      if (result) {
-        this.lastChapterItemID = result.Data.ID;
-      } else {
-        console.log('Error data');
-      }
-    } catch (e) {
-      console.error('Error: ', e);
-    }
-  }
-
-  // Điều
-  async getLastArticalItem() {
-    try {
-      const result = await this.appService.doGET('api/Artical/GetLastArticalID', null);
-
-      if (result) {
-        this.lastArticalID = result.Data.ID;
-      } else {
-        console.log('Error data');
-      }
-    } catch (e) {
-      console.error('Error: ', e);
-    }
-  }
-
-  // Khoản
-  async getLastClaustItem() {
-    try {
-      const result = await this.appService.doGET('api/Claust/GetLastClaustID', null);
-
-      if (result) {
-        this.lastClaustID = result.Data.ID;
-      } else {
-        console.log('Error data');
-      }
-    } catch (e) {
-      console.error('Error: ', e);
-    }
-  }
-
-  // Điểm
-  async getLastPointItem() {
-    try {
-      const result = await this.appService.doGET('api/Point/GetLastPointID', null);
-
-      if (result) {
-        this.lastPointID = result.Data.ID;
-      } else {
-        console.log('Error data');
-      }
-    } catch (e) {
-      console.error('Error: ', e);
-    }
-  }
-
   async onSaveLaw() {
     this.lawData.Content = this.nameLaw;
     console.log('lawData', this.lawData);
     const dataRequest = [this.lawData];
-    const result = await this.appService.doPOST('api/ImportWordLaw/Saves', dataRequest);
+    const result = await this.appService.doPOST('api/ImportWordLaw/Saves', this.lawWordData);
     if (result && result.Status === 1) {
       this.notification.showSuccess(result.Msg);
       await this.router.navigate([AppConsts.page.law]);
