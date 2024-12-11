@@ -32,8 +32,12 @@ export class ImportWordComponent implements OnInit {
     Status: number,
   }
   lawWordData: {
+    content: string,
+    contentHTML: string,
     lawDate: string;
     lawNumber: string;
+    lawUUID: string;
+    status: number;
     chapters: any[];
     chapterItems: any[];
     articals: any[];
@@ -47,6 +51,7 @@ export class ImportWordComponent implements OnInit {
   isFileImport = false;
   fileDataImport: any;
   nameLaw: '';
+  contentHTML: '';
 
   Law: Array<{ ID: number; Index: number; Title: string; Content: string; ContentHTML: string; }> = [];
 
@@ -99,6 +104,19 @@ export class ImportWordComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.lawWordData = {
+      content: '',
+      contentHTML: '',
+      lawDate: '',
+      lawNumber: '',
+      lawUUID: '',
+      status: 1,
+      chapters: [],
+      chapterItems: [],
+      articals: [],
+      clausts: [],
+      points: []
+    };
   }
 
   setDefault() {
@@ -120,7 +138,7 @@ export class ImportWordComponent implements OnInit {
     this.isFileImport = true;
     this.fileDataImport = (await this.file.readDocx(e.files[0].rawFile, 'html')) as string;
     if (this.fileDataImport != null || this.fileDataImport != undefined) {
-      this.lawData.ContentHTML = this.fileDataImport;
+      this.contentHTML = this.fileDataImport;
     }
 
     const rawData = (await this.file.readDocx(e.files[0].rawFile, 'text')) as string
@@ -132,15 +150,19 @@ export class ImportWordComponent implements OnInit {
 
   processText(text: string) {
     // Tạo UUID mới cho các mục
-    let nextChuongID = uuidv4();
-    let nextMucID = uuidv4();
-    let nextDieuID = uuidv4();
-    let nextKhoanID = uuidv4();
-    let nextDiemID = uuidv4();
+    let nextChuongUUID = uuidv4();
+    let nextMucUUID = uuidv4();
+    let nextDieuUUID = uuidv4();
+    let nextKhoanUUID = uuidv4();
+    let nextDiemUUID = uuidv4();
 
     this.lawWordData = {
+      content: '',
+      contentHTML: '',
       lawDate: '',
       lawNumber: '',
+      lawUUID: '',
+      status: 1,
       chapters: [],
       chapterItems: [],
       articals: [],
@@ -148,11 +170,13 @@ export class ImportWordComponent implements OnInit {
       points: []
     };
 
+    let lawUUID = uuidv4();
+    this.lawWordData.lawUUID = lawUUID;
     const lines = text.split('\n');
-    let currentChuong = { ID: '', content: '', luatID: null };
-    let currentMuc = { ID: '', content: '', luatID: null, chuongID: '' };
-    let currentDieu = { ID: '', content: '', luatID: null, chuongID: '', mucID: '' };
-    let currentKhoan = { ID: '', content: '', luatID: null, chuongID: '', mucID: '', dieuID: '' };
+    let currentChuong = { ChuongUUID: '', content: '', LuatUUID: null };
+    let currentMuc = { MucUUID: '', content: '', LuatUUID: null, ChuongUUID: '' };
+    let currentDieu = { DieuUUID: '', content: '', LuatUUID: null, ChuongUUID: '', MucUUID: '' };
+    let currentKhoan = { KhoanUUID: '', content: '', LuatUUID: null, ChuongUUID: '', MucUUID: '', DieuUUID: '' };
 
     let currentContent = '', currentType = '';
     let isDateCollected = false;
@@ -160,59 +184,59 @@ export class ImportWordComponent implements OnInit {
     const saveContent = () => {
       if (currentContent) {
         if (currentType === 'chuong') {
-          const chuongID = uuidv4();
+          const chuongUUID = uuidv4();
           currentChuong = {
-            ID: chuongID,
+            ChuongUUID: chuongUUID,
             content: currentContent.trim(),
-            luatID: null
+            LuatUUID: lawUUID
           };
           this.lawWordData.chapters.push(currentChuong);
-          nextChuongID = chuongID;  // Cập nhật UUID cho chương tiếp theo
+          nextChuongUUID = chuongUUID;  // Cập nhật UUID cho chương tiếp theo
         } else if (currentType === 'muc') {
-          const chapterItemID = uuidv4();
+          const mucUUID = uuidv4();
           currentMuc = {
-            ID: chapterItemID,
+            MucUUID: mucUUID,
             content: currentContent.trim(),
-            luatID: null,
-            chuongID: nextChuongID
+            LuatUUID: lawUUID,
+            ChuongUUID: nextChuongUUID
           };
           this.lawWordData.chapterItems.push(currentMuc);
-          nextMucID = chapterItemID;  // Cập nhật UUID cho mục tiếp theo
+          nextMucUUID = mucUUID;  // Cập nhật UUID cho mục tiếp theo
         } else if (currentType === 'dieu') {
-          const articalID = uuidv4();
+          const dieuUUID = uuidv4();
           currentDieu = {
-            ID: articalID,
+            DieuUUID: dieuUUID,
             content: currentContent.trim(),
-            luatID: null,
-            chuongID: nextChuongID,
-            mucID: currentMuc.ID || ''
+            LuatUUID: lawUUID,
+            ChuongUUID: nextChuongUUID,
+            MucUUID: currentMuc.MucUUID || ''
           };
           this.lawWordData.articals.push(currentDieu);
-          nextDieuID = articalID;  // Cập nhật UUID cho điều tiếp theo
+          nextDieuUUID = dieuUUID;  // Cập nhật UUID cho điều tiếp theo
         } else if (currentType === 'khoan') {
-          const claustID = uuidv4();
+          const khoanUUID = uuidv4();
           currentKhoan = {
-            ID: claustID,
+            KhoanUUID: khoanUUID,
             content: currentContent.trim(),
-            luatID: null,
-            chuongID: nextChuongID,
-            mucID: currentMuc.ID || '',
-            dieuID: currentDieu.ID || ''
+            LuatUUID: lawUUID,
+            ChuongUUID: nextChuongUUID,
+            MucUUID: currentMuc.MucUUID || '',
+            DieuUUID: currentDieu.DieuUUID || ''
           };
           this.lawWordData.clausts.push(currentKhoan);
-          nextKhoanID = claustID;  // Cập nhật UUID cho khoản tiếp theo
+          nextKhoanUUID = khoanUUID;  // Cập nhật UUID cho khoản tiếp theo
         } else if (currentType === 'diem') {
-          const pointID = uuidv4();
+          const diemUUID = uuidv4();
           this.lawWordData.points.push({
-            ID: nextDiemID,
+            DiemUUID: diemUUID,
             content: currentContent.trim(),
-            luatID: null,
-            chuongID: nextChuongID,
-            mucID: currentMuc.ID || '',
-            dieuID: currentDieu.ID || '',
-            khoanID: currentKhoan.ID || ''
+            LuatUUID: lawUUID,
+            ChuongUUID: nextChuongUUID,
+            MucUUID: currentMuc.MucUUID || '',
+            DieuUUID: currentDieu.DieuUUID || '',
+            KhoanUUID: currentKhoan.KhoanUUID || '',
           });
-          nextDiemID = pointID;  // Cập nhật UUID cho điểm tiếp theo
+          nextDiemUUID = diemUUID;  // Cập nhật UUID cho điểm tiếp theo
         }
       }
     };
@@ -292,9 +316,10 @@ export class ImportWordComponent implements OnInit {
   }
 
   async onSaveLaw() {
-    this.lawData.Content = this.nameLaw;
-    console.log('lawData', this.lawData);
-    const dataRequest = [this.lawData];
+    this.lawWordData.content = this.nameLaw;
+    this.lawWordData.contentHTML = this.contentHTML;
+    this.lawWordData.status = 1;
+    // console.log('lawData', this.lawData);
     const result = await this.appService.doPOST('api/ImportWordLaw/Saves', this.lawWordData);
     if (result && result.Status === 1) {
       this.notification.showSuccess(result.Msg);
