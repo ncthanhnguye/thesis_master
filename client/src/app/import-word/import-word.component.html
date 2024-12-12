@@ -1,17 +1,21 @@
 <section class="import-word router-outlet-content">
-
+	<div class="success">
+		<img class="img-success" src="/assets/images/tick_success.png" alt="success-pic">
+		<span>Import thành công</span>
+	</div>
 	<div class="row admin" >
-		<div class="col-md-12 col-12">
+		<div class="col-md-12 col-12 page-header">
+			<!-- <img src="/assets/images/back-black.png" alt="back" class="btn-back" (click)="onBack()" *ngIf="enabledImportWordFlg"> -->
 			<div class="page-name">{{pageName}}</div>
 			<hr>
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-9 col-12" *ngIf="!enabledImportExcelFlg">
+	<!-- <div class="row">
+		<div class="col-md-9 col-12" *ngIf="!enabledImportWordFlg">
 			<div class="group">
 				<div [ngClass]="group-search ">
-					<div [ngClass]="'control'" class="row">
+					<div [ngClass]="'control'" class="row import-action">
 
 						<div class="col-md-6 col-12">
 							<div [ngClass]="'control control-search'">
@@ -39,129 +43,62 @@
 								</kendo-combobox>
 							</div>
 						</div>
-						<div class="col-md-2 col-12">
-							<div class="btn-dialog-wrapper" *ngIf="!enabledImportExcelFlg">
+						<div class="col-md-2 col-12 search-btn">
+							<div class="btn-dialog-wrapper" *ngIf="!enabledImportWordFlg">
 								<button (click)="onSearch()"
 									class="btn-dialog-cus btn-dialog btn-search">
 									<span>{{ 'Search' | translate }}</span>
 								</button>
 							</div>
 						</div>
-
-
-
+						<div class="col-md-2 col-12 import-btn">
+							<div class="btn-dialog-import-wrapper">
+								<button (click)="showAdvancedImportWord()"
+									class="btn-dialog-cus btn-dialog btn-import">
+									<span>{{ 'ImportWord_Block' | translate }}</span>
+								</button>
+							</div>
+						</div>
 					</div>
-
 				</div>
 			</div>
-
 		</div>
-		<div class="col-md-3 col-12">
-			<span (click)="showAdvancedImportExcel()" class="import-span">
-				<span>{{ 'ImportExcel_Block' | translate }}</span>
-			</span>
-	</div>
-	</div>
-	<div class="row" *ngIf="!enabledImportExcelFlg ">
-		<div class="col-md-8 col-12 list-member-title">
-			<div class="btn-listOfChange "></div>
-			<span class="title-text" *ngIf="ManagePersonals">Danh sách ({{ManagePersonals.length}}) </span>
-		</div>
-	</div>
+	</div> -->
 
-
-	<div class="row" *ngIf="enabledImportExcelFlg ">
-		<div class="col-md-12 col-12" *ngIf="ManagePersonals.length <= 0">
+	<div class="row body-import">
+		<div class="col-md-12 col-12" *ngIf="!fileDataImport && isFileImport == false">
 			<div [ngClass]="'control'">
 				<label>
-					<span [textContent]="'FileUploadPersonal' | translate"></span>
+					<span [textContent]="'FileWordUploadLaw' | translate"></span>
 				</label>
 				<kendo-upload (select)="onSelectEventHandler($event)" [multiple]="false" [showFileList]="false"
-					[saveUrl]="fileSaveUrl" [accept]="['.xls','.xlsx']">
+					[saveUrl]="fileSaveUrl" [accept]="['.doc','.docx']">
 					<kendo-upload-messages [headerStatusUploaded]="'FileUploadPersonalDone' | translate"
 						[dropFilesHere]="'dropFilesHere' | translate" [select]="'UploadFile' | translate">
 					</kendo-upload-messages>
 				</kendo-upload>
 			</div>
 		</div>
-		<div class="col-md-12 col-12 success-exist-phone" *ngIf="ManagePersonals.length > 0">
-			<div><b>{{'Import Thành công' | translate}}</b></div>
-		</div>
-		<div class="col-md-12 col-12" *ngIf="ManagePersonals.length > 0">
-			<button *ngIf="controlDefault || control.SaveImport" class="btn-dialog btn-save-excel"
-				(click)="onSavePersonals()">
-				<span>{{'Save' | translate}}</span>
-			</button>
+
+		<div class="col-md-12 col-12 import-success" *ngIf="fileDataImport && isFileImport">
+			<input class="input-law-name" type="text" placeholder="Nhập tên văn bản luật" [(ngModel)]="nameLaw">
+
+			<div class="action-button">
+				<button class="btn-dialog btn-cancel"
+					(click)="onCancelImport()">
+					<span>{{'Cancel' | translate}}</span>
+				</button>
+				<button class="btn-dialog btn-save-word"
+					(click)="onSaveLaw()">
+					<span>{{'Save' | translate}}</span>
+				</button>
+			</div>
 		</div>
 	</div>
 
-	<div class="panelbar-wrapper">
-		<div class="col-md-12 col-12 " >
-			<kendo-grid [data]="ManagePersonalGridDataResult" [selectable]="ManagePersonalSelectableSettings"
-				(pageChange)="onManagePersonalPageChange($event)" [pageSize]="dataManagePersonalPageSize"
-				[skip]="dataManagePersonalSkip" [skip]="dataManagePersonalSkip"
-				(selectedKeysChange)="onManagePersonalSelectedKeysChange()" [pageable]="true" [kendoGridSelectBy]="'ID'"
-				[selectedKeys]="ManagePersonalSelection" [loading]="loading" [sortable]="ManagePersonalSort"
-				[sort]="ManagePersonalSortByField" (sortChange)="onManagePersonalSortChange($event)"
-				(dataStateChange)="onManagePersonalDataStateChange($event)">
-
-				<!-- <kendo-grid-column [title]="'Function' | translate" [width]="120" [headerClass]="{'headerCommon': true}"
-					*ngIf="!enabledImportExcelFlg ">
-					<ng-template kendoGridCellTemplate let-dataItem>
-						<div class="btn-toolbar k-grid-ignore-click" role="toolbar">
-							<div class="btn-group  btn-custom mr-2" role="group" *ngIf="(controlDefault ||control.Handle)">
-								<kendo-dropdownbutton
-									[popupSettings]="{popupClass: customPopupClass, animate: true, appendTo: 'component'}"
-									class="btn-custom" [data]="btnMbFunctionData" (itemClick)="onChangeFunction($event, dataItem)"
-									(click)="onFunctionIconClick(dataItem)">
-									<span>{{ 'Handle' | translate }}</span> <span class="k-icon k-i-arrow-60-down"></span>
-								</kendo-dropdownbutton>
-							</div>
-						</div>
-					</ng-template>
-				</kendo-grid-column> -->
-
-				<kendo-grid-column [width]="200" [field]="'ID'"
-					[title]="'User_UserName' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-				<kendo-grid-column [width]="200" [field]="'TenCauHoi'"
-					[title]="'TenCauHoi' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-
-				<kendo-grid-column [width]="200" [field]="'LinhVuc'"
-					[title]="'LinhVuc' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-				<kendo-grid-column [width]="200" [field]="'NoiDungCauHoi'"
-					[title]="'NoiDungCauHoi' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-				<kendo-grid-column [width]="200" [field]="'CauTraLoi'"
-					[title]="'CauTraLoi' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-				<kendo-grid-column [width]="200" [field]="'CauTraLoi'"
-						[title]="'CauTraLoi' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-				<kendo-grid-column [width]="200" [field]="'Luat'"
-					[title]="'Luat' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-				<kendo-grid-column [width]="200" [field]="'KeyWords'"
-					[title]="'KeyWords' | translate" [headerClass]="{'headerCommon': true}">
-				</kendo-grid-column>
-
-				<kendo-grid-messages [noRecords]="'NoRecords' | translate" [pagerOf]="'pagerOf' | translate"
-					[pagerItems]="'pagerItems' | translate">
-				</kendo-grid-messages>
-
-			</kendo-grid>
-
+	<div class="panelbar-wrapper" *ngIf="isFileImport">
+		<div class="col-md-12 col-12 content">
+			<div class="file-content" [innerHTML]="fileDataImport"></div>
 		</div>
-
-
 	</div>
 </section>

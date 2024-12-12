@@ -9,7 +9,7 @@ using MASTERPM.Web.Api.Base;
 
 namespace MASTERPM.Web.Models.Point
 {
-    [RoutePrefix("api/Diem")]
+    [RoutePrefix("api/Point")]
     public class PointController : BaseController
     {
 
@@ -38,20 +38,20 @@ namespace MASTERPM.Web.Models.Point
 
         [HttpGet]
         [Route("Search")]
-        public IHttpActionResult Search(int? LuatID, int? ChuongID, int? MucID, int? DieuID, int? KhoanID, int? DiemID)
+        public IHttpActionResult Search(int? LawID, int? ChapterID, int? ChapterItemID, int? ArticalID, int? ClaustID, int? PointID)
         {
             try
             {
 
-                var allLuat = LuatID == null;
-                var allChuongID = ChuongID == null;
-                var allMucID = MucID == null;
-                var allDieuID = DieuID == null;
-                var allKhoanID = KhoanID == null;
-                var allDiemID = DiemID == null;
+                var allLaw = LawID == null;
+                var allChapterID = ChapterID == null;
+                var allChapterItemID = ChapterItemID == null;
+                var allArticalID = ArticalID == null;
+                var allClaustID = ClaustID == null;
+                var allPointID = PointID == null;
 
-                var result = this.Repository.GetQuery<DATA_1_Luat>().Where(r => (allLuat || r.ID == LuatID))
-                     .Join(this.Repository.GetQuery<DATA_2_Chuong>().Where(r => (allChuongID || r.ID == ChuongID)),
+                var result = this.Repository.GetQuery<DATA_1_Luat>().Where(r => (allLaw || r.ID == LawID))
+                     .Join(this.Repository.GetQuery<DATA_2_Chuong>().Where(r => (allChapterID || r.ID == ChapterID)),
                         a => a.ID, b => b.LuatID, (a, b) => new
                         {
                             DATA_1_Luat = a,

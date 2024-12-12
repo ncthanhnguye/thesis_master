@@ -44,6 +44,7 @@ namespace MASTERPM.Model
         public virtual DbSet<DATA_6_Diem> DATA_6_Diem { get; set; }
         public virtual DbSet<DATA_ACCOUNT> DATA_ACCOUNT { get; set; }
         public virtual DbSet<DATA_CRAWL> DATA_CRAWL { get; set; }
+        public virtual DbSet<Data_Luat_HTML> Data_Luat_HTML { get; set; }
         public virtual DbSet<DATA_MENU> DATA_MENU { get; set; }
         public virtual DbSet<DATA_REWARD> DATA_REWARD { get; set; }
         public virtual DbSet<KeyPhrase_Title_Mapping> KeyPhrase_Title_Mapping { get; set; }

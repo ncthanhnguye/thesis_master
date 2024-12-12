@@ -1,12 +1,12 @@
 <section class="router-outlet-content">
   <div class="row">
     <div class="col-md-12 col-12">
-      <div class="page-name">ChapterItem</div>
+      <div class="page-name">Danh sách Mục</div>
       <hr>
     </div>
     <div class="col-md-12 col-12">
       <button class="btn-addnew" (click)="openAddDialog()">
-        <span>{{ 'AddNew' }}</span>
+        <span>{{ 'Thêm mới' }}</span>
       </button>
     </div>
 
@@ -18,7 +18,6 @@
         (filterChange)="LawHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
       </kendo-combobox>
-
     </div>
 
     <div class="col-md-6 col-12 container-datagrid">
@@ -29,7 +28,6 @@
         (filterChange)="ChapterHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
       </kendo-combobox>
-
     </div>
 
     <div class="col-md-12 col-12 container-datagrid">
@@ -54,21 +52,18 @@
             </div>
           </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column [field]="'ID'" [width]="50" [title]="ID"></kendo-grid-column>
-        <kendo-grid-column [field]="'LawID'" [width]="90" [title]="LawID">
+        <kendo-grid-column [field]="'LuatID'" [width]="50" [title]="'Luật'">
           <ng-template kendoGridCellTemplate let-dataItem>
-            {{ appUtils.getNameByList(Law, dataItem.LawID) == ""? dataItem.LawID  : appUtils.getNameByList(Law, dataItem.LawID)
-            }}
+            {{ appUtils.getNameByList(Law, dataItem.LuatID) == ""? dataItem.LuatID  : appUtils.getNameByList(Law, dataItem.LuatID) }}
           </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column [field]="'ChapterID'" [width]="90" [title]="ChapterID">
+        <kendo-grid-column [field]="'ChuongID'" [width]="300" [title]="'Chương'">
           <ng-template kendoGridCellTemplate let-dataItem>
-            {{ appUtils.getNameByList(Chapter, dataItem.ChapterID) == ""? dataItem.ChapterID  : appUtils.getNameByList(Chapter, dataItem.ChapterID)
-            }}
+            {{ appUtils.getNameByList(Chapter, dataItem.ChuongID) == ""? dataItem.ChuongID  : appUtils.getNameByList(Chapter, dataItem.ChuongID) }}
           </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column [field]="'Name'" [width]="150" [title]="Name"></kendo-grid-column>
-        <kendo-grid-column [field]="'Title'" [width]="500" [title]="Title"> </kendo-grid-column>
+        <kendo-grid-column [field]="'Title'" [width]="120" [title]="'Mục'"> </kendo-grid-column>
+        <kendo-grid-column [field]="'Content'" [width]="400" [title]="'Nội dung'"> </kendo-grid-column>
       </kendo-grid>
     </div>
   </div>

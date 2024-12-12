@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as mammoth from 'mammoth';
 import * as XLSX from 'xlsx';
 
 @Injectable({
@@ -28,6 +29,34 @@ export class AppFile {
             reader.readAsBinaryString(rawFile);
         });
     }
+
+    async readDocx(rawFile: any, convertType: 'html' | 'text'): Promise<string> {
+        const reader: FileReader = new FileReader();
+        return new Promise((resolve, reject) => {
+            reader.onerror = () => {
+                reader.abort();
+                reject(new DOMException('Problem parsing input file.'));
+            };
+    
+            reader.onload = async (e: any) => {
+                const arrayBuffer: ArrayBuffer = e.target.result;
+                try {
+                    if (convertType === 'html') {
+                        const result = await mammoth.convertToHtml({ arrayBuffer });
+                        resolve(result.value); // Trả về dữ liệu dạng HTML
+                    } else if (convertType === 'text') {
+                        const result = await mammoth.extractRawText({ arrayBuffer });
+                        resolve(result.value); // Trả về dữ liệu dạng văn bản thuần
+                    } else {
+                        reject(new Error('Invalid convertType specified. Use "html" or "text".'));
+                    }
+                } catch (error) {
+                    reject(new DOMException('Problem parsing .docx file.'));
+                }
+            };
+            reader.readAsArrayBuffer(rawFile);
+        });
+    }    
 
     async readImage(rawFile: any) {
 

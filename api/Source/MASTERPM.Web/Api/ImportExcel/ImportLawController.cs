@@ -7,6 +7,7 @@ using System.Web.Routing;
 using MASTERPM.Model;
 using MASTERPM.Model.Commons;
 using MASTERPM.Model.Core;
+using MASTERPM.Model.VM;
 using MASTERPM.Web.Api.Base;
 
 namespace MASTERPM.Web.Api.Profile
@@ -30,8 +31,6 @@ namespace MASTERPM.Web.Api.Profile
                     DATA_CRAWL dataItem = null;
                     foreach (var item in dataRequest)
                     {
-                        
-
                         dataItem = new DATA_CRAWL()
                         {
                             ID = item.ID ,

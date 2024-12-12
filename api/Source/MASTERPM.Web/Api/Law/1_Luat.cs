@@ -37,19 +37,18 @@ namespace MASTERPM.Web.Models.Law
 
         [HttpGet]
         [Route("Search")]
-        public IHttpActionResult Search(int? LuatID, int? ChapterID, int? ChapterItemID, int? ArticalID, int? ClaustID, int? PointID)
+        public IHttpActionResult Search(int? LawID, int? ChapterID, int? ChapterItemID, int? ArticalID, int? ClaustID, int? PointID)
         {
             try
             {
-
-                var allLaw = LuatID == null;
+                var allLaw = LawID == null;
                 var allChapter = ChapterID == null;
                 var allChapterItemID = ChapterItemID == null;
                 var allArticalID = ArticalID == null;
                 var allClaustID = ClaustID == null;
                 var allPointID = PointID == null;
 
-                var result = this.Repository.GetQuery<DATA_1_Luat>().Where(r => (allLaw || r.ID == LuatID))
+                var result = this.Repository.GetQuery<DATA_1_Luat>().Where(r => (allLaw || r.ID == LawID))
                      .ToList();
 
 

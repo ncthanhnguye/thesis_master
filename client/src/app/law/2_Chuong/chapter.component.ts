@@ -94,16 +94,27 @@ export class ChapterComponent implements OnInit, OnDestroy {
     this.loading = true;
 
     const dataRequest = {
-      LawID : this.searchOption.LawID ?  this.searchOption.LawID : ''  , 
-      ChapterID: '' ,
-      ChapterItemID : '' , 
-      ArticalID : '' , 
-      ClaustID : '' , 
-      PointID : ''
-    }
+      LawID: this.searchOption.LawID ? this.searchOption.LawID : '',
+      ChapterID: '',
+      ChapterItemID: '',
+      ArticalID: '',
+      ClaustID: '',
+      PointID: ''
+    }    
     const result = await this.appService.doGET('api/Chapter/Search', dataRequest);
     if (result) {
-      this.dataGrid = result.Data;
+      this.dataGrid = [];
+
+      result.Data.forEach(item => {
+        const dataLuat = item.DATA_1_Luat;
+        const dataChuong = item.DATA_2_Chuong;
+        const combinedData = {
+          ...dataLuat,
+          ...dataChuong
+        };
+        this.dataGrid.push(combinedData);
+      });
+      // console.log('dataGrid', this.dataGrid);
       this.bindDataGrid();
     }
     this.loading = false;
@@ -117,7 +128,7 @@ export class ChapterComponent implements OnInit, OnDestroy {
       LawID: null,
 
     };
-    this.searchOption.LawID = 2 ; 
+    // this.searchOption.LawID = 2 ; 
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
   }
 
@@ -241,10 +252,10 @@ export class ChapterComponent implements OnInit, OnDestroy {
   }
 
   LawHandleFilter(value) {
-    this.LawFilter = this.Law.filter((s) => s.Name.toLowerCase().indexOf(value.toLowerCase()) !== -1 );
+    this.LawFilter = this.Law.filter((s) => s.Name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
-  onSearchChange(){
+  onSearchChange() {
     this.onReload();
   }
 }

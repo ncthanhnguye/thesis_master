@@ -111,7 +111,7 @@ export class AppService implements OnInit {
     }
   }
 
-  async doPOST(methodUrl: any, dataRequest: any) {
+  async doPOST(methodUrl: any, dataRequest: any) {    
     this.createHeaders();
     const apiURL = `${this.apiRoot}${methodUrl}`;
     try {
