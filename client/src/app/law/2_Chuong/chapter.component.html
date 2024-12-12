@@ -12,10 +12,10 @@
 
     <div class="col-md-6 col-12 container-datagrid">
       <div>Tìm kiếm Luật</div>
-      <kendo-combobox class="cbx-searchOption" [data]="LawFilter" [textField]="'Content'" [valueField]="'ID'"
+      <kendo-combobox class="cbx-searchOption" [data]="LawFilter" [textField]="'Content'" [valueField]="'LuatUUID'"
         [popupSettings]="{animate: true, appendTo: 'component'}"
         [placeholder]="'Chọn nội dung tìm kiếm'"
-        [(ngModel)]="searchOption.LawID" [valuePrimitive]="true" [filterable]="true"
+        [(ngModel)]="searchOption.LuatUUID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="LawHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
       </kendo-combobox>
@@ -30,7 +30,7 @@
         (dataStateChange)="onGridDataStateChange($event)">
 
         <!-- Cột chức năng (Edit/Delete) -->
-        <kendo-grid-column [title]="'Function' " [width]="80" [headerClass]="{'headerCommon': true}">
+        <kendo-grid-column [title]="'Thao tác' " [width]="60" [headerClass]="{'headerCommon': true}">
           <ng-template kendoGridCellTemplate let-dataItem>
             <div class="btn-toolbar" role="toolbar">
               <div class="btn-group mr-2 g-btn g-btn-edit" role="group">
@@ -50,13 +50,13 @@
         <kendo-grid-column [field]="'ID'" [width]="50" [title]="ID"></kendo-grid-column>
 
         <!-- Cột LuatID -->
-        <kendo-grid-column [field]="'LuatID'" [width]="90" [title]="'LuatID'"></kendo-grid-column>
+        <kendo-grid-column [field]="'LuatContent'" [width]="90" [title]="'Luật'"></kendo-grid-column>
 
         <!-- Cột title Chương -->
-        <kendo-grid-column [field]="'Title'" [width]="150" [title]="'Chương'"></kendo-grid-column>
+<!--        <kendo-grid-column [field]="'Title'" [width]="150" [title]="'Chương'"></kendo-grid-column>-->
 
         <!-- Cột content Chương -->
-        <kendo-grid-column [field]="'Content'" [width]="150" [title]="'Nội dung'"></kendo-grid-column>
+        <kendo-grid-column [field]="'Content'" [width]="150" [title]="'Chương'"></kendo-grid-column>
       </kendo-grid>
     </div>
   </div>

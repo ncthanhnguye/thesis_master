@@ -11,20 +11,20 @@
     </div>
 
     <div class="col-md-6 col-12 container-datagrid">
-      <div>LawID</div>
-      <kendo-combobox class="cbx-searchOption" [data]="LawFilter" [textField]="'Name'" [valueField]="'ID'"
+      <div>Luật</div>
+      <kendo-combobox class="cbx-searchOption" [data]="LawFilter" [textField]="'Content'" [valueField]="'LuatUUID'"
         [popupSettings]="{animate: true, appendTo: 'component'}"
-        [(ngModel)]="searchOption.LawID" [valuePrimitive]="true" [filterable]="true"
+        [(ngModel)]="searchOption.LuatUUID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="LawHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
       </kendo-combobox>
     </div>
 
     <div class="col-md-6 col-12 container-datagrid">
-      <div>ChapterID</div>
-      <kendo-combobox class="cbx-searchOption" [data]="ChapterFilter" [textField]="'Name'" [valueField]="'ID'"
+      <div>Chương</div>
+      <kendo-combobox class="cbx-searchOption" [data]="ChapterFilter" [textField]="'Content'" [valueField]="'ChuongUUID'"
         [popupSettings]="{animate: true, appendTo: 'component'}"
-        [(ngModel)]="searchOption.ChapterID" [valuePrimitive]="true" [filterable]="true"
+        [(ngModel)]="searchOption.ChuongUUID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="ChapterHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
       </kendo-combobox>
@@ -37,7 +37,7 @@
         (sortChange)="onUserSortChange($event)" [filter]="dataGridState.filter" [filterable]="true"
         (dataStateChange)="onGridDataStateChange($event)">
 
-        <kendo-grid-column [title]="'Function' " [width]="80" [headerClass]="{'headerCommon': true}">
+        <kendo-grid-column [title]="'Thao tác' " [width]="80" [headerClass]="{'headerCommon': true}">
           <ng-template kendoGridCellTemplate let-dataItem>
             <div class="btn-toolbar" role="toolbar">
               <div class="btn-group mr-2 g-btn g-btn-edit" role="group">
@@ -52,18 +52,12 @@
             </div>
           </ng-template>
         </kendo-grid-column>
-        <kendo-grid-column [field]="'LuatID'" [width]="50" [title]="'Luật'">
-          <ng-template kendoGridCellTemplate let-dataItem>
-            {{ appUtils.getNameByList(Law, dataItem.LuatID) == ""? dataItem.LuatID  : appUtils.getNameByList(Law, dataItem.LuatID) }}
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column [field]="'ChuongID'" [width]="300" [title]="'Chương'">
-          <ng-template kendoGridCellTemplate let-dataItem>
-            {{ appUtils.getNameByList(Chapter, dataItem.ChuongID) == ""? dataItem.ChuongID  : appUtils.getNameByList(Chapter, dataItem.ChuongID) }}
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column [field]="'Title'" [width]="120" [title]="'Mục'"> </kendo-grid-column>
-        <kendo-grid-column [field]="'Content'" [width]="400" [title]="'Nội dung'"> </kendo-grid-column>
+
+        <kendo-grid-column [field]="'LuatContent'" [width]="120" [title]="'Luật'"></kendo-grid-column>
+
+        <kendo-grid-column [field]="'ChuongContent'" [width]="200" [title]="'Chương'"></kendo-grid-column>
+
+        <kendo-grid-column [field]="'Content'" [width]="400" [title]="'Mục'"> </kendo-grid-column>
       </kendo-grid>
     </div>
   </div>
@@ -89,7 +83,7 @@
     <div class="col-md-12 col-12">
       <div class="control">
         <label>
-          <span [textContent]="'ChapterID'"></span>
+          <span [textContent]="'Chương'"></span>
         </label>
         <kendo-combobox [data]="ChapterFilter" [textField]="'Name'" [valueField]="'ID'" [popupSettings]="{animate: true, appendTo: 'component'}"
           [(ngModel)]="dataDetailItemtemp.ChapterID" [valuePrimitive]="true" [filterable]="true"

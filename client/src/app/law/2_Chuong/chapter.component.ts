@@ -42,11 +42,11 @@ export class ChapterComponent implements OnInit, OnDestroy {
   DialogDetail = false;
 
   searchOption = {
-    LawID: null
+    LuatUUID: null
   }
 
-  Law: Array<{ ID: number; Name: string; }> = [];
-  LawFilter: Array<{ ID: number; Name: string }> = [];
+  Law: Array<{ ID: number; Name: string; LuatUUID: string; }> = [];
+  LawFilter: Array<{ ID: number; Name: string; LuatUUID: string }> = [];
 
 
   constructor(
@@ -94,13 +94,9 @@ export class ChapterComponent implements OnInit, OnDestroy {
     this.loading = true;
 
     const dataRequest = {
-      LawID: this.searchOption.LawID ? this.searchOption.LawID : '',
+      LuatUUID: this.searchOption.LuatUUID ? this.searchOption.LuatUUID : '',
       ChapterID: '',
-      ChapterItemID: '',
-      ArticalID: '',
-      ClaustID: '',
-      PointID: ''
-    }    
+    }
     const result = await this.appService.doGET('api/Chapter/Search', dataRequest);
     if (result) {
       this.dataGrid = [];
@@ -110,7 +106,8 @@ export class ChapterComponent implements OnInit, OnDestroy {
         const dataChuong = item.DATA_2_Chuong;
         const combinedData = {
           ...dataLuat,
-          ...dataChuong
+          ...dataChuong,
+          LuatContent: dataLuat.Content
         };
         this.dataGrid.push(combinedData);
       });
@@ -128,7 +125,7 @@ export class ChapterComponent implements OnInit, OnDestroy {
       LawID: null,
 
     };
-    // this.searchOption.LawID = 2 ; 
+    // this.searchOption.LawID = 2 ;
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
   }
 

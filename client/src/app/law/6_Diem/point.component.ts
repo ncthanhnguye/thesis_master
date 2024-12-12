@@ -7,6 +7,7 @@ import { IntlService } from '@progress/kendo-angular-intl';
 import { Notification } from 'src/app/services/app.notification';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { AppUtils } from 'src/app/services/app.utils';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-point',
@@ -42,27 +43,32 @@ export class PointComponent implements OnInit, OnDestroy {
   DialogDetail = false;
 
   searchOption = {
-    LawID: null,
-    ChapterID: null,
-    ChapterItemID: null , 
-    ArticalID : null
+    LuatUUID: null,
+    ChuongUUID: null,
+    MucUUID: null, 
+    DieuUUID : null,
+    KhoanUUID: null,
   }
 
-  Law: Array<{ ID: number; Name: string; }> = [];
-  LawFilter: Array<{ ID: number; Name: string }> = [];
+  Law: Array<{ ID: number; Content: string; }> = [];
+  LawFilter: Array<{ ID: number; Content: string }> = [];
 
-  Chapter: Array<{ ID: number; Name: string, LawID: number }> = [];
-  ChapterFilter: Array<{ ID: number; Name: string, LawID: number }> = [];
+  Chapter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
+  ChapterFilter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
 
-  ChapterItem: Array<{ ID: number; Name: string, LawID: number, ChapterID: number }> = [];
-  ChapterItemFilter: Array<{ ID: number; Name: string, LawID: number, ChapterID: number }> = [];
+  ChapterItem: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
+  ChapterItemFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
 
-  Artical: Array<{ ID: number; Name: string, LawID: number, ChapterID: number }> = [];
-  ArticalFilter: Array<{ ID: number; Name: string, LawID: number, ChapterID: number }> = [];
+  Artical: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number }> = [];
+  ArticalFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number }> = [];
+
+  Claust: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number, DieuUUID: number }> = [];
+  ClaustFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number, DieuUUID: number }> = [];
 
 
   constructor(
     private appService: AppService,
+    private appComponent: AppComponent,
     private appSwal: AppSwal,
     public intl: IntlService,
     private notification: Notification,
@@ -121,16 +127,40 @@ export class PointComponent implements OnInit, OnDestroy {
   async getDataGrid() {
     this.loading = true;
     const dataRequest = {
-      LawID: this.searchOption.LawID ? this.searchOption.LawID : '',
-      ChapterID: this.searchOption.ChapterID ? this.searchOption.ChapterID : '',
-      ChapterItemID : this.searchOption.ChapterItemID ? this.searchOption.ChapterItemID : '',
-      ArticalID: this.searchOption.ArticalID ? this.searchOption.ArticalID : '',
-      ClaustID : '' , 
-      PointID : ''
+      LuatUUID: this.searchOption.LuatUUID ? this.searchOption.LuatUUID : '',
+      ChuongUUID: this.searchOption.ChuongUUID ? this.searchOption.ChuongUUID : '',
+      MucUUID : this.searchOption.MucUUID ? this.searchOption.MucUUID : '',
+      DieuUUID: this.searchOption.DieuUUID ? this.searchOption.DieuUUID : '',
+      KhoanUUID : this.searchOption.KhoanUUID ? this.searchOption.KhoanUUID : '',
+      PointID : '',
     }
-    const result = await this.appService.doGET('api/Claust/Search', dataRequest);
+    const result = await this.appService.doGET('api/Point/Search', dataRequest);
     if (result) {
-      this.dataGrid = result.Data;
+      this.dataGrid = [];
+
+      result.Data.forEach(item => {
+        const dataLuat = item.DATA_1_Luat;
+        const dataChuong = item.DATA_2_Chuong;
+        const dataMuc = item.DATA_3_Muc;
+        const dataDieu = item.DATA_4_Dieu;
+        const dataKhoan = item.DATA_5_Khoan;
+        const dataDiem = item.DATA_6_Diem;
+        
+        const combinedData = {
+          ...this.appComponent.mapDataWithDefault(item.dataLuat),          
+          ...this.appComponent.mapDataWithDefault(dataChuong),
+          ...this.appComponent.mapDataWithDefault(dataMuc),
+          ...this.appComponent.mapDataWithDefault(dataDieu),
+          ...this.appComponent.mapDataWithDefault(dataKhoan),
+          ...this.appComponent.mapDataWithDefault(dataDiem),  
+          LuatContent: dataLuat.Content,
+          ChuongContent: dataChuong.Content,
+          MucContent: dataMuc.Content,
+          DieuContent: dataDieu.Content,
+          KhoanContent: dataKhoan.Content,
+        };
+        this.dataGrid.push(combinedData);
+      });
       this.bindDataGrid();
     }
     this.loading = false;
@@ -139,16 +169,18 @@ export class PointComponent implements OnInit, OnDestroy {
   setDefault() {
     this.dataDetailItem = {
       ID: null,
-      Name: null,
+      Content: null,
       Title: null,
-      LawID: null,
-      ChapterID: null,
-      AritcalID : null
+      LuatUUID: null,
+      ChuongUUID: null,
+      MucUUID : null,
+      DieuUUID: null
     };
-    this.searchOption.LawID = 2;
-    this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LawID == this.searchOption.LawID })
-    this.ChapterItemFilter = this.ChapterItem.filter((obj) => { return obj.ChapterID == this.searchOption.ChapterID })
-    this.ArticalFilter = this.Artical.filter((obj) => { return obj.ChapterID == this.searchOption.ChapterItemID })
+    // this.searchOption.LawID = 2;
+    this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LuatUUID == this.searchOption.LuatUUID })
+    this.ChapterItemFilter = this.ChapterItem.filter((obj) => { return obj.ChuongUUID == this.searchOption.ChuongUUID })
+    this.ArticalFilter = this.Artical.filter((obj) => { return obj.MucUUID == this.searchOption.MucUUID })
+    this.ClaustFilter = this.Claust.filter((obj) => { return obj.DieuUUID == this.searchOption.DieuUUID })
 
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
   }
@@ -274,45 +306,54 @@ export class PointComponent implements OnInit, OnDestroy {
   }
 
   LawHandleFilter(value) {
-    this.LawFilter = this.Law.filter((s) => s.Name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.LawFilter = this.Law.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
   ChapterHandleFilter(value) {
-    this.ChapterFilter = this.Chapter.filter((s) => s.Name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.ChapterFilter = this.Chapter.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
   ChapterItemHandleFilter(value) {
-    this.ChapterItemFilter = this.ChapterItem.filter((s) => s.Name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.ChapterItemFilter = this.ChapterItem.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
   onSearchChange() {
-    if (this.searchOption.LawID == null) {
-      this.searchOption.ChapterID = null;
-      this.searchOption.ChapterItemID = null;
-      this.searchOption.ArticalID = null;
+    if (this.searchOption.LuatUUID == null) {
+      this.searchOption.ChuongUUID = null;
+      this.searchOption.MucUUID = null;
+      this.searchOption.DieuUUID = null;
       this.ChapterFilter = null;
       this.ChapterItemFilter = null;
       this.ArticalFilter = null;
+      this.ClaustFilter = null;
     }
     else {
-      this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LawID == this.searchOption.LawID })
+      this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LuatUUID == this.searchOption.LuatUUID })
     }
 
-    if (this.searchOption.ChapterID == null) {
-      this.searchOption.ChapterItemID = null;
-      this.searchOption.ArticalID = null;
+    if (this.searchOption.ChuongUUID == null) {
+      this.searchOption.MucUUID = null;
+      this.searchOption.DieuUUID = null;
       this.ChapterItemFilter = null
       this.ArticalFilter = null;
+      this.ClaustFilter = null;
     }
     else {
-      this.ChapterItemFilter = this.ChapterItem.filter((obj) => { return obj.ChapterID == this.searchOption.ChapterID })
+      this.ChapterItemFilter = this.ChapterItem.filter((obj) => { return obj.ChuongUUID == this.searchOption.ChuongUUID })
     }
-    if (this.searchOption.ChapterItemID == null) {
-      this.searchOption.ArticalID = null;
+    if (this.searchOption.MucUUID == null) {
+      this.searchOption.DieuUUID = null;
       this.ArticalFilter = null;
     }
     else {
-      this.ArticalFilter = this.Artical.filter((obj) => { return obj.ChapterID == this.searchOption.ChapterItemID })
+      this.ArticalFilter = this.Artical.filter((obj) => { return obj.MucUUID == this.searchOption.MucUUID })
+    }
+    if (this.searchOption.DieuUUID == null) {
+      this.searchOption.KhoanUUID = null;
+      this.ClaustFilter = null;
+    }
+    else {
+      this.ClaustFilter = this.Claust.filter((obj) => { return obj.DieuUUID == this.searchOption.DieuUUID})
     }
 
     
@@ -320,6 +361,6 @@ export class PointComponent implements OnInit, OnDestroy {
   }
 
   onLawDetailChange(){
-    this.ChapterFilter = this.Chapter.filter( (obj) => { return obj.LawID == this.dataDetailItemtemp.LawID })
+    this.ChapterFilter = this.Chapter.filter( (obj) => { return obj.LuatUUID == this.dataDetailItemtemp.LuatUUID })
   }
 }
