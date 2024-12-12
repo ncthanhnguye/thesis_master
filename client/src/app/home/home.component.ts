@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   loading = false;
   showToggleUser = false;
   uploadImageOpened = false;
+  isShowHeader = true;
 
   public GUID_EMPTY = "00000000-0000-0000-0000-000000000000";
   opened = false;
@@ -80,16 +81,17 @@ export class HomeComponent implements OnInit, OnDestroy {
       ];
     }
     else {
-      this.option = [
-        {
-          id: 1,
-          text: "Đăng nhập",
-          icon: 'login',
-          click: () => {
-            this.onLogin();
-          }
-        }
-      ];
+      this.isShowHeader = false
+      // this.option = [
+      //   {
+      //     id: 1,
+      //     text: "Đăng nhập",
+      //     icon: 'login',
+      //     click: () => {
+      //       this.onLogin();
+      //     }
+      //   }
+      // ];
     }
   }
 

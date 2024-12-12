@@ -1172,9 +1172,10 @@ input {
 }
 
 body {
-	background-color: #fff;
+	/* background-color: #fff; */
 	color: #999;
 	line-height: 2;
+    background-color: #eee !important;
 
-	background-image: linear-gradient(120deg, #66a6ff 0%, #89f7fe 100%);
+	/* background-image: linear-gradient(120deg, #66a6ff 0%, #89f7fe 100%); */
 }

@@ -100,13 +100,14 @@
 .s129 .form .inner-form .input-field input {
 	height: 100%;
 	width: 100%;
-	background: transparent;
+	background: #6998ff7d;
+	border-radius: 12px;
 	border: 0;
-	border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+	border-bottom: 2px solid #4680ff;
 	display: block;
 	width: 100%;
 	padding: 10px 32px 10px 70px;
-	color: #fff;
+	color: #4680ff;
 	transition: all .2s ease-out, color .2s ease-out;
 }
 
@@ -147,7 +148,7 @@
 }
 
 .s129 .form .inner-form .input-field .btn-search .fa-search {
-	color: #ffffff;
+	color: #4680ff;
 	font-size: 50px;
 
 	cursor: pointer;
