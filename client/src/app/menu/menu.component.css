@@ -1,3 +1,21 @@
+.menu-open {
+    .menu-left {
+      width: 200px;
+    }
+    .layout-container {
+      margin-left: 200px;
+    }
+  }
+
+  .menu-hidden {
+    .menu-left {
+      width: 50px;
+    }
+    .layout-container {
+      margin-left: 50px;
+    }
+  }
+
 .menu-left {
     width: 200px;
     height: 100%;
@@ -14,6 +32,20 @@
     font-weight: 500;
     font-size: 15px;
     padding: 12px 7px;
+    transition: all 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-left.menu-hidden .menu-item {
+    font-size: 0;
+    justify-content: center;
+}
+
+.menu-left.menu-hidden .menu-item i {
+    font-size: 20px;
+    margin: 0;
 }
 
 .child {
@@ -27,7 +59,7 @@
     color: #4680ff;
 }
 
-.menu-item i:first-child {
+.menu-left.menu-open .menu-item i:first-child {
     padding-right: 10px;
 }
 
@@ -47,6 +79,7 @@
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid white;
+    cursor: pointer;
 }
 
 .icon-menu {
