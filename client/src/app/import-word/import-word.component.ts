@@ -298,13 +298,13 @@ export class ImportWordComponent implements OnInit {
         currentContent = trimmedLine;
         currentType = 'diem';
       } else if (currentType && trimmedLine !== '') {
-        appendContent(trimmedLine);
+        currentContent += ` ${trimmedLine}`;
       }
     });
 
-    saveContent();  // Lưu nội dung cuối cùng
+    saveContent();
 
-    console.log('Extracted data with UUIDs:', this.lawWordData);
+    // console.log('Extracted data with UUIDs:', this.lawWordData);
   }
 
   showSuccessMessage() {
