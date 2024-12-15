@@ -1022,7 +1022,7 @@ kendo-toolbar {
         width: 50px;
       }
       .layout-container {
-        margin-left: 00px;
+        margin-left: 50px;
       }
     }
   }
@@ -1038,9 +1038,9 @@ kendo-toolbar {
     transition: margin-left 0.3s ease;
   }
 
-.layout-container {
+/* .layout-container {
     margin-left: 200px;
-}
+} */
 
 .page-name {
     font-weight: bold;

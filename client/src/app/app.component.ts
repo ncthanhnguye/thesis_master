@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from './services/app.service';
 import { AuthenticationService } from './services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,6 +16,8 @@ export class AppComponent {
 	openMenuFlg = true;
 	user: any;
 	menuHidden = false;
+	isLoginPage = false;
+
 	constructor(
 		private authenticationService: AuthenticationService,
 		private translate: TranslateService,
@@ -35,8 +36,8 @@ export class AppComponent {
 		}
 		else {
 			this.menuHidden = true;
-			this.openMenuFlg = false;
-		}
+			this.isLoginPage = true;
+		}		
 	}
 
 	toggleMenu() {
