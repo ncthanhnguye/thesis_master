@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Routing;
 using MASTERPM.Model;
+using MASTERPM.Model.Commons;
 using MASTERPM.Model.Core;
 using MASTERPM.Web.Api.Base;
 
@@ -36,52 +37,95 @@ namespace MASTERPM.Web.Models.Artical
 
         [HttpGet]
         [Route("Search")]
-        public IHttpActionResult Search(int? LawID, int? ChapterID, int? ChapterItemID, int? ArticalID, int? ClaustID, int? PointID)
+        public IHttpActionResult Search(string LuatUUID, string ChuongUUID, int? ChapterItemID)
         {
             try
             {
-                var allLaw = LawID == null;
-                var allChapterID = ChapterID == null;
+                var allLaw = LuatUUID == null;
+                var allChapterID = ChuongUUID == null;
                 var allChapterItemID = ChapterItemID == null;
-                var allArticalID = ArticalID == null;
-                var allClaustID = ClaustID == null;
-                var allPointID = PointID == null;
 
-                var result = this.Repository.GetQuery<DATA_1_Luat>()
-                    .Where(r => (allLaw || r.ID == LawID))
-                    .Join(
-                        this.Repository.GetQuery<DATA_2_Chuong>().Where(r => (allChapterID || r.ID == ChapterID)),
-                        a => a.ID,
-                        b => b.LuatID,
-                        (a, b) => new
-                        {
-                            DATA_1_Luat = a,
-                            DATA_2_Chuong = b
-                        }
-                    )
-                    .Join(
-                        this.Repository.GetQuery<DATA_3_Muc>().Where(r => (allChapterItemID || r.ID == ChapterItemID)),
-                        ab => ab.DATA_2_Chuong.ID,
-                        c => c.ChuongID,
-                        (ab, c) => new
-                        {
-                            ab.DATA_1_Luat,
-                            ab.DATA_2_Chuong,
-                            DATA_3_Muc = c
-                        }
-                    )
-                    .Select(r => new
+                Guid.TryParse(LuatUUID, out Guid parsedLuatUUID);
+                Guid.TryParse(ChuongUUID, out Guid parsedChuongUUID);
+
+                if (allLaw && allChapterID)
+                {
+                    var resultAll = this.Repository.GetQuery<DATA_1_Luat>()
+                        .Join(this.Repository.GetQuery<DATA_2_Chuong>(),
+                            law => law.LuatUUID,
+                            chapter => chapter.LuatUUID,
+                            (law, chapter) => new { law, chapter })
+                        .Join(this.Repository.GetQuery<DATA_3_Muc>(),
+                            combined => combined.chapter.ChuongUUID,
+                            muc => muc.ChuongUUID,
+                            (combined, muc) => new
+                            {
+                                Luat = new
+                                {
+                                    combined.law.ID,
+                                    combined.law.Content,
+                                    combined.law.LuatUUID
+                                },
+                                Chuong = new
+                                {
+                                    combined.chapter.ID,
+                                    combined.chapter.Content,
+                                    combined.chapter.ChuongUUID
+                                },
+                                Muc = new
+                                {
+                                    muc.ID,
+                                    muc.Content,
+                                    muc.MucUUID
+                                },
+                            })                       
+                        .ToList();
+
+                    return Json(new TResult()
                     {
-                        r.DATA_1_Luat,
-                        r.DATA_2_Chuong,
-                        r.DATA_3_Muc
-                    })
+                        Status = 1,
+                        Data = resultAll
+                    });
+                }
+
+                var resultFiltered = this.Repository.GetQuery<DATA_1_Luat>()
+                    .Where(r => allLaw || r.LuatUUID == parsedLuatUUID)
+                    .Join(this.Repository.GetQuery<DATA_2_Chuong>()
+                        .Where(r => allChapterID || r.ChuongUUID == parsedChuongUUID),
+                        law => law.LuatUUID,
+                        chapter => chapter.LuatUUID,
+                        (law, chapter) => new { law, chapter })
+                    .Join(this.Repository.GetQuery<DATA_3_Muc>()
+                        .Where(r => allChapterID || r.ChuongUUID == parsedChuongUUID),
+                        combined => combined.chapter.ChuongUUID,
+                        muc => muc.ChuongUUID,
+                        (combined, muc) => new
+                        {
+                            Luat = new
+                            {
+                                combined.law.ID,
+                                combined.law.Content,
+                                combined.law.LuatUUID
+                            },
+                            Chuong = new
+                            {
+                                combined.chapter.ID,
+                                combined.chapter.Content,
+                                combined.chapter.ChuongUUID
+                            },
+                            Muc = new
+                            {
+                                muc.ID,
+                                muc.Content,
+                                muc.MucUUID
+                            },
+                        })                    
                     .ToList();
 
                 return Json(new TResult()
                 {
                     Status = 1,
-                    Data = result
+                    Data = resultFiltered
                 });
             }
             catch (Exception e)
@@ -183,7 +227,7 @@ namespace MASTERPM.Web.Models.Artical
                 return Json(new TResult()
                 {
                     Status = 1,
-                    Msg = "Delete Ok"
+                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgDeleteDataSuccess),
                 });
             }
             catch (Exception e)

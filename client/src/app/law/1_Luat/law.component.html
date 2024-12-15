@@ -32,11 +32,7 @@
           </ng-template>
         </kendo-grid-column>
         <kendo-grid-column [field]="'Content'" [width]="150" [title]="'Luật'"></kendo-grid-column>
-        <kendo-grid-column [field]="'LawDate'" [width]="90" [title]="'Ngày'">
-          <ng-template kendoGridCellTemplate let-dataItem>
-            {{dataItem.LawDate | date: 'dd/MM/yyyy '}}
-          </ng-template>
-        </kendo-grid-column>
+        <kendo-grid-column [field]="'LawDate'" [width]="90" [title]="'Ngày'"></kendo-grid-column>
         <kendo-grid-column [field]="'LawNumber'" [width]="90" [title]="'Bộ Luật Số'"> </kendo-grid-column>
         <kendo-grid-column [field]="'TotalChapter'" [width]="90" [title]="'Tổng Số Chương'"> </kendo-grid-column>
         <kendo-grid-column [field]="'Status'" [width]="90" [title]="'Trạng Thái'"> </kendo-grid-column>

@@ -18,7 +18,7 @@ export class ChapterComponent implements OnInit, OnDestroy {
   loading = false;
 
   dataGridSkip = 0;
-  dataGridPageSize = 50;
+  dataGridPageSize = 10;
 
   dataGrid = [];
   dataGridSelectableSettings: SelectableSettings;
@@ -125,7 +125,7 @@ export class ChapterComponent implements OnInit, OnDestroy {
       LawID: null,
 
     };
-    // this.searchOption.LawID = 2 ;
+    this.searchOption.LuatUUID = '';
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
   }
 

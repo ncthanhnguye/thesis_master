@@ -19,7 +19,7 @@ export class PointComponent implements OnInit, OnDestroy {
   loading = false;
 
   dataGridSkip = 0;
-  dataGridPageSize = 50;
+  dataGridPageSize = 10;
 
   dataGrid = [];
   dataGridSelectableSettings: SelectableSettings;
@@ -45,7 +45,7 @@ export class PointComponent implements OnInit, OnDestroy {
   searchOption = {
     LuatUUID: null,
     ChuongUUID: null,
-    MucUUID: null, 
+    MucUUID: null,
     DieuUUID : null,
     KhoanUUID: null,
   }
@@ -85,9 +85,9 @@ export class PointComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    this.setDefault();
     this.setSelectableSettings();
     await this.getFilter();
-    this.setDefault();
     this.onReload();
   }
 
@@ -122,6 +122,11 @@ export class PointComponent implements OnInit, OnDestroy {
       this.Artical = ArticalResult.Data;
       this.ArticalFilter = this.Artical.slice();
     }
+    const ClaustResult = await this.appService.doGET('api/Claust/GetClaust', null);
+    if (ClaustResult) {
+      this.Claust = ClaustResult.Data;
+      this.ClaustFilter = this.Claust.slice();
+    }
   }
 
   async getDataGrid() {
@@ -138,21 +143,21 @@ export class PointComponent implements OnInit, OnDestroy {
     if (result) {
       this.dataGrid = [];
 
-      result.Data.forEach(item => {
-        const dataLuat = item.DATA_1_Luat;
-        const dataChuong = item.DATA_2_Chuong;
-        const dataMuc = item.DATA_3_Muc;
-        const dataDieu = item.DATA_4_Dieu;
-        const dataKhoan = item.DATA_5_Khoan;
-        const dataDiem = item.DATA_6_Diem;
-        
+      result.Data.forEach((item: { Luat: any; Chuong: any; Muc: any; Dieu: any; Khoan: any; Diem: any; dataLuat: any; }) => {
+        const dataLuat = item.Luat;
+        const dataChuong = item.Chuong;
+        const dataMuc = item.Muc;
+        const dataDieu = item.Dieu;
+        const dataKhoan = item.Khoan;
+        const dataDiem = item.Diem;
+
         const combinedData = {
-          ...this.appComponent.mapDataWithDefault(item.dataLuat),          
+          ...this.appComponent.mapDataWithDefault(dataLuat),
           ...this.appComponent.mapDataWithDefault(dataChuong),
           ...this.appComponent.mapDataWithDefault(dataMuc),
           ...this.appComponent.mapDataWithDefault(dataDieu),
           ...this.appComponent.mapDataWithDefault(dataKhoan),
-          ...this.appComponent.mapDataWithDefault(dataDiem),  
+          ...this.appComponent.mapDataWithDefault(dataDiem),
           LuatContent: dataLuat.Content,
           ChuongContent: dataChuong.Content,
           MucContent: dataMuc.Content,
@@ -176,7 +181,13 @@ export class PointComponent implements OnInit, OnDestroy {
       MucUUID : null,
       DieuUUID: null
     };
-    // this.searchOption.LawID = 2;
+    this.searchOption = {
+      LuatUUID: '',
+      ChuongUUID: '',
+      MucUUID: '',
+      DieuUUID: '',
+      KhoanUUID: '',
+    };
     this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LuatUUID == this.searchOption.LuatUUID })
     this.ChapterItemFilter = this.ChapterItem.filter((obj) => { return obj.ChuongUUID == this.searchOption.ChuongUUID })
     this.ArticalFilter = this.Artical.filter((obj) => { return obj.MucUUID == this.searchOption.MucUUID })
@@ -356,7 +367,7 @@ export class PointComponent implements OnInit, OnDestroy {
       this.ClaustFilter = this.Claust.filter((obj) => { return obj.DieuUUID == this.searchOption.DieuUUID})
     }
 
-    
+
     this.onReload();
   }
 

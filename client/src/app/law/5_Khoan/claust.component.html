@@ -13,7 +13,7 @@
     <div class="col-md-3 col-12 container-datagrid">
       <div>Luật</div>
       <kendo-combobox class="cbx-searchOption" [data]="LawFilter" [textField]="'Content'" [valueField]="'LuatUUID'"
-        [popupSettings]="{animate: true, appendTo: 'component'}"
+        [popupSettings]="{animate: true, appendTo: 'component'}" [placeholder]="'Chọn nội dung tìm kiếm'"
         [(ngModel)]="searchOption.LuatUUID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="LawHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
@@ -23,7 +23,7 @@
     <div class="col-md-3 col-12 container-datagrid">
       <div>Chương</div>
       <kendo-combobox class="cbx-searchOption" [data]="ChapterFilter" [textField]="'Content'" [valueField]="'ChuongUUID'"
-        [popupSettings]="{animate: true, appendTo: 'component'}"
+        [popupSettings]="{animate: true, appendTo: 'component'}" [placeholder]="'Chọn nội dung tìm kiếm'"
         [(ngModel)]="searchOption.ChuongUUID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="ChapterHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
@@ -33,7 +33,7 @@
     <div class="col-md-3 col-12 container-datagrid">
       <div>Mục</div>
       <kendo-combobox class="cbx-searchOption" [data]="ChapterItemFilter" [textField]="'Content'" [valueField]="'MucUUID'"
-        [popupSettings]="{animate: true, appendTo: 'component'}"
+        [popupSettings]="{animate: true, appendTo: 'component'}" [placeholder]="'Chọn nội dung tìm kiếm'"
         [(ngModel)]="searchOption.MucUUID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="ChapterItemHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
@@ -43,7 +43,7 @@
     <div class="col-md-3 col-12 container-datagrid">
       <div>Điều</div>
       <kendo-combobox class="cbx-searchOption" [data]="ArticalFilter" [textField]="'Content'" [valueField]="'DieuUUID'"
-        [popupSettings]="{animate: true, appendTo: 'component'}"
+        [popupSettings]="{animate: true, appendTo: 'component'}" [placeholder]="'Chọn nội dung tìm kiếm'"
         [(ngModel)]="searchOption.DieuUUID" [valuePrimitive]="true" [filterable]="true"
         (filterChange)="ChapterItemHandleFilter($event)" (valueChange)="onSearchChange()">
         <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
