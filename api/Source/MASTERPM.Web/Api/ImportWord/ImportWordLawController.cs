@@ -126,7 +126,7 @@ namespace MASTERPM.Web.Api.Profile
                 return Json(new TResult()
                 {
                     Status = (short)EStatus.Ok,
-                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgDeleteDataSuccess),
+                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgSaveOk),
                 });
             }
             catch (Exception e)
