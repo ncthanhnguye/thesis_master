@@ -43,15 +43,15 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
   DialogDetail = false;
 
   searchOption = {
-    LawID: null,
-    ChapterID: null
+    LuatUUID: null,
+    ChuongUUID: null,
   }
 
-  Law: Array<{ ID: number; Name: string; }> = [];
-  LawFilter: Array<{ ID: number; Name: string }> = [];
+  Law: Array<{ ID: number; Content: string; }> = [];
+  LawFilter: Array<{ ID: number; Content: string }> = [];
 
-  Chapter: Array<{ ID: number; Name: string, LawID: number }> = [];
-  ChapterFilter: Array<{ ID: number; Name: string, LawID: number }> = [];
+  Chapter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
+  ChapterFilter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
 
 
   constructor(
@@ -76,8 +76,8 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
     this.setSelectableSettings();
     await this.getFilter();
     await this.getDataGrid();
-    // this.searchOption.LawID = 2;
-    this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LawID == this.searchOption.LawID })
+    // this.searchOption.LuatUUID = 2;
+    this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LuatUUID == this.searchOption.LuatUUID })
     this.onReload();
   }
 
@@ -107,12 +107,9 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
   async getDataGrid() {
     this.loading = true;
     const dataRequest = {
-      LawID: this.searchOption.LawID ? this.searchOption.LawID : '',
-      ChapterID: this.searchOption.ChapterID ? this.searchOption.ChapterID : '',
-      ChapterItemID: '',
-      ArticalID: '',
-      ClaustID: '',
-      PointID: ''
+      LuatUUID: this.searchOption.LuatUUID ? this.searchOption.LuatUUID : '',
+      ChuongUUID: this.searchOption.ChuongUUID ? this.searchOption.ChuongUUID : '',
+      ChapterItemID: '',      
     }
     const result = await this.appService.doGET('api/ChapterItem/Search', dataRequest);
     if (result) {
@@ -124,9 +121,11 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
         const dataMuc = item.DATA_3_Muc;
 
         const combinedData = {
-          ...this.appComponent.mapDataWithDefault(item.dataLuat),
+          ...this.appComponent.mapDataWithDefault(item.dataLuat),          
           ...this.appComponent.mapDataWithDefault(dataChuong),
           ...this.appComponent.mapDataWithDefault(dataMuc),
+          LuatContent: dataLuat.Content,
+          ChuongContent: dataChuong.Content,
         };
         this.dataGrid.push(combinedData);
       });      
@@ -141,7 +140,7 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
       Name: null,
       Title: null,
       LawID: null,
-      ChapterID: null
+      ChuongUUID: null
 
     };
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
@@ -191,7 +190,7 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
       Name: temp.Name,
       Title: temp.Title,
       LawID: temp.LawID,
-      ChapterID: temp.ChapterID
+      ChuongUUID: temp.ChuongUUID
     };
   }
 
@@ -268,24 +267,24 @@ export class ChapterItemComponent implements OnInit, OnDestroy {
   }
 
   LawHandleFilter(value) {
-    this.LawFilter = this.Law.filter((s) => s.Name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.LawFilter = this.Law.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
   ChapterHandleFilter(value) {
-    this.ChapterFilter = this.Chapter.filter((s) => s.Name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.ChapterFilter = this.Chapter.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
   onSearchChange() {
-    if (this.searchOption.LawID == null) { 
-      this.searchOption.ChapterID = null  ; 
+    if (this.searchOption.LuatUUID == null) { 
+      this.searchOption.ChuongUUID = null  ; 
       this.ChapterFilter = null
     }
     else {
-      this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LawID == this.searchOption.LawID })
+      this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LuatUUID == this.searchOption.LuatUUID })
     }
     this.onReload();
   }
   onLawDetailChange() {
-    this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LawID == this.dataDetailItemtemp.LawID })
+    this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LuatUUID == this.dataDetailItemtemp.LuatUUID })
   }
 }

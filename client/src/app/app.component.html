@@ -1,11 +1,11 @@
 <div class="loading" *ngIf="excLoading">
 	<img src="../assets/images/loading.gif" *ngIf="loading">
 </div>
-<div id="body-block" [ngClass]="openMenuFlg ? '' : 'menu-hidden'">
+<div id="body-block" [ngClass]="{ 'menu-open': !isLoginPage && openMenuFlg, 'menu-hidden': !isLoginPage && !openMenuFlg }">
 
-	<app-menu *ngIf="!menuHidden" #appMenu ></app-menu>
+	<app-menu *ngIf="!menuHidden" #appMenu [openMenuFlg]="openMenuFlg" (toggleMenuEvent)="toggleMenu()" ></app-menu>
 
-	<div [ngClass]="!menuHidden ? 'layout-container' : ''">
+	<div class="layout-container" [ngClass]="openMenuFlg ? 'menu-active' : 'menu-collapsed'">
 		<app-home ></app-home>
 		<router-outlet>
 		</router-outlet>

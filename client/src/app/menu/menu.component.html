@@ -1,18 +1,18 @@
-<div class="menu-left" >
-	<div class="menu icon-container ">
+<div class="menu-left" [ngClass]="openMenuFlg ? 'menu-open' : 'menu-hidden'">
+	<div class="menu icon-container " (click)="toggleMenu()">
 		<i class="fa fa-bars icon-menu" aria-hidden="true"></i>
 	</div>
 	<div class="menu pointer" *ngFor="let dataItem of MenuFilter">
 		<div [ngClass]="dataItem.Url == selectedMenuID ? 'menu-item active ' : 'menu-item '" (click)="onClickMenu(dataItem)" [title]="dataItem.Name">
 			<i [ngClass]="dataItem.Icon ? dataItem.Icon : 'fa fa-pencil-square-o'" aria-hidden="true"></i>
 			<span>{{dataItem.Name}}</span>
-			<i *ngIf="!dataItem.IsButton" [ngClass]="dataItem.Url == selectedMenuID ? 'fa fa-angle-down icon-right' : 'fa fa-angle-right icon-right'"></i>
+			<i *ngIf="!dataItem.IsButton && openMenuFlg" [ngClass]="dataItem.Url == selectedMenuID ? 'fa fa-angle-down icon-right' : 'fa fa-angle-right icon-right'"></i>
 		</div>
 		<div *ngIf="dataItem.Url == selectedMenuID" class="menu-container">
 			<div *ngFor="let child of dataItem.Childrens">
 				<div class="menu-item child" (click)="onClickMenu(child)">
 					<i class="fa fa-minus" aria-hidden="true"></i>
-					<span>{{child.Name}}</span>
+					<span *ngIf="openMenuFlg">{{child.Name}}</span>
 				</div>
 			</div>
 		</div>
