@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../services/app.service';
 import { AuthenticationService } from '../services/authentication.service';
@@ -9,11 +9,13 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  @Output() closeMenu = new EventEmitter<boolean>();
+  @Input() openMenuFlg!: boolean;
+  @Output() toggleMenuEvent = new EventEmitter<void>();
 
   MenuFilter: any;
   user: any;
   selectedMenuID: any;
+  isOpenMenu = true;
 
   constructor(
     private router: Router,
@@ -31,6 +33,10 @@ export class MenuComponent implements OnInit {
     this.getMenu();
   }
 
+  toggleMenu() {
+    this.toggleMenuEvent.emit();
+  }
+
   async getMenu() {
     
     this.authenticationService.getUser();
@@ -43,11 +49,11 @@ export class MenuComponent implements OnInit {
   }
 
   onClickMenu(menuItem) {
+    this.openMenuFlg = true;
     if (this.selectedMenuID == menuItem.Url) {
       this.selectedMenuID = null;
       return;
     }
-
 
     if (menuItem.Url && (menuItem.IsButton || !menuItem.Childrens|| menuItem.Childrens.length <= 0)) {
       this.router.navigate([menuItem.Url]);

@@ -1,5 +1,4 @@
 
-
 /*---------------------------------------------*/
 a {
 	
@@ -114,7 +113,7 @@ iframe {
 
 .container-login100 {
   width: 100%;  
-  min-height: calc(100vh - 67px);
+  min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -124,6 +123,10 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
+
+  background: #56CCF2;
+  background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  
+  background: linear-gradient(to right, #2F80ED, #56CCF2);
 
 }
 
@@ -138,14 +141,15 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   padding: 95px 130px 95px 130px;
 }
 
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 316px;
+  width: 245px;
 }
 
 .login100-pic img {
@@ -161,6 +165,7 @@ iframe {
 
 .login100-form-title {
   font-size: 24px;
+  font-weight: bold;
   color: #333333;
   line-height: 1.2;
   text-align: center;
@@ -280,7 +285,8 @@ iframe {
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  background-color: #66a6ff;
+  /* background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -296,7 +302,8 @@ iframe {
 }
 
 .login100-form-btn:hover {
-  background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  background-color: #8bbbff;
+  /* background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); */
 }
 
 

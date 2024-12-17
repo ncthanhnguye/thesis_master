@@ -444,6 +444,11 @@ kendo-toolbar {
     margin-bottom: 10px;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .btn-del {
     border-radius: 50% !important;
     width: 20px !important;
@@ -1000,10 +1005,42 @@ kendo-toolbar {
     min-height: 250px !important;
 }
 
+#body-block {
+    transition: all 0.3s ease;
+  
+    &.menu-open {
+      .menu-left {
+        width: 200px;
+      }
+      .layout-container {
+        margin-left: 200px;
+      }
+    }
+  
+    &.menu-hidden {
+      .menu-left {
+        width: 50px;
+      }
+      .layout-container {
+        margin-left: 50px;
+      }
+    }
+  }
+  
+  .menu-left {
+    background-color: #f4f4f4;
+    height: 100vh;
+    transition: width 0.3s ease;
+  }
+  
+  .layout-container {
+    flex: 1;
+    transition: margin-left 0.3s ease;
+  }
 
-.layout-container {
+/* .layout-container {
     margin-left: 200px;
-}
+} */
 
 .page-name {
     font-weight: bold;
@@ -1138,14 +1175,15 @@ input {
 
 .btn-addnew {
     color: white;
-    background-color: blue;
+    background-color: #11c15b;
     border: hidden;
+    border-radius: 8px;
     padding: 6px 21px;
     font-size: 14px !important
 }
 
 .container-datagrid {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 
@@ -1172,9 +1210,10 @@ input {
 }
 
 body {
-	background-color: #fff;
+	/* background-color: #fff; */
 	color: #999;
 	line-height: 2;
+    background-color: #eee !important;
 
-	background-image: linear-gradient(120deg, #66a6ff 0%, #89f7fe 100%);
+	/* background-image: linear-gradient(120deg, #66a6ff 0%, #89f7fe 100%); */
 }

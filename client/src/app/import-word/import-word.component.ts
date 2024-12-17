@@ -36,7 +36,7 @@ export class ImportWordComponent implements OnInit {
     contentHTML: string,
     lawDate: string;
     lawNumber: string;
-    lawUUID: string;
+    LuatUUID: string;
     status: number;
     chapters: any[];
     chapterItems: any[];
@@ -109,7 +109,7 @@ export class ImportWordComponent implements OnInit {
       contentHTML: '',
       lawDate: '',
       lawNumber: '',
-      lawUUID: '',
+      LuatUUID: '',
       status: 1,
       chapters: [],
       chapterItems: [],
@@ -161,7 +161,7 @@ export class ImportWordComponent implements OnInit {
       contentHTML: '',
       lawDate: '',
       lawNumber: '',
-      lawUUID: '',
+      LuatUUID: '',
       status: 1,
       chapters: [],
       chapterItems: [],
@@ -170,8 +170,8 @@ export class ImportWordComponent implements OnInit {
       points: []
     };
 
-    let lawUUID = uuidv4();
-    this.lawWordData.lawUUID = lawUUID;
+    let LuatUUID = uuidv4();
+    this.lawWordData.LuatUUID = LuatUUID;
     const lines = text.split('\n');
     let currentChuong = { ChuongUUID: '', content: '', LuatUUID: null };
     let currentMuc = { MucUUID: '', content: '', LuatUUID: null, ChuongUUID: '' };
@@ -188,7 +188,7 @@ export class ImportWordComponent implements OnInit {
           currentChuong = {
             ChuongUUID: chuongUUID,
             content: currentContent.trim(),
-            LuatUUID: lawUUID
+            LuatUUID: LuatUUID
           };
           this.lawWordData.chapters.push(currentChuong);
           nextChuongUUID = chuongUUID;  // Cập nhật UUID cho chương tiếp theo
@@ -197,7 +197,7 @@ export class ImportWordComponent implements OnInit {
           currentMuc = {
             MucUUID: mucUUID,
             content: currentContent.trim(),
-            LuatUUID: lawUUID,
+            LuatUUID: LuatUUID,
             ChuongUUID: nextChuongUUID
           };
           this.lawWordData.chapterItems.push(currentMuc);
@@ -207,7 +207,7 @@ export class ImportWordComponent implements OnInit {
           currentDieu = {
             DieuUUID: dieuUUID,
             content: currentContent.trim(),
-            LuatUUID: lawUUID,
+            LuatUUID: LuatUUID,
             ChuongUUID: nextChuongUUID,
             MucUUID: currentMuc.MucUUID || ''
           };
@@ -218,7 +218,7 @@ export class ImportWordComponent implements OnInit {
           currentKhoan = {
             KhoanUUID: khoanUUID,
             content: currentContent.trim(),
-            LuatUUID: lawUUID,
+            LuatUUID: LuatUUID,
             ChuongUUID: nextChuongUUID,
             MucUUID: currentMuc.MucUUID || '',
             DieuUUID: currentDieu.DieuUUID || ''
@@ -230,7 +230,7 @@ export class ImportWordComponent implements OnInit {
           this.lawWordData.points.push({
             DiemUUID: diemUUID,
             content: currentContent.trim(),
-            LuatUUID: lawUUID,
+            LuatUUID: LuatUUID,
             ChuongUUID: nextChuongUUID,
             MucUUID: currentMuc.MucUUID || '',
             DieuUUID: currentDieu.DieuUUID || '',

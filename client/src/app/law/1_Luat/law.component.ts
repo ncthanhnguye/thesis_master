@@ -52,7 +52,7 @@ export class LawComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    
+
   }
 
   ngOnInit() {
@@ -76,14 +76,15 @@ export class LawComponent implements OnInit, OnDestroy {
     const dataRequest = {
       LawID: '',
       ChapterID: '' ,
-      ChapterItemID : '' , 
-      ArticalID : '' , 
-      ClaustID : '' , 
+      ChapterItemID : '' ,
+      ArticalID : '' ,
+      ClaustID : '' ,
       PointID : ''
     }
 
     const result = await this.appService.doGET('api/Law/Search', dataRequest);
     if (result) {
+      console.log('result.Data', result.Data);
       this.dataGrid = result.Data;
       this.bindDataGrid();
     }
