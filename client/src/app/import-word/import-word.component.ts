@@ -50,7 +50,9 @@ export class ImportWordComponent implements OnInit {
   pageName = 'Import dữ liệu về luật';
   isFileImport = false;
   fileDataImport: any;
-  nameLaw: '';
+  nameLaw: string;
+  isNameLawCollected = false;
+  tempLawName = '';
   contentHTML: '';
 
   Law: Array<{ ID: number; Index: number; Title: string; Content: string; ContentHTML: string; }> = [];
@@ -128,6 +130,8 @@ export class ImportWordComponent implements OnInit {
   onCancelImport() {
     this.isFileImport = !this.isFileImport;
     this.fileDataImport = '';
+    this.nameLaw = '';
+    this.isNameLawCollected = false;
   }
 
   onSelectEventHandler(e: SelectEvent) {
@@ -261,9 +265,27 @@ export class ImportWordComponent implements OnInit {
     lines.forEach(line => {
       const trimmedLine = line.trim();
 
+      if (!this.isNameLawCollected) {
+        // Case 1 : Tên luật hiển thị đầy đủ trên cùng 1 dòng
+        if (/^(Bộ luật(?! số)|Luật(?! số))(\s+\S+)/i.test(trimmedLine)) {
+          this.nameLaw = trimmedLine.trim();
+          this.isNameLawCollected = true;
+        }
+        // Case 2 : Tên luật bị xuống dòng
+        else if (/^(Bộ luật(?! số)|Luật(?! số))/i.test(trimmedLine)) {
+          this.tempLawName = trimmedLine.trim();
+        }
+        else if (this.tempLawName && trimmedLine.trim()) {
+          this.tempLawName += ` ${trimmedLine.trim()}`;
+          this.nameLaw = this.tempLawName.replace(/\s+/g, ' ').trim();
+          this.isNameLawCollected = true;
+          this.tempLawName = '';
+        }
+      }
+
       // Lấy thông tin số và ngày của luật
-      if (/^(Bộ luật số:|Số:)/.test(trimmedLine)) {
-        this.lawWordData.lawNumber = trimmedLine.replace(/(Bộ luật số:|Số:)/, '').trim();
+      if (/^(Bộ luật số:|Luật số:|Số:)/.test(trimmedLine)) {
+        this.lawWordData.lawNumber = trimmedLine.replace(/^(Bộ luật số:|Luật số:|Số:)/, '').trim();
       }
       if (trimmedLine.includes('ngày') && !isDateCollected) {
         const ngayMatch = trimmedLine.match(/ngày (\d{1,2}) tháng (\d{1,2}) năm (\d{4})/);
@@ -323,6 +345,8 @@ export class ImportWordComponent implements OnInit {
     const result = await this.appService.doPOST('api/ImportWordLaw/Saves', this.lawWordData);
     if (result && result.Status === 1) {
       this.notification.showSuccess(result.Msg);
+      this.isNameLawCollected = false;
+      this.nameLaw = '';
       await this.router.navigate([AppConsts.page.law]);
     } else {
       await this.appSwal.showWarning(result.Msg, false);
