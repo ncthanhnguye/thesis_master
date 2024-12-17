@@ -157,7 +157,7 @@ namespace MASTERPM.Web.Models.Law
                 return Json(new TResult()
                 {
                     Status = 1,
-                    Msg = "Delete Ok"
+                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgDeleteDataSuccess),
                 });
             }
             catch (Exception e)

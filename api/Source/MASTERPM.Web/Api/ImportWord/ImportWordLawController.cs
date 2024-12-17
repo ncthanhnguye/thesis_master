@@ -29,6 +29,7 @@ namespace MASTERPM.Web.Api.Profile
                     ContentHTML = payload.ContentHTML,
                     LawDate = payload.LawDate,
                     LawNumber = payload.LawNumber,
+                    LuatUUID = payload.LuatUUID,
                     TotalChapter = payload.Chapters.Count,
                     Status = payload.Status,
                 };
@@ -125,7 +126,7 @@ namespace MASTERPM.Web.Api.Profile
                 return Json(new TResult()
                 {
                     Status = (short)EStatus.Ok,
-                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgSaveOk),
+                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgDeleteDataSuccess),
                 });
             }
             catch (Exception e)

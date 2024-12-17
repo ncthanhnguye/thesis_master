@@ -19,7 +19,7 @@ export class ArticalComponent implements OnInit, OnDestroy {
   loading = false;
 
   dataGridSkip = 0;
-  dataGridPageSize = 50;
+  dataGridPageSize = 10;
 
   dataGrid = [];
   dataGridSelectableSettings: SelectableSettings;
@@ -76,6 +76,7 @@ export class ArticalComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    this.setDefault();
     this.setSelectableSettings();
     await this.getFilter();
     this.setDefault();
@@ -116,23 +117,23 @@ export class ArticalComponent implements OnInit, OnDestroy {
       LuatUUID: this.searchOption.LuatUUID ? this.searchOption.LuatUUID : '',
       ChuongUUID: this.searchOption.ChuongUUID ? this.searchOption.ChuongUUID : '',
       MucUUID: this.searchOption.MucUUID ? this.searchOption.MucUUID : '',
-      ArticalID: '',      
+      ArticalID: '',
     }
     const result = await this.appService.doGET('api/Artical/Search', dataRequest);
     if (result) {
       this.dataGrid = [];
 
-      result.Data.forEach(item => {
-        const dataLuat = item.DATA_1_Luat;
-        const dataChuong = item.DATA_2_Chuong;
-        const dataMuc = item.DATA_3_Muc;
-        const dataDieu = item.DATA_4_Dieu;
+      result.Data.forEach((item: { Luat: any; Chuong: any; Muc: any; Dieu: any; }) => {
+        const dataLuat = item.Luat;
+        const dataChuong = item.Chuong;
+        const dataMuc = item.Muc;
+        const dataDieu = item.Dieu;
 
         const combinedData = {
-          ...this.appComponent.mapDataWithDefault(item.dataLuat),          
+          ...this.appComponent.mapDataWithDefault(dataLuat),
           ...this.appComponent.mapDataWithDefault(dataChuong),
           ...this.appComponent.mapDataWithDefault(dataMuc),
-          ...this.appComponent.mapDataWithDefault(dataDieu),          
+          ...this.appComponent.mapDataWithDefault(dataDieu),
           LuatContent: dataLuat.Content,
           ChuongContent: dataChuong.Content,
           MucContent: dataMuc.Content,
@@ -152,7 +153,11 @@ export class ArticalComponent implements OnInit, OnDestroy {
       LawID: null,
       ChapterID: null,
     };
-    // this.searchOption.LawID = 2;
+    this.searchOption = {
+      LuatUUID: '',
+      ChuongUUID: '',
+      MucUUID: '',
+    };
     this.ChapterFilter = this.Chapter.filter((obj) => { return obj.LuatUUID == this.searchOption.LuatUUID })
     this.ChapterItemFilter = this.ChapterItem.filter((obj) => { return obj.ChuongUUID == this.searchOption.ChuongUUID })
 
@@ -310,7 +315,7 @@ export class ArticalComponent implements OnInit, OnDestroy {
       this.ChapterItemFilter = this.ChapterItem.filter((obj) => { return obj.ChuongUUID == this.searchOption.ChuongUUID })
     }
 
-    
+
     this.onReload();
   }
 

@@ -84,7 +84,6 @@ export class LawComponent implements OnInit, OnDestroy {
 
     const result = await this.appService.doGET('api/Law/Search', dataRequest);
     if (result) {
-      console.log('result.Data', result.Data);
       this.dataGrid = result.Data;
       this.bindDataGrid();
     }
@@ -166,7 +165,7 @@ export class LawComponent implements OnInit, OnDestroy {
     } else {
       if (!result.Msg) {
       } else {
-        this.appSwal.showWarning(result.Msg, false);
+        await this.appSwal.showWarning(result.Msg, false);
       }
     }
   }

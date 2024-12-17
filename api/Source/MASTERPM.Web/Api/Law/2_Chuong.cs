@@ -3,8 +3,10 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Routing;
 using MASTERPM.Model;
+using MASTERPM.Model.Commons;
 using MASTERPM.Model.Core;
 using MASTERPM.Web.Api.Base;
+using Microsoft.Ajax.Utilities;
 
 namespace MASTERPM.Web.Models.Claust
 {
@@ -35,37 +37,66 @@ namespace MASTERPM.Web.Models.Claust
 
         [HttpGet]
         [Route("Search")]
-        public IHttpActionResult Search(int? LawID, int? ChapterID, int? ChapterItemID, int? ArticalID, int? ClaustID, int? PointID)
+        public IHttpActionResult Search(string LuatUUID, int? ChapterID)
         {
             try
             {
-                var allLaw = LawID == null;
+                var allLaw = LuatUUID == null;
                 var allChapterID = ChapterID == null;
-                var allChapterItemID = ChapterItemID == null;
-                var allArticalID = ArticalID == null;
-                var allClaustID = ClaustID == null;
-                var allPointID = PointID == null;
 
-                var result = this.Repository.GetQuery<DATA_1_Luat>().Where(r => (allLaw || r.ID == LawID))
-                     .Join(this.Repository.GetQuery<DATA_2_Chuong>().Where(r => (allChapterID || r.ID == ChapterID)),
-                        a => a.ID, b => b.LuatID, (a, b) => new
+                // Parse string to Guid
+                Guid.TryParse(LuatUUID, out Guid parsedLuatUUID);
+                
+                if (string.IsNullOrWhiteSpace(LuatUUID))
+                {                   
+                    var result = this.Repository.GetQuery<DATA_1_Luat>().Where(r => (allLaw || r.LuatUUID == parsedLuatUUID))
+                        .Join(this.Repository.GetQuery<DATA_2_Chuong>().Where(r => (allChapterID || r.ID == ChapterID)),
+                        a => a.LuatUUID, b => b.LuatUUID, (a, b) =>
+                        new
                         {
                             DATA_1_Luat = a,
-                            DATA_2_Chuong = b
+                            DATA_2_Chuong = b,
                         })
-                     .Select(r => new
-                     {
-                         r.DATA_1_Luat , 
-                         r.DATA_2_Chuong
-                     })
-                     .ToList();
+                        .Select(r => new
+                        {
+                            r.DATA_1_Luat,
+                            r.DATA_2_Chuong
+                        }).ToList();
 
+                    var allChapters = this.Repository.GetQuery<DATA_2_Chuong>()
+                        .Where(chapter => ChapterID == null || chapter.ID == ChapterID)
+                        .ToList();         
 
+                    return Json(new TResult()
+                    {
+                        Status = 1,
+                        Data = result
+                    });
+
+                }
+
+                var resultChapterByLaw = this.Repository.GetQuery<DATA_1_Luat>()
+                    .Where(r => (allLaw || r.LuatUUID == parsedLuatUUID))
+                    .Join(this.Repository.GetQuery<DATA_2_Chuong>()
+                        .Where(r => (allChapterID || r.ID == ChapterID)),
+                        a => a.LuatUUID,
+                        b => b.LuatUUID,
+                        (a, b) => new
+                        {
+                            DATA_1_Luat = a,
+                            DATA_2_Chuong = b,
+                        })
+                    .Select(r => new
+                    {
+                        r.DATA_1_Luat,
+                        r.DATA_2_Chuong
+                    })
+                    .ToList();
 
                 return Json(new TResult()
                 {
                     Status = 1,
-                    Data = result
+                    Data = resultChapterByLaw
                 });
             }
             catch (Exception e)
@@ -166,7 +197,7 @@ namespace MASTERPM.Web.Models.Claust
                 return Json(new TResult()
                 {
                     Status = 1,
-                    Msg = "Delete Ok"
+                    Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgDeleteDataSuccess),
                 });
             }
             catch (Exception e)
