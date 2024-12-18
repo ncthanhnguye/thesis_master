@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from './services/app.service';
 import { AuthenticationService } from './services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,15 +13,16 @@ export class AppComponent {
 
 	title = 'Law';
 	loading = false;
-	openMenuFlg = false;
+	openMenuFlg = true;
 	user: any;
 	menuHidden = false;
+	isLoginPage = false;
+
 	constructor(
 		private authenticationService: AuthenticationService,
 		private translate: TranslateService,
 		private language: AppLanguage,
 	) {
-		if (this.appMenu) this.appMenu.openMenuFlg = '0';
 		this.authenticationService.getUser();
 		this.user = this.authenticationService.user;
 		this.language.setDefaultLanguage();
@@ -36,8 +36,13 @@ export class AppComponent {
 		}
 		else {
 			this.menuHidden = true;
-		}
+			this.isLoginPage = true;
+		}		
 	}
+
+	toggleMenu() {
+		this.openMenuFlg = !this.openMenuFlg;
+	  }
 
 	closeDialog = () => {
 		const body = document.body;
