@@ -63,15 +63,17 @@
 </section>
 
 
-<kendo-dialog *ngIf="DialogDetail" title="Chi tiết" (close)="onCloseDialog()">
+<kendo-dialog *ngIf="DialogDetail" [title]="dataDetailItem.ID == null ? 'Thêm mới' : (isDetail ? 'Chi tiết' : 'Chỉnh sửa')" (close)="onCloseDialog()">
   <div class="row">
 
     <div class="col-md-12 col-12">
       <div class="control">
         <label>
-          <span [textContent]="'LawID'"></span>
+          <span [textContent]="'Luật'"></span>
         </label>
-        <kendo-combobox [data]="LawFilter" [textField]="'Name'" [valueField]="'ID'" [popupSettings]="{animate: true, appendTo: 'component'}"
+        <input *ngIf="dataDetailItem.ID != null" kendoTextBox [(ngModel)]="dataDetailItemtemp.LawName" [disabled]="!(dataDetailItem.ID == null || !isDetail)" />
+
+        <kendo-combobox *ngIf="dataDetailItem.ID == null" [data]="LawFilter" [textField]="'Content'" [valueField]="'LuatUUID'" [popupSettings]="{animate: true, appendTo: 'component'}"
           [(ngModel)]="dataDetailItemtemp.LawID" [valuePrimitive]="true" [filterable]="true"
           (filterChange)="LawHandleFilter($event)">
           <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
@@ -82,29 +84,31 @@
     <div class="col-md-12 col-12">
       <div class="control">
         <label>
-          <span [textContent]="'Name'"></span>
+          <span [textContent]="'Nội dung Chương'"></span>
         </label>
-        <textarea kendoTextArea [(ngModel)]="dataDetailItemtemp.Name" [rows]="3"></textarea>
-      </div>
-    </div>
-
-    <div class="col-md-12 col-12">
-      <div class="control">
-        <label>
-          <span [textContent]="'Title'"></span>
-        </label>
-        <textarea kendoTextArea [(ngModel)]="dataDetailItemtemp.Title" [rows]="15"></textarea>
+        <textarea kendoTextArea [(ngModel)]="dataDetailItemtemp.Content" [disabled]="!(dataDetailItem.ID == null || !isDetail)" [rows]="2"></textarea>      
       </div>
     </div>
 
 
     <div class="col-md-12 col-12">
-      <div class="btn-dialog-wrapper">
+      <div class="btn-dialog-wrapper btn-container">
         <button *ngIf="dataDetailItem.ID == null" class="btn-dialog btn-save" (click)="onAddItem()">
           {{'Tạo mới'}}
         </button>
-        <button *ngIf="dataDetailItem.ID != null" class="btn-dialog btn-save" (click)="onUpdateItem()">{{'Lưu'}}
+
+        <button *ngIf="dataDetailItem.ID != null && isDetail" class="btn-dialog btn-edit" (click)="onEdit()">
+          {{'Sửa'}}
         </button>
+
+        <button *ngIf="!isDetail" class="btn-dialog btn-cancel mr-2" (click)="onCancelEditing()">
+          {{'Hủy'}}
+        </button>
+
+        <button *ngIf="!isDetail" class="btn-dialog btn-save" (click)="onUpdateItem()">
+          {{'Lưu'}}
+        </button>
+
       </div>
     </div>
 

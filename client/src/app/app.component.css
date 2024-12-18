@@ -1170,8 +1170,14 @@ input {
     background-color: green;
     border: hidden;
     padding: 6px 21px;
-    font-size: 14px !important
+    font-size: 14px !important;
+    border-radius: 8px;
 }
+
+.btn-save:hover {
+    background-color: darkgreen;
+}
+
 
 .btn-addnew {
     color: white;
@@ -1182,21 +1188,58 @@ input {
     font-size: 14px !important
 }
 
+.btn-addnew:hover {
+    background-color: #0e9d4e;
+}
+
+.btn-edit {
+    color: white;
+    background-color: #fcab3a;
+    border: hidden;
+    border-radius: 8px;
+    padding: 6px 21px;
+    font-size: 14px !important
+}
+
+.btn-edit:hover {
+    background-color: #f18c28;
+}
+
+.btn-cancel {
+    color: white;
+    background-color: #6c757d;
+    border: hidden;
+    border-radius: 8px;
+    padding: 6px 21px;
+    font-size: 14px !important
+}
+
+.btn-cancel:hover {
+    background-color: #42474b;
+}
+
 .container-datagrid {
     margin-top: 10px;
 }
 
 
 .k-dialog-titlebar {
-    border-color: inherit;
     color: #fff;
-    background-color: #212121;
+    background-color: #4680ff;
+    border-radius: 10px 10px 0 0;
+    border: none;
 }
 
 .k-dialog-wrapper .k-dialog {
-    width: 450px;
+    width: 640px;
     height: fit-content;
+    border-radius: 12px;
 }
+
+.k-textbox, .k-textarea {
+    font-size: 17px !important;
+}
+
 .cbx-searchOption{
     width: 100%;
 }
