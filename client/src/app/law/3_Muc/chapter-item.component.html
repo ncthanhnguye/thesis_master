@@ -37,16 +37,17 @@
         (sortChange)="onUserSortChange($event)" [filter]="dataGridState.filter" [filterable]="true"
         (dataStateChange)="onGridDataStateChange($event)">
 
+        <!-- Cột chức năng (Edit/Delete) -->
         <kendo-grid-column [title]="'Thao tác' " [width]="80" [headerClass]="{'headerCommon': true}">
           <ng-template kendoGridCellTemplate let-dataItem>
             <div class="btn-toolbar" role="toolbar">
               <div class="btn-group mr-2 g-btn g-btn-edit" role="group">
                 <button kendoGridRemoveCommand (click)="openUpdateDialog(dataItem.ID)"
-                  [iconClass]="'fa fa-window-restore'">
+                  [iconClass]="'fa fa-eye'">
                 </button>
               </div>
               <div class="btn-group mr-2 g-btn g-btn-delete" role="group">
-                <button kendoGridRemoveCommand [iconClass]="'fa fa-ban'" (click)="onDeleteItem(dataItem.ID)">
+                <button kendoGridRemoveCommand [iconClass]="'fa fa-trash'" (click)="onDeleteItem(dataItem.ID)">
                 </button>
               </div>
             </div>
@@ -64,17 +65,19 @@
 </section>
 
 
-<kendo-dialog *ngIf="DialogDetail" title="Chi tiết" (close)="onCloseDialog()">
+<kendo-dialog *ngIf="DialogDetail" [title]="dataDetailItem.ID == null ? 'Thêm mới' : (isDetail ? 'Chi tiết' : 'Chỉnh sửa')" (close)="onCloseDialog()">
   <div class="row">
 
     <div class="col-md-12 col-12">
       <div class="control">
         <label>
-          <span [textContent]="'LawID'"></span>
+          <span [textContent]="'Luật'"></span>
         </label>
-        <kendo-combobox [data]="LawFilter" [textField]="'Name'" [valueField]="'ID'" [popupSettings]="{animate: true, appendTo: 'component'}"
-          [(ngModel)]="dataDetailItemtemp.LawID" [valuePrimitive]="true" [filterable]="true"
-          (filterChange)="LawHandleFilter($event)" (valueChange)="onLawDetailChange()">
+        <input *ngIf="dataDetailItem.ID != null" kendoTextBox [(ngModel)]="dataDetailItemtemp.LawName" [disabled]="!(dataDetailItem.ID == null || !isDetail)" />
+
+        <kendo-combobox *ngIf="dataDetailItem.ID == null" [data]="LawFilter" [textField]="'Content'" [valueField]="'LuatUUID'" [popupSettings]="{animate: true, appendTo: 'component'}"
+          [(ngModel)]="dataDetailItemtemp.LuatUUID" [valuePrimitive]="true" [filterable]="true"
+          (filterChange)="LawHandleFilter($event)">
           <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
         </kendo-combobox>
       </div>
@@ -85,8 +88,11 @@
         <label>
           <span [textContent]="'Chương'"></span>
         </label>
-        <kendo-combobox [data]="ChapterFilter" [textField]="'Name'" [valueField]="'ID'" [popupSettings]="{animate: true, appendTo: 'component'}"
-          [(ngModel)]="dataDetailItemtemp.ChapterID" [valuePrimitive]="true" [filterable]="true"
+        <textarea *ngIf="dataDetailItem.ChuongUUID != null" kendoTextArea [(ngModel)]="dataDetailItemtemp.ChuongContent" 
+          [disabled]="!(dataDetailItem.MucUUID == null || !isDetail)" [rows]="3"></textarea>
+
+        <kendo-combobox *ngIf="dataDetailItem.ChuongUUID == null" [data]="ChapterFilter" [textField]="'Content'" [valueField]="'ChuongUUID'" [popupSettings]="{animate: true, appendTo: 'component'}"
+          [(ngModel)]="dataDetailItemtemp.ChuongUUID" [valuePrimitive]="true" [filterable]="true"
           (filterChange)="ChapterHandleFilter($event)">
           <ng-template kendoDropDownListNoDataTemplate>{{'NoRecords' | translate}}</ng-template>
         </kendo-combobox>
@@ -96,29 +102,30 @@
     <div class="col-md-12 col-12">
       <div class="control">
         <label>
-          <span [textContent]="'Name'"></span>
+          <span [textContent]="'Nội dung Mục'"></span>
         </label>
-        <textarea kendoTextArea [(ngModel)]="dataDetailItemtemp.Name" [rows]="3"></textarea>
+        <textarea kendoTextArea [(ngModel)]="dataDetailItemtemp.Content" [disabled]="!(dataDetailItem.MucUUID == null || !isDetail)" [rows]="4"></textarea>      
       </div>
     </div>
 
     <div class="col-md-12 col-12">
-      <div class="control">
-        <label>
-          <span [textContent]="'Title'"></span>
-        </label>
-        <textarea kendoTextArea [(ngModel)]="dataDetailItemtemp.Title" [rows]="15"></textarea>
-      </div>
-    </div>
-
-
-    <div class="col-md-12 col-12">
-      <div class="btn-dialog-wrapper">
-        <button *ngIf="dataDetailItem.ID == null" class="btn-dialog btn-save" (click)="onAddItem()">
+      <div class="btn-dialog-wrapper btn-container">
+        <button *ngIf="dataDetailItem.MucUUID == null" class="btn-dialog btn-save" (click)="onAddItem()">
           {{'Tạo mới'}}
         </button>
-        <button *ngIf="dataDetailItem.ID != null" class="btn-dialog btn-save" (click)="onUpdateItem()">{{'Lưu'}}
+
+        <button *ngIf="dataDetailItem.MucUUID != null && isDetail" class="btn-dialog btn-edit" (click)="onEdit()">
+          {{'Sửa'}}
         </button>
+
+        <button *ngIf="!isDetail" class="btn-dialog btn-cancel mr-2" (click)="onCancelEditing()">
+          {{'Hủy'}}
+        </button>
+
+        <button *ngIf="!isDetail" class="btn-dialog btn-save" (click)="onUpdateItem()">
+          {{'Lưu'}}
+        </button>
+
       </div>
     </div>
 

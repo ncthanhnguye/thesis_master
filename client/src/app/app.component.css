@@ -1234,6 +1234,8 @@ input {
     width: 640px;
     height: fit-content;
     border-radius: 12px;
+    max-height: 90%;
+    scrollbar-width: thin;
 }
 
 .k-textbox, .k-textarea {

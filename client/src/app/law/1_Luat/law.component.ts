@@ -96,6 +96,7 @@ export class LawComponent implements OnInit, OnDestroy {
       Name: null,
       LawDate: null,
       LawNumber: null,
+      ContentHTML: null,
       TotalChapters: null,
       TotalArtical: null,
       Status: null
@@ -107,6 +108,7 @@ export class LawComponent implements OnInit, OnDestroy {
   bindtemTemp(item) {
     this.dataDetailItemtemp = Object.assign({}, item);
     this.dataDetailItemtemp.LawDate = this.dataDetailItemtemp.LawDate ? new Date(this.dataDetailItemtemp.LawDate)  : null;
+    this.dataDetailItemtemp.ContentHTML = this.dataDetailItemtemp.ContentHTML ? this.dataDetailItemtemp.ContentHTML : null;
   }
 
   onUserPageChange(event: PageChangeEvent) {

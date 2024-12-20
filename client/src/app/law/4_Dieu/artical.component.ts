@@ -48,13 +48,15 @@ export class ArticalComponent implements OnInit, OnDestroy {
     MucUUID: null,
   }
 
-  Law: Array<{ ID: number; Content: string; }> = [];
+  isDetail: boolean = true;
+
+  Law: Array<{ Content: any; ID: number; Name: string; LuatUUID: string; }> = [];
   LawFilter: Array<{ ID: number; Content: string }> = [];
 
-  Chapter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
+  Chapter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
   ChapterFilter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
 
-  ChapterItem: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
+  ChapterItem: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number, MucUUID: number }> = [];
   ChapterItemFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
 
   constructor(
@@ -164,9 +166,26 @@ export class ArticalComponent implements OnInit, OnDestroy {
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
   }
 
+  onEdit() {
+    this.isDetail = false;
+  }
+
+  onCancelEditing() {
+    this.isDetail = !this.isDetail;
+  }
+
   bindtemTemp(item) {
     this.dataDetailItemtemp = Object.assign({}, item);
     this.dataDetailItemtemp.LawDate = this.dataDetailItemtemp.LawDate ? new Date(this.dataDetailItemtemp.LawDate) : null;
+
+    const lawItem = this.Law.find(l => l.LuatUUID === this.dataDetailItemtemp.LuatUUID);
+    this.dataDetailItemtemp.LawName = lawItem ? lawItem.Content : '(Trống)';
+
+    const chapter = this.Chapter.find(l => l.ChuongUUID === this.dataDetailItemtemp.ChuongUUID);
+    this.dataDetailItemtemp.ChuongContent = chapter ? chapter.Content : '(Trống)';
+
+    const chapterItem = this.ChapterItem.find(l => l.MucUUID === this.dataDetailItemtemp.MucUUID);
+    this.dataDetailItemtemp.MucContent = chapterItem ? chapterItem.Content : '(Trống)';
   }
 
   onUserPageChange(event: PageChangeEvent) {
@@ -237,6 +256,7 @@ export class ArticalComponent implements OnInit, OnDestroy {
       this.notification.showSuccess(result.Msg);
       this.onReload();
       this.DialogDetail = false;
+      this.isDetail = true;
     } else {
       if (!result.Msg) {
       } else {
@@ -275,6 +295,7 @@ export class ArticalComponent implements OnInit, OnDestroy {
   }
 
   onCloseDialog() {
+    this.isDetail = true;
     this.DialogDetail = false;
   }
 

@@ -50,19 +50,21 @@ export class PointComponent implements OnInit, OnDestroy {
     KhoanUUID: null,
   }
 
-  Law: Array<{ ID: number; Content: string; }> = [];
+  isDetail: boolean = true;
+
+  Law: Array<{ Content: any; ID: number; Name: string; LuatUUID: string; }> = [];
   LawFilter: Array<{ ID: number; Content: string }> = [];
 
-  Chapter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
+  Chapter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
   ChapterFilter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
 
-  ChapterItem: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
+  ChapterItem: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number, MucUUID: number }> = [];
   ChapterItemFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
 
-  Artical: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number }> = [];
+  Artical: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number, DieuUUID: number }> = [];
   ArticalFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number }> = [];
 
-  Claust: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number, DieuUUID: number }> = [];
+  Claust: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number, DieuUUID: number, KhoanUUID: number }> = [];
   ClaustFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number, DieuUUID: number }> = [];
 
 
@@ -179,7 +181,8 @@ export class PointComponent implements OnInit, OnDestroy {
       LuatUUID: null,
       ChuongUUID: null,
       MucUUID : null,
-      DieuUUID: null
+      DieuUUID: null,
+      KhoanUUID: null,
     };
     this.searchOption = {
       LuatUUID: '',
@@ -196,9 +199,32 @@ export class PointComponent implements OnInit, OnDestroy {
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
   }
 
+  onEdit() {
+    this.isDetail = false;
+  }
+
+  onCancelEditing() {
+    this.isDetail = !this.isDetail;
+  }
+
   bindtemTemp(item) {
     this.dataDetailItemtemp = Object.assign({}, item);
     this.dataDetailItemtemp.LawDate = this.dataDetailItemtemp.LawDate ? new Date(this.dataDetailItemtemp.LawDate) : null;
+
+    const lawItem = this.Law.find(l => l.LuatUUID === this.dataDetailItemtemp.LuatUUID);
+    this.dataDetailItemtemp.LawName = lawItem ? lawItem.Content : '(Trống)';
+
+    const chapter = this.Chapter.find(l => l.ChuongUUID === this.dataDetailItemtemp.ChuongUUID);
+    this.dataDetailItemtemp.ChuongContent = chapter ? chapter.Content : '(Trống)';
+
+    const chapterItem = this.ChapterItem.find(l => l.MucUUID === this.dataDetailItemtemp.MucUUID);
+    this.dataDetailItemtemp.MucContent = chapterItem ? chapterItem.Content : '(Trống)';
+
+    const artical = this.Artical.find(l => l.DieuUUID === this.dataDetailItemtemp.DieuUUID);
+    this.dataDetailItemtemp.DieuContent = artical ? artical.Content : '(Trống)';
+
+    const claust = this.Claust.find(l => l.KhoanUUID === this.dataDetailItemtemp.KhoanUUID);
+    this.dataDetailItemtemp.KhoanContent = claust ? claust.Content : '(Trống)';
   }
 
   onUserPageChange(event: PageChangeEvent) {
@@ -247,7 +273,7 @@ export class PointComponent implements OnInit, OnDestroy {
 
   async onAddItem() {
     const dataRequest = this.createDataRequest();
-    const result = await this.appService.doPOST("api/Claust/Post", dataRequest);
+    const result = await this.appService.doPOST("api/Point/Post", dataRequest);
     if (result && result.Status === 1) {
       this.notification.showSuccess(result.Msg);
       this.onReload();
@@ -264,11 +290,12 @@ export class PointComponent implements OnInit, OnDestroy {
     const iD = this.dataDetailItem.ID;
     const dataRequest = this.createDataRequest();
 
-    const result = await this.appService.doPUT("api/Claust/Put", dataRequest, { iD });
+    const result = await this.appService.doPUT("api/Point/Put", dataRequest, { iD });
     if (result && result.Status === 1) {
       this.notification.showSuccess(result.Msg);
       this.onReload();
       this.DialogDetail = false;
+      this.isDetail = true;
     } else {
       if (!result.Msg) {
       } else {
@@ -283,7 +310,7 @@ export class PointComponent implements OnInit, OnDestroy {
       iD: ID
     };
 
-    const result = await this.appService.doGET("api/Claust/GetDetail", dataRequest);
+    const result = await this.appService.doGET("api/Point/GetDetail", dataRequest);
     if (result) {
       this.dataDetailItem = result.Data;
       this.bindtemTemp(this.dataDetailItem);
@@ -296,7 +323,7 @@ export class PointComponent implements OnInit, OnDestroy {
     };
     const option = await this.appSwal.showWarning("Bạn chắc chắn không ?", true);
     if (option) {
-      const result = await this.appService.doDELETE('api/Claust/Delete', dataRequest);
+      const result = await this.appService.doDELETE('api/Point/Delete', dataRequest);
       if (result && result.Status === 1) {
         this.notification.showSuccess(result.Msg);
         this.onReload();
@@ -307,6 +334,7 @@ export class PointComponent implements OnInit, OnDestroy {
   }
 
   onCloseDialog() {
+    this.isDetail = true;
     this.DialogDetail = false;
   }
 
@@ -328,11 +356,20 @@ export class PointComponent implements OnInit, OnDestroy {
     this.ChapterItemFilter = this.ChapterItem.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
+  ArticalHandleFilter(value) {
+    this.ArticalFilter = this.Artical.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+  }
+
+  ClaustHandleFilter(value) {
+    this.ClaustFilter = this.Claust.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+  }
+
   onSearchChange() {
     if (this.searchOption.LuatUUID == null) {
       this.searchOption.ChuongUUID = null;
       this.searchOption.MucUUID = null;
       this.searchOption.DieuUUID = null;
+      this.searchOption.KhoanUUID = null;
       this.ChapterFilter = null;
       this.ChapterItemFilter = null;
       this.ArticalFilter = null;
@@ -345,6 +382,7 @@ export class PointComponent implements OnInit, OnDestroy {
     if (this.searchOption.ChuongUUID == null) {
       this.searchOption.MucUUID = null;
       this.searchOption.DieuUUID = null;
+      this.searchOption.KhoanUUID = null;
       this.ChapterItemFilter = null
       this.ArticalFilter = null;
       this.ClaustFilter = null;
@@ -354,7 +392,9 @@ export class PointComponent implements OnInit, OnDestroy {
     }
     if (this.searchOption.MucUUID == null) {
       this.searchOption.DieuUUID = null;
+      this.searchOption.KhoanUUID = null;
       this.ArticalFilter = null;
+      this.ClaustFilter = null;
     }
     else {
       this.ArticalFilter = this.Artical.filter((obj) => { return obj.MucUUID == this.searchOption.MucUUID })
@@ -365,6 +405,9 @@ export class PointComponent implements OnInit, OnDestroy {
     }
     else {
       this.ClaustFilter = this.Claust.filter((obj) => { return obj.DieuUUID == this.searchOption.DieuUUID})
+    }
+    if (this.searchOption.KhoanUUID == null) {
+     this.ClaustFilter = null; 
     }
 
 

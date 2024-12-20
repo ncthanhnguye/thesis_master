@@ -35,11 +35,11 @@
             <div class="btn-toolbar" role="toolbar">
               <div class="btn-group mr-2 g-btn g-btn-edit" role="group">
                 <button kendoGridRemoveCommand (click)="openUpdateDialog(dataItem.ID)"
-                  [iconClass]="'fa fa-window-restore'">
+                  [iconClass]="'fa fa-eye'">
                 </button>
               </div>
               <div class="btn-group mr-2 g-btn g-btn-delete" role="group">
-                <button kendoGridRemoveCommand [iconClass]="'fa fa-ban'" (click)="onDeleteItem(dataItem.ID)">
+                <button kendoGridRemoveCommand [iconClass]="'fa fa-trash'" (click)="onDeleteItem(dataItem.ID)">
                 </button>
               </div>
             </div>

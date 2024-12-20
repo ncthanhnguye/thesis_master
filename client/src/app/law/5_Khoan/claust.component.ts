@@ -49,16 +49,18 @@ export class ClaustComponent implements OnInit, OnDestroy {
     DieuUUID : null,
   }
 
-  Law: Array<{ ID: number; Content: string; }> = [];
+  isDetail: boolean = true;
+
+  Law: Array<{ Content: any; ID: number; Name: string; LuatUUID: string; }> = [];
   LawFilter: Array<{ ID: number; Content: string }> = [];
 
-  Chapter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
+  Chapter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
   ChapterFilter: Array<{ ID: number; Content: string, LuatUUID: number }> = [];
 
-  ChapterItem: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
+  ChapterItem: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number, MucUUID: number }> = [];
   ChapterItemFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number }> = [];
 
-  Artical: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number }> = [];
+  Artical: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number, DieuUUID: number }> = [];
   ArticalFilter: Array<{ ID: number; Content: string, LuatUUID: number, ChuongUUID: number , MucUUID : number }> = [];
 
 
@@ -181,9 +183,29 @@ export class ClaustComponent implements OnInit, OnDestroy {
     this.dataDetailItemtemp = Object.assign({}, this.dataDetailItem);
   }
 
+  onEdit() {
+    this.isDetail = false;
+  }
+
+  onCancelEditing() {
+    this.isDetail = !this.isDetail;
+  }
+
   bindtemTemp(item) {
     this.dataDetailItemtemp = Object.assign({}, item);
     this.dataDetailItemtemp.LawDate = this.dataDetailItemtemp.LawDate ? new Date(this.dataDetailItemtemp.LawDate) : null;
+
+    const lawItem = this.Law.find(l => l.LuatUUID === this.dataDetailItemtemp.LuatUUID);
+    this.dataDetailItemtemp.LawName = lawItem ? lawItem.Content : '(Trống)';
+
+    const chapter = this.Chapter.find(l => l.ChuongUUID === this.dataDetailItemtemp.ChuongUUID);
+    this.dataDetailItemtemp.ChuongContent = chapter ? chapter.Content : '(Trống)';
+
+    const chapterItem = this.ChapterItem.find(l => l.MucUUID === this.dataDetailItemtemp.MucUUID);
+    this.dataDetailItemtemp.MucContent = chapterItem ? chapterItem.Content : '(Trống)';
+
+    const artical = this.Artical.find(l => l.DieuUUID === this.dataDetailItemtemp.DieuUUID);
+    this.dataDetailItemtemp.DieuContent = artical ? artical.Content : '(Trống)';
   }
 
   onUserPageChange(event: PageChangeEvent) {
@@ -254,6 +276,7 @@ export class ClaustComponent implements OnInit, OnDestroy {
       this.notification.showSuccess(result.Msg);
       this.onReload();
       this.DialogDetail = false;
+      this.isDetail = true;
     } else {
       if (!result.Msg) {
       } else {
@@ -292,6 +315,7 @@ export class ClaustComponent implements OnInit, OnDestroy {
   }
 
   onCloseDialog() {
+    this.isDetail = true;
     this.DialogDetail = false;
   }
 
@@ -311,6 +335,10 @@ export class ClaustComponent implements OnInit, OnDestroy {
 
   ChapterItemHandleFilter(value) {
     this.ChapterItemFilter = this.ChapterItem.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+  }
+
+  ArticalHandleFilter(value) {
+    this.ArticalFilter = this.Artical.filter((s) => s.Content.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
   onSearchChange() {

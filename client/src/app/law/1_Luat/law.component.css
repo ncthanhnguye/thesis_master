@@ -1,3 +1,30 @@
 container-datagrid {
     margin-top: 20px !important;
 }
+
+.law {
+    .k-dialog-wrapper .k-dialog {
+        width: 1000px !important;
+        max-height: 95% !important;
+    }    
+} 
+
+.content {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .law-html-content table:first-of-type {
+        display: flex;
+        justify-content: center;
+    }
+
+    .law-html-content table:last-of-type {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .law-html-content p:first-of-type {
+        text-align: center;
+        font-size: 16px;
+    }
+}
