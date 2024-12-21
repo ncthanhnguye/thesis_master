@@ -34,5 +34,8 @@ namespace MASTERPM.Model
         public Nullable<int> ChuongID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public Nullable<System.Guid> LuatUUID { get; set; }
+        public Nullable<System.Guid> ChuongUUID { get; set; }
+        public Nullable<System.Guid> MucUUID { get; set; }
     }
 }

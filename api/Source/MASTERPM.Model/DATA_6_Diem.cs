@@ -37,5 +37,11 @@ namespace MASTERPM.Model
         public Nullable<int> KhoanID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public Nullable<System.Guid> LuatUUID { get; set; }
+        public Nullable<System.Guid> ChuongUUID { get; set; }
+        public Nullable<System.Guid> MucUUID { get; set; }
+        public Nullable<System.Guid> DieuUUID { get; set; }
+        public Nullable<System.Guid> KhoanUUID { get; set; }
+        public Nullable<System.Guid> DiemUUID { get; set; }
     }
 }

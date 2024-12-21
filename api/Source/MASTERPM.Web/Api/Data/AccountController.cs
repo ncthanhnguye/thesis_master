@@ -617,37 +617,6 @@ namespace MASTERPM.Web.Api.Profile
 
 
 
-        [HttpGet]
-        [Route("GetConfigRegist")]
-        public IHttpActionResult GetConfigRegist()
-        {
-            try
-            {
-                //check token expired
-                if (this.isAuthenticatedUser != true)
-                {
-                    return Json(new TResult()
-                    {
-                        Status = (short)EStatus.Fail,
-                        Msg = MASTERResources.Instance.Get(MASTERResources.ID.MsgErrorNotPermisionFunc)
-                    });
-                }
-                var result = this.Repository.GetQuery<AD_CONFIG>()
-                     .FirstOrDefault(r => EConfig.GetConfigRegist.ToString().Equals(r.ID))
-                     ?.Value;
-
-                return Json(new TResult()
-                {
-                    Status = (short)EStatus.Ok,
-                    Data = result
-                });
-            }
-            catch (Exception e)
-            {
-                this.MASTERLogs.Write(this.RepositoryLog, e.Message);
-                throw new Exception("", e);
-            }
-        }
 
     }
 }

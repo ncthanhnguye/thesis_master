@@ -37,5 +37,6 @@ namespace MASTERPM.Model
         public Nullable<int> Status { get; set; }
         public Nullable<int> TotalChapter { get; set; }
         public string LawDate { get; set; }
+        public Nullable<System.Guid> LuatUUID { get; set; }
     }
 }

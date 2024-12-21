@@ -158,6 +158,12 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.Concept_KeyPhrase' does not have
           <Property Name="Index" Type="int" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="ContentHTML" Type="nvarchar(max)" />
+          <Property Name="LawNumber" Type="nchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+          <Property Name="TotalChapter" Type="int" />
+          <Property Name="LawDate" Type="nvarchar" MaxLength="250" />
+          <Property Name="LuatUUID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="DATA_2_Chuong">
           <Key>
@@ -168,6 +174,8 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.Concept_KeyPhrase' does not have
           <Property Name="LuatID" Type="int" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="LuatUUID" Type="uniqueidentifier" />
+          <Property Name="ChuongUUID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="DATA_3_Muc">
           <Key>
@@ -179,6 +187,9 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.Concept_KeyPhrase' does not have
           <Property Name="ChuongID" Type="int" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="LuatUUID" Type="uniqueidentifier" />
+          <Property Name="ChuongUUID" Type="uniqueidentifier" />
+          <Property Name="MucUUID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="DATA_4_Dieu">
           <Key>
@@ -191,6 +202,10 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.Concept_KeyPhrase' does not have
           <Property Name="MucID" Type="int" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="LuatUUID" Type="uniqueidentifier" />
+          <Property Name="ChuongUUID" Type="uniqueidentifier" />
+          <Property Name="MucUUID" Type="uniqueidentifier" />
+          <Property Name="DieuUUID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="DATA_5_Khoan">
           <Key>
@@ -204,6 +219,11 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.Concept_KeyPhrase' does not have
           <Property Name="DieuID" Type="int" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="LuatUUID" Type="uniqueidentifier" />
+          <Property Name="ChuongUUID" Type="uniqueidentifier" />
+          <Property Name="MucUUID" Type="uniqueidentifier" />
+          <Property Name="DieuUUID" Type="uniqueidentifier" />
+          <Property Name="KhoanUUID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="DATA_6_Diem">
           <Key>
@@ -218,6 +238,12 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.Concept_KeyPhrase' does not have
           <Property Name="KhoanID" Type="int" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="LuatUUID" Type="uniqueidentifier" />
+          <Property Name="ChuongUUID" Type="uniqueidentifier" />
+          <Property Name="MucUUID" Type="uniqueidentifier" />
+          <Property Name="DieuUUID" Type="uniqueidentifier" />
+          <Property Name="KhoanUUID" Type="uniqueidentifier" />
+          <Property Name="DiemUUID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="DATA_ACCOUNT">
           <Key>
@@ -726,6 +752,12 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <Property Name="Index" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContentHTML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LawNumber" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="TotalChapter" Type="Int32" />
+          <Property Name="LawDate" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LuatUUID" Type="Guid" />
         </EntityType>
         <EntityType Name="DATA_2_Chuong">
           <Key>
@@ -736,6 +768,8 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <Property Name="LuatID" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LuatUUID" Type="Guid" />
+          <Property Name="ChuongUUID" Type="Guid" />
         </EntityType>
         <EntityType Name="DATA_3_Muc">
           <Key>
@@ -747,6 +781,9 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <Property Name="ChuongID" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LuatUUID" Type="Guid" />
+          <Property Name="ChuongUUID" Type="Guid" />
+          <Property Name="MucUUID" Type="Guid" />
         </EntityType>
         <EntityType Name="DATA_4_Dieu">
           <Key>
@@ -759,6 +796,10 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <Property Name="MucID" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LuatUUID" Type="Guid" />
+          <Property Name="ChuongUUID" Type="Guid" />
+          <Property Name="MucUUID" Type="Guid" />
+          <Property Name="DieuUUID" Type="Guid" />
         </EntityType>
         <EntityType Name="DATA_5_Khoan">
           <Key>
@@ -772,6 +813,11 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <Property Name="DieuID" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LuatUUID" Type="Guid" />
+          <Property Name="ChuongUUID" Type="Guid" />
+          <Property Name="MucUUID" Type="Guid" />
+          <Property Name="DieuUUID" Type="Guid" />
+          <Property Name="KhoanUUID" Type="Guid" />
         </EntityType>
         <EntityType Name="DATA_6_Diem">
           <Key>
@@ -786,6 +832,12 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <Property Name="KhoanID" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LuatUUID" Type="Guid" />
+          <Property Name="ChuongUUID" Type="Guid" />
+          <Property Name="MucUUID" Type="Guid" />
+          <Property Name="DieuUUID" Type="Guid" />
+          <Property Name="KhoanUUID" Type="Guid" />
+          <Property Name="DiemUUID" Type="Guid" />
         </EntityType>
         <EntityType Name="DATA_ACCOUNT">
           <Key>
@@ -1176,6 +1228,12 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <EntitySetMapping Name="DATA_1_Luat">
             <EntityTypeMapping TypeName="MASTERPMModel.DATA_1_Luat">
               <MappingFragment StoreEntitySet="DATA_1_Luat">
+                <ScalarProperty Name="LuatUUID" ColumnName="LuatUUID" />
+                <ScalarProperty Name="LawDate" ColumnName="LawDate" />
+                <ScalarProperty Name="TotalChapter" ColumnName="TotalChapter" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LawNumber" ColumnName="LawNumber" />
+                <ScalarProperty Name="ContentHTML" ColumnName="ContentHTML" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Index" ColumnName="Index" />
@@ -1186,6 +1244,8 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <EntitySetMapping Name="DATA_2_Chuong">
             <EntityTypeMapping TypeName="MASTERPMModel.DATA_2_Chuong">
               <MappingFragment StoreEntitySet="DATA_2_Chuong">
+                <ScalarProperty Name="ChuongUUID" ColumnName="ChuongUUID" />
+                <ScalarProperty Name="LuatUUID" ColumnName="LuatUUID" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="LuatID" ColumnName="LuatID" />
@@ -1197,6 +1257,9 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <EntitySetMapping Name="DATA_3_Muc">
             <EntityTypeMapping TypeName="MASTERPMModel.DATA_3_Muc">
               <MappingFragment StoreEntitySet="DATA_3_Muc">
+                <ScalarProperty Name="MucUUID" ColumnName="MucUUID" />
+                <ScalarProperty Name="ChuongUUID" ColumnName="ChuongUUID" />
+                <ScalarProperty Name="LuatUUID" ColumnName="LuatUUID" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ChuongID" ColumnName="ChuongID" />
@@ -1209,6 +1272,10 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <EntitySetMapping Name="DATA_4_Dieu">
             <EntityTypeMapping TypeName="MASTERPMModel.DATA_4_Dieu">
               <MappingFragment StoreEntitySet="DATA_4_Dieu">
+                <ScalarProperty Name="DieuUUID" ColumnName="DieuUUID" />
+                <ScalarProperty Name="MucUUID" ColumnName="MucUUID" />
+                <ScalarProperty Name="ChuongUUID" ColumnName="ChuongUUID" />
+                <ScalarProperty Name="LuatUUID" ColumnName="LuatUUID" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="MucID" ColumnName="MucID" />
@@ -1222,6 +1289,11 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <EntitySetMapping Name="DATA_5_Khoan">
             <EntityTypeMapping TypeName="MASTERPMModel.DATA_5_Khoan">
               <MappingFragment StoreEntitySet="DATA_5_Khoan">
+                <ScalarProperty Name="KhoanUUID" ColumnName="KhoanUUID" />
+                <ScalarProperty Name="DieuUUID" ColumnName="DieuUUID" />
+                <ScalarProperty Name="MucUUID" ColumnName="MucUUID" />
+                <ScalarProperty Name="ChuongUUID" ColumnName="ChuongUUID" />
+                <ScalarProperty Name="LuatUUID" ColumnName="LuatUUID" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="DieuID" ColumnName="DieuID" />
@@ -1236,6 +1308,12 @@ warning 6002: The table/view 'THESIS_MASTER.dbo.user' does not have a primary ke
           <EntitySetMapping Name="DATA_6_Diem">
             <EntityTypeMapping TypeName="MASTERPMModel.DATA_6_Diem">
               <MappingFragment StoreEntitySet="DATA_6_Diem">
+                <ScalarProperty Name="DiemUUID" ColumnName="DiemUUID" />
+                <ScalarProperty Name="KhoanUUID" ColumnName="KhoanUUID" />
+                <ScalarProperty Name="DieuUUID" ColumnName="DieuUUID" />
+                <ScalarProperty Name="MucUUID" ColumnName="MucUUID" />
+                <ScalarProperty Name="ChuongUUID" ColumnName="ChuongUUID" />
+                <ScalarProperty Name="LuatUUID" ColumnName="LuatUUID" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="KhoanID" ColumnName="KhoanID" />

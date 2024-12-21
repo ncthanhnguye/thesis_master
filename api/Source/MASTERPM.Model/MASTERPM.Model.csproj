@@ -196,9 +196,6 @@
     <Compile Include="DATA_CRAWL.cs">
       <DependentUpon>MASTERModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data_Luat_HTML.cs">
-      <DependentUpon>MASTERModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DATA_MENU.cs">
       <DependentUpon>MASTERModel.tt</DependentUpon>
     </Compile>
@@ -271,15 +268,14 @@
     <Compile Include="Validate\MinValueAttribute.cs" />
     <Compile Include="Validate\NumberValueAttribute.cs" />
     <Compile Include="VM\Data_LawVM.cs" />
-    <Compile Include="VM\Data_Law_HTML_VM.cs" />
     <Compile Include="VM\Data_Law_ImportVM .cs" />
     <Compile Include="VM\RewardProcessVM.cs" />
     <Compile Include="VM\ChangePasswordVM.cs" />
     <Compile Include="VM\CommonMenuVM.cs" />
     <Compile Include="VM\AccountImportExcelVM.cs" />
     <Compile Include="VM\Data_Crawl_ImportVM.cs" />
+    <Compile Include="VM\SavesWordRequest.cs" />
     <Compile Include="VM\UnitImportExcelVM.cs" />
-    <Compile Include="VM\SecureCodeVM.cs" />
     <Compile Include="VM\MemberVM.cs" />
     <Compile Include="VM\RoleReqVM.cs" />
     <Compile Include="VM\CheckControlVM.cs" />

@@ -64,27 +64,4 @@ export class AppControls {
         return '';
     }
 
-    async getPageNamePortal() {
-        let pageUrl = this.location.path();
-        if (!pageUrl) {
-            return null;
-        }
-
-        const idx = pageUrl.indexOf('?');
-        if (idx >= 0) {
-            pageUrl = pageUrl.substring(0, idx);
-        }
-
-        pageUrl = pageUrl.substring(1);
-
-        const dataRequest = {
-            id: pageUrl,
-            langID : localStorage.getItem('portal') ? localStorage.getItem('portal') : this.appConsts.defaultLangID
-        };
-        const result = await this.appService.doGET('api/Page/GetName', dataRequest);
-        if (result && result.Status === 1) {
-            return result.Data;
-        }
-        return '';
-    }
 }

@@ -120,16 +120,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // Check device
-    this.isMobile = this.isMobileDevice();
-    // Event tracking device size
     window.addEventListener('resize', this.reportWindowSize);
     window.onresize = this.reportWindowSize;
-    // Check length UserName to show Clear button
     this.checkUserNameLength();
-    // if (localStorage.getItem('ThesisLocalStorage')) {
-    //   this.authenticationService.doSignout();
-    // }
     this.authenticationService.postCrossDomainMessage();
   }
 
@@ -201,9 +194,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (language) { this.languageName = language.text; }
   }
 
-  onLoginByMail() {
-    window.location.href = `${this.appService.apiRoot}api/VNPTLogin/Login`;
-  }
 
   onKeyPress(e: any) {
     this.isShowCleanText = true;
@@ -211,9 +201,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.onLogin();
     }
   }
-  onKeyUpUserName(event): void {
-    this.checkUserNameLength()
-  }
+
   checkUserNameLength(): void {
     if (this.loginInfo.UserName.length === 0) {
       this.isShowCleanText = false;
@@ -248,19 +236,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  isMobileDevice(): boolean {
-    const screenWidth = window.screen.width;
-    if (screenWidth <= 812) {
-      this.screenName = 'waiting';
-      if (window.screen.height > 540) {
-        this.isDisplayDecoration = true;
-      }
-      return true;
-    }
-    this.screenName = 'login';
-    this.isDisplayDecoration = false;
-    return  false;
-  }
   isWaitingEvent(value) {
     this.screenName = 'intro';
   }
